@@ -7,4 +7,4 @@ parcelRequire=function(e,r,t,n){var i,o="function"==typeof parcelRequire&&parcel
 },{}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss");var e=r(require("./js/back-to-top-btn")),s=r(require("./js/api/api-service"));function r(e){return e&&e.__esModule?e:{default:e}}(0,e.default)(),(0,s.default)();
 },{"./sass/main.scss":"clu1","./js/back-to-top-btn":"lZt3","./js/api/api-service":"aE0C"}]},{},["Focm"], null)
-//# sourceMappingURL=/Filmoteka/src.1de72f11.js.map
+//# sourceMappingURL=/Filmoteka/src.a4412df7.js.map

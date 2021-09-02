@@ -1,0 +1,29 @@
+$mobile: 320px;
+$max-mobile: 767px;
+$tablet: 768px;
+$max-tablet: 1023px;
+$desktop: 1024px;
+
+// ========= colors
+$white-color: #ffffff;
+$black-color: #000000;
+
+$grey-color: #8c8c8c;
+$light-grey-color: #f7f7f7;
+$dark-grey-color: #545454;
+
+$accent-line: #ff6b08;
+$accent-bg: #ff6b01;
+$notice: #ff001b;
+
+// ========= fonts
+$main-font: 'Roboto', sans-serif;
+
+// $transition-hover-focus: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+//   fill 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+//   outline-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+//   background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+//   background-image 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
+//   opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+// $timing-function: cubic-bezier(0.4, 0, 0.2, 1);

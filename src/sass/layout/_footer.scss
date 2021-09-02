@@ -1,0 +1,38 @@
+.footer {
+  background-color: $light-grey-color;
+}
+.footer .container {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.footer__desc {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 28px;
+  padding-bottom: 29px;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  color: $dark-grey-color;
+  background-color: $light-grey-color;
+  @include font(400, 14px, 16.41px);
+}
+
+.footer__link {
+  color: $dark-grey-color;
+}
+
+.dev-team {
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (min-width: $tablet) {
+  .footer__desc {
+    flex-wrap: nowrap;
+    padding-top: 30px;
+    padding-bottom: 28px;
+    @include font(400, 16px, 18.75px);
+  }
+}

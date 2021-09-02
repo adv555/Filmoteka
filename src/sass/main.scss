@@ -3,7 +3,6 @@
  * Все паршалы подключаются сюда.
  */
 
-// Стили для файла с примером HTML-фрагмента
 @import './utils/variables';
 @import './utils/mixins';
 
@@ -14,6 +13,8 @@
 @import './components/modal-btn';
 @import './components/spiner';
 @import './components//back-to-top-btn';
+@import './components/theme-switcher';
+@import './components/lang-switcher';
 
 @import './layout/header';
 @import './layout/hero';

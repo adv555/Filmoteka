@@ -2,7 +2,9 @@ parcelRequire=function(e,r,t,n){var i,o="function"==typeof parcelRequire&&parcel
 
 },{}],"lZt3":[function(require,module,exports) {
 "use strict";function e(){var e=document.querySelector(".back_to_top");window.addEventListener("scroll",function(){var t=window.pageYOffset,o=document.documentElement.clientHeight;t>o&&e.classList.add("back_to_top-show"),t<o&&e.classList.remove("back_to_top-show")}),e.addEventListener("click",function e(){window.pageYOffset>0&&(window.scrollBy(0,-80),setTimeout(e,0))})}Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=e;
+},{}],"aE0C":[function(require,module,exports) {
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;const e="https://api.themoviedb.org/3",t="3d673b2d8e40eafc68577fae5a6a1f4b";class r{constructor(){this.searchQuery="",this.page=1}fetchPopularMovies(){const r=new URLSearchParams({api_key:t,page:this.page});return fetch(`${e}movie/popular?${r}`).then(e=>e.json())}fetchGenresList(){const r=new URLSearchParams({api_key:t});return fetch(`${e}/genre/movie/list?${r}`).then(e=>e.json())}fetchMoviesBySearch(){const r=new URLSearchParams({api_key:t,query:this.searchQuery,page:this.page});return fetch(`${e}search/movie?${r}`).then(e=>e.json())}fetchFullInfoOfMovie(r){const s=new URLSearchParams({api_key:t});return fetch(`${e}/movie/${r}?${s}`).then(e=>e.json())}fetchMoviesByGenre(r){const s=new URLSearchParams({api_key:t,with_genres:r});return fetch(`${e}discover/movie?${s}`).then(e=>e.json())}incrementPage(){this.page+=1}resetPage(){this.page=1}setPage(e){this.page=e}get query(){return this.searchQuery}set query(e){this.searchQuery=e}}exports.default=r;
 },{}],"Focm":[function(require,module,exports) {
-"use strict";require("./sass/main.scss");var e=s(require("./js/back-to-top-btn"));function s(e){return e&&e.__esModule?e:{default:e}}(0,e.default)();
-},{"./sass/main.scss":"clu1","./js/back-to-top-btn":"lZt3"}]},{},["Focm"], null)
-//# sourceMappingURL=/Filmoteka/src.b4f8419b.js.map
+"use strict";require("./sass/main.scss");var e=r(require("./js/back-to-top-btn")),s=r(require("./js/api/api-service"));function r(e){return e&&e.__esModule?e:{default:e}}(0,e.default)(),(0,s.default)();
+},{"./sass/main.scss":"clu1","./js/back-to-top-btn":"lZt3","./js/api/api-service":"aE0C"}]},{},["Focm"], null)
+//# sourceMappingURL=/Filmoteka/src.1de72f11.js.map

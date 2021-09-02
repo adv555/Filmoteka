@@ -1,0 +1,43 @@
+  <form class="search-form" id="search-form">
+          <input
+            type="text"
+            name="query"
+            autocomplete="off"
+            placeholder="Поиск фильмов"
+            class="search-field"
+          />
+          <button type="submit" class="search-btn">
+            <svg class="search-icon" width="12" height="12">
+              <!-- <use href=""></use> -->
+            </svg>
+          </button>
+        </form>
+
+ <form>
+        <div role="group">
+          <ul class="storage js-choice-storage">
+            <li class="storage__item">
+              <label class="storage__label">
+                <input
+                  type="radio"
+                  name="storage-btn"
+                  value="Watched"
+                  class="storage__input visuallyhidden"
+                  checked
+                />
+                <span class="storage__btn" id="js-WatchedButton">Watched</span>
+              </label>
+            </li>
+            <li class="storage__item">
+              <label class="storage__label">
+                <input
+                  type="radio"
+                  name="storage-btn"
+                  value="Queue"
+                  class="storage__input visuallyhidden"
+                />
+                <span class="storage__btn" id="js-QueueButton">Queue</span>
+              </label>
+            </li>
+          </ul>
+        </form>

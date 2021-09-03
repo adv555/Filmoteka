@@ -2,6 +2,31 @@
 import refs from './refs';
 import { notice, error } from '@pnotify/core';
 
+class NoticeMessage {
+  constructor() {}
+  notice() {
+    notice({
+      // title: 'Attention',
+      text: 'Your Library is empty',
+      width: '300px',
+      minHeight: '15px',
+      delay: 2000,
+      // addClass: 'error',
+    });
+  }
+  error() {
+    error({
+      title: 'Error',
+      text: 'No matchs found!',
+      width: '300px',
+      minHeight: '15px',
+      delay: 2000,
+      // addClass: 'error',
+    });
+  }
+}
+const noticeMessage = new NoticeMessage();
+
 refs.myLibraryLink.addEventListener('click', onLibraryBtn);
 refs.watchedBtn.addEventListener('click', onLibraryWachedBtm);
 refs.queueBtn.addEventListener('click', onLibraryQueueBtn);
@@ -11,14 +36,14 @@ refs.addWatchedBtn.addEventListener('click', onAddWachedBtm);
 const watchedFilmStorage = JSON.parse(localStorage.getItem('watche-films'));
 const queueFilmStorage = JSON.parse(localStorage.getItem('queue-films'));
 
-function onLibraryWachedBtm(e) {
+function onLibraryWachedBtm() {
   refs.myLibraryLink.innerHTML = filmListTemplate(watchedFilmStorage);
 }
-function onLibraryQueueBtn(e) {
+function onLibraryQueueBtn() {
   refs.myLibraryLink.innerHTML = filmListTemplate(queueFilmStorage);
 }
 
-function onLibraryBtn(e) {
+function onLibraryBtn() {
   if (refs.watchedBtn.checked) {
     // Если кнопка Watched в состоянии checked - выполняем этот код
 
@@ -78,28 +103,3 @@ function onRemoveFromQueueBtm() {
   refs.addQueueBtn.classList.toggle('remove');
   refs.addQueueBtn.textContent('Add to Queue');
 }
-
-class NoticeMessage {
-  constructor() {}
-  notice() {
-    notice({
-      // title: 'Attention',
-      text: 'Your Library is empty',
-      width: '300px',
-      minHeight: '15px',
-      delay: 2000,
-      // addClass: 'error',
-    });
-  }
-  error() {
-    error({
-      title: 'Error',
-      text: 'No matchs found!',
-      width: '300px',
-      minHeight: '15px',
-      delay: 2000,
-      // addClass: 'error',
-    });
-  }
-}
-const noticeMessage = new NoticeMessage();

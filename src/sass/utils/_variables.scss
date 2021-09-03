@@ -26,4 +26,6 @@ $main-font: 'Roboto', sans-serif;
 //   background-image 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
 //   opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-// $timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+$timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+$duration: 300ms;
+$btn-duration: 500ms;

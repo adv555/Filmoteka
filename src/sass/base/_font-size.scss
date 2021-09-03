@@ -1,0 +1,46 @@
+$font-size__desk: (
+  'logo-title': 30px,
+  'nav-text': 12px,
+  'search': 14px,
+  'name-film': 12px,
+  'name-film-modal': 30px,
+  'text-modal': 12px,
+  'text-footer': 16px,
+  'team-heading': 22px,
+  'error-text': 30px,
+  'text-modal-secondary': 40px,
+);
+
+@function getFont-size__desk($key) {
+  @return map-get($font-size__desk, $key);
+}
+
+$font-size__tab: (
+  'logo-title': 30px,
+  'nav-text': 12px,
+  'search': 14px,
+  'name-film': 12px,
+  'text-modal': 12px,
+  'text-footer': 16px,
+  'team-heading': 22px,
+  'text-modal-secondary': 30px,
+);
+
+@function getFont-size__tab($key) {
+  @return map-get($font-size__tab, $key);
+}
+
+$font-size__mob: (
+  'nav-text': 12px,
+  'search': 14px,
+  'name-film': 12px,
+  'name-film-modal': 20px,
+  'text-modal': 12px,
+  'text-modal-secondary': 22px,
+  'text-footer': 14px,
+  'error-text': 20px,
+);
+
+@function getFont-size__mob($key) {
+  @return map-get($font-size__mob, $key);
+}

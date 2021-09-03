@@ -2,11 +2,10 @@ import './sass/main.scss';
 import refs from './js/refs';
 import backToTopBtn from './js/back-to-top-btn';
 import MoviesApiService from './js/api/api-service';
+import 'material-icons';
 
 // =========== back-to-top-button
 backToTopBtn();
-
-// API();
 
 // =========== new class instance
 const moviesApiService = new MoviesApiService();

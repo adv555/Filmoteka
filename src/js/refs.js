@@ -14,11 +14,15 @@ const logo = document.querySelector('.js-logo');
 const homeLink = document.querySelector('.js-home');
 const myLibraryLink = document.querySelector('.js-my-library');
 const teamLink = document.querySelector('.js-team-link');
+const addQueueBtn = document.querySelector('.queue-btn');
+const addWatchedBtn = document.querySelector('.watched-btn');
 
 export default {
   searchForm,
   queueBtn,
   watchedBtn,
+  addQueueBtn,
+  addWatchedBtn,
   trailerBtn,
   mainFrame,
   gallery,

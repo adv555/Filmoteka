@@ -5,6 +5,9 @@
   letter-spacing: $ls;
 }
 
+@mixin transition($type) {
+  transition: $type $duration $timing-function;
+}
 // пример подключения:
 // @include font (500, 14px, 16px);
 // @include font (500, 14px, 16px, 0.02em);

@@ -1,0 +1,131 @@
+// background for home page
+.header__container--home-bg {
+  background-position: top;
+  background-size: cover;
+
+  @media screen and (max-width: $max-mobile) {
+    max-width: $max-mobile;
+    // height: 230px;
+    padding-top: 46px;
+    padding-bottom: 43px;
+    background-image: url(../images/optimized-jpg/header__home__mob.jpg);
+
+    @media screen and (min-device-pixel-ratio: 2),
+      screen and (min-resolution: 192dpi),
+      screen and (min-resolution: 2dppx) {
+      background-image: url(../images/optimized-jpg/header__home__mob@2x.jpg);
+    }
+
+    @media screen and (min-device-pixel-ratio: 3),
+      screen and (min-resolution: 288dpi),
+      screen and (min-resolution: 3dppx) {
+      background-image: url(../images/optimized-jpg/header__home__mob@3x.jpg);
+    }
+  }
+
+  @media screen and (min-width: $tablet) and (max-width: $max-tablet) {
+    max-width: $max-tablet;
+    // height: 230px;
+    padding-top: 41px;
+    padding-bottom: 59px;
+    background-image: url(../images/optimized-jpg/header__home__tablet.jpg);
+
+    @media screen and (min-device-pixel-ratio: 2),
+      screen and (min-resolution: 192dpi),
+      screen and (min-resolution: 2dppx) {
+      background-image: url(../images/optimized-jpg/header__home__tablet@2x.jpg);
+    }
+
+    @media screen and (min-device-pixel-ratio: 3),
+      screen and (min-resolution: 288dpi),
+      screen and (min-resolution: 3dppx) {
+      background-image: url(../images/optimized-jpg/header__home__tablet@3x.jpg);
+    }
+  }
+
+  @media screen and (min-width: $desktop) {
+    max-width: 100wv;
+    // height: 230px;
+    padding-top: 41px;
+    padding-bottom: 59px;
+    background-image: url(../images/optimized-jpg/header__home__desktop.jpg);
+
+    @media screen and (min-device-pixel-ratio: 2),
+      screen and (min-resolution: 192dpi),
+      screen and (min-resolution: 2dppx) {
+      background-image: url(../images/optimized-jpg/header__home__desktop@2x.jpg);
+    }
+
+    @media screen and (min-device-pixel-ratio: 3),
+      screen and (min-resolution: 288dpi),
+      screen and (min-resolution: 3dppx) {
+      background-image: url(../images/optimized-jpg/header__home__desktop@3x.jpg);
+    }
+  }
+}
+
+// background for my-library page
+.header__container--my-library-bg {
+  background-position: bottom;
+  background-size: cover;
+
+  @media screen and (max-width: $max-mobile) {
+    max-width: $max-mobile;
+    // height: 230px;
+    padding-top: 46px;
+    padding-bottom: 43px;
+    background-image: url(../images/optimized-jpg/header__lib__mob.jpg);
+
+    @media screen and (min-device-pixel-ratio: 2),
+      screen and (min-resolution: 192dpi),
+      screen and (min-resolution: 2dppx) {
+      background-image: url(../images/optimized-jpg/header__lib__mob@2x.jpg);
+    }
+
+    @media screen and (min-device-pixel-ratio: 3),
+      screen and (min-resolution: 288dpi),
+      screen and (min-resolution: 3dppx) {
+      background-image: url(../images/optimized-jpg/header__lib__mob@3x.jpg);
+    }
+  }
+
+  @media screen and (min-width: $tablet) and (max-width: $max-tablet) {
+    max-width: $max-tablet;
+    // height: 230px;
+    padding-top: 41px;
+    padding-bottom: 59px;
+    background-image: url(../images/optimized-jpg/header__lib__tablet.jpg);
+
+    @media screen and (min-device-pixel-ratio: 2),
+      screen and (min-resolution: 192dpi),
+      screen and (min-resolution: 2dppx) {
+      background-image: url(../images/optimized-jpg/header__lib__tablet@2x.jpg);
+    }
+
+    @media screen and (min-device-pixel-ratio: 3),
+      screen and (min-resolution: 288dpi),
+      screen and (min-resolution: 3dppx) {
+      background-image: url(../images/optimized-jpg/header__lib__tablet@3x.jpg);
+    }
+  }
+
+  @media screen and (min-width: $desktop) {
+    max-width: 100wv;
+    // height: 230px;
+    padding-top: 41px;
+    padding-bottom: 59px;
+    background-image: url(../images/optimized-jpg/header__lib__desktop.jpg);
+
+    @media screen and (min-device-pixel-ratio: 2),
+      screen and (min-resolution: 192dpi),
+      screen and (min-resolution: 2dppx) {
+      background-image: url(../images/optimized-jpg/header__lib__desktop@2x.jpg);
+    }
+
+    @media screen and (min-device-pixel-ratio: 3),
+      screen and (min-resolution: 288dpi),
+      screen and (min-resolution: 3dppx) {
+      background-image: url(../images/optimized-jpg/header__lib__desktop@3x.jpg);
+    }
+  }
+}

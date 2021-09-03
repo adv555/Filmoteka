@@ -1,0 +1,112 @@
+.search-field {
+  position: relative;
+  font-size: getFont-size__mob('search');
+  text-align: center;
+}
+
+.search-field__input {
+  width: 280px;
+  padding-bottom: 4px;
+  margin-bottom: 21px;
+  font-weight: 400;
+  font-size: getFont-size__mob('search');
+  color: $white-color;
+
+  border: none;
+  border-bottom: 0.5px solid #ffffff;
+
+  background-color: transparent;
+  outline: none;
+  transition: outline $duration $timing-function, border-color $duration $timing-function;
+
+  @media screen and (min-width: $tablet) {
+    width: 336px;
+  }
+
+  &::placeholder {
+    font-size: getFont-size__mob('search');
+    letter-spacing: 0.03em;
+    color: $white-color;
+  }
+
+  @include transition(border-color);
+}
+
+.search-field__input:hover,
+.search-field__input:focus {
+  border-color: $accent-line;
+}
+
+.search-field__input:focus {
+  outline: 1px solid $accent-line;
+  // outline-style: groove;
+}
+
+.search-field__error-text {
+  font-size: getFont-size__mob('search');
+  line-height: 1.14;
+  color: $notice;
+
+  height: 32px;
+
+  @media screen and (min-width: $tablet) {
+    height: 16px;
+  }
+}
+
+.material-icons.md-18 {
+  font-size: 18px;
+  position: absolute;
+  left: 94%;
+  top: 0;
+
+  @media screen and (min-width: $tablet) and (max-width: $max-tablet) {
+    left: 74.4%;
+  }
+
+  @media screen and (min-width: $desktop) {
+    left: 591px;
+  }
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0 22px;
+  @media screen and (min-width: $tablet) {
+    padding: 8px 0 6px;
+  }
+}
+
+.button {
+  height: 44px;
+  font-size: getFont-size__mob('nav-text');
+  line-height: 1.33;
+  text-transform: uppercase;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.hero-buttons__btn {
+  width: 130px;
+  margin: 0 10px 0;
+  color: $white-color;
+  border: 1px solid $white-color;
+  background-color: transparent;
+
+  transition: color $btn-duration $timing-function, border $btn-duration $timing-function,
+    background-color $btn-duration $timing-function, box-shadow $btn-duration $timing-function;
+
+  @media screen and (min-width: $tablet) {
+    width: 136px;
+  }
+}
+
+.hero-buttons__btn:hover,
+.hero-buttons__btn:focus,
+.hero-buttons__btn--active {
+  color: $white-color;
+  border: 1px solid $accent-bg;
+  background-color: $accent-bg;
+  box-shadow: (0px 8px 43px rgba(255, 107, 1, 0.6));
+}

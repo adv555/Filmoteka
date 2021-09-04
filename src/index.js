@@ -2,12 +2,15 @@ import './sass/main.scss';
 import refs from './js/refs';
 import backToTopBtn from './js/back-to-top-btn';
 import MoviesApiService from './js/api/api-service';
-//  import 'material-icons';
-import './js/gallery/gallery.js';
 import createGalleryMarkup from './js/gallery/gallery.js';
+import 'material-icons';
+import './js/changeTheme';
+import filterFilm from './js/filter';
 
 // =========== back-to-top-button
 backToTopBtn();
+// =========== filter
+filterFilm();
 
 // =========== new class instance
 const moviesApiService = new MoviesApiService();

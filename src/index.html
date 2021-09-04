@@ -20,45 +20,47 @@
   </head>
   <body>
     <!-- HEADER -->
-    <header class="header header__container--home-bg">
+    <header class="header">
       <div class="container">
         <include src="./partials/header.html"></include>
       </div>
-
-      <main class="main">
-        <!-- HERO -->
-        <section class="hero">
-          <div class="container">
-            <include src="./partials/hero.html"></include>
-          </div>
-        </section>
-
-        <!-- SLIDER -->
-        <section class="slider">
-          <div class="container">
-            <include src="./partials/slider.html"></include>
-          </div>
-        </section>
-
-        <!-- GALLERY -->
-        <section class="gallery">
-          <div class="container container_gallery">
-            <!-- Filters -->
-            <include src="./partials/filters.html"></include>
-            <!-- End Filters -->
-
-            <include src="./partials/gallery.html"></include>
-          </div>
-        </section>
-
-        <!-- Back-to-top-button -->
-        <include src="./partials/back-to-top-btn.html"></include>
+    </header>
+    <main class="main">
+      <!-- HERO -->
+      <section class="hero header header__container--home-bg">
+        <div class="container">
+          <include src="./partials/hero.html"></include>
+        </div>
         <!-- Theme-switcher -->
         <include src="./partials/theme-switcher.html"></include>
-        <!-- Lang-switcher -->
-        <include src="./partials/lang-switcher.html"></include>
-      </main>
-    </header>
+      </section>
+
+      <!-- SLIDER -->
+      <section class="slider">
+        <div class="container">
+          <include src="./partials/slider.html"></include>
+        </div>
+      </section>
+
+      <!-- GALLERY -->
+      <section class="gallery">
+        <div class="container container_gallery">
+          <!-- Filters -->
+          <include src="./partials/filters.html"></include>
+          <!-- End Filters -->
+
+          <include src="./partials/gallery.html"></include>
+          <include src="./partials/gallery-test.html"></include>
+        </div>
+      </section>
+
+      <!-- Back-to-top-button -->
+      <include src="./partials/back-to-top-btn.html"></include>
+
+      <!-- Lang-switcher -->
+      <include src="./partials/lang-switcher.html"></include>
+    </main>
+
     <!-- FOOTER -->
     <footer class="footer">
       <div class="container">

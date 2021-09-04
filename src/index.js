@@ -4,45 +4,22 @@ import backToTopBtn from './js/back-to-top-btn';
 import MoviesApiService from './js/api/api-service';
 import 'material-icons';
 import './js/changeTheme';
+import filterFilm from './js/filter';
 
 // =========== back-to-top-button
 backToTopBtn();
+// =========== filter
+filterFilm();
 
 // =========== new class instance
 const moviesApiService = new MoviesApiService();
 
 // =========== test by Popular / Genres / By Id
-moviesApiService.fetchPopularMovies().then((data) => console.log(data));
-moviesApiService.fetchGenresList().then((data) => console.log(data));
-
-// ========= FILTER START =========
-function filterFilm() {
-  const buttonsFilter = document.querySelectorAll(".button-filter");
-  const cards = document.querySelectorAll(".card");
-
-  function filter(category, items) {
-    items.forEach((item) => {
-      const isItemFiltered = !item.classList.contains(category)
-      const isShowAll = category.toLowerCase() === 'all'
-      if (isItemFiltered && !isShowAll) {
-        item.classList.add("hide");
-      } else {
-        item.classList.remove("hide");
-      }
-    });
-  }
-
-  buttonsFilter.forEach((button) => {
-    button.addEventListener("click", () => {
-      filter(button.dataset.filter, cards);
-    });
-  });
-}
-filterFilm();
-// ========= FILTER END =========
+moviesApiService.fetchPopularMovies().then(data => console.log(data));
+moviesApiService.fetchGenresList().then(data => console.log(data));
 
 // =========== listeners
-refs.searchForm.addEventListener("submit", onSearch);
+refs.searchForm.addEventListener('submit', onSearch);
 
 // =========== search data
 function onSearch(e) {
@@ -62,6 +39,6 @@ function onSearch(e) {
 
   return moviesApiService
     .fetchMoviesByGenre(moviesApiService.searchQuery)
-    .then((data) => console.log(data))
-    .catch((err) => console.log(err));
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
 }

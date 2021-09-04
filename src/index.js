@@ -2,7 +2,9 @@ import './sass/main.scss';
 import refs from './js/refs';
 import backToTopBtn from './js/back-to-top-btn';
 import MoviesApiService from './js/api/api-service';
-import 'material-icons';
+//  import 'material-icons';
+import './js/gallery/gallery.js';
+import createGalleryMarkup from './js/gallery/gallery.js';
 
 // =========== back-to-top-button
 backToTopBtn();
@@ -38,3 +40,5 @@ function onSearch(e) {
     .then(data => console.log(data))
     .catch(err => console.log(err));
 }
+
+moviesApiService.fetchPopularMovies().then(createGalleryMarkup).catch(console.log);

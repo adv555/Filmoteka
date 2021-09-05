@@ -13,12 +13,15 @@ export default function createGalleryMarkup(data) {
         else genreList[2] = 'others...';
       }
     });
+
     return {
       backdrop_path: card.backdrop_path,
       poster_path: card.poster_path,
       original_title: card.original_title,
+      id: card.id,
       genres: genreList.join(', '),
     };
   });
+
   refs.gallery.innerHTML = renderCards(cardList);
 }

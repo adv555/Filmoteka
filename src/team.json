@@ -1,0 +1,83 @@
+[
+  {
+    "id": "1",
+    "name": "Olena Boldysheva",
+    "description": "Teamlead",
+    "image": "https://s1.eda.ru/StaticContent/Photos/140812180013/140820212258/p_O.jpg",
+    "github": "https://github.com/adv555",
+    "telegram": "https://t.me/adv001",
+    "linkdIn": "www.linkedin.com/in/helen-boldysheva-9108911b0"
+  },
+  {
+    "id": "2",
+    "name": "Mikhail Zhukov",
+    "description": "Scrum Master",
+    "image": "https://www.go-cook.ru/wp-content/uploads/2014/11/magribskij-tomatnyj-sup.jpg",
+    "github": "https://github.com/adv555",
+    "telegram": "https://t.me/adv001",
+    "linkdIn": "www.linkedin.com/in/helen-boldysheva-9108911b0"
+  },
+  {
+    "id": "3",
+    "name": "Olya Kikot",
+    "description": "Developer",
+    "image": "https://s1.eda.ru/StaticContent/Photos/121114213720/151024152626/p_O.png",
+    "github": "https://github.com/adv555",
+    "telegram": "https://t.me/adv001",
+    "linkdIn": "www.linkedin.com/in/helen-boldysheva-9108911b0"
+  },
+  {
+    "id": "4",
+    "name": "Oksana Molesha",
+    "description": "Developer",
+    "image": "https://s.mediasole.ru/cache/content/data/images/1393/1393226/original.jpg",
+    "github": "https://github.com/adv555",
+    "telegram": "https://t.me/adv001",
+    "linkdIn": "www.linkedin.com/in/helen-boldysheva-9108911b0"
+  },
+  {
+    "id": "5",
+    "name": "Konstantin Tokar",
+    "description": "Developer",
+    "image": "https://dietdo.ru/wp-content/uploads/2017/03/Grecheskiy-salat-retsept-klassicheskiy-s-foto-poshagovo-min.jpg",
+    "github": "https://github.com/adv555",
+    "telegram": "https://t.me/adv001",
+    "linkdIn": "www.linkedin.com/in/helen-boldysheva-9108911b0"
+  },
+  {
+    "id": "6",
+    "name": "Aleksandr Lukianiuk",
+    "description": "Developer",
+    "image": "https://s1.eda.ru/StaticContent/Photos/120131111301/140324110953/p_O.jpg",
+    "github": "https://github.com/adv555",
+    "telegram": "https://t.me/adv001",
+    "linkdIn": "www.linkedin.com/in/helen-boldysheva-9108911b0"
+  },
+  {
+    "id": "7",
+    "name": "Andrey Yacutko",
+    "description": "Developer",
+    "image": "https://s2.eda.ru/StaticContent/Photos/160105153525/160110193232/p_O.jpg",
+    "github": "https://github.com/adv555",
+    "telegram": "https://t.me/adv001",
+    "linkdIn": "www.linkedin.com/in/helen-boldysheva-9108911b0"
+  },
+  {
+    "id": "8",
+    "name": "Ilia Kononenko",
+    "description": "Developer",
+    "image": "https://s2.eda.ru/StaticContent/Photos/150428090447/150505141508/p_O.jpg",
+    "github": "https://github.com/adv555",
+    "telegram": "https://t.me/adv001",
+    "linkdIn": "www.linkedin.com/in/helen-boldysheva-9108911b0"
+  },
+  {
+    "id": "9",
+    "name": "Vova Uniat",
+    "description": "Developer",
+    "image": "https://s2.eda.ru/StaticContent/Photos/160105153525/160110193232/p_O.jpg",
+    "github": "https://github.com/adv555",
+    "telegram": "https://t.me/adv001",
+    "linkdIn": "www.linkedin.com/in/helen-boldysheva-9108911b0"
+  }
+]

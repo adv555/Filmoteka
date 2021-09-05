@@ -1,0 +1,28 @@
+{{!-- {{#each this}} --}}
+<li class='card'>
+  <div class='card__content'>
+    <div class='imgBx'>
+      <img class='imgBx__img' src='{{image}}' alt='{{name}}' />
+    </div>
+    <div class='contentBx'>
+      <h3 class='contentBx__title'>{{name}}<br /><span
+          class='contentBx__subtitle'
+        >{{description}}</span></h3>
+    </div>
+  </div>
+  <ul class='sci'>
+    <li class='sci__item' style='--i: 1'>
+      <a class='sci__link' href='{{github}}'><i class='fa fa-github' aria-hidden='true'></i></a>
+    </li>
+    <li class='sci__item' style='--i: 2'>
+      <a class='sci__link' href='{{telegram}}'><i
+          class='fa fa-linkedin-square'
+          aria-hidden='true'
+        ></i></a>
+    </li>
+    <li class='sci__item' style='--i: 3'>
+      <a class='sci__link' href='{{linkdIn}}'><i class='fa fa-telegram' aria-hidden='true'></i></a>
+    </li>
+  </ul>
+</li>
+{{!-- {{/each}} --}}

@@ -6,7 +6,11 @@ import createGalleryMarkup from './js/gallery/gallery.js';
 import 'material-icons';
 import './js/changeTheme';
 import filterFilm from './js/filter';
+
+import onclick from './js/team-lightbox';
+
 import onSearch from './js/onSearch';
+
 
 // =========== back-to-top-button
 backToTopBtn();
@@ -15,6 +19,7 @@ filterFilm();
 
 // =========== new class instance
 const moviesApiService = new MoviesApiService();
+
 
 // // =========== test by Popular / Genres / By Id
 // moviesApiService.fetchPopularMovies().then(data => console.log(data));
@@ -46,3 +51,4 @@ const moviesApiService = new MoviesApiService();
 // }
 
 // moviesApiService.fetchMoviesBySearch().then(createGalleryMarkup).catch(console.log);
+

@@ -23,7 +23,7 @@ function getMovieId(e) {
     return;
   }
   const movieId = e.target.dataset.source;
-  console.log('Id :', movieId);
+  // console.log('Id :', movieId);
   getDataMovieById(movieId);
   valueLocalStorage.id = movieId;
 }
@@ -35,7 +35,7 @@ function getMarkupCardMovie(e) {
     return;
   }
   const murkupCadrMovie = e.target.closest('.item').outerHTML;
-  console.log(murkupCadrMovie);
+  // console.log(murkupCadrMovie);
   valueLocalStorage.markup = murkupCadrMovie;
 }
 
@@ -56,7 +56,7 @@ function getMarkupCardMovie(e) {
 // получение информации по фильму через id
 function getDataMovieById(movieId) {
   moviesApiService.fetchFullInfoOfMovie(movieId).then(movie => {
-    console.log(movie);
+    // console.log(movie);
     insertDataIntoTemplate(movie);
   });
 }

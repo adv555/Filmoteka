@@ -7,6 +7,7 @@ import 'material-icons';
 import './js/changeTheme';
 import filterFilm from './js/filter';
 import onSearch from './js/onSearch';
+import './js/modal-card';
 
 // =========== back-to-top-button
 backToTopBtn();

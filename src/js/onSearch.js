@@ -8,9 +8,11 @@ import debounce from 'lodash.debounce';
 const moviesApiService = new MoviesApiService();
 
 // =========== listeners
+
 refs.searchForm.addEventListener('submit', onSearch);
 
 // // =========== search data
+
 let searchQuery = '';
 function onSearch(e) {
   e.preventDefault();

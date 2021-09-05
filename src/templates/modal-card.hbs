@@ -1,23 +1,24 @@
 <div class='modal'>
   <img
     class='movie-poster'
-    src='https://anastasiia-kisil.github.io/best-icecream/cow-desktop.73e964f1.png'
+    src='https://image.tmdb.org/t/p/original/{{poster_path}}'
     alt=''
     width='100px'
     height='100px'
   />
   <div>
-    <h2></h2>
+    <h2>{{original_title}}</h2>
     <ul>
-      <li>Vote / Votes</li>
-      <li>Popularity</li>
-      <li>Original Title</li>
-      <li>Genre</li>
+      <li>Vote / Votes |=> {{vote_average}} / {{vote_count}}</li>
+      <li>Popularity |=> {{popularity}} </li>
+      <li>Original Title |=> {{original_title}} </li>
+      <li>Genre |=> {{#each genres}} {{name}} {{/each}}</li>
     </ul>
     <h3>About</h3>
+    <p>{{overview}}</p>
     <div>
-      <button class='button1'></button>
-      <button class='button2'></button>
+      <button type='button' class='button1'></button>
+      <button type='button' class='button2'></button>
     </div>
     <button type='button' class='close'>
       <svg width='50' height='50'>

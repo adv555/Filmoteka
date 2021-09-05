@@ -3,7 +3,7 @@ import MoviesApiService from './api/api-service.js';
 import tplModalCard from '../templates/modal-card.hbs';
 import refs from './refs';
 
-// єкземпляр класа для получения API
+// экземпляр класа для получения API
 const moviesApiService = new MoviesApiService();
 
 //пустой объект для записи в LocalStorage
@@ -56,7 +56,7 @@ function getMarkupCardMovie(e) {
 // получение информации по фильму через id
 function getDataMovieById(movieId) {
   moviesApiService.fetchFullInfoOfMovie(movieId).then(movie => {
-    // console.log(movie);
+    console.log(movie);
     insertDataIntoTemplate(movie);
   });
 }

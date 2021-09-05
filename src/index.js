@@ -10,6 +10,7 @@ import filterFilm from './js/filter';
 import onclick from './js/team-lightbox';
 
 import onSearch from './js/onSearch';
+import './js/modal-card';
 
 
 // =========== back-to-top-button

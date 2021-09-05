@@ -1,0 +1,29 @@
+<div class='modal'>
+  <img
+    class='movie-poster'
+    src='https://image.tmdb.org/t/p/original/{{poster_path}}'
+    alt=''
+    width='100px'
+    height='100px'
+  />
+  <div>
+    <h2>{{original_title}}</h2>
+    <ul>
+      <li>Vote / Votes |=> {{vote_average}} / {{vote_count}}</li>
+      <li>Popularity |=> {{popularity}} </li>
+      <li>Original Title |=> {{original_title}} </li>
+      <li>Genre |=> {{#each genres}} {{name}} {{/each}}</li>
+    </ul>
+    <h3>About</h3>
+    <p>{{overview}}</p>
+    <div>
+      <button type='button' class='button1'></button>
+      <button type='button' class='button2'></button>
+    </div>
+    <button type='button' class='close'>
+      <svg width='50' height='50'>
+        <use href='./images/SVG/film.svg'></use>
+      </svg>
+    </button>
+  </div>
+</div>

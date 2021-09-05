@@ -5,6 +5,7 @@ import MoviesApiService from './js/api/api-service';
 import 'material-icons';
 import './js/changeTheme';
 import filterFilm from './js/filter';
+import onclick from './js/team-lightbox';
 
 // =========== back-to-top-button
 backToTopBtn();
@@ -20,6 +21,7 @@ moviesApiService.fetchGenresList().then(data => console.log(data));
 
 // =========== listeners
 refs.searchForm.addEventListener('submit', onSearch);
+refs.teamLink.addEventListener('click', onclick);
 
 // =========== search data
 function onSearch(e) {

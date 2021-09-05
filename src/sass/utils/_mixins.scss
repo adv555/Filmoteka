@@ -11,3 +11,8 @@
 // пример подключения:
 // @include font (500, 14px, 16px);
 // @include font (500, 14px, 16px, 0.02em);
+
+@mixin font2($fw, $fs) {
+  font-weight: $fw;
+  font-size: $fs;
+}

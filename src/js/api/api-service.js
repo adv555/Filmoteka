@@ -28,11 +28,17 @@ export default class MoviesApiService {
 
   // ======== поиск фильмов ======== //
 
-  // fetchMoviesBySearch() {
-  //   const url = `${MOVIE_BY_SEARCH}&language=${this.language}&page=${this.page}`;
+  fetchMoviesBySearch() {
+    const searchParams = new URLSearchParams({
+      api_key: API_KEY,
+      query: this.searchQuery,
+      page: this.page,
+    });
 
-  //   return fetch(url).then(response => response.json());
-  // }
+    return fetch(`${MOVIE_BY_SEARCH}search/movie?${searchParams}`).then(response =>
+      response.json(),
+    );
+  }
 
   // ======== поиск фильмов по id ======== //
   fetchFullInfoOfMovie(movieId) {

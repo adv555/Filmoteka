@@ -12,7 +12,6 @@ import onclick from './js/team-lightbox';
 import onSearch from './js/onSearch';
 import './js/modal-card';
 
-
 // =========== back-to-top-button
 backToTopBtn();
 // =========== filter
@@ -21,13 +20,13 @@ filterFilm();
 // =========== new class instance
 const moviesApiService = new MoviesApiService();
 
-
 // // =========== test by Popular / Genres / By Id
 // moviesApiService.fetchPopularMovies().then(data => console.log(data));
 // moviesApiService.fetchGenresList().then(data => console.log(data));
 
 // // =========== listeners
 // refs.searchForm.addEventListener('submit', onSearch);
+refs.teamLink.addEventListener('click', onclick);
 
 // // =========== search data
 // function onSearch(e) {
@@ -52,4 +51,3 @@ const moviesApiService = new MoviesApiService();
 // }
 
 // moviesApiService.fetchMoviesBySearch().then(createGalleryMarkup).catch(console.log);
-

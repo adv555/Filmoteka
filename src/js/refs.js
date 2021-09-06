@@ -16,8 +16,8 @@ const myLibraryLink = document.querySelector('.js-my-library');
 const teamLink = document.querySelector('.js-team-link');
 const addQueueBtn = document.querySelector('.queue-btn');//Миша
 const addWatchedBtn = document.querySelector('.watched-btn');//Миша
-const mainSection = document.querySelector('.main') //Миша
-const gallerySection = document.querySelector('.gallery') //Миша
+const mainSection = document.querySelector('.main'); //Миша
+const gallerySection = document.querySelector('.gallery'); //Миша
 
 export default {
   searchForm,

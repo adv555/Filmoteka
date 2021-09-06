@@ -1,5 +1,5 @@
 // import filmListTemplate from './'
-import refs from './refs'
+import refs from './refs';
 import { notice, error } from '@pnotify/core';
 
 // {

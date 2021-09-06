@@ -2,7 +2,12 @@ import renderCards from '../../templates/gallery.hbs';
 import refs from '../refs.js';
 import genres from '../../genres.json';
 
+var pagination = require('pagination');
+import moviesApiService from '../onSearch';
+
 export default function createGalleryMarkup(data) {
+  moviesApiService.totalResults = data.total_results;
+
   let cardList = [];
   cardList = data.results.map(card => {
     const genreList = [];
@@ -23,5 +28,27 @@ export default function createGalleryMarkup(data) {
     };
   });
 
+  if (moviesApiService.page === 1) {
+    var pag = new pagination(document.getElementsByClassName('pagination')[0], {
+      currentPage: 1,
+      totalItems: moviesApiService.totalResults,
+      itemsPerPage: 20,
+      stepNum: 3,
+    });
+
+    pag.onPageChanged(changePage);
+  }
+
   refs.gallery.innerHTML = renderCards(cardList);
+  const arrowLeft = document.querySelector('.arrowLeft');
+  const arrowRight = document.querySelector('.arrowRight');
+  arrowLeft.innerHTML = '';
+  arrowRight.innerHTML = '';
+}
+
+function changePage(currentPage) {
+  moviesApiService.setPage(currentPage);
+  if (moviesApiService.query === '')
+    moviesApiService.fetchPopularMovies().then(createGalleryMarkup).catch(console.log);
+  else moviesApiService.fetchMoviesBySearch().then(createGalleryMarkup).catch(console.log);
 }

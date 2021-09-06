@@ -23,7 +23,7 @@ function getMovieId(e) {
     return;
   }
   const movieId = e.target.dataset.source;
-  // console.log('Id :', movieId);
+  console.log('Id :', movieId);
   getDataMovieById(movieId);
   valueLocalStorage.id = movieId;
 }

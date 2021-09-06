@@ -7,7 +7,7 @@ import moviesApiService from '../onSearch';
 
 export default function createGalleryMarkup(data) {
   moviesApiService.totalResults = data.total_results;
-
+  console.log(data);
   let cardList = [];
   cardList = data.results.map(card => {
     const genreList = [];
@@ -23,6 +23,8 @@ export default function createGalleryMarkup(data) {
       backdrop_path: card.backdrop_path,
       poster_path: card.poster_path,
       original_title: card.original_title,
+      vote_average: card.vote_average,
+      release_date: card.release_date.slice(0, 4),
       id: card.id,
       genres: genreList.join(', '),
     };

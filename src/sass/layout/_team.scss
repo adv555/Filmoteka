@@ -1,19 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Roboto:wght@400;500&display=swap');
 
-.basicLightbox {
-  font-family: 'Poppins', sans-serif;
+// .basicLightbox {
+//   font-family: 'Poppins', sans-serif;
 
-  position: absolute;
-  overflow-y: auto;
-  min-height: 100vh;
+//   position: absolute;
+//   overflow-y: auto;
+//   min-height: 100vh;
+//   background: rgba($color: $grey-color, $alpha: 0.5);
+// }
+.basicLightbox {
   background: rgba($color: $grey-color, $alpha: 0.5);
 }
 
-.basicLightbox__placeholder {
-  height: 100vh;
-}
+// .basicLightbox__placeholder {
+//   height: 100vh;
+// }
 
 .team-section {
+  font-family: 'Poppins', sans-serif;
   position: relative;
   display: flex;
   justify-content: center;
@@ -24,6 +28,9 @@
   //   margin-top: 5vh;
   //   min-height: 100vh;
 
+  &__container {
+    height: 100vh;
+  }
   &::before {
     content: '';
     position: absolute;
@@ -55,6 +62,12 @@
   align-items: center;
   flex-wrap: wrap;
   margin: 20px 0;
+  height: 100vh;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
 }
 
 .cards-container .card {

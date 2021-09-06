@@ -1,4 +1,3 @@
-import renderCardsTPL from '../templates/gallery.hbs';
 import refs from './refs';
 import MoviesApiService from './api/api-service';
 import createGalleryMarkup from './gallery/gallery';
@@ -6,6 +5,8 @@ import { showTextError, insertContentTpl, clearContainer } from './notification'
 import debounce from 'lodash.debounce';
 
 const moviesApiService = new MoviesApiService();
+
+export default moviesApiService; /////////////////////
 
 // =========== listeners
 
@@ -30,11 +31,18 @@ function onSearch(e) {
 
 async function renderMoviesBySearch(searchQuery) {
   const query = searchQuery || moviesApiService.query;
-  const fetchMovies = query
-    ? moviesApiService.fetchMoviesBySearch()
-    : moviesApiService.fetchPopularMovies();
+  let fetchMovies;
+  if (query) {
+    moviesApiService.page = 1;
+    fetchMovies = moviesApiService.fetchMoviesBySearch();
+  } else {
+    fetchMovies = moviesApiService.fetchPopularMovies();
+  }
 
-  const { results: movies, page, total_pages, total_results } = await fetchMovies;
+  const serverAnswer = await fetchMovies;
+  const { results: movies, page, total_pages, total_results } = serverAnswer;
+
+  moviesApiService.totalResults = total_results;
 
   if (movies.length === 0) {
     const notifyErrorHero = document.querySelector('.js-search-field__error-text');
@@ -48,9 +56,7 @@ async function renderMoviesBySearch(searchQuery) {
     return;
   }
 
-  const moviesMarkup = renderCardsTPL(movies);
-
-  refs.gallery.innerHTML = moviesMarkup;
+  createGalleryMarkup(serverAnswer);
 }
 
 moviesApiService.fetchPopularMovies().then(createGalleryMarkup).catch(console.log);

@@ -14,8 +14,10 @@ const logo = document.querySelector('.js-logo');
 const homeLink = document.querySelector('.js-home');
 const myLibraryLink = document.querySelector('.js-my-library');
 const teamLink = document.querySelector('.js-team-link');
-const addQueueBtn = document.querySelector('.queue-btn');
-const addWatchedBtn = document.querySelector('.watched-btn');
+const addQueueBtn = document.querySelector('.queue-btn');//Миша
+const addWatchedBtn = document.querySelector('.watched-btn');//Миша
+const mainSection = document.querySelector('.main'); //Миша
+const gallerySection = document.querySelector('.gallery'); //Миша
 
 export default {
   searchForm,
@@ -30,4 +32,5 @@ export default {
   homeLink,
   myLibraryLink,
   teamLink,
+  gallerySection
 };

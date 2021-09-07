@@ -11,10 +11,10 @@
 </div>
 </form>
 
-<ul class="hero-buttons">
+<ul class="hero-buttons list">
   <li class="hero-buttons__item">
     <button
-      class="button button--primary hero-buttons__btn hero-buttons__btn--active"
+      class="button button--primary hero-buttons__btn watched-btn hero-buttons__btn--active"
       data-hero="watched"
       type="button"
     >
@@ -22,8 +22,15 @@
     </button>
   </li>
   <li class="hero-buttons__item">
-    <button class="button button--secondary hero-buttons__btn" data-hero="queue" type="button">
+    <button class="button button--secondary hero-buttons__btn queue-btn" data-hero="queue" type="button">
       queue
+    </button>
+  </li>
+  <!-- добавил просто кнопу "My Library"-->
+
+  <li class="hero-buttons__item">
+    <button class="button button--secondary js-my-library" data-hero="library" type="button">
+      My Library
     </button>
   </li>
 </ul>

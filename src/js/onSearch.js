@@ -3,6 +3,7 @@ import MoviesApiService from './api/api-service';
 import createGalleryMarkup from './gallery/gallery';
 import { showTextError, insertContentTpl, clearContainer } from './notification';
 import debounce from 'lodash.debounce';
+import placeholder from './spinner';
 
 const moviesApiService = new MoviesApiService();
 
@@ -17,7 +18,7 @@ refs.searchForm.addEventListener('submit', onSearch);
 let searchQuery = '';
 function onSearch(e) {
   e.preventDefault();
-
+  placeholder.spinner.show();
   refs.gallery.innerHTML = '';
 
   const input = e.target;
@@ -25,6 +26,7 @@ function onSearch(e) {
   if (!searchQuery) {
     return;
   }
+  placeholder.spinner.close();
   moviesApiService.query = searchQuery;
   renderMoviesBySearch(searchQuery).catch(error => console.log(error));
 }

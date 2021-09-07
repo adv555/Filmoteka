@@ -6,11 +6,21 @@ import createGalleryMarkup from './js/gallery/gallery.js';
 import 'material-icons';
 import './js/changeTheme';
 import filterFilm from './js/filter';
-
-import onclick from './js/team-lightbox';
-
+import onTeamModalShow from './js/team-lightbox';
 import onSearch from './js/onSearch';
 import './js/modal-card';
+import './js/spinner';
+
+
+//=========== library test imports ============
+import onLibraryWachedBtm from './js/library';
+import onLibraryQueueBtn from './js/library';
+import onLibraryBtn from './js/library';
+import onAddWachedBtm from './js/library';
+import onAddQueueBtn from './js/library';
+
+//===============================================
+
 
 // =========== back-to-top-button
 backToTopBtn();
@@ -26,7 +36,7 @@ const moviesApiService = new MoviesApiService();
 
 // // =========== listeners
 // refs.searchForm.addEventListener('submit', onSearch);
-refs.teamLink.addEventListener('click', onclick);
+refs.teamLink.addEventListener('click', onTeamModalShow);
 
 // // =========== search data
 // function onSearch(e) {

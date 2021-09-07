@@ -1,29 +1,47 @@
-<div class='modal'>
+<button type='button' class='modal-close-button'>
+  <i class='fa fa-times' aria-hidden='true'></i>
+</button>
+
+<div
+  class='modal'
+  {{!-- style='background: url(https://image.tmdb.org/t/p/original/{{backdrop_path}});background-size: cover; ' --}}
+>
   <img
-    class='movie-poster'
+    class='modal__movie-poster'
     src='https://image.tmdb.org/t/p/original/{{poster_path}}'
+    data-set='https://image.tmdb.org/t/p/original/{{backdrop_path}}'
     alt=''
     width='100px'
     height='100px'
   />
-  <div>
-    <h2>{{original_title}}</h2>
-    <ul>
-      <li>Vote / Votes |=> {{vote_average}} / {{vote_count}}</li>
-      <li>Popularity |=> {{popularity}} </li>
-      <li>Original Title |=> {{original_title}} </li>
-      <li>Genre |=> {{#each genres}} {{name}} {{/each}}</li>
-    </ul>
-    <h3>About</h3>
-    <p>{{overview}}</p>
-    <div>
-      <button type='button' class='button1'></button>
-      <button type='button' class='button2'></button>
+  <div class='modal__container'>
+    <h2 class='modal__title-movie'>{{title}}</h2>
+    <div class='modal__container-info'>
+      <ul class='modal__list list'>
+        <li class='modal__item'>Vote / Votes</li>
+        <li class='modal__item'>Popularity</li>
+        <li class='modal__item'>Original</li>
+        <li class='modal__item'>Genre</li>
+      </ul>
+      <ul class='modal__list-info list'>
+        <li class='modal__item-info'><span class='vote'>{{vote_average}}</span>
+          /
+          <span class='votes'>{{vote_count}}</span></li>
+        <li class='modal__item-info'>{{popularity}} </li>
+        <li class='modal__item-info'><span
+            class='title-movie-text-transform'
+          >{{original_title}}</span>
+        </li>
+        <li class='modal__item-info'>{{#each genres}} {{name}} {{/each}}</li>
+      </ul>
     </div>
-    <button type='button' class='close'>
-      <svg width='50' height='50'>
-        <use href='./images/SVG/film.svg'></use>
-      </svg>
-    </button>
+    <h3 class='modal__subtitle-about'>About</h3>
+
+    <p class='modal__about'>{{overview}}</p>
+    <div class='modal__container__button'>
+      <button type='button' class='modal__button js-watched'>add to Watched</button>
+      <button type='button' class='modal__button js-queue'>add to queue</button>
+    </div>
+
   </div>
 </div>

@@ -9,31 +9,28 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
-  color: #ff6b08;
+  color: $accent-bg;
 }
 .js-gallery {
-  // width: 280px;
   list-style: none;
   padding: 0px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: $tablet) {
   .js-gallery {
     display: flex;
     flex-wrap: wrap;
     margin-top: -30px;
     margin-left: -30px;
-    justify-content: center;
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: $desktop) {
   .js-gallery {
     display: flex;
     flex-wrap: wrap;
     margin-top: -30px;
     margin-left: -30px;
-    justify-content: center;
   }
 }
 
@@ -44,9 +41,14 @@
   font-size: 12px;
   line-height: 1.33;
   justify-content: space-between;
+  transition: transform 0.3s $timing-function;
+}
+.item:hover {
+  cursor: pointer;
+  transform: scale(1.1);
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: $tablet) {
   .item {
     flex-basis: calc(100% / 2 - 30px);
     margin-left: 30px;
@@ -54,12 +56,19 @@
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: $desktop) {
   .item {
     flex-basis: calc(100% / 3 - 30px);
     margin-left: 30px;
     margin-top: 30px;
   }
+}
+
+.container-image {
+  width: 274px;
+  height: 398px;
+  background-image: url('../../src/images/no__img.png');
+  background-size: cover;
 }
 
 .gallery-image {
@@ -82,8 +91,8 @@
   font-weight: 500;
   font-size: 15px;
   line-height: 1.17;
-  color: #fff;
-  background-color: #ff6b08;
+  color: $white-color;
+  background-color: $accent-bg;
   border-radius: 5px;
 }
 
@@ -106,10 +115,12 @@
   height: 40px;
   line-height: 40px;
   cursor: pointer;
+  transition: background-color 0.25s $timing-function;
 }
 
 .pagNumber:hover {
-  background-color: #ff6b08;
+  transition-duration: $duration;
+  background-color: $accent-bg;
   border-radius: 5px;
 }
 
@@ -121,11 +132,13 @@
   line-height: 40px;
   cursor: pointer;
   background-position: center;
+  transition: background-color 0.25s $timing-function;
 }
 
 .arrowLeft:hover,
 .arrowRight:hover {
-  background-color: #ff6b08;
+  transition-duration: $duration;
+  background-color: $accent-bg;
   border-radius: 5px;
 }
 
@@ -139,7 +152,7 @@
 }
 
 .current {
-  background-color: #ff6b08;
+  background-color: $accent-bg;
   border-radius: 5px;
 }
 
@@ -147,13 +160,13 @@
   margin-top: 20px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: $tablet) {
   .container_gallery {
     margin-top: 60px;
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: $desktop) {
   .container_gallery {
     margin-top: 60px;
   }

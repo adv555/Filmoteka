@@ -34,7 +34,6 @@ function getMarkupCardMovie(e) {
     return;
   }
   const murkupCadrMovie = e.target.closest('LI').outerHTML;
-  console.log(murkupCadrMovie);
   valueLocalStorage.markup = murkupCadrMovie;
 }
 
@@ -70,19 +69,34 @@ function addModal(dataMovie) {
   const ModalCard = basicLightbox.create(dataMovie, {
     //Параметр из документации (позволяет нам что-то делать во время открытия модального окна)
     onShow: ModalCard => {
-      // запретить скролл страницы при открытии модалки
+      // запретить скролл страницы при открытии модалки (hidden-без предоставления прокрутки)
       document.body.style.overflow = 'hidden';
+
       //ссылки елементы из шаблона
+      const movieModal = ModalCard.element().querySelector('.modal');
       const moviePoster = ModalCard.element().querySelector('.modal__movie-poster');
       const addToWatchedBtn = ModalCard.element().querySelector('.js-watched');
       const addToQueueBtn = ModalCard.element().querySelector('.js-queue');
       const closeBtn = ModalCard.element().querySelector('.modal-close-button');
+
       //Слушатели на елементы
+      movieModal.addEventListener('click', Secret);
       moviePoster.addEventListener('click', launchMovieTrailer);
       addToWatchedBtn.addEventListener('click', clgOk);
       addToQueueBtn.addEventListener('click', clgNo);
       closeBtn.addEventListener('click', modalClose);
       document.addEventListener('keydown', closeEsc);
+
+      //Делает секрет
+      function Secret(e) {
+        const x = document.querySelector('.basicLightbox');
+        const backgroundIMG = e.currentTarget.firstElementChild.dataset.set;
+        if (backgroundIMG === '') {
+          return;
+        }
+        x.style.backgroundSize = 'cover';
+        x.style.backgroundImage = `url(${backgroundIMG})`;
+      }
 
       //закрытие через клик на крестик
       function modalClose() {
@@ -101,7 +115,7 @@ function addModal(dataMovie) {
       }
     },
     onClose: ModalCard => {
-      //разрешает скролл страницы при закрытии модалки
+      //разрешает скролл страницы при закрытии модалки (visible - значение, принятое по умолчанию)
       document.body.style.overflow = 'visible';
     },
   });

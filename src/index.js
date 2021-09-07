@@ -11,7 +11,7 @@ import onTeamModalShow from './js/team-lightbox';
 
 import onSearch from './js/onSearch';
 import './js/modal-card';
-
+import './js/spinner';
 // =========== back-to-top-button
 backToTopBtn();
 // =========== filter

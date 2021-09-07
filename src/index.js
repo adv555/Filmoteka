@@ -11,6 +11,14 @@ import onTeamModalShow from './js/team-lightbox';
 
 import onSearch from './js/onSearch';
 import './js/modal-card';
+//=========== library test imports ============
+// import onLibraryWachedBtm from './js/library';
+// import onLibraryQueueBtn from './js/library';
+import onLibraryBtn from './js/library';
+// import onAddWachedBtm from './js/library';
+// import onAddQueueBtn from './js/library';
+
+//===============================================
 
 // =========== back-to-top-button
 backToTopBtn();
@@ -51,11 +59,3 @@ refs.teamLink.addEventListener('click', onTeamModalShow);
 // }
 
 // moviesApiService.fetchMoviesBySearch().then(createGalleryMarkup).catch(console.log);
-//=========== library test imports ============
-import onLibraryWachedBtm from './js/library';
-import onLibraryQueueBtn from './js/library';
-import onLibraryBtn from './js/library';
-import onAddWachedBtm from './js/library';
-import onAddQueueBtn from './js/library';
-
-//===============================================

@@ -6,11 +6,11 @@ import createGalleryMarkup from './js/gallery/gallery.js';
 import 'material-icons';
 import './js/changeTheme';
 import filterFilm from './js/filter';
-
 import onTeamModalShow from './js/team-lightbox';
-
 import onSearch from './js/onSearch';
 import './js/modal-card';
+import './js/spinner';
+
 
 //=========== library test imports ============
 import onLibraryWachedBtm from './js/library';
@@ -20,6 +20,7 @@ import onAddWachedBtm from './js/library';
 import onAddQueueBtn from './js/library';
 
 //===============================================
+
 
 // =========== back-to-top-button
 backToTopBtn();

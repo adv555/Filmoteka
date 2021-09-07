@@ -1,5 +1,6 @@
 const BASE_URL = `https://api.themoviedb.org/3`;
 const API_KEY = `3d673b2d8e40eafc68577fae5a6a1f4b`;
+const TRENDING_URL = `${BASE_URL}/trending/all/day?api_key=${API_KEY}&include_adult=false`;
 const POPULAR_MOVIES_URL = `${BASE_URL}/movie/popular?api_key=${API_KEY}&include_adult=false`;
 const GENRE_LIST_URL = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}`;
 const MOVIE_BY_SEARCH = `${BASE_URL}/search/movie?api_key=${API_KEY}&include_adult=false`;
@@ -12,7 +13,14 @@ export default class MoviesApiService {
     this.language = 'en-US';
   }
 
-  // ======== фыльмы по популярности ======== //
+  // ======== фыльмы в тренде ======== //
+  fetchTrending() {
+    const url = `${TRENDING_URL}&language=${this.language}&page=${this.page}`;
+
+    return fetch(url).then(response => response.json());
+  }
+
+  // ======== фыльмы по популярности ========
   fetchPopularMovies() {
     const url = `${POPULAR_MOVIES_URL}&language=${this.language}&page=${this.page}`;
 

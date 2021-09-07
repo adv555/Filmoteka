@@ -36,7 +36,7 @@ async function renderMoviesBySearch(searchQuery) {
     moviesApiService.page = 1;
     fetchMovies = moviesApiService.fetchMoviesBySearch();
   } else {
-    fetchMovies = moviesApiService.fetchPopularMovies();
+    fetchMovies = moviesApiService.fetchTrending();
   }
 
   const serverAnswer = await fetchMovies;
@@ -59,7 +59,7 @@ async function renderMoviesBySearch(searchQuery) {
   createGalleryMarkup(serverAnswer);
 }
 
-moviesApiService.fetchPopularMovies().then(createGalleryMarkup).catch(console.log);
+moviesApiService.fetchTrending().then(createGalleryMarkup).catch(console.log);
 
 const searchInput = document.querySelector('.js-search-field__input');
 searchInput.addEventListener('input', debounce(onSearch, 500));

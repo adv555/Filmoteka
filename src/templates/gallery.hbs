@@ -2,11 +2,13 @@
 {{#each this}}
 <li class="item">
     <div class="video-card">
-        <img class="gallery-image" src="https://image.tmdb.org/t/p/w300/{{poster_path}}" data-source="{{id}}" />
+        <div class="container-image">
+        <img class="gallery-image" src="https://image.tmdb.org/t/p/w300/{{poster_path}}" data-source="{{id}}" onerror="onErrorLoadingImg({{id}})"/>
+        </div>
         <span class="video-rating">{{vote_average}}</span>
    
     </div>
-    <h2 class="image-title">{{original_title}} </h2>
+    <h2 class="image-title">{{title}} </h2>
     <div class="image-genres">
         {{genres}} | {{release_date}}
     </div>

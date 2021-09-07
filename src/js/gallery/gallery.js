@@ -8,6 +8,7 @@ import moviesApiService from '../onSearch';
 export default function createGalleryMarkup(data) {
   moviesApiService.totalResults = data.total_results;
   console.log(data);
+
   let cardList = [];
   cardList = data.results.map(card => {
     const genreList = [];
@@ -18,13 +19,17 @@ export default function createGalleryMarkup(data) {
         else genreList[2] = 'others...';
       }
     });
-
+    const image = card.poster_path
+      ? card.poster_path
+      : '/default-movie-portrait_EmJUj9Tda5wa.jpg?tr=fo-auto,di-';
+    const date = card.release_date ? card.release_date.slice(0, 4) : '';
     return {
       backdrop_path: card.backdrop_path,
-      poster_path: card.poster_path,
-      original_title: card.original_title,
+
+      poster_path: image,
+      title: card.title,
       vote_average: card.vote_average,
-      release_date: card.release_date.slice(0, 4),
+      release_date: date,
       id: card.id,
       genres: genreList.join(', '),
     };
@@ -51,6 +56,12 @@ export default function createGalleryMarkup(data) {
 function changePage(currentPage) {
   moviesApiService.setPage(currentPage);
   if (moviesApiService.query === '')
-    moviesApiService.fetchPopularMovies().then(createGalleryMarkup).catch(console.log);
+    moviesApiService.fetchTrending().then(createGalleryMarkup).catch(console.log);
   else moviesApiService.fetchMoviesBySearch().then(createGalleryMarkup).catch(console.log);
+}
+
+window.onErrorLoadingImg = onErrorLoadingImg;
+function onErrorLoadingImg(id) {
+  const imgRef = document.querySelector(`[data-source="${id}"]`);
+  imgRef.parentElement.innerHTML = '';
 }

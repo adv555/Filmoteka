@@ -46,3 +46,21 @@ export default function onTeamModalShow(e) {
 
   teamModal.show();
 }
+
+// // _____________________________________________________________________________________________________
+// //Убрать скролл за модалкой
+// export default function onTeamModalShow(e) {
+//   const teamCardsMarkup = teamCardTpl(data);
+//   const teamModal = basicLightbox.create(teamCardsMarkup, {
+//     onShow: teamModal => {
+//       // запретить скролл страницы при открытии модалки (hidden-без предоставления прокрутки)
+//       document.body.style.overflow = 'hidden';
+//     },
+//     onClose: teamModal => {
+//       //разрешает скролл страницы при закрытии модалки (visible - значение, принятое по умолчанию)
+//       document.body.style.overflow = 'visible';
+//     },
+//   });
+
+//   teamModal.show();
+// }

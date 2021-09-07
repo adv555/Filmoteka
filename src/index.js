@@ -10,6 +10,7 @@ import onTeamModalShow from './js/team-lightbox';
 import onSearch from './js/onSearch';
 import './js/modal-card';
 import './js/spinner';
+import renderUpcomingMovies from './js/slider'
 
 
 //=========== library test imports ============
@@ -29,6 +30,10 @@ filterFilm();
 
 // =========== new class instance
 const moviesApiService = new MoviesApiService();
+
+// =========== fetch content for slider 
+moviesApiService.fetchUpcomingMovies()
+  .then((data) => renderUpcomingMovies(data))
 
 // // =========== test by Popular / Genres / By Id
 // moviesApiService.fetchPopularMovies().then(data => console.log(data));

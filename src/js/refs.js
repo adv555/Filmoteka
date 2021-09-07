@@ -18,9 +18,11 @@ const addQueueBtn = document.querySelector('.queue-btn');//Миша
 const addWatchedBtn = document.querySelector('.watched-btn');//Миша
 const mainSection = document.querySelector('.main'); //Миша
 const gallerySection = document.querySelector('.gallery'); //Миша
+const filmStrip = document.querySelector('.film-strip'); //Andrew "Upcoming" slider
 
 export default {
   searchForm,
+  filmStrip,
   queueBtn,
   watchedBtn,
   addQueueBtn,
@@ -32,5 +34,5 @@ export default {
   homeLink,
   myLibraryLink,
   teamLink,
-  gallerySection
+  gallerySection,
 };

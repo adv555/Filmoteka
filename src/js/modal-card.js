@@ -16,6 +16,10 @@ let valueLocalStorage = {
 refs.gallery.addEventListener('click', getMovieId);
 refs.gallery.addEventListener('click', getMarkupCardMovie);
 
+//listner to SLIDER
+refs.filmStrip.addEventListener('click', getMovieId);
+refs.filmStrip.addEventListener('click', getMarkupCardMovie);
+
 //получение id фильма и записываем в объект;
 function getMovieId(e) {
   const tagImg = e.target.nodeName;

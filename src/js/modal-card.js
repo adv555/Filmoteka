@@ -2,12 +2,12 @@ import * as basicLightbox from 'basiclightbox';
 import MoviesApiService from './api/api-service.js';
 import tplModalCard from '../templates/modal-card.hbs';
 import refs from './refs';
-
+import { onAddWachedBtm, onAddQueueBtn } from './library';
 // экземпляр класа для получения API
 const moviesApiService = new MoviesApiService();
 
 //пустой объект для записи в LocalStorage
-let valueLocalStorage = {
+export let valueLocalStorage = {
   id: '',
   markup: '',
 };
@@ -82,8 +82,8 @@ function addModal(dataMovie) {
       const closeBtn = ModalCard.element().querySelector('.close');
       //Слушатели на елементы
       moviePoster.addEventListener('click', launchMovieTrailer);
-      addToWatchedBtn.addEventListener('click', clgOk);
-      addToQueueBtn.addEventListener('click', clgNo);
+      addToWatchedBtn.addEventListener('click', onAddWachedBtm); //фунцию clgOk заменил на свою onAddWachedBtm
+      addToQueueBtn.addEventListener('click', onAddQueueBtn); //фунцию clgNo заменил на свою onAddQueueBtn
       closeBtn.addEventListener('click', modalClose);
       document.addEventListener('keydown', closeEsc);
 

@@ -1,6 +1,14 @@
 // import filmListTemplate from './'
 import refs from './refs';
 import { notice, error } from '@pnotify/core';
+//============== Костина сохранненная разметка Олиной картички===========
+import { valueLocalStorage } from './modal-card';
+console.dir(valueLocalStorage);
+
+// let valueLocalStorage = {
+//   id: '',
+//   markup: '',
+// };
 
 // {
 //   "id": "825997",
@@ -81,12 +89,16 @@ const queueFilmStorage = JSON.parse(localStorage.getItem('queue-films'));
 console.log(watchedFilmStorage);
 
 function onLibraryWachedBtm() {
+  refs.watchedBtn.classList.add('.hero-buttons__btn--active');
+  refs.queueBtn.classList.remove('.hero-buttons__btn--active');
   // refs.gallerySection.innerHTML = filmListTemplate(watchedFilmStorage);
   refs.gallerySection.innerHTML = watchedFilmStorage.map(film => film['markup']);
 
   // refs.gallerySection.innerHTML = 'Watched movies'
 }
 function onLibraryQueueBtn() {
+  refs.watchedBtn.classList.remove('hero-buttons__btn--active');
+  refs.queueBtn.classList.add('.hero-buttons__btn--active');
   // refs.gallerySection.innerHTML = filmListTemplate(queueFilmStorage);
   refs.gallerySection.innerHTML = queueFilmStorage.map(film => film['markup']);
 }
@@ -94,24 +106,24 @@ function onLibraryQueueBtn() {
 function onLibraryBtn() {
   console.log('кнопка library');
 
-  if (refs.watchedBtn.classList.contains('.hero-buttons__btn--active')) {
-    // Если кнопка Watched в состоянии checked - выполняем этот код
+  // if (refs.watchedBtn.classList.contains('.hero-buttons__btn--active')) {
+  // Если кнопка Watched в состоянии checked - выполняем этот код
 
-    if (watchedFilmStorage !== [] || '') {
-      onLibraryWachedBtm();
-    } else {
-      refs.gallerySection.innerHTML = '';
-      noticeMessage.notice();
-    }
-    // watchedFilmStorage !== [] || ''
-    //   ? (refs.gallerySection.innerHTML = onLibraryWachedBtm())
-    //   : (refs.gallerySection.innerHTML = ''),
-    //   noticeMessage.notice();
+  if (watchedFilmStorage !== [] && watchedFilmStorage !== null) {
+    onLibraryWachedBtm();
+  } else {
+    refs.gallerySection.innerHTML = '';
+    noticeMessage.notice();
   }
+  // watchedFilmStorage !== [] || ''
+  //   ? (refs.gallerySection.innerHTML = onLibraryWachedBtm())
+  //   : (refs.gallerySection.innerHTML = ''),
+  //   noticeMessage.notice();
+  // }
   if (refs.queueBtn.classList.contains('hero-buttons__btn--active')) {
     // Если кнопка Queue в состоянии checked - выполняем этот код
 
-    if (queueFilmStorage !== [] || '') {
+    if (queueFilmStorage !== [] && queueFilmStorage !== null) {
       //  refs.gallerySection.innerHTML = filmListTemplate(queueFilmStorage);
       onLibraryQueueBtn();
     } else {
@@ -125,25 +137,42 @@ function onLibraryBtn() {
     // }
   }
 }
-function onAddWachedBtm() {
+export function onAddWachedBtm() {
   // if (addWachedBtm.classList.contains('remove')) {
   //   onRemoveFromWatchedBtm();
   // } else {
 
-  // if(!localStorage.getItem('watched-films').includes(newFilm1[id])){
-  localStorage.setItem('watched-films', JSON.stringify([newFilm2, newFilm1]));
-  // addWachedBtm.classList.toggle('remove');
-  // addWachedBtm.textContent('Remove from Wached');
-  // }
+  if (
+    !localStorage.getItem('watched-films').includes(watchedFilmStorage.id) &&
+    localStorage.getItem('watched-films') !== null
+  ) {
+    localStorage.setItem(
+      'watched-films',
+      JSON.stringify(watchedFilmStorage.push(valueLocalStorage)),
+    );
+
+    // addToWatchedBtn.classList.toggle('remove');
+    // addToWatchedBtn.textContent('Remove from Wached');
+  }
+  if (localStorage.getItem('watched-films').includes(watchedFilmStorage.id)) {
+    // addToWatchedBtn.classList.toggle('remove');
+    // addToWatchedBtn.textContent('Remove from Wached');
+    return;
+  }
+
+  console.log(valueLocalStorage);
+  console.dir(valueLocalStorage);
 }
-function onAddQueueBtn() {
+export function onAddQueueBtn() {
   // if (refs.addQueueBtn.classList.contains('remove')) {
   //   onRemoveFromQueueBtm();
   // } else {
-  localStorage.setItem('queue-films', JSON.stringify([newFilm1, newFilm3]));
+  localStorage.setItem('queue-films', JSON.stringify(watchedFilmStorage.push(valueLocalStorage)));
   //   refs.addQueueBtn.classList.toggle('remove');
   //   refs.addQueueBtn.textContent('Remove from Queue');
   // // }
+  console.log(valueLocalStorage);
+  console.dir(valueLocalStorage);
 }
 function onRemoveFromWatchedBtm() {
   localStorage.removeItem('watched-films');
@@ -155,8 +184,7 @@ function onRemoveFromQueueBtm() {
   refs.addQueueBtn.classList.toggle('remove');
   refs.addQueueBtn.textContent('Add to Queue');
 }
-onAddWachedBtm();
-onAddQueueBtn();
+
 // onLibraryBtn()
 
 // localStorage.setItem('watched-films', JSON.stringify(watchedStorageJson));

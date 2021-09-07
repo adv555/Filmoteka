@@ -118,7 +118,8 @@
     height: 100%;
     object-fit: cover;
   }
-  .card:hover & {
+  .card:hover &,
+  .card:active & {
     border: 5px solid hsl(24, 100%, 52%);
   }
 }
@@ -162,7 +163,8 @@
     font-size: 24px;
   }
 
-  .card:hover &__item {
+  .card:hover &__item,
+  .card:active &__item {
     transform: translateY(0px);
     opacity: 1;
   }

@@ -18,6 +18,7 @@ const addQueueBtn = document.querySelector('.js-queue-btn'); //Миша
 const addWatchedBtn = document.querySelector('.js-watched-btn'); //Миша
 const mainSection = document.querySelector('.main'); //Миша
 const gallerySection = document.querySelector('.gallery'); //Миша
+const containerGallery = document.querySelector('.container_gallery');
 
 export default {
   searchForm,
@@ -33,4 +34,5 @@ export default {
   myLibraryLink,
   teamLink,
   gallerySection,
+  containerGallery,
 };

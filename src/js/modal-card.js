@@ -2,12 +2,12 @@ import * as basicLightbox from 'basiclightbox';
 import MoviesApiService from './api/api-service.js';
 import tplModalCard from '../templates/modal-card.hbs';
 import refs from './refs';
-import { onAddWachedBtm, onAddQueueBtn } from './library';
+import { onAddWachedBtm, onAddQueueBtn, localStorrageData } from './library';
 // экземпляр класа для получения API
 const moviesApiService = new MoviesApiService();
 
 //пустой объект для записи в LocalStorage
-export let valueLocalStorage = {
+export const valueLocalStorage = {
   id: '',
   markup: '',
 };
@@ -86,6 +86,12 @@ function addModal(dataMovie) {
       addToQueueBtn.addEventListener('click', onAddQueueBtn); //фунцию clgNo заменил на свою onAddQueueBtn
       closeBtn.addEventListener('click', modalClose);
       document.addEventListener('keydown', closeEsc);
+      if (localStorrageData.watchedFilmStorage.id === valueLocalStorage.id) {
+        addToWatchedBtn.textContent = 'Remove from library';
+      }
+      if (localStorrageData.queueFilmStorage.id === valueLocalStorage.id) {
+        addToQueueBtn.textContent = 'Remove from library';
+      }
 
       //закрытие через клик на крестик
       function modalClose() {

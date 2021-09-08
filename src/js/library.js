@@ -2,10 +2,12 @@
 import refs from './refs';
 import { notice, error } from '@pnotify/core';
 //============== Костина сохранненная разметка Олиной картички===========
-import { valueLocalStorage } from './modal-card';
-console.dir(valueLocalStorage);
+import { valueLocalStorage as valueForLocalStorage } from './modal-card';
 
-// let valueLocalStorage = {
+console.dir(valueForLocalStorage);
+console.log(valueForLocalStorage);
+
+// let valueForLocalStorage = {
 //   id: '',
 //   markup: '',
 // };
@@ -41,10 +43,10 @@ console.dir(valueLocalStorage);
 //     '<li class="item">\n    <div class="video-card">\n        <img class="gallerySection__video" src="https://image.tmdb.org/t/p/w300//cP7odDzzFBD9ycxj2laTeFWGLjD.jpg" data-source="619297">\n        <span class="video-rating"></span>\n   \n    </div>\n    <h2 class="video-title">Sweet Girl </h2>\n    <div>\n        Action, Thriller, Drama\n    </div>\n</li>',
 // };
 
-// const watchedStorageJson = [];
+let watchedStorageJson = [];
 // // console.log(watchedStorageJson["markup"])
 
-// const queueStorageJson = [];
+let queueStorageJson = [];
 
 // watchedStorageJson.push(newFilm1, newFilm2, newFilm3)
 // console.dir(watchedStorageJson)
@@ -75,8 +77,11 @@ class NoticeMessage {
   }
 }
 const noticeMessage = new NoticeMessage();
-const watchedFilmStorage = JSON.parse(localStorage.getItem('watched-films'));
-const queueFilmStorage = JSON.parse(localStorage.getItem('queue-films'));
+
+export const localStorrageData = {
+  watchedFilmStorage: JSON.parse(localStorage.getItem('watched-films')),
+  queueFilmStorage: JSON.parse(localStorage.getItem('queue-films')),
+};
 
 refs.myLibraryLink.addEventListener('click', onLibraryBtn);
 refs.watchedBtn.addEventListener('click', onLibraryWachedBtm);
@@ -84,33 +89,53 @@ refs.queueBtn.addEventListener('click', onLibraryQueueBtn);
 // refs.addQueueBtn.addEventListener('click', onAddQueueBtn);
 // refs.addWatchedBtn.addEventListener('click', onAddWachedBtm);
 
-// let filmArray = []
-
-// function watchedFilmStorage() {
-//   return JSON.parse(localStorage.getItem('watched-films'));
-// }
-
-// function queueFilmStorage() {
-//   return JSON.parse(localStorage.getItem('queue-films'));
-// }
-
-// console.log(watchedFilmStorage);
-
 function onLibraryWachedBtm() {
+  // refs.containerGallery.remove(); // повесил на onLibraryBtn
+  refs.watchedBtn.disabled = true;
+  refs.queueBtn.disabled = false;
   refs.watchedBtn.classList.add('.hero-buttons__btn--active');
   refs.queueBtn.classList.remove('.hero-buttons__btn--active');
-  // refs.gallerySection.innerHTML = filmListTemplate(watchedFilmStorage);
-  refs.gallerySection.innerHTML = watchedFilmStorage; //для одного фильма
-  // refs.gallerySection.innerHTML = watchedFilmStorage.map(film => film['markup']);//для масива фильмов
 
-  // refs.gallerySection.innerHTML = 'Watched movies'
+  localStorrageData.watchedFilmStorage
+    ? refs.gallerySection.insertAdjacentHTML(
+        'afterbegin',
+        `<ul class="lybrary-gallery">${localStorrageData.watchedFilmStorage.map(
+          film => film['markup'],
+        )}</ul>`,
+      )
+    : noticeMessage.notice();
+  // ? refs.gallerySection.innerHTML(
+  //     'afterbegin',
+  //     `<ul class="lybrary-gallery">${localStorrageData.watchedFilmStorage.map(
+  //       film => film['markup'],
+  //     )}</ul>`,
+  //   )
+
+  // onLibraryQueueBtn();
 }
+
 function onLibraryQueueBtn() {
+  // refs.containerGallery.remove(); // повесил на onLibraryBtn
+  refs.watchedBtn.disabled = false;
+  refs.queueBtn.disabled = true;
+
   refs.watchedBtn.classList.remove('hero-buttons__btn--active');
   refs.queueBtn.classList.add('.hero-buttons__btn--active');
-  // refs.gallerySection.innerHTML = filmListTemplate(queueFilmStorage);
-  refs.gallerySection.innerHTML = queueFilmStorage; //для одного фильма
+
+  // refs.gallerySection.innerHTML = queueFilmStorage; //для одного фильма
+  // console.log(localStorrageData.queueFilmStorage);
+  localStorrageData.queueFilmStorage
+    ? refs.gallerySection.insertAdjacentHTML(
+        'afterbegin',
+        `<ul class="lybrary-gallery">${localStorrageData.queueFilmStorage.map(
+          film => film['markup'],
+        )}</ul>`,
+      )
+    : noticeMessage.notice();
+
+  //===================== старый вариант внесения разметки =====================
   // refs.gallerySection.innerHTML = queueFilmStorage.map(film => film['markup']); //для масива фильмов
+  //================================================================================================
 }
 
 // function onLibraryBtn() {
@@ -159,7 +184,7 @@ function onLibraryQueueBtn() {
 // ) {
 //   localStorage.setItem(
 //     'watched-films',
-//     JSON.stringify(watchedFilmStorage.push(valueLocalStorage)),
+//     JSON.stringify(watchedFilmStorage.push(valueForLocalStorage)),
 //   );
 
 //   // addToWatchedBtn.classList.toggle('remove');
@@ -171,21 +196,21 @@ function onLibraryQueueBtn() {
 //   return;
 // }
 
-// console.log(valueLocalStorage);
-// console.dir(valueLocalStorage);
+// console.log(valueForLocalStorage);
+// console.dir(valueForLocalStorage);
 
 // export function onAddQueueBtn() {
 //   // if (refs.addQueueBtn.classList.contains('remove')) {
 //   //   onRemoveFromQueueBtm();
 //   // } else {
-//   // localStorage.setItem('queue-films', JSON.stringify(watchedFilmStorage.push(valueLocalStorage)));
+//   // localStorage.setItem('queue-films', JSON.stringify(watchedFilmStorage.push(valueForLocalStorage)));
 //   localStorage.setItem('queue-films', JSON.stringify(newFilm1, newFilm2));
 
 //   //   refs.addQueueBtn.classList.toggle('remove');
 //   //   refs.addQueueBtn.textContent('Remove from Queue');
 //   // // }
-//   console.log(valueLocalStorage);
-//   console.dir(valueLocalStorage);
+//   console.log(valueForLocalStorage);
+//   console.dir(valueForLocalStorage);
 // }
 // function onRemoveFromWatchedBtm() {
 //   localStorage.removeItem('watched-films');
@@ -207,25 +232,61 @@ function onLibraryQueueBtn() {
 //   watchedStorageJson
 // }
 
-// ================= новый крод ==============================
+// ================= новый код ==============================
 export function onAddWachedBtm() {
-  localStorage.setItem('watched-films', JSON.stringify(valueLocalStorage.markup));
+  console.log('on AddWachedBtm if #1');
+  // if (localStorrageData?.watchedFilmStorage?.id === valueForLocalStorage.id) {
+  //   console.log('localStorrageData?.watchedFilmStorage?.id === valueForLocalStorage.id');
+  //   localStorrageData.watchedFilmStorage['watched-films'].filter(
+  //     film => film.id !== valueForLocalStorage.id,
+  //   );
+  // }
+
+  // localStorrageData?.watchedFilmStorage['watched-films']
+  //   ? (localStorrageData.watchedFilmStorage['watched-films'] =
+  //       localStorrageData.watchedFilmStorage['watched-films'].push(valueForLocalStorage))
+  //   : (localStorrageData.watchedFilmStorage = valueForLocalStorage);
+
+  localStorage.setItem('watched-films', JSON.stringify([valueForLocalStorage]));
+  //==================== не исполльзовать =====================
+  // localStorage.setItem('watched-films', JSON.stringify(valueForLocalStorage.markup));
 }
 
 export function onAddQueueBtn() {
-  localStorage.setItem('queue-films', JSON.stringify(valueLocalStorage.markup));
+  console.log('on AddQueueBtn if #1');
+
+  // if (localStorrageData?.queueFilmStorage?.id === valueForLocalStorage.id) {
+  //   localStorrageData.queueFilmStorage['queue-films'].filter(
+  //     film => film.id !== valueForLocalStorage.id,
+  //   );
+  // }
+  // !localStorrageData?.queueFilmStorage
+  //   ? (localStorrageData.queueFilmStorage =
+  //       localStorrageData.queueFilmStorage['queue-films'].push(valueForLocalStorage))
+  //   : (localStorrageData.queueFilmStorage['queue-films'] = valueForLocalStorage);
+
+  localStorage.setItem('queue-films', JSON.stringify([valueForLocalStorage]));
+
+  //==================== не исполльзовать =====================
+  // localStorage.setItem('queue-films', JSON.stringify(valueForLocalStorage.markup));
 }
 
 export function onLibraryBtn() {
-  if (watchedFilmStorage === null) {
-    if (queueFilmStorage === null) {
-      refs.gallerySection.innerHTML = '';
-      noticeMessage.notice();
-    }
-    refs.gallerySection.innerHTML = queueFilmStorage;
-    refs.watchedBtn.classList.remove('hero-buttons__btn--active');
-  }
-  if (watchedFilmStorage !== null) {
-    refs.gallerySection.innerHTML = watchedFilmStorage;
-  }
+  refs.myLibraryLink.disabled;
+  refs.containerGallery.remove();
+
+  localStorrageData.watchedFilmStorage ? onLibraryWachedBtm() : onLibraryQueueBtn();
+
+  // if (localStorrageData) {
+  //   if (localStorrageData.watchedFilmStorage['watched-films']) {
+  //     onLibraryWachedBtm();
+  //   }
+  //   if (
+  //     !localStorrageData.watchedFilmStorage['watched-films'] &&
+  //     localStorrageData.queueFilmStorage['queue-films']
+  //   ) {
+  //     onLibraryWachedBtm();
+  //   }
+  // }
+  // noticeMessage.notice();
 }

@@ -1,83 +1,32 @@
-.filter {
-  display: flex;
-  justify-content: center;
-  max-width: 1042px;
-  margin: 0 auto;
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
+// .filter {
+//   display: flex;
+//   justify-content: center;
+//   max-width: 1042px;
+//   margin: 0 auto;
+//   margin-top: 30px;
+//   margin-bottom: 30px;
+// }
 
-.button-filter {
-  padding: 10px 20px;
-  margin-right: 15px;
-  cursor: pointer;
-  border-radius: 20px;
-  position: relative;
-  background-color: rgb(218, 222, 255);
-  transition: background-color 600ms linear;
-}
+// .button-filter {
+//   padding: 10px 20px;
+//   margin-right: 15px;
+//   cursor: pointer;
+//   border-radius: 20px;
+//   position: relative;
+//   background-color: rgb(218, 222, 255);
+//   transition: background-color 600ms linear;
+// }
 
-.button-filter:last-child {
-  margin-right: 0;
-}
+// .button-filter:last-child {
+//   margin-right: 0;
+// }
 
-.button-filter:active {
-  bottom: -2px;
-}
+// .button-filter:active {
+//   bottom: -2px;
+// }
 
-.button-filter:hover,
-.button-filter:focus {
-  background-color: rgb(100, 123, 255);
-}
+// .button-filter:hover,
+// .button-filter:focus {
+//   background-color: rgb(100, 123, 255);
+// }
 
-// ---------GALLERY !!!!!!!!!!!!!!!!!!!!!!!---------
-.hide{
-    display: none;
-}
-
-.ckick_red{
-    color: rgb(252, 4, 4);
-}
-
-.card-content {
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 1024px;
-  margin: 0 auto;
-  margin-right: -30px;
-}
-.card {
-    width: calc(33% - 70px);
-    margin: 30px;
-    height: 200px;
-    line-height: 200px;
-    text-align: center;
-}
-.drama {
-    background-color:rgb(121, 121, 121)
-}
-.comedy {
-    background-color:rgb(246, 255, 168)
-}
-.science {
-    background-color:rgb(112, 126, 255)
-}
-.romance {
-    background-color:rgb(255, 116, 243)
-}
-.crime {
-    background-color:rgb(114, 102, 223)
-}
-.action {
-    background-color:rgb(253, 83, 83)
-}
-.fantasy {
-    background-color:rgb(114, 102, 223)
-}
-.documentary {
-    background-color:rgb(252, 171, 49)
-}
-.musical {
-    background-color:rgb(163, 255, 171)
-}
-// ---------GALLERY !!!!!!!!!!!!!!!!!!!!!!!---------

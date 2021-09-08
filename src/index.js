@@ -24,7 +24,7 @@ import onLibraryBtn from './js/library';
 // =========== back-to-top-button
 backToTopBtn();
 // =========== filter
-filterFilm();
+// filterFilm();
 
 // =========== new class instance
 const moviesApiService = new MoviesApiService();

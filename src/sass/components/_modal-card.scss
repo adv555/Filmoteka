@@ -133,7 +133,7 @@
 
     &:hover,
     &:focus {
-      padding: 12px 16px;
+      padding: 14px 15px;
       border: none;
       background: $accent-bg;
       color: $white-color;
@@ -152,14 +152,14 @@
   color: $accent-line;
 }
 
-.js-watched {
-  padding: 6px 15px;
+// .js-watched {
+//   padding: 6px 15px;
 
-  &:hover,
-  &:focus {
-    padding: 7px 16px;
-  }
-}
+//   &:hover,
+//   &:focus {
+//     padding: 7px 16px;
+//   }
+// }
 
 @media screen and (min-width: $tablet) {
   .modal {

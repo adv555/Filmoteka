@@ -2,12 +2,12 @@ import * as basicLightbox from 'basiclightbox';
 import MoviesApiService from './api/api-service.js';
 import tplModalCard from '../templates/modal-card.hbs';
 import refs from './refs';
-
+import { onAddWachedBtm, onAddQueueBtn, localStorrageData } from './library';
 // экземпляр класа для получения API
 const moviesApiService = new MoviesApiService();
 
 //пустой объект для записи в LocalStorage
-let valueLocalStorage = {
+export const valueLocalStorage = {
   id: '',
   markup: '',
 };
@@ -86,10 +86,16 @@ function addModal(dataMovie) {
       //Слушатели на елементы
       movieModal.addEventListener('click', Secret);
       moviePoster.addEventListener('click', launchMovieTrailer);
-      addToWatchedBtn.addEventListener('click', clgOk);
-      addToQueueBtn.addEventListener('click', clgNo);
+      addToWatchedBtn.addEventListener('click', onAddWachedBtm); //фунцию clgOk заменил на свою onAddWachedBtm
+      addToQueueBtn.addEventListener('click', onAddQueueBtn); //фунцию clgNo заменил на свою onAddQueueBtn
       closeBtn.addEventListener('click', modalClose);
       document.addEventListener('keydown', closeEsc);
+      if (localStorrageData.watchedFilmStorage.id === valueLocalStorage.id) {
+        addToWatchedBtn.textContent = 'Remove from library';
+      }
+      if (localStorrageData.queueFilmStorage.id === valueLocalStorage.id) {
+        addToQueueBtn.textContent = 'Remove from library';
+      }
 
       //Делает секрет
       function Secret(e) {

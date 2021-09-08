@@ -59,7 +59,7 @@ async function renderMoviesBySearch(searchQuery) {
       notifyErrorHero,
       'Search result not successful. Enter the correct movie name and',
     );
-    setTimeout(() => (notifyErrorHero.innerHTML = ''), 3500);
+    setTimeout(() => (notifyErrorHero.innerHTML = ''), 5500);
     clearContainer(refs.gallery);
     insertContentTpl(refs.gallery, errorTpl);
     return;

@@ -10,6 +10,8 @@
 // }
 .basicLightbox {
   background: rgba($color: $grey-color, $alpha: 0.5);
+  //сделал что бы модалка перекрывала кнопку прокрутки вверх P.S Костя
+  z-index: 10000;
 }
 
 // .basicLightbox__placeholder {

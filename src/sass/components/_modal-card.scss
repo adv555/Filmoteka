@@ -90,7 +90,7 @@
 
   &__subtitle-about {
     font-weight: 500;
-    font-size: 12px;
+    font-size: 20px;
     line-height: 16px;
     text-transform: uppercase;
     margin-bottom: 10px;
@@ -194,11 +194,12 @@
     }
     &__button {
       min-width: 135px;
+      padding: 13px 16px;
     }
     &-close-button {
       color: $black-color;
-      right: 5px;
-      top: 5px;
+      right: 10px;
+      top: 10px;
       &:hover,
       &:focus {
         color: $accent-line;
@@ -225,12 +226,18 @@
       line-height: 35px;
     }
 
+    .modal__list {
+      margin-right: 85px;
+    }
+    &__subtitle-about {
+      margin-bottom: 20px;
+    }
     &__about {
       max-height: 169px;
     }
 
     &__container__button {
-      display: inline-flex;
+      justify-content: flex-start;
     }
   }
   .modal__button {

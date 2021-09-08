@@ -13,11 +13,11 @@ export default function () {
 
   function backToTop() {
     if (window.pageYOffset > 0) {
-      window.scrollBy(0, -20);
+      window.scrollBy(0, -15);
       // window.scrollBy({
       //   behavior: 'smooth',
       // });
-      setTimeout(backToTop, 10);
+      setTimeout(backToTop, 0);
     }
   }
 

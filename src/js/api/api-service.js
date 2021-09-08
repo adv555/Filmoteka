@@ -5,6 +5,7 @@ const POPULAR_MOVIES_URL = `${BASE_URL}/movie/popular?api_key=${API_KEY}&include
 const GENRE_LIST_URL = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}`;
 const MOVIE_BY_SEARCH = `${BASE_URL}/search/movie?api_key=${API_KEY}&include_adult=false`;
 const MOVIE_BY_KEYWORD = `${BASE_URL}/search/keyword?api_key=${API_KEY}&include_adult=false`;
+const UPCOMING_MOVIE_URL = `${BASE_URL}/movie/upcoming?api_key=${API_KEY}&include_adult=false`;
 
 export default class MoviesApiService {
   constructor() {
@@ -12,6 +13,18 @@ export default class MoviesApiService {
     this.page = 1;
     this.language = 'en-US';
   }
+
+  //========= скоро на экранах ======== //
+  fetchUpcomingMovies() {
+    const url = `${UPCOMING_MOVIE_URL}&language=${this.language}&page=${this.page}`;
+    return fetch(url)
+      .then((response) => {
+        if (response.status === 404) {
+          throw new Error("error");
+        } return response.json()
+      })
+  };
+
 
   // ======== фыльмы в тренде ======== //
   fetchTrending() {
@@ -21,6 +34,7 @@ export default class MoviesApiService {
   }
 
   // ======== фыльмы по популярности ========
+
   fetchPopularMovies() {
     const url = `${POPULAR_MOVIES_URL}&language=${this.language}&page=${this.page}`;
 

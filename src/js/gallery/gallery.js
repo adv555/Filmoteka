@@ -12,22 +12,21 @@ export default function createGalleryMarkup(data) {
   let cardList = [];
   cardList = data.results.map(card => {
     const genreList = [];
-    card.genre_ids.forEach(id => {
-      const genre = genres.find(genre => genre.id === id);
-      if (genre && genreList.length <= 3) {
-        if (genreList.length < 3) genreList.push(genre.name);
-        else genreList[2] = 'others...';
-      }
-    });
-    const image = card.poster_path
-      ? card.poster_path
-      : '/default-movie-portrait_EmJUj9Tda5wa.jpg?tr=fo-auto,di-';
+    if (card.genre_ids) {
+      card.genre_ids.forEach(id => {
+        const genre = genres.find(genre => genre.id === id);
+        if (genre && genreList.length <= 3) {
+          if (genreList.length < 3) genreList.push(genre.name);
+          else genreList[2] = 'others...';
+        }
+      });
+    }
+
     const date = card.release_date ? card.release_date.slice(0, 4) : '';
     return {
       backdrop_path: card.backdrop_path,
-
-      poster_path: image,
-      title: card.title,
+      poster_path: card.poster_path,
+      original_title: card.original_title,
       vote_average: card.vote_average,
       release_date: date,
       id: card.id,
@@ -47,6 +46,7 @@ export default function createGalleryMarkup(data) {
   }
 
   refs.gallery.innerHTML = renderCards(cardList);
+
   const arrowLeft = document.querySelector('.arrowLeft');
   const arrowRight = document.querySelector('.arrowRight');
   arrowLeft.innerHTML = '';
@@ -60,8 +60,8 @@ function changePage(currentPage) {
   else moviesApiService.fetchMoviesBySearch().then(createGalleryMarkup).catch(console.log);
 }
 
-window.onErrorLoadingImg = onErrorLoadingImg;
-function onErrorLoadingImg(id) {
-  const imgRef = document.querySelector(`[data-source="${id}"]`);
-  imgRef.parentElement.innerHTML = '';
-}
+// window.onErrorLoadingImg = onErrorLoadingImg;
+// function onErrorLoadingImg(id) {
+//   const imgRef = document.querySelector(`[data-source="${id}"]`);
+//   imgRef.parentElement.innerHTML = '';
+// }

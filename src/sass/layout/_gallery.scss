@@ -34,18 +34,25 @@
   }
 }
 
+@media screen and (max-width: $max-mobile) {
+  .item {
+    margin-bottom: 20px;
+  }
+}
 .item {
   position: relative;
-  margin-bottom: 20px;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
+
   justify-content: space-between;
   transition: transform 0.3s $timing-function;
 }
 .item:hover {
   cursor: pointer;
-  transform: scale(1.1);
+  transform: scale(1.03);
+
+  box-shadow: 0 0 10px rgba(213, 218, 218, 0.993);
 }
 
 @media screen and (min-width: $tablet) {
@@ -64,16 +71,10 @@
   }
 }
 
-.container-image {
-  width: 274px;
-  height: 398px;
-  background-image: url('../../src/images/no__img.png');
-  background-size: cover;
-}
-
 .gallery-image {
   display: block;
   width: 100%;
+  height: 398px;
   max-height: 398px;
   margin-bottom: 10px;
   border-radius: 5px;
@@ -102,7 +103,19 @@
   align-items: center;
   justify-content: center;
   margin: auto;
-  margin-bottom: 60px;
+  margin-top: 40px;
+}
+
+@media screen and (min-width: $tablet) {
+  .pagination {
+    margin-top: 50px;
+  }
+}
+
+@media screen and (min-width: $desktop) {
+  .pagination {
+    margin-top: 50px;
+  }
 }
 .pagNumber,
 .pagDots {
@@ -131,6 +144,7 @@
   height: 40px;
   line-height: 40px;
   cursor: pointer;
+  background-color: $light-grey-color;
   background-position: center;
   transition: background-color 0.25s $timing-function;
 }
@@ -158,16 +172,19 @@
 
 .container_gallery {
   margin-top: 20px;
+  margin-bottom: 40px;
 }
 
 @media screen and (min-width: $tablet) {
   .container_gallery {
     margin-top: 60px;
+    margin-bottom: 60px;
   }
 }
 
 @media screen and (min-width: $desktop) {
   .container_gallery {
     margin-top: 60px;
+    margin-bottom: 60px;
   }
 }

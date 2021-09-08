@@ -1,16 +1,33 @@
 
 {{#each this}}
 <li class="item">
-    <div class="video-card">
-        <div class="container-image">
-        <img class="gallery-image" src="https://image.tmdb.org/t/p/w300/{{poster_path}}" data-source="{{id}}" onerror="onErrorLoadingImg({{id}})"/>
-        </div>
+  
+        <div class="video-card">
+            {{#if poster_path}}
+        <img class="gallery-image" src="https://image.tmdb.org/t/p/w300/{{poster_path}}" data-source="{{id}}"/>
+        {{else}}
+        <img class="gallery-image" src="https://kinomaiak.ru/wp-content/uploads/2018/02/noposter.png" data-source="{{id}}"
+            />
+            {{/if}}
+{{#if vote_average}}
         <span class="video-rating">{{vote_average}}</span>
+        {{else}}
+        <span class="video-rating">0</span>
+        {{/if}}
    
-    </div>
-    <h2 class="image-title">{{title}} </h2>
+</div>
+{{#if original_title}}
+    <h2 class="image-title">{{original_title}} </h2>
+   
+    {{#if genres}}
     <div class="image-genres">
         {{genres}} | {{release_date}}
+   
     </div>
+
 </li>
+{{/if}}
+{{/if}}
+
 {{/each}}
+

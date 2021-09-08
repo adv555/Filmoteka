@@ -2,17 +2,11 @@
   <i class='fa fa-times' aria-hidden='true'></i>
 </button>
 
-<div
-  class='modal'
-  {{!-- style='background: url(https://image.tmdb.org/t/p/original/{{backdrop_path}});background-size: cover; ' --}}
->
+<div class='modal' data-set='https://image.tmdb.org/t/p/original/{{backdrop_path}}'>
   <img
     class='modal__movie-poster'
     src='https://image.tmdb.org/t/p/original/{{poster_path}}'
-    data-set='https://image.tmdb.org/t/p/original/{{backdrop_path}}'
     alt=''
-    width='100px'
-    height='100px'
   />
   <div class='modal__container'>
     <h2 class='modal__title-movie'>{{title}}</h2>
@@ -24,20 +18,18 @@
         <li class='modal__item'>Genre</li>
       </ul>
       <ul class='modal__list-info list'>
-        <li class='modal__item-info'><span class='vote'>{{vote_average}}</span>
+        <li class='modal__item-info'><span class='modal__vote'>{{vote_average}}</span>
           /
-          <span class='votes'>{{vote_count}}</span></li>
+          <span class='modal__votes'>{{vote_count}}</span></li>
         <li class='modal__item-info'>{{popularity}} </li>
-        <li class='modal__item-info'><span
-            class='title-movie-text-transform'
+        <li class='modal__item-info'><span class='title-movie-text-transform'>
             {{!-- data-set='https://image.tmdb.org/t/p/original/{{backdrop_path}}' --}}
-          >{{original_title}}</span>
+            {{original_title}}</span>
         </li>
         <li class='modal__item-info'>{{#each genres}} {{name}} {{/each}}</li>
       </ul>
     </div>
     <h3 class='modal__subtitle-about'>About</h3>
-
     <p class='modal__about'>{{overview}}</p>
     <div class='modal__container__button'>
       <button type='button' class='modal__button js-watched'>add to Watched</button>

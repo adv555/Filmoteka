@@ -255,15 +255,15 @@ export function onAddWachedBtm() {
 export function onAddQueueBtn() {
   console.log('on AddQueueBtn if #1');
 
-  // if (localStorrageData?.queueFilmStorage?.id === valueForLocalStorage.id) {
-  //   localStorrageData.queueFilmStorage['queue-films'].filter(
-  //     film => film.id !== valueForLocalStorage.id,
-  //   );
-  // }
-  // !localStorrageData?.queueFilmStorage
-  //   ? (localStorrageData.queueFilmStorage =
-  //       localStorrageData.queueFilmStorage['queue-films'].push(valueForLocalStorage))
-  //   : (localStorrageData.queueFilmStorage['queue-films'] = valueForLocalStorage);
+  if (localStorrageData?.queueFilmStorage?.id === valueForLocalStorage.id) {
+    localStorrageData.queueFilmStorage['queue-films'].filter(
+      film => film.id !== valueForLocalStorage.id,
+    );
+  }
+  localStorrageData.queueFilmStorage
+    ? (localStorrageData.queueFilmStorage =
+        localStorrageData.queueFilmStorage.push(valueForLocalStorage))
+    : (localStorrageData.queueFilmStorage = valueForLocalStorage);
 
   localStorage.setItem('queue-films', JSON.stringify([valueForLocalStorage]));
 

@@ -1,7 +1,7 @@
 export default function () {
   function trackScroll() {
-    var scrolled = window.pageYOffset;
-    var coords = document.documentElement.clientHeight;
+    let scrolled = window.pageYOffset;
+    let coords = document.documentElement.clientHeight;
 
     if (scrolled > coords) {
       goTopBtn.classList.add('back_to_top-show');
@@ -13,12 +13,15 @@ export default function () {
 
   function backToTop() {
     if (window.pageYOffset > 0) {
-      window.scrollBy(0, -80);
+      window.scrollBy(0, -15);
+      // window.scrollBy({
+      //   behavior: 'smooth',
+      // });
       setTimeout(backToTop, 0);
     }
   }
 
-  var goTopBtn = document.querySelector('.back_to_top');
+  const goTopBtn = document.querySelector('.back_to_top');
 
   window.addEventListener('scroll', trackScroll);
   goTopBtn.addEventListener('click', backToTop);

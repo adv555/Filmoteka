@@ -40,9 +40,38 @@ import teamCardTpl from '../templates/team-card';
 
 // =========== version 3 ===========//
 
+// export default function onTeamModalShow(e) {
+//   const teamCardsMarkup = teamCardTpl(data);
+//   const teamModal = basicLightbox.create(teamCardsMarkup);
+
+//   teamModal.show();
+// }
+
+// // _____________________________________________________________________________________________________
+//Убрать скролл за модалкой
+// export default function onTeamModalShow(e) {
+//   const teamCardsMarkup = teamCardTpl(data);
+//   const teamModal = basicLightbox.create(teamCardsMarkup, {
+//     onShow: teamModal => {
+//       // запретить скролл страницы при открытии модалки (hidden-без предоставления прокрутки)
+//       document.body.style.overflow = 'hidden';
+//     },
+//     onClose: teamModal => {
+//       //разрешает скролл страницы при закрытии модалки (visible - значение, принятое по умолчанию)
+//       document.body.style.overflow = 'visible';
+//     },
+//   });
+
+//   teamModal.show();
+// }
+// =========== version 4 (убран скрол)===========//
+
 export default function onTeamModalShow(e) {
   const teamCardsMarkup = teamCardTpl(data);
-  const teamModal = basicLightbox.create(teamCardsMarkup);
+  const teamModal = basicLightbox.create(teamCardsMarkup, {
+    onShow: teamModal => (document.body.style.overflow = 'hidden'),
+    onClose: teamModal => (document.body.style.overflow = 'visible'),
+  });
 
   teamModal.show();
 }

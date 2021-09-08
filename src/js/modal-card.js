@@ -16,26 +16,28 @@ export const valueLocalStorage = {
 refs.gallery.addEventListener('click', getMovieId);
 refs.gallery.addEventListener('click', getMarkupCardMovie);
 
-//получение id фильма ;
+//listner to SLIDER
+refs.filmStrip.addEventListener('click', getMovieId);
+refs.filmStrip.addEventListener('click', getMarkupCardMovie);
+
+//получение id фильма и записываем в объект;
 function getMovieId(e) {
   const tagImg = e.target.nodeName;
   if (tagImg !== 'IMG') {
     return;
   }
   const movieId = e.target.dataset.source;
-  console.log('Id :', movieId);
   getDataMovieById(movieId);
   valueLocalStorage.id = movieId;
 }
 
-//получение разметку карточки фильма ;
+//получение разметку карточки фильма и записываем в объект ;
 function getMarkupCardMovie(e) {
   const tagImg = e.target.nodeName;
   if (tagImg !== 'IMG') {
     return;
   }
-  const murkupCadrMovie = e.target.closest('.item').outerHTML;
-  // console.log(murkupCadrMovie);
+  const murkupCadrMovie = e.target.closest('LI').outerHTML;
   valueLocalStorage.markup = murkupCadrMovie;
 }
 
@@ -56,7 +58,6 @@ function getMarkupCardMovie(e) {
 // получение информации по фильму через id
 function getDataMovieById(movieId) {
   moviesApiService.fetchFullInfoOfMovie(movieId).then(movie => {
-    // console.log(movie);
     insertDataIntoTemplate(movie);
   });
 }
@@ -64,23 +65,26 @@ function getDataMovieById(movieId) {
 //Генерация шаблона
 function insertDataIntoTemplate(movie) {
   const templateMovie = tplModalCard(movie);
-
   addModal(templateMovie);
 }
 
 //реализация модального окна через библиотеку basicLightbox
 function addModal(dataMovie) {
-  //____Костя убери console.log
-  //   console.log(dataMovie);
   const ModalCard = basicLightbox.create(dataMovie, {
-    //Параметр из документации (позволяет нам получить ссылку на елемент и ставить слушатели событий во время появления модального окна)
+    //Параметр из документации (позволяет нам что-то делать во время открытия модального окна)
     onShow: ModalCard => {
+      // запретить скролл страницы при открытии модалки (hidden-без предоставления прокрутки)
+      document.body.style.overflow = 'hidden';
+
       //ссылки елементы из шаблона
-      const moviePoster = ModalCard.element().querySelector('.movie-poster');
-      const addToWatchedBtn = ModalCard.element().querySelector('.button1');
-      const addToQueueBtn = ModalCard.element().querySelector('.button2');
-      const closeBtn = ModalCard.element().querySelector('.close');
+      const movieModal = ModalCard.element().querySelector('.modal');
+      const moviePoster = ModalCard.element().querySelector('.modal__movie-poster');
+      const addToWatchedBtn = ModalCard.element().querySelector('.js-watched');
+      const addToQueueBtn = ModalCard.element().querySelector('.js-queue');
+      const closeBtn = ModalCard.element().querySelector('.modal-close-button');
+
       //Слушатели на елементы
+      movieModal.addEventListener('click', Secret);
       moviePoster.addEventListener('click', launchMovieTrailer);
       addToWatchedBtn.addEventListener('click', onAddWachedBtm); //фунцию clgOk заменил на свою onAddWachedBtm
       addToQueueBtn.addEventListener('click', onAddQueueBtn); //фунцию clgNo заменил на свою onAddQueueBtn
@@ -91,6 +95,17 @@ function addModal(dataMovie) {
       }
       if (localStorrageData.queueFilmStorage.id === valueLocalStorage.id) {
         addToQueueBtn.textContent = 'Remove from library';
+      }
+
+      //Делает секрет
+      function Secret(e) {
+        const x = document.querySelector('.basicLightbox');
+        const backgroundIMG = e.currentTarget.firstElementChild.dataset.set;
+        if (backgroundIMG === '') {
+          return;
+        }
+        x.style.backgroundSize = 'cover';
+        x.style.backgroundImage = `url(${backgroundIMG})`;
       }
 
       //закрытие через клик на крестик
@@ -108,6 +123,10 @@ function addModal(dataMovie) {
           document.removeEventListener('keydown', closeEsc);
         }
       }
+    },
+    onClose: ModalCard => {
+      //разрешает скролл страницы при закрытии модалки (visible - значение, принятое по умолчанию)
+      document.body.style.overflow = 'visible';
     },
   });
 

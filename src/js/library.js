@@ -29,7 +29,7 @@ function onLibraryWachedBtm() {
 function onLibraryQueueBtn() {
   let queueFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('queue-films'));
   if (queueFilmsIdInLocalStorage === null) refs.containerGallery.remove();
-  else renderFilms(queueFilmsIdInLocalStorage);
+  else renderFilms();
 
   refs.watchedBtn.disabled = false;
   refs.queueBtn.disabled = true;
@@ -43,7 +43,11 @@ export function onAddWachedBtm() {
   if (watchedFilmsIdInLocalStorage === null) watchedFilmsIdInLocalStorage = [];
   console.log('watchedFilmsIdInLocalStorage: ', watchedFilmsIdInLocalStorage);
   if (!watchedFilmsIdInLocalStorage.includes(valueForLocalStorage.id)) {
-    watchedFilmsIdInLocalStorage.push(valueForLocalStorage.id);
+    //========================Mike===========================
+    // watchedFilmsIdInLocalStorage.push(valueForLocalStorage.id);
+    //заменил на:
+    watchedFilmsIdInLocalStorage.push(valueForLocalStorage);
+    //============================================================
     localStorage.setItem('watched-films', JSON.stringify(watchedFilmsIdInLocalStorage));
   } else {
     const num = watchedFilmsIdInLocalStorage.indexOf(valueForLocalStorage.id);
@@ -95,21 +99,8 @@ export function updateBtnState(id) {
   }
 }
 
-async function renderFilms(arr) {
-  const cardsArr = [];
-  for (let i = 0; i < arr.length; i += 1) {
-    const card = await moviesApiService.fetchFullInfoOfMovie(arr[i]);
-    cardsArr.push({
-      backdrop_path: card.backdrop_path,
-      poster_path: card.poster_path,
-      original_title: card.original_title,
-      vote_average: card.vote_average,
-      // release_date: date,
-      id: card.id,
-      // genres: genreList.join(', '),
-    });
-  }
-  createGalleryMarkup({ results: cardsArr });
+function renderFilms() {
+  refs.gallerySection.innerHTML = localStorrageData.watchedFilmStorage.map(film => film['markup']);
 }
 
 //  =======tresh========

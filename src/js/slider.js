@@ -20,10 +20,10 @@ function sliderActions() {
     })
   })
 
-  //function startSlider() {
-  //  let timer = setInterval(() =>
-  //    slider.next(), 5000);
-  //}
+  function startSlider() {
+    let timer = setInterval(() =>
+      slider.next(), 5000);
+  }
 
   startSlider();
 

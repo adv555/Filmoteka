@@ -69,8 +69,8 @@ import teamCardTpl from '../templates/team-card';
 export default function onTeamModalShow(e) {
   const teamCardsMarkup = teamCardTpl(data);
   const teamModal = basicLightbox.create(teamCardsMarkup, {
-    onShow: teamModal => (document.body.style.overflow = 'hidden'),
-    onClose: teamModal => (document.body.style.overflow = 'visible'),
+    onShow: () => (document.body.style.overflow = 'hidden'),
+    onClose: () => (document.body.style.overflow = 'visible'),
   });
 
   teamModal.show();

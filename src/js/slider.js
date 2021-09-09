@@ -20,10 +20,10 @@ function sliderActions() {
     })
   })
 
-  function startSlider() {
-    let timer = setInterval(() =>
-      slider.next(), 5000);
-  }
+  //function startSlider() {
+  //  let timer = setInterval(() =>
+  //    slider.next(), 5000);
+  //}
 
   startSlider();
 
@@ -36,6 +36,7 @@ export default class UpcomingCollectionEngine {
     UpcomingCollection = [...data.results];
     refs.filmStrip.innerHTML = swiper(UpcomingCollection);
     sliderActions();
+    //console.log(UpcomingCollection)
   }
 
   constructor() {

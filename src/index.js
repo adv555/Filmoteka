@@ -31,7 +31,7 @@ const moviesApiService = new MoviesApiService();
 
 // =========== render slider
 const upcomingCollectionEngine = new UpcomingCollectionEngine();
-moviesApiService.fetchUpcomingMovies().then(data => upcomingCollectionEngine.renderUpcomingMovies(data));
+moviesApiService.fetchUpcomingMovies().then(upcomingCollectionEngine.renderUpcomingMovies);
 
 // // =========== test by Popular / Genres / By Id
 // moviesApiService.fetchPopularMovies().then(data => console.log(data));

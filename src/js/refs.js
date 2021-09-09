@@ -22,10 +22,12 @@ const mainSection = document.querySelector('.main'); //Миша
 const gallerySection = document.querySelector('.gallery'); //Миша
 const containerGallery = document.querySelector('.container_gallery');
 const filmStrip = document.querySelector('.film-strip'); //Andrew "Upcoming" slider
+const sliderMovieInfo = document.getElementsByClassName('.film-strip__info');
 
 export default {
   searchForm,
   filmStrip,
+  sliderMovieInfo,
   queueBtn,
   watchedBtn,
   addQueueBtn,

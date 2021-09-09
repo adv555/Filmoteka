@@ -23,8 +23,7 @@ let standardBackdrop = true;
 refs.gallery.addEventListener('click', getMovieIdAndMarkupCardMovie);
 
 //listner to SLIDER
-// refs.filmStrip.addEventListener('click', getMovieId);
-// refs.filmStrip.addEventListener('click', getMarkupCardMovie);
+//refs.sliderMovieInfo.addEventListener('click', getMovieId);
 
 // Один слушатель на СЛАЙДЕР
 refs.filmStrip.addEventListener('click', getMovieIdAndMarkupCardMovie);

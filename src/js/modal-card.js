@@ -79,12 +79,18 @@ function addModal(dataMovie) {
       ModalCard.element()
         .querySelector('.modal__movie-poster')
         .addEventListener('click', launchMovieTrailer);
-      ModalCard.element().querySelector('.js-watched').addEventListener('click', clgOk);
-      ModalCard.element().querySelector('.js-queue').addEventListener('click', clgNo);
+      ModalCard.element().querySelector('.js-watched').addEventListener('click', onAddWachedBtm);
+      ModalCard.element().querySelector('.js-queue').addEventListener('click', onAddQueueBtn);
       ModalCard.element()
         .querySelector('.modal-close-button')
         .addEventListener('click', modalClose);
       ModalCard.element().querySelector('.modal').addEventListener('click', SecretModal);
+      if (localStorrageData.watchedFilmStorage.id === valueLocalStorage.id) {
+        addToWatchedBtn.textContent = 'Remove from library';
+      }
+      if (localStorrageData.queueFilmStorage.id === valueLocalStorage.id) {
+        addToQueueBtn.textContent = 'Remove from library';
+      }
       //закрытие через клик на крестик
       function modalClose() {
         ModalCard.close();

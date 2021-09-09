@@ -1,0 +1,18 @@
+.error-container {
+  text-align: center;
+  margin: auto;
+}
+
+.error-container__text {
+  margin-top: 20px;
+  color: get-textColor('modal');
+  font-size: getFont-size__mob('error-text');
+
+  @media screen and (min-width: $tablet) {
+    font-size: getFont-size__desk('error-text');
+  }
+}
+
+.no-films {
+  margin: auto;
+}

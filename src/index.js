@@ -13,18 +13,18 @@ import './js/spinner';
 import renderUpcomingMovies from './js/slider';
 
 //=========== library test imports ============
-import onLibraryWachedBtm from './js/library';
-import onLibraryQueueBtn from './js/library';
+// import onLibraryWachedBtm from './js/library';
+// import onLibraryQueueBtn from './js/library';
 import onLibraryBtn from './js/library';
-import onAddWachedBtm from './js/library';
-import onAddQueueBtn from './js/library';
+// import onAddWachedBtm from './js/library';
+// import onAddQueueBtn from './js/library';
 
 //===============================================
 
 // =========== back-to-top-button
 backToTopBtn();
 // =========== filter
-filterFilm();
+// filterFilm();
 
 // =========== new class instance
 const moviesApiService = new MoviesApiService();

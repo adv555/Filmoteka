@@ -2,13 +2,16 @@ import * as basicLightbox from 'basiclightbox';
 import MoviesApiService from './api/api-service.js';
 import tplModalCard from '../templates/modal-card.hbs';
 import refs from './refs';
+
 import cliSpinners from 'cli-spinners';
+import { onAddWachedBtm, onAddQueueBtn, localStorrageData } from './library';
 
 // экземпляр класа для получения API
 const moviesApiService = new MoviesApiService();
 
 //пустой объект для записи в LocalStorage
-const valueLocalStorage = {
+
+export const valueLocalStorage = {
   id: '',
   markup: '',
 };
@@ -70,6 +73,7 @@ function addModal(dataMovie) {
     onShow: ModalCard => {
       // запретить скролл страницы при открытии модалки (hidden-без предоставления прокрутки)
       document.body.style.overflow = 'hidden';
+
       //Вешаем слушатели на елементы
       document.addEventListener('keydown', closeEsc);
       ModalCard.element()

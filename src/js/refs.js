@@ -26,6 +26,8 @@ const sliderMovieInfo = document.getElementsByClassName('.film-strip__info');
 const sliderSection = document.querySelector('.slider'); // acces to Slider sedction
 const removePagination = document.querySelector('.remove-pagination');
 const libraryBtnlist = document.querySelector('.hero-buttons');
+const heroDynamicContainer = document.querySelector('.hero__dynamic-container');
+const heroBackgroundContainer = document.querySelector('.js-container-hero-bg');
 
 export default {
   searchForm,
@@ -48,4 +50,6 @@ export default {
   removePagination,
   filterSelect,
   libraryBtnlist,
+  heroDynamicContainer,
+  heroBackgroundContainer,
 };

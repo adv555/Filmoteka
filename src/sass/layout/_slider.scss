@@ -1,95 +1,129 @@
-switcher-container {
+.switcher-wrapper {
+  width: 100%;
+  height: 140px;
+  position: relative;
+  align-self: center;
 }
 
-.switcher-wrapper.light-theme {
-  background-color: #222222;
-  position: relative;
-  padding: 4px;
-  overflow: hidden;
-  background-image: linear-gradient(270deg, transparent, #222222 10%, #222222 90%, transparent);
-  &:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
+.arrow {
+  font-weight: bold;
+  position: absolute;
+  top: 20%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 30;
+  &__next {
     right: 0;
-    height: 100%;
-    pointer-events: none;
-    background-image: linear-gradient(
-      270deg,
-      #fff,
-      #fff,
-      transparent 7%,
-      transparent 93%,
-      #fff,
-      #fff
-    );
-  }
-}
-
-.switcher-wrapper.dark-theme {
-  background-color: #222222;
-  position: relative;
-  padding: 4px;
-  overflow: hidden;
-  background-image: linear-gradient(270deg, transparent, #222222 10%, #222222 90%, transparent);
-  &:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    pointer-events: none;
-    background-image: linear-gradient(
-      270deg,
-      #333,
-      #333,
-      transparent 7%,
-      transparent 93%,
-      #333,
-      #333
-    );
   }
 }
 
 .film-strip {
-  display: flex;
-  width: min-content;
-  padding: 2px 60px 2px 60px;
-  background-color: #222222;
-  border-top: solid #222222;
-  border-bottom: solid #222222;
-  border-width: 12px 4px;
-  border-image-source: repeating-linear-gradient(
-    to right,
-    #222222,
-    #222222 20px,
-    #eed2b1 20px,
-    #eed2b1 35px
-  );
-  border-image-slice: 0.5;
+  width: 100%;
+  height: 100%;
+  //display: flex;
+  //position: relative;
 
   .film-strip__item {
-    flex: 1;
-    position: relative;
-    height: 95px;
-    width: 170px;
-    margin: 5px;
-    filter: opacity(0.5);
-    transition: flex 0.4s, transform 0.4s, filter 0.3s;
+    width: 20px;
+    height: 20px;
+    transform-origin: 50% 50%;
+    cursor: pointer;
+    position: absolute;
+    left: 50%;
+    opacity: 0;
+    z-index: 11;
+    transform: translateX(-50%);
+    transition: 0.5s cubic-bezier(0.8, 0.5, 0.1, 1.02);
+
     img {
       display: block;
-      //position: static;
       max-width: 100%;
-      border-radius: 10px;
+      border-radius: 9px;
     }
-  }
 
-  .film-strip__item:hover {
-    //flex: 1.5;
-    transform: scale(1.4);
-    filter: none;
-    z-index: 10;
+    &[data-position='0'] {
+      width: 30%;
+      height: 95px;
+      left: 50%;
+      z-index: 30;
+      opacity: 1;
+    }
+
+    &[data-position='1'],
+    &:nth-child(n)[data-position='19'] {
+      width: 20%;
+      height: 140px;
+      opacity: 1;
+      z-index: 29;
+      filter: brightness(0.7);
+    }
+    &[data-position='1'] {
+      left: 27%;
+    }
+    &:nth-child(n)[data-position='19'] {
+      left: 73%;
+    }
+
+    &[data-position='2'],
+    &:nth-child(n-1)[data-position='18'] {
+      width: 15%;
+      height: 110px;
+      opacity: 1;
+      z-index: 28;
+      filter: brightness(0.4);
+    }
+    &[data-position='2'] {
+      left: 12.5%;
+    }
+    &:nth-child(n-1)[data-position='18'] {
+      left: 87.5%;
+    }
+
+    &[data-position='3'],
+    &[data-position='17'] {
+      width: 13%;
+      height: 95px;
+      opacity: 0.5;
+      z-index: 27;
+      filter: brightness(0.3);
+    }
+    &[data-position='3'] {
+      left: 10%;
+    }
+    &[data-position='17'] {
+      left: 90%;
+    }
+
+    [data-position='4'] {
+      left: 50%;
+      opacity: 0;
+      display: none;
+    }
+
+    [data-position='16'] {
+      left: 50%;
+      opacity: 0;
+      display: none;
+    }
+
+    [data-position='5'],
+    [data-position='6'],
+    [data-position='7'],
+    [data-position='8'],
+    [data-position='9'],
+    [data-position='10'],
+    [data-position='11'],
+    [data-position='12'],
+    [data-position='13'],
+    [data-position='14'],
+    [data-position='15'] {
+      left: 50%;
+      display: none;
+      opacity: 0;
+      top: 50%;
+      z-index: -1;
+    }
   }
 }

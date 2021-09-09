@@ -11,6 +11,7 @@ import onSearch from './js/onSearch';
 import './js/modal-card';
 import './js/spinner';
 import UpcomingCollectionEngine from './js/slider';
+import './js/header';
 
 //=========== library test imports ============
 // import onLibraryWachedBtm from './js/library';
@@ -35,8 +36,6 @@ export default moviesApiService;
 const upcomingCollectionEngine = new UpcomingCollectionEngine();
 
 moviesApiService.fetchUpcomingMovies().then(upcomingCollectionEngine.renderUpcomingMovies);
-
-
 
 // // =========== test by Popular / Genres / By Id
 // moviesApiService.fetchPopularMovies().then(data => console.log(data));

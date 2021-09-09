@@ -1,11 +1,29 @@
-<nav class="navigation">
-  <a class="logo link" ></a>Filmoteka</a>
-  <ul class="navigation-list list">
-    <li class="navigation__item current-link">
-      <button type="button">HOME</button>
+<nav class="header__nav">
+  <a class="logo" href="./index.html" data-header="logo">
+    <div class="scena scena--card">
+      <div class="card">
+        <svg class="logo__icon card__face" width="24" height="24">
+          <use href="./images/SVG/symbol-defs.svg#icon-film"></use>
+        </svg>
+      </div>
+    </div>
+    <p class="logo__text">Filmoteka</p>
+  </a>
+  <ul class="site-nav list">
+    <li class="site-nav__item">
+      <button
+        class="site-nav__button site-nav__button--active js-home"
+        data-header="home"
+        type="button"
+      >
+        Home
+      </button>
     </li>
-    <li class="navigation__item">
-      <button class='button js-my-library'type="button">MY LIBRARY</button>
+    <li class="site-nav__item">
+      <button class="site-nav__button js-my-library" data-header="myLiblary" type="button">
+        my library
+      </button>
     </li>
   </ul>
 </nav>
+<div class="hero__dynamic-container" data-hero="dynamicContainer"></div>

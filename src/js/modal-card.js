@@ -4,7 +4,7 @@ import tplModalCard from '../templates/modal-card.hbs';
 import refs from './refs';
 
 import cliSpinners from 'cli-spinners';
-import { onAddWachedBtm, onAddQueueBtn, localStorrageData } from './library';
+import { onAddWachedBtm, onAddQueueBtn, localStorrageData, updateBtnState } from './library';
 
 // экземпляр класа для получения API
 const moviesApiService = new MoviesApiService();
@@ -35,8 +35,9 @@ function getMovieIdAndMarkupCardMovie(e) {
   if (tagName !== 'IMG') {
     return;
   }
-  getMovieId(e);
+  const movieId = getMovieId(e);
   getMarkupCardMovie(e);
+  setTimeout(updateBtnState, 500, movieId);
 }
 
 //получение id фильма и записываем в объект;
@@ -44,6 +45,7 @@ function getMovieId(e) {
   const movieId = e.target.dataset.source;
   getDataMovieById(movieId);
   valueLocalStorage.id = movieId;
+  return movieId;
 }
 
 //получение разметки карточки фильма и записываем в объект ;

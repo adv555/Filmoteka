@@ -44,21 +44,49 @@ export function onAddWachedBtm() {
   if (!watchedFilmsIdInLocalStorage.includes(valueForLocalStorage.id)) {
     watchedFilmsIdInLocalStorage.push(valueForLocalStorage.id);
     localStorage.setItem('watched-films', JSON.stringify(watchedFilmsIdInLocalStorage));
+  } else {
+    const num = watchedFilmsIdInLocalStorage.indexOf(valueForLocalStorage.id);
+    watchedFilmsIdInLocalStorage.splice(num, 1);
+    localStorage.setItem('watched-films', JSON.stringify(watchedFilmsIdInLocalStorage));
   }
+  updateBtnState(valueForLocalStorage.id);
 }
 
 export function onAddQueueBtn() {
   let queueFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('queue-films'));
   if (queueFilmsIdInLocalStorage === null) queueFilmsIdInLocalStorage = [];
-  console.log('queueFilmsIdInLocalStorage: ', queueFilmsIdInLocalStorage);
   if (!queueFilmsIdInLocalStorage.includes(valueForLocalStorage.id)) {
     queueFilmsIdInLocalStorage.push(valueForLocalStorage.id);
     localStorage.setItem('queue-films', JSON.stringify(queueFilmsIdInLocalStorage));
+  } else {
+    const num = queueFilmsIdInLocalStorage.indexOf(valueForLocalStorage.id);
+    queueFilmsIdInLocalStorage.splice(num, 1);
+    localStorage.setItem('queue-films', JSON.stringify(queueFilmsIdInLocalStorage));
   }
+  updateBtnState(valueForLocalStorage.id);
 }
 
 export function onLibraryBtn() {
   onLibraryWachedBtm();
+}
+
+export function updateBtnState(id) {
+  const addQueueBtn = document.querySelector('.js-queue');
+  const addWatchedBtn = document.querySelector('.js-watched');
+  let watchedFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('watched-films'));
+  let queueFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('queue-films'));
+
+  if (watchedFilmsIdInLocalStorage.includes(id)) {
+    addWatchedBtn.innerText = 'REMOVE FROM WATCHED';
+  } else {
+    addWatchedBtn.innerText = 'ADD TO WATCHED';
+  }
+
+  if (queueFilmsIdInLocalStorage.includes(id)) {
+    addQueueBtn.innerText = 'REMOVE FROM QUEUE';
+  } else {
+    addQueueBtn.innerText = 'ADD TO QUEUE';
+  }
 }
 
 async function renderFilms(arr) {

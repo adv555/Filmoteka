@@ -80,9 +80,7 @@ function addModal(dataMovie) {
         .querySelector('.modal__movie-poster')
         .addEventListener('click', launchMovieTrailer);
       ModalCard.element().querySelector('.js-watched').addEventListener('click', onAddWachedBtm);
-      ModalCard.element()
-        .querySelector('.js-queue')
-        .addToQueueBtn.addEventListener('click', onAddQueueBtn);
+      ModalCard.element().querySelector('.js-queue').addEventListener('click', onAddQueueBtn);
       ModalCard.element()
         .querySelector('.modal-close-button')
         .addEventListener('click', modalClose);
@@ -96,7 +94,6 @@ function addModal(dataMovie) {
       //закрытие через клик на крестик
       function modalClose() {
         ModalCard.close();
-        п;
         console.log('close');
         document.removeEventListener('keydown', closeEsc);
       }

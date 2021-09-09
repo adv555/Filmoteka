@@ -4,7 +4,7 @@ import tplModalCard from '../templates/modal-card.hbs';
 import refs from './refs';
 
 import cliSpinners from 'cli-spinners';
-import { onAddWachedBtm, onAddQueueBtn, localStorrageData } from './library';
+import { onAddWachedBtm, onAddQueueBtn, localStorrageData, updateBtnState } from './library';
 
 // экземпляр класа для получения API
 const moviesApiService = new MoviesApiService();
@@ -34,8 +34,9 @@ function getMovieIdAndMarkupCardMovie(e) {
   if (tagName !== 'IMG') {
     return;
   }
-  getMovieId(e);
+  const movieId = getMovieId(e);
   getMarkupCardMovie(e);
+  setTimeout(updateBtnState, 500, movieId);
 }
 
 //получение id фильма и записываем в объект;
@@ -43,6 +44,7 @@ function getMovieId(e) {
   const movieId = e.target.dataset.source;
   getDataMovieById(movieId);
   valueLocalStorage.id = movieId;
+  return movieId;
 }
 
 //получение разметки карточки фильма и записываем в объект ;
@@ -84,12 +86,12 @@ function addModal(dataMovie) {
         .querySelector('.modal-close-button')
         .addEventListener('click', modalClose);
       ModalCard.element().querySelector('.modal').addEventListener('click', SecretModal);
-      if (localStorrageData.watchedFilmStorage.id === valueLocalStorage.id) {
-        addToWatchedBtn.textContent = 'Remove from library';
-      }
-      if (localStorrageData.queueFilmStorage.id === valueLocalStorage.id) {
-        addToQueueBtn.textContent = 'Remove from library';
-      }
+      // if (localStorrageData.watchedFilmStorage.id === valueLocalStorage.id) {
+      //   addToWatchedBtn.textContent = 'Remove from library';
+      // }
+      // if (localStorrageData.queueFilmStorage.id === valueLocalStorage.id) {
+      //   addToQueueBtn.textContent = 'Remove from library';
+      // }
       //закрытие через клик на крестик
       function modalClose() {
         ModalCard.close();

@@ -64,7 +64,7 @@
   align-items: center;
   flex-wrap: wrap;
   margin: 20px 0;
-  height: 100vh;
+  height: 92vh;
   overflow-y: auto;
 
   &::-webkit-scrollbar {
@@ -73,6 +73,7 @@
 }
 
 .cards-container .card {
+  z-index: 2;
   position: relative;
   width: 270px;
   height: 400px;
@@ -148,7 +149,7 @@
 .sci {
   position: absolute;
   //   bottom: 50px;
-  bottom: -30px;
+  bottom: 50px;
   display: flex;
 
   &__item {

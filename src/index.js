@@ -16,6 +16,7 @@ import UpcomingCollectionEngine from './js/slider';
 // import onLibraryWachedBtm from './js/library';
 // import onLibraryQueueBtn from './js/library';
 import onLibraryBtn from './js/library';
+import { defaults } from 'lodash';
 // import onAddWachedBtm from './js/library';
 // import onAddQueueBtn from './js/library';
 
@@ -28,10 +29,14 @@ backToTopBtn();
 
 // =========== new class instance
 const moviesApiService = new MoviesApiService();
+export default moviesApiService;
 
 // =========== render slider
 const upcomingCollectionEngine = new UpcomingCollectionEngine();
+
 moviesApiService.fetchUpcomingMovies().then(upcomingCollectionEngine.renderUpcomingMovies);
+
+
 
 // // =========== test by Popular / Genres / By Id
 // moviesApiService.fetchPopularMovies().then(data => console.log(data));

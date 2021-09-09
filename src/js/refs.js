@@ -9,7 +9,7 @@ const queueBtn = document.querySelector('button[data-hero="queue"]');
 const watchedBtn = document.querySelector('button[data-hero="watched"]');
 const trailerBtn = document.querySelector('.trailer-btn');
 const mainFrame = document.querySelector('.js-main-frame');
-const filterSelect = document.querySelector('.filter-Select'); // filter
+const filterSelect = document.querySelector('.filter-select'); // filter
 const filterGenres = document.querySelector('#filter-Genres'); // filter
 const gallery = document.querySelector('.js-gallery');
 const logo = document.querySelector('.js-logo');
@@ -23,8 +23,12 @@ const gallerySection = document.querySelector('.gallery'); //Миша
 const containerGallery = document.querySelector('.container_gallery');
 const filmStrip = document.querySelector('.film-strip'); //Andrew "Upcoming" slider
 const sliderMovieInfo = document.getElementsByClassName('.film-strip__info');
+const sliderSection = document.querySelector('.slider'); // acces to Slider sedction
+const removePagination = document.querySelector('.remove-pagination');
+const libraryBtnlist = document.querySelector('.hero-buttons');
 const heroDynamicContainer = document.querySelector('.hero__dynamic-container');
 const heroBackgroundContainer = document.querySelector('.js-container-hero-bg');
+
 export default {
   searchForm,
   filmStrip,
@@ -42,6 +46,10 @@ export default {
   teamLink,
   gallerySection,
   containerGallery,
+  sliderSection,
+  removePagination,
+  filterSelect,
+  libraryBtnlist,
   heroDynamicContainer,
   heroBackgroundContainer,
 };

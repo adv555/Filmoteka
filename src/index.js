@@ -10,7 +10,7 @@ import onTeamModalShow from './js/team-lightbox';
 import onSearch from './js/onSearch';
 import './js/modal-card';
 import './js/spinner';
-import renderUpcomingMovies from './js/slider';
+import UpcomingCollectionEngine from './js/slider';
 
 //=========== library test imports ============
 // import onLibraryWachedBtm from './js/library';
@@ -29,8 +29,9 @@ backToTopBtn();
 // =========== new class instance
 const moviesApiService = new MoviesApiService();
 
-// =========== fetch content for slider
-moviesApiService.fetchUpcomingMovies().then(data => renderUpcomingMovies(data));
+// =========== render slider
+const upcomingCollectionEngine = new UpcomingCollectionEngine();
+moviesApiService.fetchUpcomingMovies().then(data => upcomingCollectionEngine.renderUpcomingMovies(data));
 
 // // =========== test by Popular / Genres / By Id
 // moviesApiService.fetchPopularMovies().then(data => console.log(data));

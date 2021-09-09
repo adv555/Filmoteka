@@ -1,5 +1,7 @@
 {{#each this}}
-    <div class="film-strip__item carousel-cell">
-      <img class="carousel-cell-image" src="https://image.tmdb.org/t/p/w500{{backdrop_path}}" class="strip-img" data-source="{{id}}">
-    </div>
+<div class="film-strip__item" data-slider="{{@index}}" data-position="{{@index}}">
+
+  <img class="strip-img" src="https://image.tmdb.org/t/p/w500{{backdrop_path}}" data-source="{{id}}">
+
+</div>
 {{/each}}

@@ -85,12 +85,12 @@ function addModal(dataMovie) {
         .querySelector('.modal-close-button')
         .addEventListener('click', modalClose);
       ModalCard.element().querySelector('.modal').addEventListener('click', SecretModal);
-      if (localStorrageData.watchedFilmStorage.id === valueLocalStorage.id) {
-        addToWatchedBtn.textContent = 'Remove from library';
-      }
-      if (localStorrageData.queueFilmStorage.id === valueLocalStorage.id) {
-        addToQueueBtn.textContent = 'Remove from library';
-      }
+      // if (localStorrageData.watchedFilmStorage.id === valueLocalStorage.id) {
+      //   addToWatchedBtn.textContent = 'Remove from library';
+      // }
+      // if (localStorrageData.queueFilmStorage.id === valueLocalStorage.id) {
+      //   addToQueueBtn.textContent = 'Remove from library';
+      // }
       //закрытие через клик на крестик
       function modalClose() {
         ModalCard.close();

@@ -3,7 +3,7 @@
     "id": "1",
     "name": "Olena Boldysheva",
     "description": "Teamlead",
-    "image": "/olena.jpeg",
+    "image": "./src/images/folder/olena.jpeg",
     "github": "https://github.com/adv555",
     "telegram": "https://t.me/adv001",
     "linkdIn": "www.linkedin.com/in/helen-boldysheva-9108911b0"

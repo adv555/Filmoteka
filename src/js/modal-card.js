@@ -36,7 +36,7 @@ function getMovieIdAndMarkupCardMovie(e) {
   }
   const movieId = getMovieId(e);
   getMarkupCardMovie(e);
-  setTimeout(updateBtnState, 500, movieId);
+  updateBtnState(movieId);
 }
 
 //получение id фильма и записываем в объект;

@@ -1,7 +1,118 @@
-.navigation{
-    display: flex;
-    justify-content: space-between;
-    &-list{ 
-        display: flex;
-    }
-};
+// .navigation{
+//     display: flex;
+//     justify-content: space-between;
+//     &-list{
+//         display: flex;
+//     }
+// };
+
+header {
+  background-color: black;
+  color: $white-color;
+}
+
+.header__nav {
+  display: flex;
+  justify-content: space-between;
+
+  @media screen and (max-width: $max-mobile) {
+    margin-bottom: 43px;
+    align-items: center;
+  }
+
+  @media screen and (min-width: $tablet) {
+    margin-bottom: 37px;
+    align-items: baseline;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  outline: none;
+  // transform: scale(1, 1);
+
+  @media screen and (min-width: $tablet) {
+    align-items: baseline;
+  }
+  // @include transition(transform);
+}
+
+.logo:focus {
+  outline: 1px solid $accent-line;
+}
+
+// .logo:hover {
+//   // transform: scale(1.1, 1.1);
+// }
+
+.logo__icon {
+  display: block;
+}
+
+.scena--card {
+  @media screen and (min-width: $tablet) {
+    margin-right: 10px;
+  }
+}
+
+.logo__text {
+  @media screen and (max-width: $max-mobile) {
+    @include is-hidden;
+  }
+  font-weight: 500;
+  font-size: getFont-size__tab('logo-title');
+  line-height: 1.17;
+  color: $white-color;
+}
+
+.site-nav {
+  display: flex;
+}
+
+.site-nav__item {
+  position: relative;
+
+  &:not(:last-child) {
+    margin-right: 40px;
+  }
+}
+
+.site-nav__button {
+  padding: 9px 0 0;
+  font-weight: 500;
+  font-size: getFont-size__mob('nav-text');
+  line-height: 1.17;
+  text-transform: uppercase;
+  color: $white-color;
+
+  border: transparent;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  transition: outline $btn-duration $timing-function;
+}
+
+.site-nav__button:focus {
+  outline: 1px solid $accent-line;
+}
+
+.site-nav__button::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+
+  display: block;
+  width: 100%;
+  height: 3px;
+
+  background-color: $accent-line;
+  opacity: 0;
+  @include transition(opacity);
+}
+
+.site-nav__button--active::after,
+.site-nav__button:hover::after,
+.site-nav__button:focus::after {
+  opacity: 1;
+}

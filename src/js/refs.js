@@ -23,7 +23,8 @@ const gallerySection = document.querySelector('.gallery'); //Миша
 const containerGallery = document.querySelector('.container_gallery');
 const filmStrip = document.querySelector('.film-strip'); //Andrew "Upcoming" slider
 const sliderMovieInfo = document.getElementsByClassName('.film-strip__info');
-
+const heroDynamicContainer = document.querySelector('.hero__dynamic-container');
+const heroBackgroundContainer = document.querySelector('.js-container-hero-bg');
 export default {
   searchForm,
   filmStrip,
@@ -41,4 +42,6 @@ export default {
   teamLink,
   gallerySection,
   containerGallery,
+  heroDynamicContainer,
+  heroBackgroundContainer,
 };

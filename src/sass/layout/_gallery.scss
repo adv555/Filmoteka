@@ -136,6 +136,35 @@
   transition: background-color 0.25s $timing-function;
 }
 
+@media screen and (max-width: $max-mobile) {
+  .pagDots {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+    display: inline-block;
+    text-align: center;
+    min-width: 10px;
+    height: 40px;
+    line-height: 40px;
+    cursor: pointer;
+    transition: background-color 0.25s $timing-function;
+  }
+}
+@media screen and (max-width: $max-mobile) {
+  .pagNumber {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+    display: inline-block;
+    text-align: center;
+    min-width: 28px;
+    height: 40px;
+    line-height: 40px;
+    cursor: pointer;
+    transition: background-color 0.25s $timing-function;
+  }
+}
+
 .pagNumber:hover {
   transition-duration: $duration;
   background-color: $accent-bg;
@@ -145,13 +174,21 @@
 .arrowLeft,
 .arrowRight {
   text-align: center;
-  width: 40px;
+  min-width: 28px;
   height: 40px;
   line-height: 40px;
   cursor: pointer;
   background-color: $light-grey-color;
   background-position: center;
   transition: background-color 0.25s $timing-function;
+}
+
+@media screen and (min-width: $tablet) {
+  .arrowLeft,
+  .arrowRight {
+    min-width: 40px;
+    border-radius: 5px;
+  }
 }
 
 .arrowLeft:hover,

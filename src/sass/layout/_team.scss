@@ -157,8 +157,8 @@
     margin: 0 10px;
     transform: translateY(40px);
     transition: 0.5s;
-    opacity: 0;
-    // opacity: 1;
+    // opacity: 0;
+    visibility: hidden;
     transition-delay: calc(0.1s * var(--i));
   }
   &__link {
@@ -168,8 +168,9 @@
 
   .card:hover &__item,
   .card:active &__item {
+    visibility: initial;
     transform: translateY(0px);
-    opacity: 1;
+    // opacity: 1;
   }
 }
 

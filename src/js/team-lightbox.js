@@ -2,74 +2,36 @@ import * as basicLightbox from 'basiclightbox';
 import data from '../team.json';
 import teamCardTpl from '../templates/team-card';
 
-// =========== создает модалку по шаблону ===========//
-
-// export default function onClick(e) {
-//   const instance = basicLightbox.create(document.querySelector('template'));
-
-//   instance.show();
-//   instance.element().querySelector('.basicLightbox__placeholder').onclick = instance.close;
-
-//   const cardsContainer = document.querySelector('.js-team');
-//   const menuMarkup = createMenuMarkup(data);
-//   // console.log(typeof menuMarkup);
-//   // console.log(menuMarkup);
-
-//   function createMenuMarkup(data) {
-//     return data.map(teamCardTpl).join('');
-//   }
-
-//   cardsContainer.insertAdjacentHTML('afterbegin', menuMarkup);
-// }
-
-// =========== version 2 ===========//
-// =========== markup===========//
-
-// export default function onClick(e) {
-//   const teamCardsMarkup = teamCardTpl(data);
-//   showModal(teamCardsMarkup);
-// }
-
-// // ======== show modal
-// function showModal(template) {
-//   const instance = basicLightbox.create(template);
-
-//   instance.show();
-//   // instance.element().querySelector('.basicLightbox__placeholder').onclick = instance.close;
-// }
-
-// =========== version 3 ===========//
-
-// export default function onTeamModalShow(e) {
-//   const teamCardsMarkup = teamCardTpl(data);
-//   const teamModal = basicLightbox.create(teamCardsMarkup);
-
-//   teamModal.show();
-// }
-
-// // _____________________________________________________________________________________________________
-//Убрать скролл за модалкой
-// export default function onTeamModalShow(e) {
-//   const teamCardsMarkup = teamCardTpl(data);
-//   const teamModal = basicLightbox.create(teamCardsMarkup, {
-//     onShow: teamModal => {
-//       // запретить скролл страницы при открытии модалки (hidden-без предоставления прокрутки)
-//       document.body.style.overflow = 'hidden';
-//     },
-//     onClose: teamModal => {
-//       //разрешает скролл страницы при закрытии модалки (visible - значение, принятое по умолчанию)
-//       document.body.style.overflow = 'visible';
-//     },
-//   });
-
-//   teamModal.show();
-// }
 // =========== version 4 (убран скрол)===========//
 
 export default function onTeamModalShow(e) {
+  // create marckup
   const teamCardsMarkup = teamCardTpl(data);
+
+  // create modal from marckup
   const teamModal = basicLightbox.create(teamCardsMarkup, {
-    onShow: () => (document.body.style.overflow = 'hidden'),
+    onShow: () => {
+      document.body.style.overflow = 'hidden';
+      document.addEventListener('click', onClick);
+      document.addEventListener('keydown', closEsc);
+
+      //=== close modal onClick on imgBox
+      function onClick(e) {
+        console.log(e.target.classList.value);
+        e.target.classList.value === 'cards-container js-team list' ||
+        e.target.classList.value === 'basicLightbox'
+          ? teamModal.close()
+          : teamModal.show();
+        document.removeEventListener('click', onClick);
+      }
+
+      //=== close modal onEsc Btn
+      function closEsc(e) {
+        console.log(e);
+        e.code === 'Escape' ? teamModal.close() : teamModal.show();
+        document.removeEventListener('keydown', closEsc);
+      }
+    },
     onClose: () => (document.body.style.overflow = 'visible'),
   });
 

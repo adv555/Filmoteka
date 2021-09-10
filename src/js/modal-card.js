@@ -28,7 +28,6 @@ refs.filmStrip.addEventListener('click', getMovieId);
 function getMovieIdInImg(e) {
   const tagName = e.target.nodeName;
   const className = e.target.className;
-  console.dir(e.target);
   if (tagName != 'IMG' && className !== 'gallery-image') {
     return;
   }
@@ -51,7 +50,6 @@ function getDataMovieById(movieId) {
 
 //Генерация шаблона с информацией что мы получили через id
 function insertDataIntoTemplate(movie) {
-  console.log(valueLocalStorage.id);
   const templateMovie = tplModalCard(movie);
   addModal(templateMovie);
 }
@@ -77,9 +75,7 @@ function addModal(dataMovie) {
       document.body.style.overflow = 'hidden';
       //Вешаем слушатели на елементы
       document.addEventListener('keydown', closeEsc);
-      ModalCard.element()
-        .querySelector('.modal__movie-poster')
-        .addEventListener('click', launchMovieTrailer);
+      ModalCard.element().querySelector('.modal__movie-poster').addEventListener('click', givesId);
       ModalCard.element()
         .querySelector('.modal__close-button')
         .addEventListener('click', modalClose);
@@ -88,7 +84,6 @@ function addModal(dataMovie) {
       //закрытие через клик на крестик
       function modalClose() {
         ModalCard.close();
-        console.log('close');
         document.removeEventListener('keydown', closeEsc);
       }
       //закрытие через нажатие кнопки Esc
@@ -99,6 +94,11 @@ function addModal(dataMovie) {
           document.removeEventListener('keydown', closeEsc);
         }
       }
+
+      function givesId(e) {
+        launchMovieTrailer(id);
+      }
+
       //проверяет есть ли id фильма в LocalStorage или нет и добавляет или удаляет
       function onAddWachedBtm() {
         let watchedFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('watched-films'));
@@ -161,9 +161,22 @@ function addModal(dataMovie) {
 }
 
 //При клике постер фильма
-function launchMovieTrailer() {
-  console.log('launch Movie Trailer');
+function launchMovieTrailer(id) {
+  moviesApiService.fetchMovieTrtailer(id).then(video => {
+    const idTrailer = video.results[0].id;
+    console.log(idTrailer);
+    // turnOnTheTrailer(idTrailer);
+  });
 }
+
+// function turnOnTheTrailer(id) {
+//   const ModalCardTrailer = basicLightbox.create(
+//     `<video controls>
+//         <source src="width="560" height="315" src='https://www.youtube.com/watch?v=${id}'>
+//     </video>`,
+//   );
+//   ModalCardTrailer.show();
+// }
 
 //При нажатии на модалку вылазит постер вместо бегдропа
 //При повторном нажатии на модалку бегдроп возращаеться

@@ -17,14 +17,13 @@ export default class MoviesApiService {
   //========= скоро на экранах ======== //
   fetchUpcomingMovies() {
     const url = `${UPCOMING_MOVIE_URL}&language=${this.language}&page=${this.page}`;
-    return fetch(url)
-      .then((response) => {
-        if (response.status === 404) {
-          throw new Error("error");
-        } return response.json()
-      })
-  };
-
+    return fetch(url).then(response => {
+      if (response.status === 404) {
+        throw new Error('error');
+      }
+      return response.json();
+    });
+  }
 
   // ======== фыльмы в тренде ======== //
   fetchTrending() {
@@ -75,6 +74,12 @@ export default class MoviesApiService {
 
   //   return fetch(url).then(response => response.json());
   // }
+  // ======== поиск трейлера ======== //Костя
+  fetchMovieTrtailer(movieId) {
+    const url = `${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}&language=${this.language}`;
+
+    return fetch(url).then(response => response.json());
+  }
 
   incrementPage() {
     this.page += 1;

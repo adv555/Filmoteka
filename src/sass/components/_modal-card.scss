@@ -1,9 +1,8 @@
 .modal {
-  padding: 48px 25px 41px;
+  padding: 24px 28px 20px;
   background: $white-color;
-  max-height: 750px;
-  max-width: 450px;
   min-width: 280px;
+  height: 100vh;
   border-radius: 5px;
   margin: 15px;
   scrollbar-width: none;
@@ -11,6 +10,17 @@
 
   &::-webkit-scrollbar {
     width: 0;
+  }
+  &__close-button {
+    padding: 5px;
+    position: absolute;
+    background-color: transparent;
+    border: transparent;
+    cursor: pointer;
+    right: 13px;
+    top: 20px;
+    font-size: 26px;
+    color: $accent-line;
   }
 
   &__container-poster {
@@ -38,6 +48,7 @@
   }
 
   &__list {
+    min-width: 80px;
     margin-bottom: 20px;
     margin-right: 40px;
   }
@@ -102,7 +113,7 @@
     font-weight: 500;
     font-size: 12px;
     line-height: 20px;
-
+    position: relative;
     color: $black-color;
     margin-bottom: 20px;
     max-height: 80px;
@@ -119,6 +130,9 @@
   }
 
   &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 11px 15px;
     border: 1px solid $black-color;
     box-sizing: border-box;
@@ -126,62 +140,57 @@
     font-weight: 500;
     font-size: 12px;
     line-height: 16px;
-    max-width: 115px;
+    width: 135px;
+    max-height: 40px;
     text-transform: uppercase;
     background: $white-color;
-    cursor: pointer;
 
-    &:hover,
-    &:focus {
-      padding: 14px 15px;
+    &-hover {
       border: none;
       background: $accent-bg;
       color: $white-color;
     }
   }
 }
-.modal-close-button {
-  padding: 5px;
-  position: absolute;
-  background-color: transparent;
-  border: transparent;
-  cursor: pointer;
-  right: 13px;
-  top: 20px;
-  font-size: 26px;
-  color: $accent-line;
+
+.js-watched {
+  margin-right: 10px;
+}
+@media screen and (max-width: 319px) {
+  .js-watched {
+    font-size: 1.3vh;
+  }
 }
 
-// .js-watched {
-//   padding: 6px 15px;
-
-//   &:hover,
-//   &:focus {
-//     padding: 7px 16px;
-//   }
-// }
+@media screen and (min-width: 500px) and (max-width: $max-mobile) {
+  .modal {
+    width: 470px;
+  }
+}
 
 @media screen and (min-width: $tablet) {
   .modal {
     display: flex;
+    align-items: flex-start;
     padding: 40px 30px 20px 30px;
-    max-width: 618px;
-    max-height: 600px;
+    max-width: 730px;
+    max-height: 500px;
+    height: 100vh;
     border-radius: 5px;
     margin: 0px;
 
     &__container-poster {
       min-width: 264px;
-      max-height: 374px;
+      max-height: 100%;
       margin-bottom: 0px;
     }
 
     &__container {
-      margin-left: 30px;
+      margin-left: 40px;
     }
 
     &__movie-poster {
-      height: 374px;
+      max-height: 420px;
       margin-bottom: 0px;
     }
 
@@ -190,13 +199,12 @@
     }
     &__container__button {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
     }
     &__button {
       min-width: 135px;
-      padding: 13px 16px;
     }
-    &-close-button {
+    &__close-button {
       color: $black-color;
       right: 10px;
       top: 10px;
@@ -206,9 +214,6 @@
       }
     }
   }
-  .js-watched {
-    padding: 0px 0px;
-  }
 }
 
 @media screen and (min-width: $desktop) {
@@ -216,10 +221,13 @@
     padding: 50px 30px 30px 30px;
     max-width: 882px;
     max-height: 590px;
-
+    &__close-button {
+      cursor: pointer;
+    }
     &__movie-poster {
-      width: 396px;
-      height: 477.8px;
+      width: 450px;
+      max-height: 480px;
+      cursor: url('../images/SVG/film.svg'), pointer;
     }
     &__title-movie {
       font-size: 30px;
@@ -242,6 +250,7 @@
   }
   .modal__button {
     max-width: 135px;
+    cursor: pointer;
   }
   .js-watched {
     margin-right: 15px;

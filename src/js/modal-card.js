@@ -85,7 +85,7 @@ function addModal(dataMovie) {
       ModalCard.element().querySelector('.js-watched').addEventListener('click', onAddWachedBtm);
       ModalCard.element().querySelector('.js-queue').addEventListener('click', onAddQueueBtn);
       ModalCard.element()
-        .querySelector('.modal-close-button')
+        .querySelector('.modal__close-button')
         .addEventListener('click', modalClose);
       ModalCard.element().querySelector('.modal').addEventListener('click', SecretModal);
       // if (localStorrageData.watchedFilmStorage.id === valueLocalStorage.id) {

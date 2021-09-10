@@ -42,39 +42,53 @@ function onLibraryQueueBtn() {
   refs.queueBtn.classList.add('hero-buttons__btn--active');
 }
 
-export function onAddWachedBtm() {
+export function onAddWachedBtm(event) {
+  const elevent = event.target;
+  // const id = e.target.dataset.set;
   let watchedFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('watched-films'));
   if (watchedFilmsIdInLocalStorage === null) watchedFilmsIdInLocalStorage = [];
-  console.log('watchedFilmsIdInLocalStorage: ', watchedFilmsIdInLocalStorage);
+  // console.log('watchedFilmsIdInLocalStorage: ', watchedFilmsIdInLocalStorage);
   if (!watchedFilmsIdInLocalStorage.map(film => film.id).includes(valueForLocalStorage.id)) {
     //========================Mike===========================
     // watchedFilmsIdInLocalStorage.push(valueForLocalStorage.id);
     //заменил на:
     watchedFilmsIdInLocalStorage.push(valueForLocalStorage);
+    event.target.innerText = 'REMOVE FROM WATCHED';
+    elevent.classList.add('modal__button-hover');
+    // console.log(e.target.innerText);
     //============================================================
     localStorage.setItem('watched-films', JSON.stringify(watchedFilmsIdInLocalStorage));
   } else {
     const num = watchedFilmsIdInLocalStorage.map(film => film.id).indexOf(valueForLocalStorage.id);
-    console.log(num);
+    // console.log(num);
     watchedFilmsIdInLocalStorage.splice(num, 1);
     localStorage.setItem('watched-films', JSON.stringify(watchedFilmsIdInLocalStorage));
+    event.target.innerText = 'ADD TO WATCHED';
+    elevent.classList.remove('modal__button-hover');
+    // console.log(e.target.innerText);
   }
-  updateBtnState(valueForLocalStorage.id);
+
+  // updateBtnState(valueForLocalStorage.id);
 }
 
-export function onAddQueueBtn() {
+export function onAddQueueBtn(event) {
+  const elevent = event.target;
   let queueFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('queue-films'));
   if (queueFilmsIdInLocalStorage === null) queueFilmsIdInLocalStorage = [];
   if (!queueFilmsIdInLocalStorage.map(film => film.id).includes(valueForLocalStorage.id)) {
     queueFilmsIdInLocalStorage.push(valueForLocalStorage);
     localStorage.setItem('queue-films', JSON.stringify(queueFilmsIdInLocalStorage));
+    event.target.innerHTML = 'REMOVE FROM QUEUE';
+    elevent.classList.add('modal__button-hover');
   } else {
     const num = queueFilmsIdInLocalStorage.map(film => film.id).indexOf(valueForLocalStorage.id);
-    console.log(num);
+    // console.log(num);
     queueFilmsIdInLocalStorage.splice(num, 1);
     localStorage.setItem('queue-films', JSON.stringify(queueFilmsIdInLocalStorage));
+    event.target.innerHTML = 'ADD TO QUEUE';
+    elevent.classList.remove('modal__button-hover');
   }
-  updateBtnState(valueForLocalStorage.id);
+  // updateBtnState(valueForLocalStorage.id);
 }
 
 export function onLibraryBtn() {
@@ -86,31 +100,31 @@ export function onLibraryBtn() {
   onLibraryWachedBtm();
 }
 
-export function updateBtnState(id) {
-  const addQueueBtn = document.querySelector('.js-queue');
-  const addWatchedBtn = document.querySelector('.js-watched');
-  let watchedFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('watched-films'));
-  let queueFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('queue-films'));
+// export function updateBtnState(id) {
+//   // const addQueueBtn = document.querySelector('.js-queue');
+//   // const addWatchedBtn = document.querySelector('.js-watched');
+//   let watchedFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('watched-films'));
+//   let queueFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('queue-films'));
 
-  console.log(
-    watchedFilmsIdInLocalStorage
-      .map(film => film.id)
-      .join(',')
-      .includes(id),
-  );
+//   console.log(
+//     watchedFilmsIdInLocalStorage
+//       .map(film => film.id)
+//       .join(',')
+//       .includes(id),
+//   );
 
-  if (watchedFilmsIdInLocalStorage.map(film => film.id).includes(id)) {
-    addWatchedBtn.innerText = 'REMOVE FROM WATCHED';
-  } else {
-    addWatchedBtn.innerText = 'ADD TO WATCHED';
-  }
+//   if (watchedFilmsIdInLocalStorage.map(film => film.id).includes(id)) {
+//     addWatchedBtn.innerText = 'REMOVE FROM WATCHED';
+//   } else {
+//     addWatchedBtn.innerText = 'ADD TO WATCHED';
+//   }
 
-  if (queueFilmsIdInLocalStorage.map(film => film.id).includes(id)) {
-    addQueueBtn.innerText = 'REMOVE FROM QUEUE';
-  } else {
-    addQueueBtn.innerText = 'ADD TO QUEUE';
-  }
-}
+//   if (queueFilmsIdInLocalStorage.map(film => film.id).includes(id)) {
+//     addQueueBtn.innerText = 'REMOVE FROM QUEUE';
+//   } else {
+//     addQueueBtn.innerText = 'ADD TO QUEUE';
+//   }
+// }
 
 function renderWatchedFilmStorage() {
   refs.gallery.innerHTML = localStorrageData.watchedFilmStorage

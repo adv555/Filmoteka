@@ -7,6 +7,7 @@
     class='modal__movie-poster'
     src='https://image.tmdb.org/t/p/original/{{poster_path}}'
     alt=''
+    data-set={{id}}
   />
   <div class='modal__container'>
     <h2 class='modal__title-movie'>{{title}}</h2>
@@ -23,7 +24,6 @@
           <span class='modal__votes'>{{vote_count}}</span></li>
         <li class='modal__item-info'>{{popularity}} </li>
         <li class='modal__item-info'><span class='title-movie-text-transform'>
-            {{!-- data-set='https://image.tmdb.org/t/p/original/{{backdrop_path}}' --}}
             {{original_title}}</span>
         </li>
         <li class='modal__item-info'>{{#each genres}} {{name}} {{/each}}</li>
@@ -32,9 +32,9 @@
     <h3 class='modal__subtitle-about'>About</h3>
     <p class='modal__about'>{{overview}}</p>
     <div class='modal__container__button'>
-      <button type='button' class='modal__button js-watched'>add to Watched</button>
-      <button type='button' class='modal__button js-queue'>add to queue</button>
+      <button data-set=`{{id}}` type='button'  class='modal__button js-watched'>add to Watched</button>
+      <button data-set=`{{id}}` type='button'  class='modal__button js-queue'>add to queue</button>
     </div>
 
-  </div>
+  </div>.
 </div>

@@ -1,7 +1,23 @@
 {{#each this}}
 <div class="film-strip__item" data-slider="{{@index}}" data-position="{{@index}}">
+  {{#if title}}
+  <h2 class="film__title">{{title}} </h2>
+  {{else}}
+  <h2 class="film__title">{{original_title}} </h2>
+  {{/if}}
+
+  <span class="material-icons-outlined film-strip__info">
+    info
+    </span>
+  <span class="material-icons-outlined film-strip__play-video">
+    play_circle_outline
+  </span>
+  <span class="material-icons-outlined film-strip__add-to-lib">
+    add_circle_outline
+  </span>
 
   <img class="strip-img" src="https://image.tmdb.org/t/p/w500{{backdrop_path}}" data-source="{{id}}">
+
 
 </div>
 {{/each}}

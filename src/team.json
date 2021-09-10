@@ -3,7 +3,7 @@
     "id": "1",
     "name": "Olena Boldysheva",
     "description": "Teamlead",
-    "image": "/olena.jpeg",
+    "image": "https://github.com/adv555/Filmoteka/tree/main/src/images/folder/olena.jpeg",
     "github": "https://github.com/adv555",
     "telegram": "https://t.me/adv001",
     "linkdIn": "www.linkedin.com/in/helen-boldysheva-9108911b0"
@@ -21,7 +21,7 @@
     "id": "3",
     "name": "Olya Kikot",
     "description": "Developer",
-    "image": "/olya.jpeg",
+    "image": "https://github.com/adv555/Filmoteka/tree/main/src/images/folder/olya.jpeg",
     "github": "https://github.com/adv555",
     "telegram": "https://t.me/adv001",
     "linkdIn": "www.linkedin.com/in/helen-boldysheva-9108911b0"
@@ -30,7 +30,7 @@
     "id": "4",
     "name": "Oksana Molesha",
     "description": "Developer",
-    "image": "/oksana.jpeg",
+    "image": "https://github.com/adv555/Filmoteka/tree/main/src/images/folder/oksana.jpeg",
     "github": "https://github.com/adv555",
     "telegram": "https://t.me/adv001",
     "linkdIn": "www.linkedin.com/in/helen-boldysheva-9108911b0"
@@ -39,7 +39,7 @@
     "id": "5",
     "name": "Konstantin Tokar",
     "description": "Developer",
-    "image": "/konstantin.jpeg",
+    "image": "https://github.com/adv555/Filmoteka/tree/main/src/images/folder/konstantin.jpeg",
     "github": "https://github.com/adv555",
     "telegram": "https://t.me/adv001",
     "linkdIn": "www.linkedin.com/in/helen-boldysheva-9108911b0"
@@ -48,7 +48,7 @@
     "id": "6",
     "name": "Aleksandr Lukianiuk",
     "description": "Developer",
-    "image": "/alex.jpeg",
+    "image": "https://github.com/adv555/Filmoteka/tree/main/src/images/folder/alex.jpeg",
     "github": "https://github.com/adv555",
     "telegram": "https://t.me/adv001",
     "linkdIn": "www.linkedin.com/in/helen-boldysheva-9108911b0"
@@ -75,7 +75,7 @@
     "id": "9",
     "name": "Vova Uniat",
     "description": "Developer",
-    "image": "/vova.jpeg",
+    "image": "https://github.com/adv555/Filmoteka/tree/main/src/images/folder/vova.jpeg",
     "github": "https://github.com/adv555",
     "telegram": "https://t.me/adv001",
     "linkdIn": "www.linkedin.com/in/helen-boldysheva-9108911b0"

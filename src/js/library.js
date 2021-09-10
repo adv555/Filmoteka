@@ -13,6 +13,7 @@ export const localStorrageData = {
 refs.myLibraryLink.addEventListener('click', onLibraryBtn);
 refs.watchedBtn.addEventListener('click', onLibraryWachedBtm);
 refs.queueBtn.addEventListener('click', onLibraryQueueBtn);
+// refs.homeBtn.addEventListener('click', onHomeBtn);
 
 function onLibraryWachedBtm() {
   let watchedFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('watched-films'));
@@ -21,8 +22,8 @@ function onLibraryWachedBtm() {
 
   refs.watchedBtn.disabled = true;
   refs.queueBtn.disabled = false;
-  refs.watchedBtn.classList.add('.hero-buttons__btn--active');
-  refs.queueBtn.classList.remove('.hero-buttons__btn--active');
+  refs.watchedBtn.classList.add('hero-buttons__btn--active');
+  refs.queueBtn.classList.remove('hero-buttons__btn--active');
 }
 
 function onLibraryQueueBtn() {
@@ -35,7 +36,7 @@ function onLibraryQueueBtn() {
   refs.queueBtn.disabled = true;
 
   refs.watchedBtn.classList.remove('hero-buttons__btn--active');
-  refs.queueBtn.classList.add('.hero-buttons__btn--active');
+  refs.queueBtn.classList.add('hero-buttons__btn--active');
 }
 // закомментировал потому-что перенес в саму модалки в функцию addModal в modal-card.js они только внутри нормально работают )//Костя
 
@@ -69,6 +70,11 @@ function onLibraryQueueBtn() {
 // }
 
 export function onLibraryBtn() {
+  refs.sliderSection.remove();
+  refs.removePagination.classList.add('display-none');
+  refs.libraryBtnlist.classList.remove('display-none');
+  refs.searchForm.remove();
+  refs.filterSelect.remove();
   onLibraryWachedBtm();
 }
 

@@ -36,6 +36,7 @@ export default class UpcomingCollectionEngine {
     UpcomingCollection = [...data.results];
     refs.filmStrip.innerHTML = swiper(UpcomingCollection);
     sliderActions();
+    //console.log(UpcomingCollection)
   }
 
   constructor() {

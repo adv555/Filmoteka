@@ -13,31 +13,26 @@ const moviesApiService = new MoviesApiService();
 
 export const valueLocalStorage = {
   id: '',
-  markup: '',
 };
 
 //Переменная для смены бегдропа
 let standardBackdrop = true;
 
 // слушатель на галерею
-refs.gallery.addEventListener('click', getMovieIdAndMarkupCardMovie);
-
-//listner to SLIDER
-// refs.filmStrip.addEventListener('click', getMovieId);
-// refs.filmStrip.addEventListener('click', getMarkupCardMovie);
+refs.gallery.addEventListener('click', getMovieIdInImg);
 
 // Один слушатель на СЛАЙДЕР
-refs.filmStrip.addEventListener('click', getMovieIdAndMarkupCardMovie);
+refs.filmStrip.addEventListener('click', getMovieId);
 
 //При клике на карточку фильма в gallery
-function getMovieIdAndMarkupCardMovie(e) {
+function getMovieIdInImg(e) {
   const tagName = e.target.nodeName;
-  if (tagName !== 'IMG') {
+  const className = e.target.className;
+  console.dir(e.target);
+  if (tagName != 'IMG' && className !== 'gallery-image') {
     return;
   }
-  const movieId = getMovieId(e);
-  getMarkupCardMovie(e);
-  setTimeout(updateBtnState, 500, movieId);
+  getMovieId(e);
 }
 
 //получение id фильма и записываем в объект;
@@ -45,13 +40,6 @@ function getMovieId(e) {
   const movieId = e.target.dataset.source;
   getDataMovieById(movieId);
   valueLocalStorage.id = movieId;
-  return movieId;
-}
-
-//получение разметки карточки фильма и записываем в объект ;
-function getMarkupCardMovie(e) {
-  const markupCadrMovie = e.target.closest('LI').outerHTML;
-  valueLocalStorage.markup = markupCadrMovie;
 }
 
 // отправляем запрос на сервер через id и получаем информацию по фильму
@@ -63,6 +51,7 @@ function getDataMovieById(movieId) {
 
 //Генерация шаблона с информацией что мы получили через id
 function insertDataIntoTemplate(movie) {
+  console.log(valueLocalStorage.id);
   const templateMovie = tplModalCard(movie);
   addModal(templateMovie);
 }
@@ -73,26 +62,29 @@ function addModal(dataMovie) {
   const ModalCard = basicLightbox.create(dataMovie, {
     //Параметр из документации (позволяет нам что-то делать во время открытия модального окна)
     onShow: ModalCard => {
+      //получение id фильма для віполнения проверки
+      const id = ModalCard.element().querySelector('IMG').dataset.set;
+      //ссылка на елементы кнопок
+
+      const addWatchedBtn = ModalCard.element().querySelector('.js-watched');
+      const addQueueBtn = ModalCard.element().querySelector('.js-queue');
+      //слашетели  на елементы кнопок
+      addWatchedBtn.addEventListener('click', onAddWachedBtm);
+      addQueueBtn.addEventListener('click', onAddQueueBtn);
+      updateBtnState(id);
+
       // запретить скролл страницы при открытии модалки (hidden-без предоставления прокрутки)
       document.body.style.overflow = 'hidden';
-
       //Вешаем слушатели на елементы
       document.addEventListener('keydown', closeEsc);
       ModalCard.element()
         .querySelector('.modal__movie-poster')
         .addEventListener('click', launchMovieTrailer);
-      ModalCard.element().querySelector('.js-watched').addEventListener('click', onAddWachedBtm);
-      ModalCard.element().querySelector('.js-queue').addEventListener('click', onAddQueueBtn);
       ModalCard.element()
-        .querySelector('.modal-close-button')
+        .querySelector('.modal__close-button')
         .addEventListener('click', modalClose);
       ModalCard.element().querySelector('.modal').addEventListener('click', SecretModal);
-      // if (localStorrageData.watchedFilmStorage.id === valueLocalStorage.id) {
-      //   addToWatchedBtn.textContent = 'Remove from library';
-      // }
-      // if (localStorrageData.queueFilmStorage.id === valueLocalStorage.id) {
-      //   addToQueueBtn.textContent = 'Remove from library';
-      // }
+
       //закрытие через клик на крестик
       function modalClose() {
         ModalCard.close();
@@ -107,6 +99,56 @@ function addModal(dataMovie) {
           document.removeEventListener('keydown', closeEsc);
         }
       }
+      //проверяет есть ли id фильма в LocalStorage или нет и добавляет или удаляет
+      function onAddWachedBtm() {
+        let watchedFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('watched-films'));
+        if (watchedFilmsIdInLocalStorage === null) watchedFilmsIdInLocalStorage = [];
+        if (!watchedFilmsIdInLocalStorage.includes(id)) {
+          watchedFilmsIdInLocalStorage.push(id);
+          localStorage.setItem('watched-films', JSON.stringify(watchedFilmsIdInLocalStorage));
+        } else {
+          const num = watchedFilmsIdInLocalStorage.indexOf(id);
+          watchedFilmsIdInLocalStorage.splice(num, 1);
+          localStorage.setItem('watched-films', JSON.stringify(watchedFilmsIdInLocalStorage));
+        }
+        updateBtnState(id);
+      }
+      //проверяет есть ли id фильма в LocalStorage или нет и добавляет или удаляет
+      function onAddQueueBtn() {
+        let queueFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('queue-films'));
+        if (queueFilmsIdInLocalStorage === null) queueFilmsIdInLocalStorage = [];
+        if (!queueFilmsIdInLocalStorage.includes(id)) {
+          queueFilmsIdInLocalStorage.push(id);
+          localStorage.setItem('queue-films', JSON.stringify(queueFilmsIdInLocalStorage));
+        } else {
+          const num = queueFilmsIdInLocalStorage.indexOf(id);
+          queueFilmsIdInLocalStorage.splice(num, 1);
+          localStorage.setItem('queue-films', JSON.stringify(queueFilmsIdInLocalStorage));
+        }
+        updateBtnState(id);
+      }
+
+      //Проверка на нахождение id фильма в LocalStorage и прорисовка кнопок
+      function updateBtnState(id) {
+        let watchedFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('watched-films'));
+        let queueFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('queue-films'));
+
+        if (watchedFilmsIdInLocalStorage.includes(id)) {
+          addWatchedBtn.innerText = 'REMOVE FROM WATCHED';
+          addWatchedBtn.classList.add('modal__button-hover');
+        } else {
+          addWatchedBtn.innerText = 'ADD TO WATCHED';
+          addWatchedBtn.classList.remove('modal__button-hover');
+        }
+
+        if (queueFilmsIdInLocalStorage.includes(id)) {
+          addQueueBtn.innerText = 'REMOVE FROM QUEUE';
+          addQueueBtn.classList.add('modal__button-hover');
+        } else {
+          addQueueBtn.innerText = 'ADD TO QUEUE';
+          addQueueBtn.classList.remove('modal__button-hover');
+        }
+      }
     },
     onClose: ModalCard => {
       //разрешает скролл страницы при закрытии модалки (visible - значение, принятое по умолчанию)
@@ -116,17 +158,6 @@ function addModal(dataMovie) {
   });
 
   ModalCard.show();
-}
-
-//При клике на кнопку (add to Watched)
-function clgOk() {
-  console.log(valueLocalStorage);
-  console.log('js-watched');
-}
-//При клике на кнопку (add to queue)
-function clgNo() {
-  console.log(valueLocalStorage);
-  console.log('js-queue');
 }
 
 //При клике постер фильма

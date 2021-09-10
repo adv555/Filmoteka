@@ -1,4 +1,4 @@
-<button type='button' class='modal-close-button'>
+<button type='button' class='modal__close-button'>
   <i class='fa fa-times' aria-hidden='true'></i>
 </button>
 
@@ -6,7 +6,8 @@
   <img
     class='modal__movie-poster'
     src='https://image.tmdb.org/t/p/original/{{poster_path}}'
-    alt=''
+    alt='{{title}}'
+    data-set='{{id}}'
   />
   <div class='modal__container'>
     <h2 class='modal__title-movie'>{{title}}</h2>
@@ -23,7 +24,6 @@
           <span class='modal__votes'>{{vote_count}}</span></li>
         <li class='modal__item-info'>{{popularity}} </li>
         <li class='modal__item-info'><span class='title-movie-text-transform'>
-            {{!-- data-set='https://image.tmdb.org/t/p/original/{{backdrop_path}}' --}}
             {{original_title}}</span>
         </li>
         <li class='modal__item-info'>{{#each genres}} {{name}} {{/each}}</li>

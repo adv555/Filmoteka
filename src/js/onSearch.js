@@ -1,46 +1,54 @@
 import refs from './refs';
 import MoviesApiService from './api/api-service';
 import createGalleryMarkup from './gallery/gallery';
-import { showTextError, insertContentTpl, clearContainer } from './notification';
+import { insertContentTpl, clearContainer, createNotice, createNotice404 } from './notification';
 import debounce from 'lodash.debounce';
 import placeholder from './spinner';
 import errorTpl from '../templates/error-not-found-film.hbs';
 
 const moviesApiService = new MoviesApiService();
-
+moviesApiService.fetchTrending().then(createGalleryMarkup).catch(console.log);
 export default moviesApiService; /////////////////////
 
 // =========== listeners
+refs.searchInput.addEventListener('input', debounce(onSearch, 500));
 
-refs.searchForm.addEventListener('submit', onSearch);
-
-const searchInput = document.querySelector('.js-search-field__input');
-searchInput.addEventListener('input', debounce(onSearch, 500));
-
-// // =========== search data
+// =========== on Search
 
 let searchQuery = '';
+
 function onSearch(e) {
   e.preventDefault();
-  placeholder.spinner.show();
-  refs.gallery.innerHTML = '';
-
-  const input = e.target;
-  searchQuery = input.value;
-  // if (!searchQuery) {
-  //   return;
-  // }
-
-  placeholder.spinner.close();
-
+  let input = e.target;
+  searchQuery = input.value.trim();
   moviesApiService.query = searchQuery;
-  renderMoviesBySearch(searchQuery).catch(error => console.log(error));
-  input.value = '';
+
+  placeholder.spinner.show();
+  refs.pagination.classList.remove('is-hidden');
+
+
+  // проверка если инпут пустой
+  if (moviesApiService.query.length == 0) {
+    placeholder.spinner.close();
+    input.value = '';
+    return createNotice();
+  }
+
+  renderMoviesBySearch(searchQuery)
+    .then(placeholder.spinner.close())
+    .then((input.value = ''))
+    .catch(error => {
+      createNotice();
+      console.log(error);
+    });
 }
+
+// =========== render Content By Search
 
 async function renderMoviesBySearch(searchQuery) {
   const query = searchQuery || moviesApiService.query;
   let fetchMovies;
+
   if (query) {
     moviesApiService.page = 1;
     fetchMovies = moviesApiService.fetchMoviesBySearch();
@@ -53,19 +61,14 @@ async function renderMoviesBySearch(searchQuery) {
 
   moviesApiService.totalResults = total_results;
 
+  // проверка если объект пустой
   if (movies.length === 0) {
-    const notifyErrorHero = document.querySelector('.js-search-field__error-text');
-    showTextError(
-      notifyErrorHero,
-      'Search result not successful. Enter the correct movie name and',
-    );
-    setTimeout(() => (notifyErrorHero.innerHTML = ''), 5500);
+    createNotice404();
     clearContainer(refs.gallery);
     insertContentTpl(refs.gallery, errorTpl);
+    refs.pagination.classList.add('is-hidden');
     return;
   }
 
   createGalleryMarkup(serverAnswer);
 }
-
-moviesApiService.fetchTrending().then(createGalleryMarkup).catch(console.log);

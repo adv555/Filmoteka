@@ -17,14 +17,13 @@ export default class MoviesApiService {
   //========= скоро на экранах ======== //
   fetchUpcomingMovies() {
     const url = `${UPCOMING_MOVIE_URL}&language=${this.language}&page=${this.page}`;
-    return fetch(url)
-      .then((response) => {
-        if (response.status === 404) {
-          throw new Error("error");
-        } return response.json()
-      })
-  };
-
+    return fetch(url).then(response => {
+      if (response.status === 404) {
+        throw new Error('error');
+      }
+      return response.json();
+    });
+  }
 
   // ======== фыльмы в тренде ======== //
   fetchTrending() {
@@ -50,16 +49,27 @@ export default class MoviesApiService {
 
   // ======== поиск фильмов ======== //
 
-  fetchMoviesBySearch() {
-    const searchParams = new URLSearchParams({
-      api_key: API_KEY,
-      query: this.searchQuery,
-      page: this.page,
-    });
+  // fetchMoviesBySearch() {
+  //   const searchParams = new URLSearchParams({
+  //     api_key: API_KEY,
+  //     query: this.searchQuery,
+  //     page: this.page,
+  //   });
 
-    return fetch(`${MOVIE_BY_SEARCH}search/movie?${searchParams}`).then(response =>
-      response.json(),
-    );
+  //   return fetch(`${MOVIE_BY_SEARCH}search/movie?${searchParams}`).then(response =>
+  //     response.json(),
+  //   );
+  // }
+  fetchMoviesBySearch() {
+    // const searchParams = new URLSearchParams({
+    //   api_key: API_KEY,
+    //   query: this.searchQuery,
+    //   page: this.page,
+    // });
+
+    return fetch(
+      `${MOVIE_BY_SEARCH}&query=${this.searchQuery}&language=${this.language}&page=${this.page}`,
+    ).then(response => response.json());
   }
 
   // ======== поиск фильмов по id ======== //

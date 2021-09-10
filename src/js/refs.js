@@ -5,6 +5,7 @@
 // }
 
 const searchForm = document.querySelector('.search-form');
+const searchInput = document.querySelector('.js-search-field__input');
 const queueBtn = document.querySelector('button[data-hero="queue"]');
 const watchedBtn = document.querySelector('button[data-hero="watched"]');
 const trailerBtn = document.querySelector('.trailer-btn');
@@ -22,9 +23,11 @@ const mainSection = document.querySelector('.main'); //Миша
 const gallerySection = document.querySelector('.gallery'); //Миша
 const containerGallery = document.querySelector('.container_gallery');
 const filmStrip = document.querySelector('.film-strip'); //Andrew "Upcoming" slider
+const pagination = document.querySelector('.pagination'); // onSearch
 
 export default {
   searchForm,
+  searchInput,
   filmStrip,
   queueBtn,
   watchedBtn,
@@ -39,4 +42,5 @@ export default {
   teamLink,
   gallerySection,
   containerGallery,
+  pagination,
 };

@@ -11,7 +11,6 @@ import onSearch from './js/onSearch';
 import './js/modal-card';
 import './js/spinner';
 import UpcomingCollectionEngine from './js/slider';
-import './js/header';
 
 //=========== library test imports ============
 // import onLibraryWachedBtm from './js/library';

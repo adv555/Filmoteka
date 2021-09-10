@@ -27,9 +27,9 @@ function onSearch(e) {
 
   const input = e.target;
   searchQuery = input.value;
-  if (!searchQuery) {
-    return;
-  }
+  // if (!searchQuery) {
+  //   return;
+  // }
 
   placeholder.spinner.close();
 

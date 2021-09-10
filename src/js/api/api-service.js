@@ -86,6 +86,12 @@ export default class MoviesApiService {
   //   return fetch(url).then(response => response.json());
   // }
 
+  fetchMovieTrtailer(movieId) {
+    const url = `${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}&language=${this.language}`;
+
+    return fetch(url).then(response => response.json());
+  }
+
   incrementPage() {
     this.page += 1;
   }

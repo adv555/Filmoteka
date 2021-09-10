@@ -208,10 +208,6 @@
       color: $black-color;
       right: 10px;
       top: 10px;
-      &:hover,
-      &:focus {
-        color: $accent-line;
-      }
     }
   }
 }
@@ -222,11 +218,19 @@
     max-width: 882px;
     max-height: 590px;
     &__close-button {
+      color: $black-color;
       cursor: pointer;
+      &:hover,
+      &:focus {
+        color: $accent-line;
+      }
     }
     &__movie-poster {
       width: 450px;
       max-height: 480px;
+    }
+
+    &__movie-poster-cursor {
       cursor: url('../images/SVG/film.svg'), pointer;
     }
     &__title-movie {

@@ -26,6 +26,7 @@ function onSearch(e) {
   placeholder.spinner.show();
   refs.pagination.classList.remove('is-hidden');
 
+
   // проверка если инпут пустой
   if (moviesApiService.query.length == 0) {
     placeholder.spinner.close();

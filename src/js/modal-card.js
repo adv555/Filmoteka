@@ -15,7 +15,7 @@ export const valueLocalStorage = {
   id: '',
   markup: '',
 };
-
+console.log(valueLocalStorage);
 //Переменная для смены бегдропа
 let standardBackdrop = true;
 
@@ -23,8 +23,7 @@ let standardBackdrop = true;
 refs.gallery.addEventListener('click', getMovieIdAndMarkupCardMovie);
 
 //listner to SLIDER
-// refs.filmStrip.addEventListener('click', getMovieId);
-// refs.filmStrip.addEventListener('click', getMarkupCardMovie);
+//refs.sliderMovieInfo.addEventListener('click', getMovieId);
 
 // Один слушатель на СЛАЙДЕР
 refs.filmStrip.addEventListener('click', getMovieIdAndMarkupCardMovie);
@@ -35,9 +34,11 @@ function getMovieIdAndMarkupCardMovie(e) {
   if (tagName !== 'IMG') {
     return;
   }
+
   const movieId = getMovieId(e);
   getMarkupCardMovie(e);
-  setTimeout(updateBtnState, 500, movieId);
+  // setTimeout(updateBtnState, 500, movieId);
+  setTimeout(() => updateBtnState(movieId), 500);
 }
 
 //получение id фильма и записываем в объект;

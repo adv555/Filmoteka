@@ -10,7 +10,7 @@ const queueBtn = document.querySelector('button[data-hero="queue"]');
 const watchedBtn = document.querySelector('button[data-hero="watched"]');
 const trailerBtn = document.querySelector('.trailer-btn');
 const mainFrame = document.querySelector('.js-main-frame');
-const filterSelect = document.querySelector('.filter-Select'); // filter
+const filterSelect = document.querySelector('.filter-select'); // filter
 const filterGenres = document.querySelector('#filter-Genres'); // filter
 const gallery = document.querySelector('.js-gallery');
 const logo = document.querySelector('.js-logo');
@@ -20,15 +20,23 @@ const teamLink = document.querySelector('.js-team-link');
 const addQueueBtn = document.querySelector('.js-queue-btn'); //Миша
 const addWatchedBtn = document.querySelector('.js-watched-btn'); //Миша
 const mainSection = document.querySelector('.main'); //Миша
-const gallerySection = document.querySelector('.gallery'); //Миша
+const gallerySection = document.querySelector('.library-gallery'); //Миша
 const containerGallery = document.querySelector('.container_gallery');
 const filmStrip = document.querySelector('.film-strip'); //Andrew "Upcoming" slider
 const pagination = document.querySelector('.pagination'); // onSearch
+const sliderMovieInfo = document.getElementsByClassName('.film-strip__info');
+const sliderSection = document.querySelector('.slider'); // acces to Slider sedction
+const removePagination = document.querySelector('.remove-pagination');
+const libraryBtnlist = document.querySelector('.hero-buttons');
+const heroDynamicContainer = document.querySelector('.hero__dynamic-container');
+const heroBackgroundContainer = document.querySelector('.js-container-hero-bg');
+
 
 export default {
   searchForm,
   searchInput,
   filmStrip,
+  sliderMovieInfo,
   queueBtn,
   watchedBtn,
   addQueueBtn,
@@ -43,4 +51,10 @@ export default {
   gallerySection,
   containerGallery,
   pagination,
+  sliderSection,
+  removePagination,
+  filterSelect,
+  libraryBtnlist,
+  heroDynamicContainer,
+  heroBackgroundContainer,
 };

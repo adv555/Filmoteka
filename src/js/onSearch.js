@@ -13,19 +13,20 @@ export default moviesApiService; /////////////////////
 // =========== listeners
 refs.searchInput.addEventListener('input', debounce(onSearch, 500));
 
-// =========== search data
+// =========== on Search
 
 let searchQuery = '';
 
 function onSearch(e) {
   e.preventDefault();
   let input = e.target;
-  searchQuery = input.value;
-  moviesApiService.query = searchQuery.trim();
+  searchQuery = input.value.trim();
+  moviesApiService.query = searchQuery;
 
   placeholder.spinner.show();
   refs.pagination.classList.remove('is-hidden');
 
+  // проверка если инпут пустой
   if (moviesApiService.query.length == 0) {
     placeholder.spinner.close();
     input.value = '';
@@ -41,11 +42,12 @@ function onSearch(e) {
     });
 }
 
-// =========== renderSearchContent
+// =========== render Content By Search
 
 async function renderMoviesBySearch(searchQuery) {
   const query = searchQuery || moviesApiService.query;
   let fetchMovies;
+
   if (query) {
     moviesApiService.page = 1;
     fetchMovies = moviesApiService.fetchMoviesBySearch();
@@ -58,6 +60,7 @@ async function renderMoviesBySearch(searchQuery) {
 
   moviesApiService.totalResults = total_results;
 
+  // проверка если объект пустой
   if (movies.length === 0) {
     createNotice404();
     clearContainer(refs.gallery);

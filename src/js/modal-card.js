@@ -15,7 +15,7 @@ export const valueLocalStorage = {
   id: '',
   markup: '',
 };
-
+console.log(valueLocalStorage);
 //Переменная для смены бегдропа
 let standardBackdrop = true;
 
@@ -37,7 +37,8 @@ function getMovieIdAndMarkupCardMovie(e) {
 
   const movieId = getMovieId(e);
   getMarkupCardMovie(e);
-  // setTimeout(updateBtnState(movieId), 500);
+  // setTimeout(updateBtnState, 500, movieId);
+  setTimeout(() => updateBtnState(movieId), 500);
 }
 
 //получение id фильма и записываем в объект;

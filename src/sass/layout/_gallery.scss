@@ -96,7 +96,12 @@
   background-color: $accent-bg;
   border-radius: 5px;
 }
-
+.video-rating-low {
+  background-color: red;
+}
+.video-rating-hight {
+  background-color: green;
+}
 .pagination {
   display: flex;
   min-width: 280px;

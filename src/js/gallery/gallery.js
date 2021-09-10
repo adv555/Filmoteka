@@ -54,14 +54,12 @@ export default function createGalleryMarkup(data) {
 }
 
 function changePage(currentPage) {
+  refs.gallery.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start',
+  });
   moviesApiService.setPage(currentPage);
   if (moviesApiService.query === '')
     moviesApiService.fetchTrending().then(createGalleryMarkup).catch(console.log);
   else moviesApiService.fetchMoviesBySearch().then(createGalleryMarkup).catch(console.log);
 }
-
-// window.onErrorLoadingImg = onErrorLoadingImg;
-// function onErrorLoadingImg(id) {
-//   const imgRef = document.querySelector(`[data-source="${id}"]`);
-//   imgRef.parentElement.innerHTML = '';
-// }

@@ -1,3 +1,6 @@
+@import '@pnotify/core/dist/BrightTheme.css';
+
+
 .lybrary-gallery {
   position: relative;
   // width: 280px;
@@ -34,3 +37,8 @@
 .display-none {
 display: none;
 }
+.error{
+  position: fixed;
+  top: 200px;
+  right: 100px;
+  }

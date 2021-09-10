@@ -55,6 +55,7 @@ export function onAddWachedBtm() {
     localStorage.setItem('watched-films', JSON.stringify(watchedFilmsIdInLocalStorage));
   } else {
     const num = watchedFilmsIdInLocalStorage.map(film => film.id).indexOf(valueForLocalStorage.id);
+    console.log(num);
     watchedFilmsIdInLocalStorage.map(film => film.id).splice(num, 1);
     localStorage.setItem('watched-films', JSON.stringify(watchedFilmsIdInLocalStorage));
   }
@@ -69,6 +70,7 @@ export function onAddQueueBtn() {
     localStorage.setItem('queue-films', JSON.stringify(queueFilmsIdInLocalStorage));
   } else {
     const num = queueFilmsIdInLocalStorage.map(film => film.id).indexOf(valueForLocalStorage.id);
+    console.log(num);
     queueFilmsIdInLocalStorage.map(film => film.id).splice(num, 1);
     localStorage.setItem('queue-films', JSON.stringify(queueFilmsIdInLocalStorage));
   }
@@ -97,23 +99,13 @@ export function updateBtnState(id) {
       .includes(id),
   );
 
-  if (
-    watchedFilmsIdInLocalStorage
-      .map(film => film.id)
-      .join(',')
-      .includes(id)
-  ) {
+  if (watchedFilmsIdInLocalStorage.map(film => film.id).includes(id)) {
     addWatchedBtn.innerText = 'REMOVE FROM WATCHED';
   } else {
     addWatchedBtn.innerText = 'ADD TO WATCHED';
   }
 
-  if (
-    queueFilmsIdInLocalStorage
-      .map(film => film.id)
-      .join(',')
-      .includes(id)
-  ) {
+  if (queueFilmsIdInLocalStorage.map(film => film.id).includes(id)) {
     addQueueBtn.innerText = 'REMOVE FROM QUEUE';
   } else {
     addQueueBtn.innerText = 'ADD TO QUEUE';

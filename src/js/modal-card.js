@@ -34,9 +34,10 @@ function getMovieIdAndMarkupCardMovie(e) {
   if (tagName !== 'IMG') {
     return;
   }
+
   const movieId = getMovieId(e);
   getMarkupCardMovie(e);
-  updateBtnState(movieId);
+  // setTimeout(updateBtnState(movieId), 500);
 }
 
 //получение id фильма и записываем в объект;

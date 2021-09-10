@@ -7,7 +7,7 @@ import moviesApiService from '../onSearch';
 
 export default function createGalleryMarkup(data) {
   moviesApiService.totalResults = data.total_results;
-  console.log(data);
+  // console.log(data);
 
   let cardList = [];
   cardList = data.results.map(card => {
@@ -39,7 +39,7 @@ export default function createGalleryMarkup(data) {
       currentPage: 1,
       totalItems: moviesApiService.totalResults,
       itemsPerPage: 20,
-      stepNum: 3,
+      step: 2,
     });
 
     pag.onPageChanged(changePage);

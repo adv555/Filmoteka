@@ -5,7 +5,7 @@ import debounce from 'lodash.debounce';
 import { insertContentTpl, clearContainer } from './notification';
 
 refs.homeLink.addEventListener('click', onHomeClick);
-refs.myLibraryLink.addEventListener('click', onMyLibraryClick);
+// refs.myLibraryLink.addEventListener('click', onMyLibraryClick);
 
 insertContentTpl(refs.heroDynamicContainer, searchFieldTpl);
 

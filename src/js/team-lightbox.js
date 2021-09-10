@@ -74,4 +74,5 @@ export default function onTeamModalShow(e) {
   });
 
   teamModal.show();
+  teamModal.element().querySelector('.card__content').onclick = teamModal.close;
 }

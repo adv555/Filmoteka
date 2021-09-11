@@ -4,7 +4,7 @@ const queueBtn = document.querySelector('button[data-hero="queue"]');
 const watchedBtn = document.querySelector('button[data-hero="watched"]');
 const trailerBtn = document.querySelector('.trailer-btn');
 const mainFrame = document.querySelector('.js-main-frame');
-const filterSelect = document.querySelector('.filter-select'); // filter
+const filterSelect = document.querySelector('.filter'); // filter
 const filterGenres = document.querySelector('#filter-Genres'); // filter
 const gallery = document.querySelector('.js-gallery');
 const logo = document.querySelector('.js-logo');

@@ -1,11 +1,10 @@
 import refs from '../refs';
-import MoviesApiService from '../api/api-service';
+import moviesApiService from '../onSearch';
 import { insertContentTpl, clearContainer } from '../notification';
 import renderCards from '../../templates/gallery.hbs';
 import genresFiltersTpl from '../../templates/genres-filters.hbs';
 import errorTpl from '../../templates/error-not-found-film.hbs';
-
-const moviesApiService = new MoviesApiService();
+// import createGalleryMarkup from '../gallery/gallery';
 
 async function renderGenresFilters() {
   const genres = await moviesApiService.fetchGenresList();
@@ -43,9 +42,9 @@ function transformMoviesObjectFields(movies, genresList) {
     if (movie.release_date != undefined) {
       movie.release_date = movie.release_date.slice(0, 4);
     }
-    //genresIdsList - array of genre's ids of one movie [23, 17]
+
     const genresIdsList = movie.genre_ids;
-    //in movies.genre_ids genres ids replace with genres names
+
     genresIdsList.forEach((genreId, index, array) => {
       const genresListItem = genresList.find(genre => genre.id === genreId);
       const idx = genresList.indexOf(genresListItem);

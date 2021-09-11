@@ -112,7 +112,7 @@ function addModal(dataMovie) {
       }
 
       //Проверка на пустой ли объект
-      if (watchedFilmsIdInLocalStorage.length !== 0 && watchedFilmsIdInLocalStorage !== null) {
+      if (watchedFilmsIdInLocalStorage !== null && watchedFilmsIdInLocalStorage.length !== 0) {
         //Проверка на наличие id фильма в localeStorage для кнопки Watch
         if (watchedFilmsIdInLocalStorage.map(film => film.id).includes(id)) {
           //Ставит кнопке клас и меняет текст
@@ -120,7 +120,7 @@ function addModal(dataMovie) {
           addWatchedBtn.classList.add('modal__button-hover');
         }
       }
-      if (queueFilmsIdInLocalStorage.length !== 0 && queueFilmsIdInLocalStorage !== null) {
+      if (queueFilmsIdInLocalStorage !== null && queueFilmsIdInLocalStorage.length !== 0) {
         //Проверка на наличие id фильма в localeStorage для кнопки Watch Queue
         if (queueFilmsIdInLocalStorage.map(film => film.id).includes(id)) {
           //Ставит кнопке клас и меняет текст

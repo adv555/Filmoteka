@@ -57,17 +57,26 @@ export function onAddWachedBtm(event) {
   const elevent = event.target;
   // const id = e.target.dataset.set;
   let watchedFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('watched-films'));
+  let queueFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('queue-films'));
   if (watchedFilmsIdInLocalStorage === null) watchedFilmsIdInLocalStorage = [];
+  if (queueFilmsIdInLocalStorage === null) queueFilmsIdInLocalStorage = [];
   // console.log('watchedFilmsIdInLocalStorage: ', watchedFilmsIdInLocalStorage);
   if (!watchedFilmsIdInLocalStorage.map(film => film.id).includes(valueForLocalStorage.id)) {
-    //========================Mike===========================
-    // watchedFilmsIdInLocalStorage.push(valueForLocalStorage.id);
-    //заменил на:
+    if (queueFilmsIdInLocalStorage.map(film => film.id).includes(valueForLocalStorage.id)) {
+      const num = queueFilmsIdInLocalStorage.map(film => film.id).indexOf(valueForLocalStorage.id);
+      // console.log(num);
+      queueFilmsIdInLocalStorage.splice(num, 1);
+      localStorage.setItem('queue-films', JSON.stringify(queueFilmsIdInLocalStorage));
+      elevent.nextElementSibling.innerText = 'ADD TO QUEUE';
+      elevent.nextElementSibling.classList.remove('modal__button-hover');
+    }
+
     watchedFilmsIdInLocalStorage.push(valueForLocalStorage);
     event.target.innerText = 'REMOVE FROM WATCHED';
     elevent.classList.add('modal__button-hover');
+
     // console.log(e.target.innerText);
-    //============================================================
+
     localStorage.setItem('watched-films', JSON.stringify(watchedFilmsIdInLocalStorage));
   } else {
     const num = watchedFilmsIdInLocalStorage.map(film => film.id).indexOf(valueForLocalStorage.id);
@@ -85,9 +94,22 @@ export function onAddWachedBtm(event) {
 
 export function onAddQueueBtn(event) {
   const elevent = event.target;
+  console.dir(elevent);
+  let watchedFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('watched-films'));
   let queueFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('queue-films'));
+  if (watchedFilmsIdInLocalStorage === null) watchedFilmsIdInLocalStorage = [];
   if (queueFilmsIdInLocalStorage === null) queueFilmsIdInLocalStorage = [];
   if (!queueFilmsIdInLocalStorage.map(film => film.id).includes(valueForLocalStorage.id)) {
+    if (watchedFilmsIdInLocalStorage.map(film => film.id).includes(valueForLocalStorage.id)) {
+      const num = watchedFilmsIdInLocalStorage
+        .map(film => film.id)
+        .indexOf(valueForLocalStorage.id);
+      // console.log(num);
+      watchedFilmsIdInLocalStorage.splice(num, 1);
+      localStorage.setItem('watched-films', JSON.stringify(watchedFilmsIdInLocalStorage));
+      elevent.previousElementSibling.innerText = 'ADD TO WATCHED';
+      elevent.previousElementSibling.classList.remove('modal__button-hover');
+    }
     queueFilmsIdInLocalStorage.push(valueForLocalStorage);
     localStorage.setItem('queue-films', JSON.stringify(queueFilmsIdInLocalStorage));
     event.target.innerHTML = 'REMOVE FROM QUEUE';

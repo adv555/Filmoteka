@@ -4,7 +4,14 @@ import tplModalCard from '../templates/modal-card.hbs';
 import refs from './refs';
 
 import cliSpinners from 'cli-spinners';
-import { onAddWachedBtm, onAddQueueBtn } from './library';
+import {
+  onAddWachedBtm,
+  onAddQueueBtn,
+  reloadLocalStorage,
+  localStorrageData,
+  renderWatchedFilmStorage,
+  renderQueueFilmStorage,
+} from './library';
 
 // экземпляр класа для получения API
 const moviesApiService = new MoviesApiService();
@@ -90,9 +97,14 @@ function addModal(dataMovie) {
       document.addEventListener('keydown', closeEsc);
       addWatchedBtn.addEventListener('click', onAddWachedBtm);
       addQueueBtn.addEventListener('click', onAddQueueBtn);
-      moviePoster.addEventListener('click', launchMovieTrailer);
+      moviePoster.addEventListener('click', can);
       closeBtn.addEventListener('click', modalClose);
       ModalWindow.addEventListener('click', SecretModal);
+
+      function can(e) {
+        launchMovieTrailer(e);
+        SecretVideo(e);
+      }
 
       //Проверка на пустой ли объект
       if (watchedFilmsIdInLocalStorage !== null && watchedFilmsIdInLocalStorage.length !== 0) {
@@ -109,7 +121,6 @@ function addModal(dataMovie) {
           //Ставит кнопке клас и меняет текст
           addQueueBtn.innerText = 'AREMOVE FROM WATCHED';
           addQueueBtn.classList.add('modal__button-hover');
-          return;
         }
       }
 
@@ -129,6 +140,15 @@ function addModal(dataMovie) {
     onClose: ModlCard => {
       //разрешает скролл страницы при закрытии модалки (visible - значение, принятое по умолчанию)
       document.body.style.overflow = 'visible';
+      reloadLocalStorage();
+      if (refs.myLibraryLink.classList.contains('site-nav__button--active')) {
+        if (refs.watchedBtn.classList.contains('hero-buttons__btn--active')) {
+          renderWatchedFilmStorage();
+        }
+        if (refs.queueBtn.classList.contains('hero-buttons__btn--active')) {
+          renderQueueFilmStorage();
+        }
+      }
     },
   });
 
@@ -149,9 +169,42 @@ function launchMovieTrailer(e) {
 
 //реализация выплывающего видео через библиотеку basicLightbox
 function turnOnTheTrailer(trailerKey) {
-  const ModalCardTrailer = basicLightbox.create(`
-  <iframe src='https://www.youtube.com/embed/${trailerKey}'frameborder="0" allowfullscreen ></iframe>
-`);
+  const ModalCardTrailer = basicLightbox.create(
+    `<button type='button' class='modal__close-button-video'>
+  <i class='fa fa-times' aria-hidden='true'></i>
+</button>
+    <div class='modal__container__video'>
+      <iframe class='video__modal' src='https://www.youtube.com/embed/${trailerKey}'frameborder="0" allowfullscreen ></iframe>
+    </div>
+  
+`,
+    {
+      onShow: ModalCardTrailer => {
+        document.addEventListener('keydown', modalCloseVideo);
+        const closeBtnVideo = ModalCardTrailer.element().querySelector(
+          '.modal__close-button-video',
+        );
+        closeBtnVideo.addEventListener('click', modalCloseVideo);
+
+        function modalCloseVideo() {
+          ModalCardTrailer.close();
+          const x = document.querySelector('.basicLightbox');
+          x.style.removeProperty('background-size');
+          x.style.removeProperty('background-image');
+          x.style.removeProperty('animation');
+        }
+      },
+      onClose: ModalCardTrailer => {
+        //разрешает скролл страницы при закрытии модалки (visible - значение, принятое по умолчанию)
+        const x = document.querySelector('.basicLightbox');
+        x.style.removeProperty('background-size');
+        x.style.removeProperty('background-image');
+        x.style.removeProperty('animation');
+        const modalCloseBtn = document.querySelector('.modal__close-button');
+        modalCloseBtn.style.color = '#ff6b08';
+      },
+    },
+  );
   ModalCardTrailer.show();
 }
 
@@ -176,4 +229,13 @@ function SecretModal(e) {
       standardBackdrop = true;
     }
   }
+}
+
+function SecretVideo(e) {
+  const x = document.querySelector('.basicLightbox');
+  const modalCloseBtn = document.querySelector('.modal__close-button');
+  const Url = e.currentTarget.dataset.img;
+  x.style.backgroundSize = 'cover';
+  modalCloseBtn.style.color = '#ffffff';
+  x.style.backgroundImage = `url(${Url})`;
 }

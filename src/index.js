@@ -11,7 +11,8 @@ import onSearch from './js/onSearch';
 import './js/modal-card';
 import './js/spinner';
 import UpcomingCollectionEngine from './js/slider';
-import './js/filter/genres-filter';
+// import './js/filter/genres-filter';
+import onHomeBtn from './js/header';
 //=========== library test imports ============
 // import onLibraryWachedBtm from './js/library';
 // import onLibraryQueueBtn from './js/library';

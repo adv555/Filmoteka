@@ -1,5 +1,9 @@
 import refs from './refs';
-import { notice, error } from '@pnotify/core';
+import {
+  emptyLibraryNotice,
+  emptyWatchedStoragedNotice,
+  emptyQueueStoragedNotice,
+} from './notification';
 //============== Костина сохранненная разметка Олиной картички===========
 import { valueLocalStorage as valueForLocalStorage } from './modal-card';
 import moviesApiService from '../index.js';
@@ -13,24 +17,17 @@ export let localStorrageData = {
 refs.myLibraryLink.addEventListener('click', onLibraryBtn);
 refs.watchedBtn.addEventListener('click', onLibraryWachedBtm);
 refs.queueBtn.addEventListener('click', onLibraryQueueBtn);
-// refs.homeBtn.addEventListener('click', onHomeBtn);
 
 function onLibraryWachedBtm() {
+  let queueFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('queue-films'));
   let watchedFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('watched-films'));
   if (watchedFilmsIdInLocalStorage === null || watchedFilmsIdInLocalStorage.length === 0) {
-    // refs.gallery.innerHTML = '';
-    // noticeMessage.notice();
-
     onLibraryQueueBtn();
-    refs.watchedBtn.disabled = true;
+    emptyWatchedStoragedNotice();
   } else {
     renderWatchedFilmStorage();
     refs.watchedBtn.classList.add('hero-buttons__btn--active');
     refs.queueBtn.classList.remove('hero-buttons__btn--active');
-    refs.watchedBtn.disabled = true;
-    if (queueFilmsIdInLocalStorage === null || queueFilmsIdInLocalStorage.length === 0) {
-      refs.queueBtn.disabled = true;
-    } else refs.queueBtn.disabled = false;
   }
 }
 
@@ -38,21 +35,21 @@ function onLibraryQueueBtn() {
   let queueFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('queue-films'));
   let watchedFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('watched-films'));
   if (queueFilmsIdInLocalStorage === null || queueFilmsIdInLocalStorage.length === 0) {
-    if (watchedFilmsIdInLocalStorage === null || watchedFilmsIdInLocalStorage.length === 0) {
-      noticeMessage.error();
-      refs.watchedBtn.disabled = true;
-      refs.queueBtn.disabled = true;
+    if (refs.watchedBtn.classList.contains('hero-buttons__btn--active')) {
+      emptyQueueStoragedNotice();
     }
-    refs.queueBtn.disabled = true;
+    if (watchedFilmsIdInLocalStorage === null || watchedFilmsIdInLocalStorage.length === 0) {
+      refs.gallery.innerHTML = '';
+      emptyLibraryNotice();
+      refs.watchedBtn.classList.remove('hero-buttons__btn--active');
+      refs.queueBtn.classList.remove('hero-buttons__btn--active');
+    }
   } else {
     renderQueueFilmStorage();
-
-    refs.watchedBtn.disabled = true;
-    refs.queueBtn.disabled = false;
+    // refs.queueBtn.disabled = false;
 
     refs.watchedBtn.classList.remove('hero-buttons__btn--active');
     refs.queueBtn.classList.add('hero-buttons__btn--active');
-    noticeMessage.notice();
   }
 }
 

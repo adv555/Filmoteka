@@ -5,16 +5,14 @@ import { insertContentTpl, clearContainer, createNotice, createNotice404 } from 
 import debounce from 'lodash.debounce';
 import placeholder from './spinner';
 import errorTpl from '../templates/error-not-found-film.hbs';
-
+// import { addFilterListeners, removeFilterListeners } from './filter/genres-filter';
 const moviesApiService = new MoviesApiService();
 moviesApiService.fetchTrending().then(createGalleryMarkup).catch(console.log);
 export default moviesApiService; /////////////////////
 
 // =========== listeners
 refs.searchInput.addEventListener('input', debounce(onSearch, 500));
-
 // =========== on Search
-
 let searchQuery = '';
 
 function onSearch(e) {
@@ -25,7 +23,6 @@ function onSearch(e) {
 
   placeholder.spinner.show();
   refs.pagination.classList.remove('is-hidden');
-
 
   // проверка если инпут пустой
   if (moviesApiService.query.length == 0) {

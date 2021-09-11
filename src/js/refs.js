@@ -30,7 +30,11 @@ const removePagination = document.querySelector('.remove-pagination');
 const libraryBtnlist = document.querySelector('.hero-buttons');
 const heroDynamicContainer = document.querySelector('.hero__dynamic-container');
 const heroBackgroundContainer = document.querySelector('.js-container-hero-bg');
-
+const filterWrapper = document.querySelector('.js-filter-wrapper');
+const genresFilter = document.querySelector('.js-genres-filter');
+const filterChooseBtn = document.querySelector('.js-choose-btn');
+const filterHideBtn = document.querySelector('.js-hide-btn');
+const filterResetBtn = document.querySelector('.js-reset-btn');
 
 export default {
   searchForm,
@@ -57,4 +61,9 @@ export default {
   libraryBtnlist,
   heroDynamicContainer,
   heroBackgroundContainer,
+  filterWrapper,
+  genresFilter,
+  filterChooseBtn,
+  filterHideBtn,
+  filterResetBtn,
 };

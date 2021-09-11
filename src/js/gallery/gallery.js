@@ -59,7 +59,9 @@ function changePage(currentPage) {
     block: 'start',
   });
   moviesApiService.setPage(currentPage);
-  if (moviesApiService.query === '')
-    moviesApiService.fetchTrending().then(createGalleryMarkup).catch(console.log);
-  else moviesApiService.fetchMoviesBySearch().then(createGalleryMarkup).catch(console.log);
+  if (moviesApiService.query !== '')
+    moviesApiService.fetchMoviesBySearch().then(createGalleryMarkup).catch(console.log);
+  else if (moviesApiService.genres !== '')
+    moviesApiService.fetchMoviesByGenre().then(createGalleryMarkup).catch(console.log);
+  else moviesApiService.fetchTrending().then(createGalleryMarkup).catch(console.log);
 }

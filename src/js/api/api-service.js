@@ -12,6 +12,7 @@ export default class MoviesApiService {
     this.searchQuery = '';
     this.page = 1;
     this.language = 'en-US';
+    this.genres = '';
   }
 
   //========= скоро на экранах ======== //
@@ -27,6 +28,7 @@ export default class MoviesApiService {
 
   // ======== фыльмы в тренде ======== //
   fetchTrending() {
+    this.genres = '';
     const url = `${TRENDING_URL}&language=${this.language}&page=${this.page}`;
 
     return fetch(url).then(response => response.json());
@@ -47,13 +49,16 @@ export default class MoviesApiService {
     return fetch(url).then(response => response.json());
   }
 
-  fetchMoviesByGenre(genreId) {
+  fetchMoviesByGenre(genreId = this.genres) {
+    this.query = '';
     const searchParams = new URLSearchParams({
       api_key: API_KEY,
       with_genres: genreId,
+      page: this.page,
     });
 
-    return fetch(`${BASE_URL}discover/movie?${searchParams}`).then(response => response.json());
+    return fetch(`${BASE_URL}/discover/movie?${searchParams}`).then(response => response.json());
+    // https://api.themoviedb.org/3/discover/movie?api_key=3d673b2d8e40eafc68577fae5a6a1f4b&with_genres=28,12
   }
 
   // ======== поиск фильмов ======== //
@@ -75,7 +80,7 @@ export default class MoviesApiService {
     //   query: this.searchQuery,
     //   page: this.page,
     // });
-
+    this.genres = '';
     return fetch(
       `${MOVIE_BY_SEARCH}&query=${this.searchQuery}&language=${this.language}&page=${this.page}`,
     ).then(response => response.json());

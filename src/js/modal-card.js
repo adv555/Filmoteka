@@ -4,14 +4,7 @@ import tplModalCard from '../templates/modal-card.hbs';
 import refs from './refs';
 
 import cliSpinners from 'cli-spinners';
-import {
-  onAddWachedBtm,
-  onAddQueueBtn,
-  reloadLocalStorage,
-  localStorrageData,
-  renderWatchedFilmStorage,
-  renderQueueFilmStorage,
-} from './library';
+import { onAddWachedBtm, onAddQueueBtn } from './library';
 
 // экземпляр класа для получения API
 const moviesApiService = new MoviesApiService();
@@ -118,14 +111,14 @@ function addModal(dataMovie) {
       }
       if (queueFilmsIdInLocalStorage !== null && watchedFilmsIdInLocalStorage.length !== 0) {
         //Проверка на наличие id фильма в localeStorage для кнопки Watch Queue
-      }
-      if (queueFilmsIdInLocalStorage !== null && queueFilmsIdInLocalStorage.length !== 0) {
         if (queueFilmsIdInLocalStorage.map(film => film.id).includes(id)) {
           //Ставит кнопке клас и меняет текст
           addQueueBtn.innerText = 'AREMOVE FROM WATCHED';
           addQueueBtn.classList.add('modal__button-hover');
+          return;
         }
       }
+
       //закрытие через клик на крестик
       function modalClose() {
         ModalCard.close();
@@ -142,15 +135,6 @@ function addModal(dataMovie) {
     onClose: ModlCard => {
       //разрешает скролл страницы при закрытии модалки (visible - значение, принятое по умолчанию)
       document.body.style.overflow = 'visible';
-      reloadLocalStorage();
-      if (refs.myLibraryLink.classList.contains('site-nav__button--active')) {
-        if (refs.watchedBtn.classList.contains('hero-buttons__btn--active')) {
-          renderWatchedFilmStorage();
-        }
-        if (refs.queueBtn.classList.contains('hero-buttons__btn--active')) {
-          renderQueueFilmStorage();
-        }
-      }
     },
   });
 

@@ -5,7 +5,7 @@ import { valueLocalStorage as valueForLocalStorage } from './modal-card';
 import moviesApiService from '../index.js';
 import createGalleryMarkup from '../js/gallery/gallery.js';
 
-export let localStorrageData = {
+export const localStorrageData = {
   watchedFilmStorage: JSON.parse(localStorage.getItem('watched-films')),
   queueFilmStorage: JSON.parse(localStorage.getItem('queue-films')),
 };
@@ -17,7 +17,7 @@ refs.queueBtn.addEventListener('click', onLibraryQueueBtn);
 
 function onLibraryWachedBtm() {
   let watchedFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('watched-films'));
-  if (watchedFilmsIdInLocalStorage === null || watchedFilmsIdInLocalStorage.length === 0) {
+  if (watchedFilmsIdInLocalStorage === null) {
     refs.gallery.innerHTML = '';
     noticeMessage.notice();
   } else renderWatchedFilmStorage();
@@ -30,7 +30,7 @@ function onLibraryWachedBtm() {
 
 function onLibraryQueueBtn() {
   let queueFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('queue-films'));
-  if (queueFilmsIdInLocalStorage === null || queueFilmsIdInLocalStorage.length === 0) {
+  if (queueFilmsIdInLocalStorage === null) {
     refs.gallery.innerHTML = '';
     noticeMessage.notice();
   } else renderQueueFilmStorage();
@@ -69,7 +69,6 @@ export function onAddWachedBtm(event) {
   }
 
   // updateBtnState(valueForLocalStorage.id);
-  reloadLocalStorage();
 }
 
 export function onAddQueueBtn(event) {
@@ -90,22 +89,14 @@ export function onAddQueueBtn(event) {
     elevent.classList.remove('modal__button-hover');
   }
   // updateBtnState(valueForLocalStorage.id);
-  reloadLocalStorage();
 }
 
 export function onLibraryBtn() {
-  refs.sliderSection.classList.add('visually-hidden');
-  refs.myLibraryLink.classList.add('site-nav__button--active');
-  refs.homeLink.classList.remove('site-nav__button--active');
-  refs.removePagination.classList.add('visually-hidden');
-  refs.libraryBtnlist.classList.remove('visually-hidden');
-  refs.searchForm.classList.add('visually-hidden');
-  refs.filterSelect.classList.add('visually-hidden');
-
-  refs.headerSection.classList.remove('header__container--home-bg');
-  refs.headerSection.classList.add('header__container--my-library-bg');
-
-  reloadLocalStorage();
+  refs.sliderSection.remove();
+  refs.removePagination.classList.add('display-none');
+  refs.libraryBtnlist.classList.remove('display-none');
+  refs.searchForm.remove();
+  refs.filterSelect.remove();
   onLibraryWachedBtm();
 }
 
@@ -135,12 +126,12 @@ export function onLibraryBtn() {
 //   }
 // }
 
-export function renderWatchedFilmStorage() {
+function renderWatchedFilmStorage() {
   refs.gallery.innerHTML = localStorrageData.watchedFilmStorage
     .map(film => film['markup'])
     .join(' ');
 }
-export function renderQueueFilmStorage() {
+function renderQueueFilmStorage() {
   refs.gallery.innerHTML = localStorrageData.queueFilmStorage.map(film => film['markup']).join(' ');
 }
 
@@ -169,10 +160,3 @@ class NoticeMessage {
 }
 
 const noticeMessage = new NoticeMessage();
-
-export function reloadLocalStorage() {
-  localStorrageData = {
-    watchedFilmStorage: JSON.parse(localStorage.getItem('watched-films')),
-    queueFilmStorage: JSON.parse(localStorage.getItem('queue-films')),
-  };
-}

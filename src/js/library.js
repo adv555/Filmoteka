@@ -18,28 +18,42 @@ refs.queueBtn.addEventListener('click', onLibraryQueueBtn);
 function onLibraryWachedBtm() {
   let watchedFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('watched-films'));
   if (watchedFilmsIdInLocalStorage === null || watchedFilmsIdInLocalStorage.length === 0) {
-    refs.gallery.innerHTML = '';
-    noticeMessage.notice();
-  } else renderWatchedFilmStorage();
+    // refs.gallery.innerHTML = '';
+    // noticeMessage.notice();
 
-  refs.watchedBtn.disabled = true;
-  refs.queueBtn.disabled = false;
-  refs.watchedBtn.classList.add('hero-buttons__btn--active');
-  refs.queueBtn.classList.remove('hero-buttons__btn--active');
+    onLibraryQueueBtn();
+    refs.watchedBtn.disabled = true;
+  } else {
+    renderWatchedFilmStorage();
+    refs.watchedBtn.classList.add('hero-buttons__btn--active');
+    refs.queueBtn.classList.remove('hero-buttons__btn--active');
+    refs.watchedBtn.disabled = true;
+    if (queueFilmsIdInLocalStorage === null || queueFilmsIdInLocalStorage.length === 0) {
+      refs.queueBtn.disabled = true;
+    } else refs.queueBtn.disabled = false;
+  }
 }
 
 function onLibraryQueueBtn() {
   let queueFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('queue-films'));
+  let watchedFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('watched-films'));
   if (queueFilmsIdInLocalStorage === null || queueFilmsIdInLocalStorage.length === 0) {
-    refs.gallery.innerHTML = '';
+    if (watchedFilmsIdInLocalStorage === null || watchedFilmsIdInLocalStorage.length === 0) {
+      noticeMessage.error();
+      refs.watchedBtn.disabled = true;
+      refs.queueBtn.disabled = true;
+    }
+    refs.queueBtn.disabled = true;
+  } else {
+    renderQueueFilmStorage();
+
+    refs.watchedBtn.disabled = true;
+    refs.queueBtn.disabled = false;
+
+    refs.watchedBtn.classList.remove('hero-buttons__btn--active');
+    refs.queueBtn.classList.add('hero-buttons__btn--active');
     noticeMessage.notice();
-  } else renderQueueFilmStorage();
-
-  refs.watchedBtn.disabled = false;
-  refs.queueBtn.disabled = true;
-
-  refs.watchedBtn.classList.remove('hero-buttons__btn--active');
-  refs.queueBtn.classList.add('hero-buttons__btn--active');
+  }
 }
 
 export function onAddWachedBtm(event) {
@@ -148,21 +162,20 @@ class NoticeMessage {
   constructor() {}
   notice() {
     notice({
-      // title: 'Attention',
-      text: 'Your Library is empty',
+      text: 'Your Watched list is empty',
       width: '300px',
       minHeight: '15px',
-      delay: 2000,
+      delay: 1000,
       addClass: 'error',
     });
   }
   error() {
     error({
-      title: 'Error',
-      text: 'No matchs found!',
+      // title: 'Error',
+      text: 'Your Library is empty',
       width: '300px',
       minHeight: '15px',
-      delay: 2000,
+      delay: 1000,
       addClass: 'error',
     });
   }

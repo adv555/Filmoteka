@@ -28,10 +28,59 @@ firebase.initializeApp(firebaseConfig);
 //======== v 9 beta
 // const firebaseApp = initializeApp(firebaseConfig);
 
-const db = firebase.firestore();
-const db2 = firebase.database();
+const db = firebase.database();
+const db2 = firebase.firestore();
 console.log(db);
 console.log(db2);
+
+export default class App {
+  constructor() {
+    this.state = {
+      email: '',
+      password: '',
+      hasAccount: false,
+    };
+  }
+  // регистрируем аккаунт юзера на firebase
+  createAccount() {
+    const { email, password } = this.state;
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(response => console.log(response))
+      // .then(response => this.state({ hasAccount:true}))
+      .catch(error => console.log(error));
+  }
+
+  // вход в существующий аккаунт юзера на firebase
+  signIn() {
+    const { email, password } = this.state;
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(response => console.log(response))
+      .catch(error => console.log(error));
+  }
+}
+
+// function onChange({ target: { value, id } }) {
+//   // console.log(e.target);
+//   // console.log(value, id);
+//   // e.preventDefault();
+//   this.state = {
+//     [id]: value,
+//   };
+//   console.log(this.state);
+// }
+
+// function onSubmit(e) {
+//   e.preventDefault();
+//   const email = e.currentTarget.elements.email.value;
+//   const password = e.currentTarget.elements.password.value;
+//   console.log(email, password);
+//   // console.dir(e.target);
+//   // console.log(e.currentTarget.elements.query.value);
+// }
 
 // export default class App {
 //   constructor(user) {
@@ -46,49 +95,6 @@ console.log(db2);
 //     return this.queue;
 //   }
 // }
-refs.userForm.addEventListener('input', onChange);
-refs.userForm.addEventListener('submit', onSubmit);
 
-export default class App {
-  constructor() {
-    this.state = {
-      email: '',
-      password: '',
-    };
-  }
-}
-
-function onChange({ target: { value, id } }) {
-  // console.log(e.target);
-  // console.log(value, id);
-  // e.preventDefault();
-  this.state = {
-    [id]: value,
-  };
-  console.log(this.state);
-}
-
-function onSubmit(e) {
-  e.preventDefault();
-  console.dir(e.currentTarget.elements);
-  console.dir(e.target);
-}
-
-// создаем аккаунт юзера на firebase
-function createAccount() {
-  const { email, password } = this.state;
-  firebase
-    .auth()
-    .createUserWithEmailAndPassword(email, password)
-    .then(data => console.log(data))
-    .catch(error => console.log(error));
-}
-
-function signIn() {
-  const { email, password } = this.state;
-  firebase
-    .auth()
-    .signInWithEmailAndPassword(email, password)
-    .then(data => console.log(data))
-    .catch(error => console.log(error));
-}
+// refs.userForm.addEventListener('input', onChange);
+// refs.userForm.addEventListener('submit', onSubmit);

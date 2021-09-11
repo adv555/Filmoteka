@@ -1,5 +1,5 @@
 .footer {
-  background-color: $light-grey-color;
+  background-color: $footer;
 }
 .footer .container {
   padding-left: 0;
@@ -14,13 +14,13 @@
   justify-content: center;
   align-items: center;
   height: 100px;
-  color: $dark-grey-color;
-  background-color: $light-grey-color;
+  color: $white-color;
+  background-color: $footer;
   @include font(400, 14px, 16.41px);
 }
 
 .footer__link {
-  color: $dark-grey-color;
+  color: $accent-line;
 }
 
 .dev-team {

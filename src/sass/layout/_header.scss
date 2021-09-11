@@ -38,9 +38,9 @@ header {
   // @include transition(transform);
 }
 
-.logo:focus {
-  // outline: 1px solid $accent-line;
-}
+// .logo:focus {
+//   // outline: 1px solid $accent-line;
+// }
 
 // .logo:hover {
 //   // transform: scale(1.1, 1.1);
@@ -93,9 +93,9 @@ header {
   // transition: outline $btn-duration $timing-function;
 }
 
-.site-nav__button:focus {
-  // outline: 1px solid $accent-line;
-}
+// .site-nav__button:focus {
+//   // outline: 1px solid $accent-line;
+// }
 
 .site-nav__button::after {
   content: '';

@@ -4,7 +4,14 @@ import tplModalCard from '../templates/modal-card.hbs';
 import refs from './refs';
 
 import cliSpinners from 'cli-spinners';
-import { onAddWachedBtm, onAddQueueBtn } from './library';
+import {
+  onAddWachedBtm,
+  onAddQueueBtn,
+  reloadLocalStorage,
+  localStorrageData,
+  renderWatchedFilmStorage,
+  renderQueueFilmStorage,
+} from './library';
 
 // экземпляр класа для получения API
 const moviesApiService = new MoviesApiService();
@@ -97,7 +104,6 @@ function addModal(dataMovie) {
       function can(e) {
         launchMovieTrailer(e);
         SecretVideo(e);
-
       }
 
       //Проверка на пустой ли объект
@@ -115,7 +121,6 @@ function addModal(dataMovie) {
           //Ставит кнопке клас и меняет текст
           addQueueBtn.innerText = 'AREMOVE FROM WATCHED';
           addQueueBtn.classList.add('modal__button-hover');
-          return;
         }
       }
 
@@ -135,6 +140,15 @@ function addModal(dataMovie) {
     onClose: ModlCard => {
       //разрешает скролл страницы при закрытии модалки (visible - значение, принятое по умолчанию)
       document.body.style.overflow = 'visible';
+      reloadLocalStorage();
+      if (refs.myLibraryLink.classList.contains('site-nav__button--active')) {
+        if (refs.watchedBtn.classList.contains('hero-buttons__btn--active')) {
+          renderWatchedFilmStorage();
+        }
+        if (refs.queueBtn.classList.contains('hero-buttons__btn--active')) {
+          renderQueueFilmStorage();
+        }
+      }
     },
   });
 

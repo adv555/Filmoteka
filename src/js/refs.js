@@ -1,16 +1,10 @@
-// export default function getRefs() {
-//   return {
-//     searchForm: document.querySelector('.search-form'),
-//   };
-// }
-
 const searchForm = document.querySelector('.search-form');
 const searchInput = document.querySelector('.js-search-field__input');
 const queueBtn = document.querySelector('button[data-hero="queue"]');
 const watchedBtn = document.querySelector('button[data-hero="watched"]');
 const trailerBtn = document.querySelector('.trailer-btn');
 const mainFrame = document.querySelector('.js-main-frame');
-const filterSelect = document.querySelector('.filter-select'); // filter
+const filterSelect = document.querySelector('.filter'); // filter
 const filterGenres = document.querySelector('#filter-Genres'); // filter
 const gallery = document.querySelector('.js-gallery');
 const logo = document.querySelector('.js-logo');
@@ -35,6 +29,7 @@ const genresFilter = document.querySelector('.js-genres-filter');
 const filterChooseBtn = document.querySelector('.js-choose-btn');
 const filterHideBtn = document.querySelector('.js-hide-btn');
 const filterResetBtn = document.querySelector('.js-reset-btn');
+const headerSection = document.querySelector('.header');
 
 export default {
   searchForm,
@@ -66,4 +61,5 @@ export default {
   filterChooseBtn,
   filterHideBtn,
   filterResetBtn,
+  headerSection,
 };

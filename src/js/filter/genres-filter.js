@@ -1,113 +1,122 @@
 import refs from '../refs';
 import moviesApiService from '../onSearch';
-import { insertContentTpl, clearContainer } from '../notification';
-import renderCards from '../../templates/gallery.hbs';
+// import { insertContentTpl, clearContainer } from '../notification';
+// import renderCards from '../../templates/gallery.hbs';
 import genresFiltersTpl from '../../templates/genres-filters.hbs';
-import errorTpl from '../../templates/error-not-found-film.hbs';
-// import createGalleryMarkup from '../gallery/gallery';
+// import errorTpl from '../../templates/error-not-found-film.hbs';
+import genres from '../../genres.json';
+import createGalleryMarkup from '../gallery/gallery';
 
-async function renderGenresFilters() {
-  const genres = await moviesApiService.fetchGenresList();
-  const genresMarkup = genresFiltersTpl(genres.genres);
-  refs.filterWrapper.innerHTML = genresMarkup;
-}
+refs.genresFilter.onclick = e => {
+  const id = e.target.dataset.id;
+  moviesApiService.genres = id;
+  moviesApiService.page = 1;
+  moviesApiService.fetchMoviesByGenre(id).then(createGalleryMarkup).catch(console.log);
+};
 
-async function onFilterClick(e) {
-  e.target.classList.toggle('checked');
-  const checkedLis = refs.genresFilter.querySelectorAll('li.checked');
-  const genresIds = [...checkedLis].map(li => li.dataset.id).join(',');
-  const { results: movies } = await moviesApiService.fetchMoviesByGenre(genresIds);
+const genresMarkup = genresFiltersTpl(genres);
+refs.genresFilter.innerHTML = genresMarkup;
 
-  if (movies.length === 0) {
-    // onHideBtnClick();
-    clearContainer(refs.gallery);
-    // refs.filterChooseBtn.classList.add('visually-hidden');
-    insertContentTpl(refs.gallery, errorTpl);
-    return;
-  }
+// async function renderGenresFilters() {
+//   const genres = await moviesApiService.fetchGenresList();
+// }
 
-  const genresListObj = await moviesApiService.fetchGenresList();
-  const genresList = genresListObj.genres;
+// async function onFilterClick(e) {
+//   e.target.classList.toggle('checked');
+//   const checkedLis = refs.genresFilter.querySelectorAll('li.checked');
+//   const genresIds = [...checkedLis].map(li => li.dataset.id).join(',');
+//   const { results: movies } = await moviesApiService.fetchMoviesByGenre(genresIds);
 
-  transformMoviesObjectFields(movies, genresList);
+//   if (movies.length === 0) {
+//     // onHideBtnClick();
+//     // clearContainer(refs.gallery);
+//     // refs.filterChooseBtn.classList.add('visually-hidden');
+//     insertContentTpl(refs.gallery, errorTpl);
+//     return;
+//   }
 
-  const popularMoviesMarkup = renderCards(movies);
-  refs.gallery.innerHTML = popularMoviesMarkup;
-}
+//   const genresListObj = await moviesApiService.fetchGenresList();
+//   const genresList = genresListObj.genres;
 
-function transformMoviesObjectFields(movies, genresList) {
-  movies.forEach(movie => {
-    movie.placeholder = !movie.poster_path ? true : false;
+//   transformMoviesObjectFields(movies, genresList);
 
-    if (movie.release_date != undefined) {
-      movie.release_date = movie.release_date.slice(0, 4);
-    }
+//   // const popularMoviesMarkup = renderCards(movies);
+//   refs.gallery.innerHTML = popularMoviesMarkup;
+// }
 
-    const genresIdsList = movie.genre_ids;
+// function transformMoviesObjectFields(movies, genresList) {
+//   movies.forEach(movie => {
+//     movie.placeholder = !movie.poster_path ? true : false;
 
-    genresIdsList.forEach((genreId, index, array) => {
-      const genresListItem = genresList.find(genre => genre.id === genreId);
-      const idx = genresList.indexOf(genresListItem);
-      array[index] = genresList[idx].name;
-    });
-    movie.genre_ids = genresIdsList.join(', ');
-  });
-}
+//     if (movie.release_date != undefined) {
+//       movie.release_date = movie.release_date.slice(0, 4);
+//     }
 
-function showResetBtn(e) {
-  refs.filterResetBtn.classList.remove('visually-hidden');
-}
+//     const genresIdsList = movie.genre_ids;
 
-function onChooseBtnClick(e) {
-  e.target.classList.add('visually-hidden');
-  refs.filterHideBtn.classList.remove('visually-hidden');
-  refs.genresFilter.classList.remove('visually-hidden');
-}
+//     genresIdsList.forEach((genreId, index, array) => {
+//       const genresListItem = genresList.find(genre => genre.id === genreId);
+//       const idx = genresList.indexOf(genresListItem);
+//       array[index] = genresList[idx].name;
+//     });
+//     movie.genre_ids = genresIdsList.join(', ');
+//   });
+// }
 
-function onHideBtnClick(e) {
-  refs.filterChooseBtn.classList.remove('visually-hidden');
-  refs.filterHideBtn.classList.add('visually-hidden');
-  refs.filterResetBtn.classList.add('visually-hidden');
-  refs.genresFilter.addEventListener('click', showResetBtn, { once: true });
-  refs.genresFilter.classList.add('visually-hidden');
-  uncheckClass();
-}
+// function showResetBtn(e) {
+//   refs.filterResetBtn.classList.remove('visually-hidden');
+// }
 
-function onResetBtnClick(e) {
-  uncheckClass();
-  refs.genresFilter.addEventListener('click', showResetBtn, { once: true });
-  e.target.classList.add('visually-hidden');
-}
+// function onChooseBtnClick(e) {
+//   e.target.classList.add('visually-hidden');
+//   refs.filterHideBtn.classList.remove('visually-hidden');
+//   refs.genresFilter.classList.remove('visually-hidden');
+// }
 
-function uncheckClass() {
-  const checkedList = refs.genresFilter.querySelectorAll('.checked');
-  if (checkedList) {
-    checkedList.forEach(li => li.classList.toggle('checked'));
-  }
-}
+// function onHideBtnClick(e) {
+//   // refs.filterChooseBtn.classList.remove('visually-hidden');
+//   // refs.filterHideBtn.classList.add('visually-hidden');
+//   // refs.filterResetBtn.classList.add('visually-hidden');
+//   // refs.genresFilter.addEventListener('click', showResetBtn, { once: true });
+//   // refs.genresFilter.classList.add('visually-hidden');
+//   uncheckClass();
+// }
 
-async function addFilterListeners() {
-  await renderGenresFilters();
-  refs.genresFilter = document.querySelector('.js-genres-filter');
-  refs.genresFilter.addEventListener('click', onFilterClick);
-  refs.genresFilter.addEventListener('click', showResetBtn, { once: true });
-  refs.filterChooseBtn = document.querySelector('.js-choose-btn');
-  refs.filterHideBtn = document.querySelector('.js-hide-btn');
-  refs.filterResetBtn = document.querySelector('.js-reset-btn');
-  refs.filterChooseBtn.addEventListener('click', onChooseBtnClick);
-  refs.filterHideBtn.addEventListener('click', onHideBtnClick);
-  refs.filterResetBtn.addEventListener('click', onResetBtnClick);
-}
+// function onResetBtnClick(e) {
+//   uncheckClass();
+//   refs.genresFilter.addEventListener('click', showResetBtn, { once: true });
+//   e.target.classList.add('visually-hidden');
+// }
 
-function removeFilterListeners() {
-  onHideBtnClick();
-  refs.genresFilter.removeEventListener('click', onFilterClick);
-  refs.genresFilter.removeEventListener('click', showResetBtn);
-  refs.filterChooseBtn.removeEventListener('click', onChooseBtnClick);
-  refs.filterHideBtn.removeEventListener('click', onHideBtnClick);
-  refs.filterResetBtn.removeEventListener('click', onResetBtnClick);
-}
-addFilterListeners();
-removeFilterListeners();
+// function uncheckClass() {
+//   // const checkedList = refs.genresFilter.querySelectorAll('.checked');
+//   // if (checkedList) {
+//   //   checkedList.forEach(li => li.classList.toggle('checked'));
+//   // }
+// }
 
-// export { addFilterListeners, removeFilterListeners };
+// async function addFilterListeners() {
+//   await renderGenresFilters();
+//   refs.genresFilter = document.querySelector('.js-genres-filter');
+//   refs.genresFilter.addEventListener('click', onFilterClick);
+//   refs.genresFilter.addEventListener('click', showResetBtn, { once: true });
+//   refs.filterChooseBtn = document.querySelector('.js-choose-btn');
+//   refs.filterHideBtn = document.querySelector('.js-hide-btn');
+//   refs.filterResetBtn = document.querySelector('.js-reset-btn');
+//   refs.filterChooseBtn.addEventListener('click', onChooseBtnClick);
+//   refs.filterHideBtn.addEventListener('click', onHideBtnClick);
+//   refs.filterResetBtn.addEventListener('click', onResetBtnClick);
+// }
+
+// function removeFilterListeners() {
+//   onHideBtnClick();
+//   // refs.genresFilter.removeEventListener('click', onFilterClick);
+//   // refs.genresFilter.removeEventListener('click', showResetBtn);
+//   // refs.filterChooseBtn.removeEventListener('click', onChooseBtnClick);
+//   // refs.filterHideBtn.removeEventListener('click', onHideBtnClick);
+//   // refs.filterResetBtn.removeEventListener('click', onResetBtnClick);
+// }
+// addFilterListeners();
+// removeFilterListeners();
+
+// // export { addFilterListeners, removeFilterListeners };

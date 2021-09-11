@@ -35,6 +35,7 @@ const genresFilter = document.querySelector('.js-genres-filter');
 const filterChooseBtn = document.querySelector('.js-choose-btn');
 const filterHideBtn = document.querySelector('.js-hide-btn');
 const filterResetBtn = document.querySelector('.js-reset-btn');
+const headerSection = document.querySelector('.header');
 
 export default {
   searchForm,
@@ -66,4 +67,5 @@ export default {
   filterChooseBtn,
   filterHideBtn,
   filterResetBtn,
+  headerSection,
 };

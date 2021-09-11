@@ -11,11 +11,12 @@ import onSearch from './js/onSearch';
 import './js/modal-card';
 import './js/spinner';
 import UpcomingCollectionEngine from './js/slider';
-import './js/filter/genres-filter';
+// import './js/filter/genres-filter';
 //=========== library test imports ============
 // import onLibraryWachedBtm from './js/library';
 // import onLibraryQueueBtn from './js/library';
 import onLibraryBtn from './js/library';
+import onHomeBtn from './js/header';
 import { defaults } from 'lodash';
 // import onAddWachedBtm from './js/library';
 // import onAddQueueBtn from './js/library';

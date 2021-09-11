@@ -95,13 +95,15 @@ function addModal(dataMovie) {
       ModalWindow.addEventListener('click', SecretModal);
 
       //Проверка на пустой ли объект
-      if (watchedFilmsIdInLocalStorage !== null) {
+      if (watchedFilmsIdInLocalStorage !== null && watchedFilmsIdInLocalStorage.length !== 0) {
         //Проверка на наличие id фильма в localeStorage для кнопки Watch
         if (watchedFilmsIdInLocalStorage.map(film => film.id).includes(id)) {
           //Ставит кнопке клас и меняет текст
           addWatchedBtn.innerText = 'REMOVE FROM WATCHED';
           addWatchedBtn.classList.add('modal__button-hover');
         }
+      }
+      if (queueFilmsIdInLocalStorage !== null && watchedFilmsIdInLocalStorage.length !== 0) {
         //Проверка на наличие id фильма в localeStorage для кнопки Watch Queue
         if (queueFilmsIdInLocalStorage.map(film => film.id).includes(id)) {
           //Ставит кнопке клас и меняет текст

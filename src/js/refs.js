@@ -1,9 +1,3 @@
-// export default function getRefs() {
-//   return {
-//     searchForm: document.querySelector('.search-form'),
-//   };
-// }
-
 const searchForm = document.querySelector('.search-form');
 const searchInput = document.querySelector('.js-search-field__input');
 const queueBtn = document.querySelector('button[data-hero="queue"]');

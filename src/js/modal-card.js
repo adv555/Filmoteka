@@ -97,6 +97,7 @@ function addModal(dataMovie) {
       function can(e) {
         launchMovieTrailer(e);
         SecretVideo(e);
+
       }
 
       //Проверка на пустой ли объект
@@ -220,6 +221,7 @@ function SecretVideo(e) {
   const x = document.querySelector('.basicLightbox');
   const modalCloseBtn = document.querySelector('.modal__close-button');
   const Url = e.currentTarget.dataset.img;
+  x.style.backgroundSize = 'cover';
   modalCloseBtn.style.color = '#ffffff';
   x.style.backgroundImage = `url(${Url})`;
 }

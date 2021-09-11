@@ -228,11 +228,13 @@
     &__movie-poster {
       width: 450px;
       max-height: 480px;
+      cursor: url('../images/SVG/film.svg'), pointer;
+
     }
 
-    &__movie-poster-cursor {
-      cursor: url('../images/SVG/film.svg'), pointer;
-    }
+    // &__movie-poster-cursor {
+    //   cursor: url('../images/SVG/film.svg'), pointer;
+    // }
     &__title-movie {
       font-size: 30px;
       line-height: 35px;

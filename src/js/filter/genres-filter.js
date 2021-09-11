@@ -1,15 +1,11 @@
-import refs from '../refs';
 import moviesApiService from '../onSearch';
-// import { insertContentTpl, clearContainer } from '../notification';
-// import renderCards from '../../templates/gallery.hbs';
 import genresFiltersTpl from '../../templates/genres-filters.hbs';
-// import errorTpl from '../../templates/error-not-found-film.hbs';
 import genres from '../../genres.json';
 import createGalleryMarkup from '../gallery/gallery';
 
+const genresFilter = document.querySelector('.js-genres-filter');
 const filterBtnSearchRef = document.querySelector('.filter-btn-search');
 const filterBtnResetRef = document.querySelector('.filter-btn-reset');
-// console.log(filterBtnSearch);
 let arrId = [];
 
 filterBtnSearchRef.addEventListener('click', filterGenres);
@@ -26,20 +22,18 @@ function filterGenres(e) {
   moviesApiService.fetchMoviesByGenre(arrId.join(',')).then(createGalleryMarkup).catch(console.log);
 }
 
-refs.genresFilter.onclick = e => {
-  console.log(e);
+genresFilter.onclick = e => {
   const id = e.target.dataset.id;
   if (!id) return;
   moviesApiService.genres = id;
   moviesApiService.page = 1;
-  // moviesApiService.fetchMoviesByGenre(id).then(createGalleryMarkup).catch(console.log);
   if (!arrId.includes(id)) arrId.push(id);
   else arrId.splice(arrId.indexOf(id), 1);
   console.log(arrId);
 };
 
 const genresMarkup = genresFiltersTpl(genres);
-refs.genresFilter.innerHTML = genresMarkup;
+genresFilter.innerHTML = genresMarkup;
 
 // async function renderGenresFilters() {
 //   const genres = await moviesApiService.fetchGenresList();

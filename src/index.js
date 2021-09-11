@@ -10,6 +10,7 @@ import onTeamModalShow from './js/team-lightbox';
 import onSearch from './js/onSearch';
 import './js/modal-card';
 import './js/spinner';
+import './js/filter/genres-filter';
 import UpcomingCollectionEngine from './js/slider';
 // import './js/filter/genres-filter';
 import onHomeBtn from './js/header';

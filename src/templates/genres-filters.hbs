@@ -1,9 +1,12 @@
+{{#each this}}
 
-  {{#each this}}
-   
-
-    <div class="container__filter">
-      <input class="filter__checkbox" type="checkbox" id="{{name}}" data-id='{{id}}'   >
-      <label class="filter__label" for="{{name}}">{{name}}</label>
-    </div>
-  {{/each}}
+  <div class='container__filter'>
+    {{!-- <input class='filter__checkbox checkbox' type='checkbox' id='{{name}}' data-id='{{id}}' /> --}}
+    <label class='filter__label genres-filters__item label' for='{{name}}'><input
+        class='filter__checkbox checkbox'
+        type='checkbox'
+        id='{{name}}'
+        data-id='{{id}}'
+      /><span class='icon'></span>{{name}}</label>
+  </div>
+{{/each}}

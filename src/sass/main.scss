@@ -5,6 +5,8 @@
 
 @import './utils/variables';
 @import './utils/mixins';
+@import './utils/visualy-hidden';
+@import './utils/is-hidden';
 
 @import './base/common';
 @import './base/container';
@@ -17,6 +19,7 @@
 @import './components/theme-switcher';
 @import './components/lang-switcher';
 @import './components/modal-card';
+@import './components/auth';
 
 @import './layout/header';
 @import './layout/hero';

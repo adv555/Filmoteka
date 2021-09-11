@@ -1,6 +1,6 @@
 import './sass/main.scss';
 import refs from './js/refs';
-import backToTopBtn from './js/back-to-top-btn';
+import './js/back-to-top-btn';
 import MoviesApiService from './js/api/api-service';
 import createGalleryMarkup from './js/gallery/gallery.js';
 import 'material-icons';
@@ -10,8 +10,9 @@ import onTeamModalShow from './js/team-lightbox';
 import onSearch from './js/onSearch';
 import './js/modal-card';
 import './js/spinner';
-import renderUpcomingMovies from './js/slider'
-
+import renderUpcomingMovies from './js/slider';
+import './js/auth/auth';
+import './js/auth/firebase-storage';
 
 //=========== library test imports ============
 import onLibraryWachedBtm from './js/library';
@@ -22,18 +23,16 @@ import onAddQueueBtn from './js/library';
 
 //===============================================
 
-
 // =========== back-to-top-button
-backToTopBtn();
+// backToTopBtn();
 // =========== filter
-filterFilm();
+// filterFilm();
 
 // =========== new class instance
 const moviesApiService = new MoviesApiService();
 
-// =========== fetch content for slider 
-moviesApiService.fetchUpcomingMovies()
-  .then((data) => renderUpcomingMovies(data))
+// =========== fetch content for slider
+moviesApiService.fetchUpcomingMovies().then(data => renderUpcomingMovies(data));
 
 // // =========== test by Popular / Genres / By Id
 // moviesApiService.fetchPopularMovies().then(data => console.log(data));
@@ -66,3 +65,5 @@ refs.teamLink.addEventListener('click', onTeamModalShow);
 // }
 
 // moviesApiService.fetchMoviesBySearch().then(createGalleryMarkup).catch(console.log);
+
+//========= auth

@@ -1,11 +1,27 @@
-<nav class="navigation">
-  <a class="logo link" ></a>Filmoteka</a>
-  <ul class="navigation-list list">
-    <li class="navigation__item current-link">
-      <button type="button">HOME</button>
-    </li>
-    <li class="navigation__item">
-      <button type="button">MY LIBRARY</button>
-    </li>
-  </ul>
-</nav>
+<div class="logo-wrapper">
+  <a class="logo link" href="./index" aria-label="logo of filmoteka">
+    <svg class="logo__icon" width="24" height="24">
+      <use href="#"></use>
+    </svg>
+    <span class="logo__text">Filmoteka </span>
+  </a>
+</div>
+<div class="nav-wrapper">
+  <nav class="navigation">
+    <ul class="navigation-list list">
+      <li class="navigation__item current-link">
+        <button type="button">HOME</button>
+      </li>
+      <li class="navigation__item">
+        <button type="button">MY LIBRARY</button>
+      </li>
+    </ul>
+  </nav>
+  <div class="user-box">
+    <button class="header-button user-box__signup" type="button">Sign up</button>
+    <button class="header-button user-box__signin" type="button">Sign in</button>
+    <button class="header-button user-box__signin logout-js is-hidden" type="button">
+      Log out
+    </button>
+  </div>
+</div>

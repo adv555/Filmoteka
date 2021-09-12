@@ -7,8 +7,6 @@ import moviesApiService from '../onSearch';
 
 export default function createGalleryMarkup(data) {
   moviesApiService.totalResults = data.total_results;
-  // console.log(data);
-
   let cardList = [];
   cardList = data.results.map(card => {
     const genreList = [];

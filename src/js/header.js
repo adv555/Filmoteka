@@ -5,6 +5,7 @@ refs.homeLink.addEventListener('click', onHomeBtn);
 
 export function onHomeBtn() {
   console.log('Home Btn');
+  refs.myLibraryNotice.classList.add('visually-hidden');
   refs.homeLink.classList.add('site-nav__button--active');
   refs.myLibraryLink.classList.remove('site-nav__button--active');
 

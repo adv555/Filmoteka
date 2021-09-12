@@ -1,5 +1,9 @@
 import refs from './refs';
-import { notice, error } from '@pnotify/core';
+import {
+  emptyLibraryNotice,
+  emptyWatchedStoragedNotice,
+  emptyQueueStoragedNotice,
+} from './notification';
 //============== Костина сохранненная разметка Олиной картички===========
 import { valueLocalStorage as valueForLocalStorage } from './modal-card';
 import moviesApiService from '../index.js';
@@ -13,46 +17,53 @@ export let localStorrageData = {
 refs.myLibraryLink.addEventListener('click', onLibraryBtn);
 refs.watchedBtn.addEventListener('click', onLibraryWachedBtm);
 refs.queueBtn.addEventListener('click', onLibraryQueueBtn);
-// refs.homeBtn.addEventListener('click', onHomeBtn);
 
 function onLibraryWachedBtm() {
+  let queueFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('queue-films'));
   let watchedFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('watched-films'));
+  if (
+    (watchedFilmsIdInLocalStorage === null || watchedFilmsIdInLocalStorage.length === 0) &&
+    (queueFilmsIdInLocalStorage === null || queueFilmsIdInLocalStorage.length === 0)
+  ) {
+    console.log('везде нули');
+    refs.myLibraryNotice.classList.remove('visually-hidden');
+    refs.gallery.innerHTML = '';
+    return;
+  }
   if (watchedFilmsIdInLocalStorage === null || watchedFilmsIdInLocalStorage.length === 0) {
-    // refs.gallery.innerHTML = '';
-    // noticeMessage.notice();
-
     onLibraryQueueBtn();
-    refs.watchedBtn.disabled = true;
+    emptyWatchedStoragedNotice();
   } else {
     renderWatchedFilmStorage();
     refs.watchedBtn.classList.add('hero-buttons__btn--active');
     refs.queueBtn.classList.remove('hero-buttons__btn--active');
-    refs.watchedBtn.disabled = true;
-    if (queueFilmsIdInLocalStorage === null || queueFilmsIdInLocalStorage.length === 0) {
-      refs.queueBtn.disabled = true;
-    } else refs.queueBtn.disabled = false;
   }
 }
 
 function onLibraryQueueBtn() {
   let queueFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('queue-films'));
   let watchedFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('watched-films'));
-  if (queueFilmsIdInLocalStorage === null || queueFilmsIdInLocalStorage.length === 0) {
-    if (watchedFilmsIdInLocalStorage === null || watchedFilmsIdInLocalStorage.length === 0) {
-      noticeMessage.error();
-      refs.watchedBtn.disabled = true;
-      refs.queueBtn.disabled = true;
-    }
-    refs.queueBtn.disabled = true;
+  if (
+    (watchedFilmsIdInLocalStorage === null || watchedFilmsIdInLocalStorage.length === 0) &&
+    (queueFilmsIdInLocalStorage === null || queueFilmsIdInLocalStorage.length === 0)
+  ) {
+    console.log('везде нули');
+    refs.myLibraryNotice.classList.remove('visually-hidden');
+    refs.gallery.innerHTML = '';
+    refs.watchedBtn.classList.remove('hero-buttons__btn--active');
+    refs.queueBtn.classList.remove('hero-buttons__btn--active');
+    return;
+  } else if (
+    (queueFilmsIdInLocalStorage === null || queueFilmsIdInLocalStorage.length === 0) &&
+    refs.watchedBtn.classList.contains('hero-buttons__btn--active')
+  ) {
+    emptyQueueStoragedNotice();
   } else {
     renderQueueFilmStorage();
-
-    refs.watchedBtn.disabled = true;
-    refs.queueBtn.disabled = false;
+    // refs.queueBtn.disabled = false;
 
     refs.watchedBtn.classList.remove('hero-buttons__btn--active');
     refs.queueBtn.classList.add('hero-buttons__btn--active');
-    noticeMessage.notice();
   }
 }
 
@@ -60,17 +71,26 @@ export function onAddWachedBtm(event) {
   const elevent = event.target;
   // const id = e.target.dataset.set;
   let watchedFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('watched-films'));
+  let queueFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('queue-films'));
   if (watchedFilmsIdInLocalStorage === null) watchedFilmsIdInLocalStorage = [];
+  if (queueFilmsIdInLocalStorage === null) queueFilmsIdInLocalStorage = [];
   // console.log('watchedFilmsIdInLocalStorage: ', watchedFilmsIdInLocalStorage);
   if (!watchedFilmsIdInLocalStorage.map(film => film.id).includes(valueForLocalStorage.id)) {
-    //========================Mike===========================
-    // watchedFilmsIdInLocalStorage.push(valueForLocalStorage.id);
-    //заменил на:
+    if (queueFilmsIdInLocalStorage.map(film => film.id).includes(valueForLocalStorage.id)) {
+      const num = queueFilmsIdInLocalStorage.map(film => film.id).indexOf(valueForLocalStorage.id);
+      // console.log(num);
+      queueFilmsIdInLocalStorage.splice(num, 1);
+      localStorage.setItem('queue-films', JSON.stringify(queueFilmsIdInLocalStorage));
+      elevent.nextElementSibling.innerText = 'ADD TO QUEUE';
+      elevent.nextElementSibling.classList.remove('modal__button-hover');
+    }
+
     watchedFilmsIdInLocalStorage.push(valueForLocalStorage);
     event.target.innerText = 'REMOVE FROM WATCHED';
     elevent.classList.add('modal__button-hover');
+
     // console.log(e.target.innerText);
-    //============================================================
+
     localStorage.setItem('watched-films', JSON.stringify(watchedFilmsIdInLocalStorage));
   } else {
     const num = watchedFilmsIdInLocalStorage.map(film => film.id).indexOf(valueForLocalStorage.id);
@@ -88,9 +108,22 @@ export function onAddWachedBtm(event) {
 
 export function onAddQueueBtn(event) {
   const elevent = event.target;
+  console.dir(elevent);
+  let watchedFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('watched-films'));
   let queueFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('queue-films'));
+  if (watchedFilmsIdInLocalStorage === null) watchedFilmsIdInLocalStorage = [];
   if (queueFilmsIdInLocalStorage === null) queueFilmsIdInLocalStorage = [];
   if (!queueFilmsIdInLocalStorage.map(film => film.id).includes(valueForLocalStorage.id)) {
+    if (watchedFilmsIdInLocalStorage.map(film => film.id).includes(valueForLocalStorage.id)) {
+      const num = watchedFilmsIdInLocalStorage
+        .map(film => film.id)
+        .indexOf(valueForLocalStorage.id);
+      // console.log(num);
+      watchedFilmsIdInLocalStorage.splice(num, 1);
+      localStorage.setItem('watched-films', JSON.stringify(watchedFilmsIdInLocalStorage));
+      elevent.previousElementSibling.innerText = 'ADD TO WATCHED';
+      elevent.previousElementSibling.classList.remove('modal__button-hover');
+    }
     queueFilmsIdInLocalStorage.push(valueForLocalStorage);
     localStorage.setItem('queue-films', JSON.stringify(queueFilmsIdInLocalStorage));
     event.target.innerHTML = 'REMOVE FROM QUEUE';

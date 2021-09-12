@@ -1,5 +1,6 @@
 @import '@pnotify/core/dist/BrightTheme.css';
 
+
 .my-Library {
 &__notice{
   display: flex;
@@ -20,12 +21,13 @@ justify-content: center;
   background-image: url(../images/111.png);
   background-repeat: no-repeat;
   background-size:cover;
-  border-radius: 5%
-}
+  border-radius: 5%;
+  // animation: bounce; /* referring directly to the animation's @keyframe declaration */
+  // animation-duration: 3s; /* don't forget to set a duration! */
+  // --animate-infinite:infinite;
 };
-// .empty-Library{
-//   display: block;
-// }
+}
+
 
 .lybrary-gallery {
   position: relative;

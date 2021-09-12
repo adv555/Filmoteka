@@ -10,27 +10,37 @@
     <p class="search-field__error-text js-search-field__error-text"></p>
   </div>
 </form>
-
-<ul class="hero-buttons list visually-hidden">
-  <li class="hero-buttons__item">
-    <button
-      class="button button--primary hero-buttons__btn hero-buttons__btn--active"
-      data-hero="watched"
-      type="button"
-    >
-      Watched
-    </button>
-  </li>
-  <li class="hero-buttons__item">
-    <button
-      class="button button--secondary hero-buttons__btn queue-btn"
-      data-hero="queue"
-      type="button"
-    >
-      Queue
-    </button>
-  </li>
-</ul>
+<section class="wow slideInLeft">
+  <ul class="hero-buttons list visually-hidden">
+    <li class="hero-buttons__item">
+      <button
+        class="
+          animate__animated animate__pulse animate__infinite
+          button button--primary
+          hero-buttons__btn hero-buttons__btn--active
+        "
+        data-hero="watched"
+        type="button"
+      >
+        Watched
+      </button>
+    </li>
+    <li class="hero-buttons__item">
+      <button
+        class="
+          animate__animated animate__pulse animate__infinite
+          button button--secondary
+          hero-buttons__btn
+          queue-btn
+        "
+        data-hero="queue"
+        type="button"
+      >
+        Queue
+      </button>
+    </li>
+  </ul>
+</section>
 <div class="hero-warning__box" data-header="dynamicContainer">
   <div class="js-warning header-warning"></div>
   <div class="js-search-results header-warning"></div>

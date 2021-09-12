@@ -1,3 +1,4 @@
+// import 'animate.css';
 import './sass/main.scss';
 import './js/refs';
 import './js/back-to-top-btn';
@@ -18,6 +19,7 @@ import onHomeBtn from './js/header';
 // import onLibraryWachedBtm from './js/library';
 // import onLibraryQueueBtn from './js/library';
 import onLibraryBtn from './js/library';
+
 import { defaults } from 'lodash';
 // import onAddWachedBtm from './js/library';
 // import onAddQueueBtn from './js/library';

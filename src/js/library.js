@@ -35,8 +35,21 @@ function onLibraryWachedBtm() {
       // emptyWatchedStoragedNotice();
     } else {
       renderWatchedFilmStorage();
-      refs.watchedBtn.classList.add('hero-buttons__btn--active');
-      refs.queueBtn.classList.remove('hero-buttons__btn--active');
+      refs.watchedBtn.classList.add(
+        'hero-buttons__btn--active',
+        'site-nav__button--active',
+        'animate__animated',
+        'animate__pulse',
+        'animate__infinite',
+      );
+
+      refs.queueBtn.classList.remove(
+        'hero-buttons__btn--active',
+        'site-nav__button--active',
+        'animate__animated',
+        'animate__pulse',
+        'animate__infinite',
+      );
     }
   }
 }
@@ -57,15 +70,33 @@ function onLibraryQueueBtn() {
   } else {
     if (
       (queueFilmsIdInLocalStorage === null || queueFilmsIdInLocalStorage.length === 0) &&
-      refs.watchedBtn.classList.contains('hero-buttons__btn--active')
+      refs.watchedBtn.classList.contains(
+        'hero-buttons__btn--active',
+        'site-nav__button--active',
+        'animate__animated',
+        'animate__pulse',
+        'animate__infinite',
+      )
     ) {
       // emptyQueueStoragedNotice();
     } else {
       renderQueueFilmStorage();
       // refs.queueBtn.disabled = false;
 
-      refs.watchedBtn.classList.remove('hero-buttons__btn--active');
-      refs.queueBtn.classList.add('hero-buttons__btn--active');
+      refs.watchedBtn.classList.remove(
+        'hero-buttons__btn--active',
+        'site-nav__button--active',
+        'animate__animated',
+        'animate__pulse',
+        'animate__infinite',
+      );
+      refs.queueBtn.classList.add(
+        'hero-buttons__btn--active',
+        'site-nav__button--active',
+        'animate__animated',
+        'animate__pulse',
+        'animate__infinite',
+      );
     }
   }
 }
@@ -144,7 +175,13 @@ export function onAddQueueBtn(event) {
 }
 
 export function onLibraryBtn() {
-  refs.myLibraryLink.classList.add('site-nav__button--active');
+  refs.myLibraryLink.classList.add(
+    'site-nav__button--active',
+    'site-nav__button--active',
+    'animate__animated',
+    'animate__pulse',
+    'animate__infinite',
+  );
   refs.headerSection.classList.add('header__container--my-library-bg');
 
   refs.homeLink.classList.remove('site-nav__button--active');
@@ -156,6 +193,13 @@ export function onLibraryBtn() {
   refs.filterBox.classList.add('visually-hidden');
   refs.heroWarningBox.classList.add('visually-hidden');
   refs.libraryBtnlist.classList.remove('visually-hidden');
+
+  refs.homeLink.classList.remove(
+    'site-nav__button--active',
+    'animate__animated',
+    'animate__pulse',
+    'animate__infinite',
+  );
 
   reloadLocalStorage();
   onLibraryWachedBtm();
@@ -181,13 +225,37 @@ export function reloadHeroBtnStatus() {
   let queueFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('queue-films'));
 
   if (watchedFilmsIdInLocalStorage === null || watchedFilmsIdInLocalStorage.length === 0) {
-    refs.watchedBtn.classList.remove('hero-buttons__btn--active');
-    refs.queueBtn.classList.add('hero-buttons__btn--active');
+    refs.watchedBtn.classList.remove(
+      'hero-buttons__btn--active',
+      'site-nav__button--active',
+      'animate__animated',
+      'animate__pulse',
+      'animate__infinite',
+    );
+    refs.queueBtn.classList.add(
+      'hero-buttons__btn--active',
+      'site-nav__button--active',
+      'animate__animated',
+      'animate__pulse',
+      'animate__infinite',
+    );
     reloadLocalStorage();
   }
   if (queueFilmsIdInLocalStorage === null || queueFilmsIdInLocalStorage.length === 0) {
-    refs.watchedBtn.classList.add('hero-buttons__btn--active');
-    refs.queueBtn.classList.remove('hero-buttons__btn--active');
+    refs.watchedBtn.classList.add(
+      'hero-buttons__btn--active',
+      'site-nav__button--active',
+      'animate__animated',
+      'animate__pulse',
+      'animate__infinite',
+    );
+    refs.queueBtn.classList.remove(
+      'hero-buttons__btn--active',
+      'site-nav__button--active',
+      'animate__animated',
+      'animate__pulse',
+      'animate__infinite',
+    );
     reloadLocalStorage();
   }
 }

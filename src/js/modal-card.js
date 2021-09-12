@@ -146,7 +146,7 @@ function addModal(dataMovie) {
       //разрешает скролл страницы при закрытии модалки (visible - значение, принятое по умолчанию)
       document.body.style.overflow = 'visible';
 
-      reloadLocalStorage();
+      // reloadLocalStorage();
       let queueFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('queue-films'));
       let watchedFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('watched-films'));
 
@@ -163,6 +163,11 @@ function addModal(dataMovie) {
           refs.watchedBtn.classList.contains('hero-buttons__btn--active') &&
           watchedFilmsIdInLocalStorage.length === 0
         ) {
+          if (!queueFilmsIdInLocalStorage.length === 0) {
+            renderQueueFilmStorage();
+            refs.watchedBtn.classList.remove('hero-buttons__btn--active');
+            refs.queueBtn.classList.add('hero-buttons__btn--active');
+          }
           emptyWatchedStoragedNotice();
         } else {
           renderWatchedFilmStorage();
@@ -172,11 +177,17 @@ function addModal(dataMovie) {
           refs.queueBtn.classList.contains('hero-buttons__btn--active') &&
           queueFilmsIdInLocalStorage.length === 0
         ) {
+          if (!watchedFilmsIdInLocalStorage.length === 0) {
+            renderWatchedFilmStorage();
+            refs.watchedBtn.classList.add('hero-buttons__btn--active');
+            refs.queueBtn.classList.remove('hero-buttons__btn--active');
+          }
           emptyQueueStoragedNotice();
         } else {
           renderQueueFilmStorage();
         }
       }
+      reloadLocalStorage();
     },
   });
 

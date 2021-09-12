@@ -32,7 +32,7 @@ function onLibraryWachedBtm() {
   } else {
     if (watchedFilmsIdInLocalStorage === null || watchedFilmsIdInLocalStorage.length === 0) {
       onLibraryQueueBtn();
-      emptyWatchedStoragedNotice();
+      // emptyWatchedStoragedNotice();
     } else {
       renderWatchedFilmStorage();
       refs.watchedBtn.classList.add('hero-buttons__btn--active');
@@ -59,7 +59,7 @@ function onLibraryQueueBtn() {
       (queueFilmsIdInLocalStorage === null || queueFilmsIdInLocalStorage.length === 0) &&
       refs.watchedBtn.classList.contains('hero-buttons__btn--active')
     ) {
-      emptyQueueStoragedNotice();
+      // emptyQueueStoragedNotice();
     } else {
       renderQueueFilmStorage();
       // refs.queueBtn.disabled = false;
@@ -179,14 +179,7 @@ export function reloadLocalStorage() {
 export function reloadHeroBtnStatus() {
   let watchedFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('watched-films'));
   let queueFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('queue-films'));
-  // if (
-  //   watchedFilmsIdInLocalStorage === null ||
-  //   watchedFilmsIdInLocalStorage.length === 0 ||
-  //   queueFilmsIdInLocalStorage === null ||
-  //   queueFilmsIdInLocalStorage.length === 0
-  // ) {
-  //   reloadLocalStorage();
-  // }
+
   if (watchedFilmsIdInLocalStorage === null || watchedFilmsIdInLocalStorage.length === 0) {
     refs.watchedBtn.classList.remove('hero-buttons__btn--active');
     refs.queueBtn.classList.add('hero-buttons__btn--active');

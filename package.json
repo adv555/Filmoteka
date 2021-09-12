@@ -28,6 +28,7 @@
     "sass": "^1.32.8"
   },
   "dependencies": {
+    "animate.css": "^4.1.1",
     "axios": "^0.21.1",
     "basiclightbox": "^5.0.4",
     "cli-spinners": "^2.6.0",

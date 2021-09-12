@@ -11,32 +11,34 @@ refs.teamLink.addEventListener('click', onTeamModalShow);
 function onTeamModalShow(e) {
   // create marckup
   const teamCardsMarkup = teamCardTpl(data);
+  document.addEventListener('click', onClick);
+  document.addEventListener('keydown', onCloseEsc);
 
+  //=== close modal onClick on imgBox
+  function onClick(e) {
+    console.log(e.target.classList.value);
+    e.target.classList.value === 'cards-container js-team list' ||
+    e.target.classList.value === 'imgBx__img' ||
+    e.target.classList.value === 'basicLightbox'
+      ? teamModal.close()
+      : teamModal.show();
+  }
+
+  //=== close modal onEsc Btn
+  function onCloseEsc(e) {
+    // console.log(e);
+    e.code === 'Escape' ? teamModal.close() : teamModal.show();
+  }
   // create modal from marckup
   const teamModal = basicLightbox.create(teamCardsMarkup, {
     onShow: () => {
       document.body.style.overflow = 'hidden';
-      document.addEventListener('click', onClick);
-      document.addEventListener('keydown', closEsc);
-
-      //=== close modal onClick on imgBox
-      function onClick(e) {
-        console.log(e.target.classList.value);
-        e.target.classList.value === 'cards-container js-team list' ||
-        e.target.classList.value === 'basicLightbox'
-          ? teamModal.close()
-          : teamModal.show();
-        document.removeEventListener('click', onClick);
-      }
-
-      //=== close modal onEsc Btn
-      function closEsc(e) {
-        console.log(e);
-        e.code === 'Escape' ? teamModal.close() : teamModal.show();
-        document.removeEventListener('keydown', closEsc);
-      }
     },
-    onClose: () => (document.body.style.overflow = 'visible'),
+    onClose: () => {
+      document.body.style.overflow = 'visible';
+      document.removeEventListener('click', onClick);
+      document.removeEventListener('keydown', onCloseEsc);
+    },
   });
 
   teamModal.show();

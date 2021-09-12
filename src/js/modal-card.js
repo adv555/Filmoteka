@@ -1,6 +1,8 @@
 import * as basicLightbox from 'basiclightbox';
 import MoviesApiService from './api/api-service.js';
 import tplModalCard from '../templates/modal-card.hbs';
+import tplModalTrailer from '../templates/trailer.hbs';
+
 import refs from './refs';
 
 import cliSpinners from 'cli-spinners';
@@ -17,6 +19,11 @@ import {
   emptyWatchedStoragedNotice,
   emptyQueueStoragedNotice,
 } from './notification';
+
+//Кастомный помощник библеотеки - ругаетсья , но работает
+// Handlebars.registerHelper('notId', function (value) {
+//   return value !== 'ID';
+// });
 
 // экземпляр класа для получения API
 const moviesApiService = new MoviesApiService();
@@ -200,50 +207,44 @@ function launchMovieTrailer(e) {
   moviesApiService
     .fetchMovieTrtailer(idMoive)
     .then(video => {
-      const idTrailer = video.results[0].key;
-      turnOnTheTrailer(idTrailer);
+      const idTrailer = video.results[0];
+      trailerTemplate(idTrailer);
     })
     .catch(console.log);
 }
 
+function trailerTemplate(idTrailer) {
+  const templateTrailer = tplModalTrailer(idTrailer);
+  turnOnTheTrailer(templateTrailer);
+}
+
 //реализация выплывающего видео через библиотеку basicLightbox
 function turnOnTheTrailer(trailerKey) {
-  const ModalCardTrailer = basicLightbox.create(
-    `<button type='button' class='modal__close-button-video'>
-  <i class='fa fa-times' aria-hidden='true'></i>
-</button>
-    <div class='modal__container__video'>
-      <iframe class='video__modal' src='https://www.youtube.com/embed/${trailerKey}'frameborder="0" allowfullscreen ></iframe>
-    </div>
-  
-`,
-    {
-      onShow: ModalCardTrailer => {
-        document.addEventListener('keydown', modalCloseVideo);
-        const closeBtnVideo = ModalCardTrailer.element().querySelector(
-          '.modal__close-button-video',
-        );
-        closeBtnVideo.addEventListener('click', modalCloseVideo);
+  const ModalCardTrailer = basicLightbox.create(trailerKey, {
+    onShow: ModalCardTrailer => {
+      document.addEventListener('keydown', modalCloseVideo);
+      const closeBtnVideo = ModalCardTrailer.element().querySelector('.modal__close-button-video');
+      closeBtnVideo.addEventListener('click', modalCloseVideo);
 
-        function modalCloseVideo() {
-          ModalCardTrailer.close();
-          const x = document.querySelector('.basicLightbox');
-          x.style.removeProperty('background-size');
-          x.style.removeProperty('background-image');
-          x.style.removeProperty('animation');
-        }
-      },
-      onClose: ModalCardTrailer => {
-        //разрешает скролл страницы при закрытии модалки (visible - значение, принятое по умолчанию)
-        const x = document.querySelector('.basicLightbox');
-        x.style.removeProperty('background-size');
-        x.style.removeProperty('background-image');
-        x.style.removeProperty('animation');
-        const modalCloseBtn = document.querySelector('.modal__close-button');
-        modalCloseBtn.style.color = '#ff6b08';
-      },
+      function modalCloseVideo() {
+        ModalCardTrailer.close();
+        // const x = document.querySelector('.basicLightbox');
+        // x.style.removeProperty('background-size');
+        // x.style.removeProperty('background-image');
+        // x.style.removeProperty('animation');
+        // const modalCloseBtn = document.querySelector('.modal__close-button');
+        // console.log(modalCloseBtn);
+        // modalCloseBtn.style.color = '#ff6b08';
+      }
     },
-  );
+    onClose: ModalCardTrailer => {
+      //разрешает скролл страницы при закрытии модалки (visible - значение, принятое по умолчанию)
+      // const x = document.querySelector('.basicLightbox');
+      // x.style.removeProperty('background-size');
+      // x.style.removeProperty('background-image');
+      // x.style.removeProperty('animation');
+    },
+  });
   ModalCardTrailer.show();
 }
 
@@ -275,6 +276,6 @@ function SecretVideo(e) {
   const modalCloseBtn = document.querySelector('.modal__close-button');
   const Url = e.currentTarget.dataset.img;
   x.style.backgroundSize = 'cover';
-  modalCloseBtn.style.color = '#ffffff';
+  // modalCloseBtn.style.color = '#ffffff';
   x.style.backgroundImage = `url(${Url})`;
 }

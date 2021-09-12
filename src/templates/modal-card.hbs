@@ -4,14 +4,22 @@
 
 <div class='modal' data-set='https://image.tmdb.org/t/p/original/{{backdrop_path}}'>
   <img
-    class='modal__movie-poster'
+    {{#if poster_path}}
     src='https://image.tmdb.org/t/p/original/{{poster_path}}'
+    data-img='https://image.tmdb.org/t/p/original/{{backdrop_path}}'
+    {{else}}
+    src="https://kinomaiak.ru/wp-content/uploads/2018/02/noposter.png"
+    data-img=''
+    {{/if}}
     alt=''
     data-set={{id}}
-    data-img='https://image.tmdb.org/t/p/original/{{backdrop_path}}'
   />
   <div class='modal__container'>
+    {{#if notId}}
     <h2 class='modal__title-movie'>{{title}}</h2>
+    {{else}}
+    <h2 class='modal__title-movie'>No name </h2>
+    {{/if}}
     <div class='modal__container-info'>
       <ul class='modal__list list'>
         <li class='modal__item'>Vote / Votes</li>

@@ -38,10 +38,6 @@
   }
 }
 
-.filter-btn {
-  margin-bottom: 10px;
-}
-
 .genres-filters {
   display: flex;
   flex-wrap: wrap;
@@ -61,11 +57,13 @@
   border: 1px solid #ff6b08;
   border-radius: 8px;
   transition: all 300ms ease;
-
-  &.checked {
-    color: #ffffff;
-    background-color: #ff6b08;
-  }
+}
+// &.checked,
+.container__filter.checkbox:checked,
+.genres-filters__item:hover,
+.genres-filters__item:focus {
+  color: #ffffff;
+  background-color: #ff6b08;
 }
 
 .filter-btn {
@@ -76,8 +74,61 @@
   font-weight: 500;
   line-height: 1.33;
   text-transform: uppercase;
-  background: #ffffff;
-  color: #000000;
 
   cursor: pointer;
+}
+.filter-buttons__btn {
+  width: 130px;
+
+  margin: 0 10px 0;
+  color: $grey-color;
+  border: 1px solid $white-color;
+  background-color: transparent;
+
+  transition: color $btn-duration $timing-function, border $btn-duration $timing-function,
+    background-color $btn-duration $timing-function, box-shadow $btn-duration $timing-function;
+
+  @media screen and (min-width: $tablet) {
+    width: 136px;
+  }
+}
+
+.filter-buttons__btn:hover,
+.filter-buttons__btn:focus,
+.filter-buttons__btn--active {
+  color: $white-color;
+  border: 1px solid $accent-bg;
+  background-color: $accent-bg;
+  box-shadow: (0px 8px 43px rgba(255, 107, 1, 0.6));
+}
+
+.container__filter {
+  margin: 5px;
+}
+
+.filter-btn-wropp {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.checkbox {
+  appearance: none;
+  position: absolute;
+}
+.label {
+  display: inline-block;
+}
+.icon {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: #ffffff;
+  margin-right: 5px;
+}
+
+.checkbox:checked + .icon {
+  background-color: #ff6b08;
 }

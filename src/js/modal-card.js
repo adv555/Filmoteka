@@ -210,7 +210,6 @@ function launchMovieTrailer(e) {
     .fetchMovieTrtailer(idMoive)
     .then(video => {
       const idTrailer = video.results[0];
-      console.log(idTrailer);
       trailerTemplate(idTrailer);
     })
     .catch(console.log);
@@ -231,21 +230,25 @@ function turnOnTheTrailer(trailerKey) {
 
       function modalCloseVideo() {
         ModalCardTrailer.close();
-        // const x = document.querySelector('.basicLightbox');
-        // x.style.removeProperty('background-size');
-        // x.style.removeProperty('background-image');
-        // x.style.removeProperty('animation');
-        // const modalCloseBtn = document.querySelector('.modal__close-button');
-        // console.log(modalCloseBtn);
-        // modalCloseBtn.style.color = '#ff6b08';
+        const x = document.querySelector('.basicLightbox');
+        if (x !== null) {
+          x.style.removeProperty('background-size');
+          x.style.removeProperty('background-image');
+          x.style.removeProperty('animation');
+        }
       }
     },
     onClose: ModalCardTrailer => {
       //разрешает скролл страницы при закрытии модалки (visible - значение, принятое по умолчанию)
-      // const x = document.querySelector('.basicLightbox');
-      // x.style.removeProperty('background-size');
-      // x.style.removeProperty('background-image');
-      // x.style.removeProperty('animation');
+      const x = document.querySelector('.basicLightbox');
+      const modalCloseBtn = document.querySelector('.modal__close-button');
+      if (x !== null || modalCloseBtn !== null) {
+        x.style.removeProperty('background-size');
+        x.style.removeProperty('background-image');
+        x.style.removeProperty('animation');
+        modalCloseBtn.style.color = '#ff6b08';
+        standardBackdrop = true;
+      }
     },
   });
   ModalCardTrailer.show();
@@ -280,6 +283,6 @@ function SecretVideo(e) {
   const Url = e.currentTarget.dataset.img;
   standardBackdrop = false;
   x.style.backgroundSize = 'cover';
-  // modalCloseBtn.style.color = '#ffffff';
+  modalCloseBtn.style.color = '#ffffff';
   x.style.backgroundImage = `url(${Url})`;
 }

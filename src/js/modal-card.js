@@ -206,7 +206,6 @@ function addModal(dataMovie) {
 // отправляем запрос на сервер через id и получаем информацию о трейлерах
 function launchMovieTrailer(e) {
   const idMoive = e.target.dataset.set;
-  console.log(idMoive);
   moviesApiService
     .fetchMovieTrtailer(idMoive)
     .then(video => {

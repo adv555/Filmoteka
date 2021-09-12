@@ -103,12 +103,14 @@ function addModal(dataMovie) {
       const addWatchedBtn = ModalCard.element().querySelector('.js-watched');
       const addQueueBtn = ModalCard.element().querySelector('.js-queue');
       const moviePoster = ModalCard.element().querySelector('.modal__movie-poster');
+      const movieImg = ModalCard.element().querySelector('.modal__video');
       const closeBtn = ModalCard.element().querySelector('.modal__close-button');
 
       //Вешаем слушатели на елементы
       document.addEventListener('keydown', closeEsc);
       addWatchedBtn.addEventListener('click', onAddWachedBtm);
       addQueueBtn.addEventListener('click', onAddQueueBtn);
+      movieImg.addEventListener('click', can);
       moviePoster.addEventListener('click', can);
       closeBtn.addEventListener('click', modalClose);
       ModalWindow.addEventListener('click', SecretModal);
@@ -204,10 +206,12 @@ function addModal(dataMovie) {
 // отправляем запрос на сервер через id и получаем информацию о трейлерах
 function launchMovieTrailer(e) {
   const idMoive = e.target.dataset.set;
+  console.log(idMoive);
   moviesApiService
     .fetchMovieTrtailer(idMoive)
     .then(video => {
       const idTrailer = video.results[0];
+      console.log(idTrailer);
       trailerTemplate(idTrailer);
     })
     .catch(console.log);

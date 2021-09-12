@@ -2,8 +2,14 @@
   <i class='fa fa-times' aria-hidden='true'></i>
 </button>
 
+
+
 <div class='modal' data-set='https://image.tmdb.org/t/p/original/{{backdrop_path}}'>
-  <img
+    <button  type='button' class='modal__video' >
+  <i data-set={{id}} class="fa fa-youtube-play" aria-hidden="true"></i>
+</button>
+    <img
+    class="modal__movie-poster"
     {{#if poster_path}}
     src='https://image.tmdb.org/t/p/original/{{poster_path}}'
     data-img='https://image.tmdb.org/t/p/original/{{backdrop_path}}'
@@ -13,13 +19,10 @@
     {{/if}}
     alt=''
     data-set={{id}}
-  />
+/>
   <div class='modal__container'>
-    {{#if notId}}
+
     <h2 class='modal__title-movie'>{{title}}</h2>
-    {{else}}
-    <h2 class='modal__title-movie'>No name </h2>
-    {{/if}}
     <div class='modal__container-info'>
       <ul class='modal__list list'>
         <li class='modal__item'>Vote / Votes</li>
@@ -44,6 +47,5 @@
       <button data-set=`{{id}}` type='button'  class='modal__button js-watched'>add to Watched</button>
       <button data-set=`{{id}}` type='button'  class='modal__button js-queue'>add to queue</button>
     </div>
-
-  </div>.
+  </div>
 </div>

@@ -16,7 +16,7 @@ function onTeamModalShow(e) {
 
   //=== close modal onClick on imgBox
   function onClick(e) {
-    console.log(e.target.classList.value);
+    // console.log(e.target.classList.value);
     e.target.classList.value === 'cards-container js-team list' ||
     e.target.classList.value === 'imgBx__img' ||
     e.target.classList.value === 'basicLightbox'

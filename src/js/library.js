@@ -8,7 +8,7 @@ import {
 import { valueLocalStorage as valueForLocalStorage } from './modal-card';
 import moviesApiService from '../index.js';
 import createGalleryMarkup from '../js/gallery/gallery.js';
-
+var pagination = require('pagination');
 export let localStorrageData = {
   watchedFilmStorage: JSON.parse(localStorage.getItem('watched-films')),
   queueFilmStorage: JSON.parse(localStorage.getItem('queue-films')),
@@ -52,6 +52,23 @@ function onLibraryWachedBtm() {
       );
     }
   }
+  var pag = new pagination(document.getElementsByClassName('pagination')[0], {
+    currentPage: 1,
+    totalItems: watchedFilmsIdInLocalStorage.length,
+    itemsPerPage: 20,
+    step: 2,
+  });
+
+  pag.onPageChanged(changeWatchedPage);
+
+  const arrowLeft = document.querySelector('.arrowLeft');
+  const arrowRight = document.querySelector('.arrowRight');
+  arrowLeft.innerHTML = '';
+  arrowRight.innerHTML = '';
+}
+
+function changeWatchedPage(page) {
+  ////код при изменении страницы
 }
 
 function onLibraryQueueBtn() {
@@ -99,6 +116,22 @@ function onLibraryQueueBtn() {
       );
     }
   }
+  var pag = new pagination(document.getElementsByClassName('pagination')[0], {
+    currentPage: 1,
+    totalItems: queueFilmsIdInLocalStorage.length,
+    itemsPerPage: 20,
+    step: 2,
+  });
+
+  pag.onPageChanged(changeQueuePage);
+  const arrowLeft = document.querySelector('.arrowLeft');
+  const arrowRight = document.querySelector('.arrowRight');
+  arrowLeft.innerHTML = '';
+  arrowRight.innerHTML = '';
+}
+
+function changeQueuePage(page) {
+  ////код при изменении страницы
 }
 
 export function onAddWachedBtm(event) {
@@ -188,7 +221,6 @@ export function onLibraryBtn() {
   refs.headerSection.classList.remove('header__container--home-bg');
 
   refs.sliderSection.classList.add('visually-hidden');
-  refs.removePagination.classList.add('visually-hidden');
   refs.searchForm.classList.add('visually-hidden');
   refs.filterBox.classList.add('visually-hidden');
   refs.heroWarningBox.classList.add('visually-hidden');

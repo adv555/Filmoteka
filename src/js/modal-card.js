@@ -149,20 +149,31 @@ function addModal(dataMovie) {
       reloadLocalStorage();
       let queueFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('queue-films'));
       let watchedFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('watched-films'));
+
       if (refs.myLibraryLink.classList.contains('site-nav__button--active')) {
-        if (refs.watchedBtn.classList.contains('hero-buttons__btn--active')) {
-          if (watchedFilmsIdInLocalStorage.length === 0) {
-            emptyWatchedStoragedNotice();
-          }
+        // ============== если везде пусто ==================================
+        if (
+          (watchedFilmsIdInLocalStorage === null || watchedFilmsIdInLocalStorage.length === 0) &&
+          (queueFilmsIdInLocalStorage === null || queueFilmsIdInLocalStorage.length === 0)
+        ) {
+          refs.myLibraryNotice.classList.remove('visually-hidden');
+        }
+
+        if (
+          refs.watchedBtn.classList.contains('hero-buttons__btn--active') &&
+          watchedFilmsIdInLocalStorage.length === 0
+        ) {
+          emptyWatchedStoragedNotice();
+        } else {
           renderWatchedFilmStorage();
         }
-        if (refs.queueBtn.classList.contains('hero-buttons__btn--active')) {
-          if (queueFilmsIdInLocalStorage.length === 0) {
-            if (watchedFilmsIdInLocalStorage.length === 0) {
-              emptyLibraryNotice();
-            }
-            emptyQueueStoragedNotice();
-          }
+
+        if (
+          refs.queueBtn.classList.contains('hero-buttons__btn--active') &&
+          queueFilmsIdInLocalStorage.length === 0
+        ) {
+          emptyQueueStoragedNotice();
+        } else {
           renderQueueFilmStorage();
         }
       }

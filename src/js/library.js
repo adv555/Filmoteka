@@ -21,6 +21,15 @@ refs.queueBtn.addEventListener('click', onLibraryQueueBtn);
 function onLibraryWachedBtm() {
   let queueFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('queue-films'));
   let watchedFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('watched-films'));
+  if (
+    (watchedFilmsIdInLocalStorage === null || watchedFilmsIdInLocalStorage.length === 0) &&
+    (queueFilmsIdInLocalStorage === null || queueFilmsIdInLocalStorage.length === 0)
+  ) {
+    console.log('везде нули');
+    refs.myLibraryNotice.classList.remove('visually-hidden');
+    refs.gallery.innerHTML = '';
+    return;
+  }
   if (watchedFilmsIdInLocalStorage === null || watchedFilmsIdInLocalStorage.length === 0) {
     onLibraryQueueBtn();
     emptyWatchedStoragedNotice();
@@ -34,16 +43,21 @@ function onLibraryWachedBtm() {
 function onLibraryQueueBtn() {
   let queueFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('queue-films'));
   let watchedFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('watched-films'));
-  if (queueFilmsIdInLocalStorage === null || queueFilmsIdInLocalStorage.length === 0) {
-    if (refs.watchedBtn.classList.contains('hero-buttons__btn--active')) {
-      emptyQueueStoragedNotice();
-    }
-    if (watchedFilmsIdInLocalStorage === null || watchedFilmsIdInLocalStorage.length === 0) {
-      refs.gallery.innerHTML = '';
-      emptyLibraryNotice();
-      refs.watchedBtn.classList.remove('hero-buttons__btn--active');
-      refs.queueBtn.classList.remove('hero-buttons__btn--active');
-    }
+  if (
+    (watchedFilmsIdInLocalStorage === null || watchedFilmsIdInLocalStorage.length === 0) &&
+    (queueFilmsIdInLocalStorage === null || queueFilmsIdInLocalStorage.length === 0)
+  ) {
+    console.log('везде нули');
+    refs.myLibraryNotice.classList.remove('visually-hidden');
+    refs.gallery.innerHTML = '';
+    refs.watchedBtn.classList.remove('hero-buttons__btn--active');
+    refs.queueBtn.classList.remove('hero-buttons__btn--active');
+    return;
+  } else if (
+    (queueFilmsIdInLocalStorage === null || queueFilmsIdInLocalStorage.length === 0) &&
+    refs.watchedBtn.classList.contains('hero-buttons__btn--active')
+  ) {
+    emptyQueueStoragedNotice();
   } else {
     renderQueueFilmStorage();
     // refs.queueBtn.disabled = false;

@@ -1,20 +1,31 @@
 @import '@pnotify/core/dist/BrightTheme.css';
 
-.my-Library-notice{
+.my-Library {
+&__notice{
+  display: flex;
+  justify-content: center;
+
 font-size: 30px;
 color:rgb(148, 32, 32);
 };
+&__notice-title{
 
-// .my-Library-bg{
-//   background-image: linear-gradient(90deg, rgba(112,87,71,1) 20%, rgba(255,255,255,1) 30%, rgba(255,255,255,1) 70%, rgba(166,120,60,1) 80%),
-//   url(../images/111.jpg);
-//   background-repeat: no-repeat;
-//   background-size:cover;
-//   height: 100%;
-// };
-.empty-Library{
-  display: block;
+display: flex;
+justify-content: center;
+
+};
+&__bg{
+  min-height: 90vh;
+  width: 50vw;
+  background-image: url(../images/111.png);
+  background-repeat: no-repeat;
+  background-size:cover;
+  border-radius: 5%
 }
+};
+// .empty-Library{
+//   display: block;
+// }
 
 .lybrary-gallery {
   position: relative;

@@ -1,5 +1,5 @@
 import './sass/main.scss';
-import './js/refs';
+import refs from './js/refs';
 import './js/back-to-top-btn';
 import MoviesApiService from './js/api/api-service';
 import createGalleryMarkup from './js/gallery/gallery.js';
@@ -35,3 +35,16 @@ export default moviesApiService;
 const upcomingCollectionEngine = new UpcomingCollectionEngine();
 
 moviesApiService.fetchUpcomingMovies().then(upcomingCollectionEngine.renderUpcomingMovies);
+refs.selectBox.addEventListener('click', showCheckboxes);
+var expanded = false;
+
+function showCheckboxes() {
+  //   var checkboxes = document.getElementById('checkboxes');
+  if (!expanded) {
+    refs.checkboxes.style.display = 'block';
+    expanded = true;
+  } else {
+    refs.checkboxes.style.display = 'none';
+    expanded = false;
+  }
+}

@@ -31,7 +31,8 @@ const filterHideBtn = document.querySelector('.js-hide-btn');
 const filterResetBtn = document.querySelector('.js-reset-btn');
 const headerSection = document.querySelector('.header');
 const myLibraryNotice = document.querySelector('.my-Library__notice');
-
+const selectBox = document.querySelector('.selectBox');
+const checkboxes = document.querySelector('.checkboxes');
 export default {
   searchForm,
   searchInput,
@@ -64,4 +65,6 @@ export default {
   filterResetBtn,
   headerSection,
   myLibraryNotice,
+  selectBox,
+  checkboxes,
 };

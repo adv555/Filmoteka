@@ -278,6 +278,7 @@ function SecretVideo(e) {
   const x = document.querySelector('.basicLightbox');
   const modalCloseBtn = document.querySelector('.modal__close-button');
   const Url = e.currentTarget.dataset.img;
+  standardBackdrop = false;
   x.style.backgroundSize = 'cover';
   // modalCloseBtn.style.color = '#ffffff';
   x.style.backgroundImage = `url(${Url})`;

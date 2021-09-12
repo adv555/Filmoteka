@@ -1,0 +1,15 @@
+<button type='button' class='modal__close-button-video'>
+  <i class='fa fa-times' aria-hidden='true'></i>
+</button>
+<div class='modal__container__video'>
+  {{#if key}}
+    <iframe
+      class='video__modal'
+      src='https://www.youtube.com/embed/{{key}}'
+      frameborder='0'
+      allowfullscreen
+    ></iframe>
+  {{else}}
+    <img class='video__modal-img' src='./err-yt.png' />
+  {{/if}}
+</div>

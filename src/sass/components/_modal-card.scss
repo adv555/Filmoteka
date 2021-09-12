@@ -1,3 +1,15 @@
+.modal__video {
+  padding: 5px;
+  position: absolute;
+  background-color: transparent;
+  border: transparent;
+  cursor: pointer;
+  left: 50px;
+  top: 40px;
+  font-size: 40px;
+  color: red;
+}
+
 .modal {
   padding: 24px 28px 20px;
   background: $white-color;
@@ -30,10 +42,10 @@
 
   &__movie-poster {
     display: block;
-    border-radius: 5px;
-    width: 100%;
+
     margin-bottom: 30px;
   }
+
   &__container-info {
     display: flex;
   }
@@ -179,6 +191,12 @@
     border-radius: 5px;
     margin: 0px;
 
+    &__video {
+      left: 260px;
+      top: 41px;
+      font-size: 34px;
+    }
+
     &__container-poster {
       min-width: 264px;
       max-height: 100%;
@@ -195,7 +213,7 @@
     }
 
     &__about {
-      max-height: 260px;
+      max-height: 180px;
     }
     &__container__button {
       display: flex;
@@ -225,16 +243,25 @@
         color: $accent-line;
       }
     }
-    &__movie-poster {
-      width: 450px;
-      max-height: 480px;
-      cursor: url('../images/SVG/film.svg'), pointer;
 
+    &__video {
+      left: 300px;
+      top: 50px;
+      color: #808080;
+
+      &:hover,
+      &:focus {
+        color: red;
+      }
     }
 
-    // &__movie-poster-cursor {
-    //   cursor: url('../images/SVG/film.svg'), pointer;
-    // }
+    &__movie-poster {
+      width: 320px;
+      max-height: 480px;
+      // cursor: url('../images/SVG/film.svg'), pointer;
+      cursor: pointer;
+    }
+
     &__title-movie {
       font-size: 30px;
       line-height: 35px;
@@ -247,7 +274,7 @@
       margin-bottom: 20px;
     }
     &__about {
-      max-height: 169px;
+      max-height: 215px;
     }
 
     &__container__button {
@@ -276,6 +303,11 @@
   width: 100%;
   height: 100%;
 }
+
+// .video__modal-img {
+//   width: 100%;
+//   height: 100%;
+// }
 
 .modal__close-button-video {
   padding: 5px;
@@ -325,6 +357,11 @@
     width: 100%;
     height: 100%;
   }
+
+  // .modal__img {
+  //   max-width: 320px;
+  //   height: 480px;
+  // }
 
   .modal__close-button-video {
     padding: 5px;

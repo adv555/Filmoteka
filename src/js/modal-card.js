@@ -1,6 +1,8 @@
 import * as basicLightbox from 'basiclightbox';
 import MoviesApiService from './api/api-service.js';
 import tplModalCard from '../templates/modal-card.hbs';
+import tplModalTrailer from '../templates/trailer.hbs';
+
 import refs from './refs';
 
 import cliSpinners from 'cli-spinners';
@@ -19,6 +21,11 @@ import {
   emptyWatchedStoragedNotice,
   emptyQueueStoragedNotice,
 } from './notification';
+
+//Кастомный помощник библеотеки - ругаетсья , но работает
+// Handlebars.registerHelper('notId', function (value) {
+//   return value !== 'ID';
+// });
 
 // экземпляр класа для получения API
 const moviesApiService = new MoviesApiService();
@@ -86,6 +93,7 @@ function addModal(dataMovie) {
   const ModalCard = basicLightbox.create(dataMovie, {
     //Параметр из документации (позволяет нам что-то делать во время открытия модального окна)
     onShow: ModalCard => {
+      let color = true;
       // запретить скролл страницы при открытии модалки (hidden-без предоставления прокрутки)
       document.body.style.overflow = 'hidden';
       // Получаем объект данных из LocalStorage
@@ -98,12 +106,16 @@ function addModal(dataMovie) {
       const addWatchedBtn = ModalCard.element().querySelector('.js-watched');
       const addQueueBtn = ModalCard.element().querySelector('.js-queue');
       const moviePoster = ModalCard.element().querySelector('.modal__movie-poster');
+      const movieImg = ModalCard.element().querySelector('.modal__video');
       const closeBtn = ModalCard.element().querySelector('.modal__close-button');
 
       //Вешаем слушатели на елементы
       document.addEventListener('keydown', closeEsc);
       addWatchedBtn.addEventListener('click', onAddWachedBtm);
       addQueueBtn.addEventListener('click', onAddQueueBtn);
+      movieImg.addEventListener('click', can);
+      moviePoster.addEventListener('mouseover', canColor);
+      moviePoster.addEventListener('mouseout', canColor);
       moviePoster.addEventListener('click', can);
       closeBtn.addEventListener('click', modalClose);
       ModalWindow.addEventListener('click', SecretModal);
@@ -141,6 +153,16 @@ function addModal(dataMovie) {
         if (e.code === 'Escape') {
           ModalCard.close();
           document.removeEventListener('keydown', closeEsc);
+        }
+      }
+
+      function canColor(e) {
+        if (color) {
+          movieImg.style.color = 'red';
+          color = false;
+        } else {
+          movieImg.style.removeProperty('color');
+          color = true;
         }
       }
     },
@@ -236,50 +258,48 @@ function launchMovieTrailer(e) {
   moviesApiService
     .fetchMovieTrtailer(idMoive)
     .then(video => {
-      const idTrailer = video.results[0].key;
-      turnOnTheTrailer(idTrailer);
+      const idTrailer = video.results[0];
+      trailerTemplate(idTrailer);
     })
     .catch(console.log);
 }
 
+function trailerTemplate(idTrailer) {
+  const templateTrailer = tplModalTrailer(idTrailer);
+  turnOnTheTrailer(templateTrailer);
+}
+
 //реализация выплывающего видео через библиотеку basicLightbox
 function turnOnTheTrailer(trailerKey) {
-  const ModalCardTrailer = basicLightbox.create(
-    `<button type='button' class='modal__close-button-video'>
-  <i class='fa fa-times' aria-hidden='true'></i>
-</button>
-    <div class='modal__container__video'>
-      <iframe class='video__modal' src='https://www.youtube.com/embed/${trailerKey}'frameborder="0" allowfullscreen ></iframe>
-    </div>
-  
-`,
-    {
-      onShow: ModalCardTrailer => {
-        document.addEventListener('keydown', modalCloseVideo);
-        const closeBtnVideo = ModalCardTrailer.element().querySelector(
-          '.modal__close-button-video',
-        );
-        closeBtnVideo.addEventListener('click', modalCloseVideo);
+  const ModalCardTrailer = basicLightbox.create(trailerKey, {
+    onShow: ModalCardTrailer => {
+      document.addEventListener('keydown', modalCloseVideo);
+      const closeBtnVideo = ModalCardTrailer.element().querySelector('.modal__close-button-video');
+      closeBtnVideo.addEventListener('click', modalCloseVideo);
 
-        function modalCloseVideo() {
-          ModalCardTrailer.close();
-          const x = document.querySelector('.basicLightbox');
+      function modalCloseVideo() {
+        ModalCardTrailer.close();
+        const x = document.querySelector('.basicLightbox');
+        if (x !== null) {
           x.style.removeProperty('background-size');
           x.style.removeProperty('background-image');
           x.style.removeProperty('animation');
         }
-      },
-      onClose: ModalCardTrailer => {
-        //разрешает скролл страницы при закрытии модалки (visible - значение, принятое по умолчанию)
-        const x = document.querySelector('.basicLightbox');
+      }
+    },
+    onClose: ModalCardTrailer => {
+      //разрешает скролл страницы при закрытии модалки (visible - значение, принятое по умолчанию)
+      const x = document.querySelector('.basicLightbox');
+      const modalCloseBtn = document.querySelector('.modal__close-button');
+      if (x !== null || modalCloseBtn !== null) {
         x.style.removeProperty('background-size');
         x.style.removeProperty('background-image');
         x.style.removeProperty('animation');
-        const modalCloseBtn = document.querySelector('.modal__close-button');
         modalCloseBtn.style.color = '#ff6b08';
-      },
+        standardBackdrop = true;
+      }
     },
-  );
+  });
   ModalCardTrailer.show();
 }
 
@@ -309,7 +329,8 @@ function SecretModal(e) {
 function SecretVideo(e) {
   const x = document.querySelector('.basicLightbox');
   const modalCloseBtn = document.querySelector('.modal__close-button');
-  const Url = e.currentTarget.dataset.img;
+  const Url = e.target.dataset.img;
+  standardBackdrop = false;
   x.style.backgroundSize = 'cover';
   modalCloseBtn.style.color = '#ffffff';
   x.style.backgroundImage = `url(${Url})`;

@@ -1,14 +1,14 @@
-<div class="hero__dynamic-container" data-header="dynamicContainer"></div>
-
 <form class="search-form" id="search-form">
-
   <div class="search-field">
-    <input type="text" name="searchQuery" placeholder="Search films" class="search-field__input js-search-field__input">
-    <span  class="material-icons md-18 md-light.md-inactive">
-        search
-    </span>
+    <input
+      type="text"
+      name="searchQuery"
+      placeholder="Search films"
+      class="search-field__input js-search-field__input"
+    />
+    <span class="material-icons md-18 md-light.md-inactive"> search </span>
     <p class="search-field__error-text js-search-field__error-text"></p>
-</div>
+  </div>
 </form>
 
 <ul class="hero-buttons list visually-hidden">
@@ -22,12 +22,16 @@
     </button>
   </li>
   <li class="hero-buttons__item">
-    <button class="button button--secondary hero-buttons__btn queue-btn" data-hero="queue" type="button">
+    <button
+      class="button button--secondary hero-buttons__btn queue-btn"
+      data-hero="queue"
+      type="button"
+    >
       queue
     </button>
   </li>
 </ul>
-
-<div class="js-warning header-warning"></div>
-<div class="js-search-results header-warning"></div>
+<div class="hero-warning__box" data-header="dynamicContainer">
+  <div class="js-warning header-warning"></div>
+  <div class="js-search-results header-warning"></div>
 </div>

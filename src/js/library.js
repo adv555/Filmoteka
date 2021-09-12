@@ -141,46 +141,22 @@ export function onAddQueueBtn(event) {
 }
 
 export function onLibraryBtn() {
-  refs.sliderSection.classList.add('visually-hidden');
   refs.myLibraryLink.classList.add('site-nav__button--active');
-  refs.homeLink.classList.remove('site-nav__button--active');
-  refs.removePagination.classList.add('visually-hidden');
-  refs.libraryBtnlist.classList.remove('visually-hidden');
-  refs.searchForm.classList.add('visually-hidden');
-  refs.filterSelect.classList.add('visually-hidden');
-
-  refs.headerSection.classList.remove('header__container--home-bg');
   refs.headerSection.classList.add('header__container--my-library-bg');
+
+  refs.homeLink.classList.remove('site-nav__button--active');
+  refs.headerSection.classList.remove('header__container--home-bg');
+
+  refs.sliderSection.classList.add('visually-hidden');
+  refs.removePagination.classList.add('visually-hidden');
+  refs.searchForm.classList.add('visually-hidden');
+  refs.filterBox.classList.add('visually-hidden');
+  refs.heroWarningBox.classList.add('visually-hidden');
+  refs.libraryBtnlist.classList.remove('visually-hidden');
 
   reloadLocalStorage();
   onLibraryWachedBtm();
 }
-
-// export function updateBtnState(id) {
-//   // const addQueueBtn = document.querySelector('.js-queue');
-//   // const addWatchedBtn = document.querySelector('.js-watched');
-//   let watchedFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('watched-films'));
-//   let queueFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('queue-films'));
-
-//   console.log(
-//     watchedFilmsIdInLocalStorage
-//       .map(film => film.id)
-//       .join(',')
-//       .includes(id),
-//   );
-
-//   if (watchedFilmsIdInLocalStorage.map(film => film.id).includes(id)) {
-//     addWatchedBtn.innerText = 'REMOVE FROM WATCHED';
-//   } else {
-//     addWatchedBtn.innerText = 'ADD TO WATCHED';
-//   }
-
-//   if (queueFilmsIdInLocalStorage.map(film => film.id).includes(id)) {
-//     addQueueBtn.innerText = 'REMOVE FROM QUEUE';
-//   } else {
-//     addQueueBtn.innerText = 'ADD TO QUEUE';
-//   }
-// }
 
 export function renderWatchedFilmStorage() {
   refs.gallery.innerHTML = localStorrageData.watchedFilmStorage
@@ -190,31 +166,6 @@ export function renderWatchedFilmStorage() {
 export function renderQueueFilmStorage() {
   refs.gallery.innerHTML = localStorrageData.queueFilmStorage.map(film => film['markup']).join(' ');
 }
-
-class NoticeMessage {
-  constructor() {}
-  notice() {
-    notice({
-      text: 'Your Watched list is empty',
-      width: '300px',
-      minHeight: '15px',
-      delay: 1000,
-      addClass: 'error',
-    });
-  }
-  error() {
-    error({
-      // title: 'Error',
-      text: 'Your Library is empty',
-      width: '300px',
-      minHeight: '15px',
-      delay: 1000,
-      addClass: 'error',
-    });
-  }
-}
-
-const noticeMessage = new NoticeMessage();
 
 export function reloadLocalStorage() {
   localStorrageData = {

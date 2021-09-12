@@ -159,7 +159,7 @@ function addModal(dataMovie) {
           movieImg.style.color = 'red';
           color = false;
         } else {
-          movieImg.style.color = '#808080';
+          movieImg.style.removeProperty('color');
           color = true;
         }
       }
@@ -293,7 +293,7 @@ function SecretModal(e) {
 function SecretVideo(e) {
   const x = document.querySelector('.basicLightbox');
   const modalCloseBtn = document.querySelector('.modal__close-button');
-  const Url = e.currentTarget.dataset.img;
+  const Url = e.target.dataset.img;
   standardBackdrop = false;
   x.style.backgroundSize = 'cover';
   modalCloseBtn.style.color = '#ffffff';

@@ -1,10 +1,14 @@
+import refs from './refs';
 import * as basicLightbox from 'basiclightbox';
 import data from '../team.json';
 import teamCardTpl from '../templates/team-card';
 
 // =========== version 4 (убран скрол)===========//
+// =========== listeners
+refs.teamLink.addEventListener('click', onTeamModalShow);
 
-export default function onTeamModalShow(e) {
+// =========== on click
+function onTeamModalShow(e) {
   // create marckup
   const teamCardsMarkup = teamCardTpl(data);
 

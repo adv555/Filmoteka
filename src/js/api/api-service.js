@@ -35,7 +35,6 @@ export default class MoviesApiService {
   }
 
   // ======== фыльмы по популярности ========
-
   fetchPopularMovies() {
     const url = `${POPULAR_MOVIES_URL}&language=${this.language}&page=${this.page}`;
 
@@ -58,28 +57,10 @@ export default class MoviesApiService {
     });
 
     return fetch(`${BASE_URL}/discover/movie?${searchParams}`).then(response => response.json());
-    // https://api.themoviedb.org/3/discover/movie?api_key=3d673b2d8e40eafc68577fae5a6a1f4b&with_genres=28,12
   }
 
   // ======== поиск фильмов ======== //
-
-  // fetchMoviesBySearch() {
-  //   const searchParams = new URLSearchParams({
-  //     api_key: API_KEY,
-  //     query: this.searchQuery,
-  //     page: this.page,
-  //   });
-
-  //   return fetch(`${MOVIE_BY_SEARCH}search/movie?${searchParams}`).then(response =>
-  //     response.json(),
-  //   );
-  // }
   fetchMoviesBySearch() {
-    // const searchParams = new URLSearchParams({
-    //   api_key: API_KEY,
-    //   query: this.searchQuery,
-    //   page: this.page,
-    // });
     this.genres = '';
     return fetch(
       `${MOVIE_BY_SEARCH}&query=${this.searchQuery}&language=${this.language}&page=${this.page}`,
@@ -92,13 +73,7 @@ export default class MoviesApiService {
 
     return fetch(url).then(response => response.json());
   }
-  // ======== поиск по ключевому слову ======== //
-
-  // fetchMoviesByKeyword() {
-  //   const url = `${MOVIE_BY_KEYWORD}&language=${this.language}&page=${this.page}`;
-
-  //   return fetch(url).then(response => response.json());
-  // }
+  // ======== поиск по id ======== //
 
   fetchMovieTrtailer(movieId) {
     const url = `${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}&language=${this.language}`;
@@ -137,3 +112,4 @@ export default class MoviesApiService {
 // https://api.themoviedb.org/3/search/multi?api_key=<<api_key>>&language=en-US&page=1&include_adult=false
 // https://api.themoviedb.org/3/movie/{movie_id}?api_key=<<api_key>>&language=en-US
 // https://api.themoviedb.org/3/search/keyword?api_key=<<api_key>>&page=1
+// https://api.themoviedb.org/3/discover/movie?api_key=3d673b2d8e40eafc68577fae5a6a1f4b&with_genres=28,12

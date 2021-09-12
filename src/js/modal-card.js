@@ -27,7 +27,7 @@ export const valueLocalStorage = {
   id: '',
   markup: '',
 };
-console.log(valueLocalStorage);
+// console.log(valueLocalStorage);
 //Переменная для смены бегдропа
 let standardBackdrop = true;
 

@@ -48,7 +48,7 @@ export default class App {
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then(response => console.log(response))
-      // .then(response => this.state({ hasAccount:true}))
+      // .then(this.state({ hasAccount: true }))
       .catch(error => console.log(error));
   }
 

@@ -35,6 +35,7 @@ function onSubmit(e) {
     // [id]: value,
     email: email,
     password: password,
+    hasAccount: true,
   };
   authApp.createAccount();
   console.log(authApp.state);

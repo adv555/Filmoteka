@@ -247,12 +247,12 @@
     &__video {
       left: 300px;
       top: 50px;
-      color: red;
+      color: #808080;
 
-      // &:hover,
-      // &:focus {
-      //   color: red;
-      // }
+      &:hover,
+      &:focus {
+        color: red;
+      }
     }
 
     &__movie-poster {
@@ -260,9 +260,6 @@
       max-height: 480px;
       // cursor: url('../images/SVG/film.svg'), pointer;
       cursor: pointer;
-      // &:hover .modal__video {
-      //   color: red;
-      // }
     }
 
     &__title-movie {

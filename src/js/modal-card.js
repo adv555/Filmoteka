@@ -91,6 +91,7 @@ function addModal(dataMovie) {
   const ModalCard = basicLightbox.create(dataMovie, {
     //Параметр из документации (позволяет нам что-то делать во время открытия модального окна)
     onShow: ModalCard => {
+      let color = true;
       // запретить скролл страницы при открытии модалки (hidden-без предоставления прокрутки)
       document.body.style.overflow = 'hidden';
       // Получаем объект данных из LocalStorage
@@ -111,6 +112,8 @@ function addModal(dataMovie) {
       addWatchedBtn.addEventListener('click', onAddWachedBtm);
       addQueueBtn.addEventListener('click', onAddQueueBtn);
       movieImg.addEventListener('click', can);
+      moviePoster.addEventListener('mouseover', canColor);
+      moviePoster.addEventListener('mouseout', canColor);
       moviePoster.addEventListener('click', can);
       closeBtn.addEventListener('click', modalClose);
       ModalWindow.addEventListener('click', SecretModal);
@@ -148,6 +151,16 @@ function addModal(dataMovie) {
         if (e.code === 'Escape') {
           ModalCard.close();
           document.removeEventListener('keydown', closeEsc);
+        }
+      }
+
+      function canColor(e) {
+        if (color) {
+          movieImg.style.color = 'red';
+          color = false;
+        } else {
+          movieImg.style.color = '#808080';
+          color = true;
         }
       }
     },

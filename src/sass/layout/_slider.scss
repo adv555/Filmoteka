@@ -1,9 +1,15 @@
-.switcher-wrapper {
+.slider-container {
   width: 100%;
   height: 100px;
   margin-bottom: 80px;
-  position: relative;
   align-self: center;
+}
+
+.switcher-wrapper {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .arrow {
@@ -24,7 +30,7 @@
   width: 100%;
   height: auto;
   display: flex;
-  position: relative;
+  position: absolute;
   .film-strip__item {
     width: 20px;
     height: auto;
@@ -35,6 +41,7 @@
     z-index: 11;
     transform: translateX(-50%);
     transition: 0.5s cubic-bezier(0.8, 0.5, 0.1, 1.02);
+    //pointer-events: none;
 
     h2 {
       font-size: 14px;
@@ -48,6 +55,7 @@
         0.6px 0px 0.6px rgb(14, 14, 114);
       transition: 0.32s cubic-bezier(1, 0.5, 0.2, 0.5);
       z-index: 0;
+      pointer-events: none;
     }
 
     span {
@@ -65,18 +73,20 @@
         0.6px 0px 0.6px rgb(14, 14, 114);
       transition: 0.3s cubic-bezier(1, 0.5, 0.2, 0.5);
       z-index: 0;
+      //pointer-events: none;
     }
 
     img {
       display: block;
       max-width: 100%;
       border-radius: 9px;
+      z-index: 29;
     }
 
     &[data-position='0'] {
       width: 30%;
       left: 50%;
-      z-index: 30;
+      z-index: 29;
       opacity: 1;
       h2 {
         color: #fff;
@@ -86,6 +96,7 @@
         text-shadow: 1.2px 0px 9px orangered, 0 1.5px 1px rgb(52, 52, 52),
           0.6px 0px 0.6px rgb(14, 14, 114);
         z-index: 30;
+        pointer-events: none;
       }
       span {
         color: #fff;
@@ -94,9 +105,11 @@
         opacity: 0.4;
         text-shadow: 1.2px 0px 9px orangered, 0 1.5px 1px rgb(52, 52, 52),
           0.6px 0px 0.6px rgb(14, 14, 114);
-        z-index: 30;
+        z-index: 29;
+        pointer-events: auto;
         &:hover {
           opacity: 1;
+          z-index: 30;
         }
       }
       .film-strip__play-video {
@@ -181,7 +194,7 @@
       display: none;
       opacity: 0;
       top: 50%;
-      z-index: -1;
+      z-index: 0;
     }
   }
 }

@@ -45,6 +45,8 @@ export default function createGalleryMarkup(data) {
 
   refs.gallery.innerHTML = renderCards(cardList);
 
+  localStorage.setItem('galleryCardList', JSON.stringify(cardList));
+
   const arrowLeft = document.querySelector('.arrowLeft');
   const arrowRight = document.querySelector('.arrowRight');
   arrowLeft.innerHTML = '';

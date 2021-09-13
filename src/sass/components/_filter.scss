@@ -9,7 +9,9 @@
 //   background: url('../../images/film-strip-png-1012651.png');
 //   // background-color: #cccccc;
 // }
-
+// .main{
+//   background-image: url('/src/images/film-strip-png-1012651.png');
+// }
 .gallery {
   position: relative;
 }
@@ -25,7 +27,7 @@
   right: 0;
   text-align: center;
   z-index: 5;
-  top: -30px;
+  // top: -30px;
   display: flex;
   flex-wrap: wrap;
 }
@@ -34,7 +36,8 @@
   position: relative;
   display: flex;
   justify-content: center;
-  // padding-top: 30px;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 .multiselect {
   width: 200px;

@@ -2,9 +2,11 @@ import refs from './refs.js';
 import createGalleryMarkup from '../js/gallery/gallery.js';
 import moviesApiService from './onSearch';
 refs.homeLink.addEventListener('click', onHomeBtn);
-
+bounceNavBtn();
 export function onHomeBtn() {
+  bounceNavBtn();
   console.log('Home Btn');
+
   refs.myLibraryLink.classList.remove(
     'site-nav__button--active',
     'animate__animated',
@@ -19,6 +21,7 @@ export function onHomeBtn() {
     'animate__pulse',
     'animate__infinite',
   );
+
   refs.headerSection.classList.add('header__container--home-bg');
 
   refs.sliderSection.classList.remove('visually-hidden');
@@ -31,4 +34,13 @@ export function onHomeBtn() {
   refs.myLibraryNotice.classList.add('visually-hidden');
 
   moviesApiService.fetchTrending().then(createGalleryMarkup).catch(console.log);
+}
+
+export function bounceNavBtn() {
+  console.log('bounceNavBtn');
+  refs.logoText.classList.add('animate__animated', 'animate__bounceInLeft');
+  setTimeout(
+    () => refs.logoText.classList.remove('animate__animated', 'animate__bounceInLeft'),
+    1000,
+  );
 }

@@ -1,9 +1,5 @@
 import refs from './refs';
-import {
-  emptyLibraryNotice,
-  emptyWatchedStoragedNotice,
-  emptyQueueStoragedNotice,
-} from './notification';
+
 //============== Костина сохранненная разметка Олиной картички===========
 import { valueLocalStorage as valueForLocalStorage } from './modal-card';
 import moviesApiService from '../index.js';
@@ -19,7 +15,6 @@ refs.watchedBtn.addEventListener('click', onLibraryWachedBtm);
 refs.queueBtn.addEventListener('click', onLibraryQueueBtn);
 
 function onLibraryWachedBtm() {
-  refs.gallery.classList.remove('animate__animated', 'animate__bounceInRight');
   let queueFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('queue-films'));
   let watchedFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('watched-films'));
   if (
@@ -76,7 +71,6 @@ function changeWatchedPage(page) {
 function onLibraryQueueBtn() {
   let queueFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('queue-films'));
   let watchedFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('watched-films'));
-  refs.gallery.classList.remove('animate__animated', 'animate__bounceInLeft');
   if (
     (watchedFilmsIdInLocalStorage === null || watchedFilmsIdInLocalStorage.length === 0) &&
     (queueFilmsIdInLocalStorage === null || queueFilmsIdInLocalStorage.length === 0)
@@ -245,11 +239,11 @@ export function renderWatchedFilmStorage() {
   refs.gallery.innerHTML = localStorrageData.watchedFilmStorage
     .map(film => film['markup'])
     .join(' ');
-  refs.gallery.classList.add('animate__animated', 'animate__bounceInLeft');
+  bouceInLeftLibGallery();
 }
 export function renderQueueFilmStorage() {
   refs.gallery.innerHTML = localStorrageData.queueFilmStorage.map(film => film['markup']).join(' ');
-  refs.gallery.classList.add('animate__animated', 'animate__bounceInRight');
+  bouceInRightLibGallery();
 }
 
 export function reloadLocalStorage() {
@@ -304,6 +298,21 @@ function onLibraryNoticeTitle() {
   refs.myLibraryNoticeTitle.classList.add('animate__animated', 'animate__jello');
   setTimeout(
     () => refs.myLibraryNoticeTitle.classList.remove('animate__animated', 'animate__jello'),
+    750,
+  );
+}
+
+function bouceInRightLibGallery() {
+  refs.gallery.classList.add('animate__animated', 'animate__bounceInRight');
+  setTimeout(
+    () => refs.gallery.classList.remove('animate__animated', 'animate__bounceInRight'),
+    750,
+  );
+}
+function bouceInLeftLibGallery() {
+  refs.gallery.classList.add('animate__animated', 'animate__bounceInLeft');
+  setTimeout(
+    () => refs.gallery.classList.remove('animate__animated', 'animate__bounceInLeft'),
     750,
   );
 }

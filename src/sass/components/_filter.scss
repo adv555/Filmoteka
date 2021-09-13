@@ -1,155 +1,61 @@
-// .filter {
-//   display: flex;
-//   justify-content: center;
-//   max-width: 1042px;
-//   margin: 0 auto;
-//   margin-top: 30px;
-//   margin-bottom: 30px;
+// .filter-wrapper {
+//   margin-top: 10px;
+
+//   @media screen and (min-width: $tablet) {
+//     margin-top: 50px;
+//   }
 // }
-
-// .button-filter {
-//   padding: 10px 20px;
-//   margin-right: 15px;
-//   cursor: pointer;
-//   border-radius: 20px;
-//   position: relative;
-//   background-color: rgb(218, 222, 255);
-//   transition: background-color 600ms linear;
-// }
-
-// .button-filter:last-child {
-//   margin-right: 0;
-// }
-
-// .button-filter:active {
-//   bottom: -2px;
-// }
-
-// .button-filter:hover,
-// .button-filter:focus {
-//   background-color: rgb(100, 123, 255);
-// }
-
-.filter-wrapper {
-  margin-top: 10px;
-
-  @media screen and (min-width: $tablet) {
-    margin-top: 50px;
-  }
+.switcher-wrapper {
+  // background: url('../../images/film-strip-png-1012651.png');
+  background-color: #cccccc;
 }
 
-.genres-filters {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 10px;
-}
-
-.genres-filters__item + .genres-filters__item {
-  margin-left: 5px;
-  cursor: pointer;
-}
-
-.genres-filters__item {
-  padding: 2px 7px;
-  margin-top: 3px;
-  font-size: 16px;
-  border: 1px solid #ff6b08;
-  border-radius: 8px;
-  transition: all 300ms ease;
-}
-// &.checked,
-.container__filter.checkbox:checked,
-.genres-filters__item:hover,
-.genres-filters__item:focus {
-  color: #ffffff;
-  background-color: #ff6b08;
-}
-
-.filter-btn {
-  padding: 5px 10px;
-  border-radius: 5px;
-  border: 1px solid;
-  font-size: getFont-size__mob('nav-text');
-  font-weight: 500;
-  line-height: 1.33;
-  text-transform: uppercase;
-
-  cursor: pointer;
-}
-.filter-buttons__btn {
-  width: 130px;
-
-  margin: 0 10px 0;
-  color: $grey-color;
-  border: 1px solid $white-color;
-  background-color: transparent;
-
-  transition: color $btn-duration $timing-function, border $btn-duration $timing-function,
-    background-color $btn-duration $timing-function, box-shadow $btn-duration $timing-function;
-
-  @media screen and (min-width: $tablet) {
-    width: 136px;
-  }
-}
-
-.filter-buttons__btn:hover,
-.filter-buttons__btn:focus,
-.filter-buttons__btn--active {
-  color: $white-color;
-  border: 1px solid $accent-bg;
-  background-color: $accent-bg;
-  box-shadow: (0px 8px 43px rgba(255, 107, 1, 0.6));
-}
-
-.container__filter {
-  margin: 5px;
-}
-
-.filter-btn-wropp {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 30px;
-  max-height: 30px;
-}
-
-.checkbox {
-  appearance: none;
-  position: absolute;
-}
-.label {
-  display: inline-block;
-}
-.icon {
-  content: '';
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  background-color: #ffffff;
-  margin-right: 5px;
-}
-
-.checkbox:checked + .icon {
-  background-color: #ff6b08;
-}
-
-.filter-box {
-  display: flex;
-  justify-content: center;
-}
-.multiselect {
-  width: 200px;
-}
-
-.selectBox {
+.gallery {
   position: relative;
 }
 
-.selectBox select {
-  border-radius: 5px;
-  width: 100%;
-  font-weight: bold;
+.filter-box {
+  // display: none;
+  position: absolute;
+  /* border: 5px solid red; */
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 5;
+  top: -30px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.filter-box {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+}
+.multiselect {
+  width: 200px;
+  // margin-top: 15px;
+  background: #ff6b012e;
+  // background: #333333;
+}
+.selectBox {
+  position: relative;
+  // color: #8c8c8c;
+
+  & select {
+    // font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+    padding: 5px 10px;
+    color: #8c8c8c;
+    text-transform: uppercase;
+    border-radius: 5px;
+    width: 100%;
+    font-weight: bold;
+  }
 }
 
 .overSelect {
@@ -162,13 +68,109 @@
 
 .checkboxes {
   display: none;
-  border: 1px #dadada solid;
+  position: absolute;
+  z-index: 5;
+  width: 200px;
+
+  // border: 1px #dadada solid;
+  border: 1px solid #fffefd87;
+  background: #333333d6;
+  border-radius: 6px;
+
+  &__container {
+    margin: 5px;
+  }
+  &__label {
+    display: block;
+    cursor: pointer;
+    padding: 2px 7px;
+    color: #fffefd87;
+    // margin-top: 3px;
+    // font-size: 16px;
+    border: 1px solid #ff6b08;
+    // border: 1px solid #fffefd87;
+    // border: 1px solid #ff6b0885;
+    border-radius: 8px;
+    transition: all 300ms ease;
+    &:hover,
+    &:focus {
+      // background-color: #1e90ff;
+      color: #ffffff;
+      background-color: #ff6b08;
+    }
+  }
+  &__checkbox {
+    appearance: none;
+    position: absolute;
+    &:checked + .checkboxes__icon {
+      background-color: #ff6b08;
+    }
+  }
+  &__icon {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #ffffff;
+    margin-right: 5px;
+  }
 }
 
-.checkboxes label {
-  display: block;
+.filter-btn-wropp {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  // margin-bottom: 30px;
+  height: 30px;
+  // margin-top: 15px;
 }
 
-.checkboxes label:hover {
-  background-color: #1e90ff;
+.filter-buttons__btn {
+  width: 130px;
+
+  margin: 0 10px 0;
+  color: $grey-color;
+  border: 1px solid $white-color;
+  background-color: transparent;
+
+  transition: color $btn-duration $timing-function, border $btn-duration $timing-function,
+    background-color $btn-duration $timing-function, box-shadow $btn-duration $timing-function;
+
+  &:hover,
+  &:focus,
+  &--active {
+    color: $white-color;
+    border: 1px solid $accent-bg;
+    background-color: $accent-bg;
+    box-shadow: (0px 8px 43px rgba(255, 107, 1, 0.6));
+  }
+}
+.filter-btn {
+  // width: 200px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid;
+  font-size: getFont-size__mob('nav-text');
+  font-weight: 500;
+  line-height: 1.33;
+  text-transform: uppercase;
+
+  cursor: pointer;
+}
+
+@media screen and (max-width: $max-mobile) {
+  .filter-box {
+    display: none;
+  }
+  // .filter-btn {
+  //   width: 200px;
+  // }
+  // .filter-box {
+  //   top: -100px;
+  // }
+}
+@media screen and (min-width: $tablet) {
+  .filter-box {
+    flex-wrap: nowrap;
+  }
 }

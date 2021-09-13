@@ -30,6 +30,10 @@
 //   background-color: rgb(100, 123, 255);
 // }
 
+fieldset {
+  border: none;
+}
+
 .filter-wrapper {
   margin-top: 10px;
 
@@ -43,6 +47,15 @@
   flex-wrap: wrap;
   justify-content: center;
   margin-bottom: 10px;
+  overflow: hidden;
+  background-image: url("../../src/images/filter/filter-genre.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    background-image: none;
+  }
 }
 
 .genres-filters__item + .genres-filters__item {
@@ -57,20 +70,27 @@
   border: 1px solid #ff6b08;
   border-radius: 8px;
   transition: all 300ms ease;
+  cursor: pointer;
 }
-// &.checked,
+
 .container__filter.checkbox:checked,
 .genres-filters__item:hover,
 .genres-filters__item:focus {
   color: #ffffff;
-  background-color: #ff6b08;
+  background-image: linear-gradient(
+    to right top,
+    #ff5100 0%,
+    #ffb648 47%,
+    #ffffff 100%
+  );
+  margin-top: 1px;
 }
 
 .filter-btn {
   padding: 5px 10px;
   border-radius: 5px;
   border: 1px solid;
-  font-size: getFont-size__mob('nav-text');
+  font-size: getFont-size__mob("nav-text");
   font-weight: 500;
   line-height: 1.33;
   text-transform: uppercase;
@@ -85,8 +105,10 @@
   border: 1px solid $white-color;
   background-color: transparent;
 
-  transition: color $btn-duration $timing-function, border $btn-duration $timing-function,
-    background-color $btn-duration $timing-function, box-shadow $btn-duration $timing-function;
+  transition: color $btn-duration $timing-function,
+    border $btn-duration $timing-function,
+    background-color $btn-duration $timing-function,
+    box-shadow $btn-duration $timing-function;
 
   @media screen and (min-width: $tablet) {
     width: 136px;
@@ -104,6 +126,13 @@
 
 .container__filter {
   margin: 5px;
+  transform: translateY(600%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  .genres-filters:hover &,
+  .genres-filters:focus & {
+    transform: translateY(0%);
+  }
 }
 
 .filter-btn-wropp {
@@ -121,7 +150,7 @@
   display: inline-block;
 }
 .icon {
-  content: '';
+  content: "";
   display: inline-block;
   width: 10px;
   height: 10px;
@@ -131,4 +160,14 @@
 
 .checkbox:checked + .icon {
   background-color: #ff6b08;
+  border-radius: 5px;
+}
+
+.filters {
+  display: none;
+  transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  @media screen and (min-width: $tablet) {
+    display: block;
+  }
 }

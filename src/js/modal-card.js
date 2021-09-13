@@ -53,11 +53,17 @@ refs.filmStrip.addEventListener('click', getMovieIdAndMarkupCardMovie);
 function getMovieIdAndMarkupCardMovie(e) {
   const className = e.target.className;
   const tagName = e.target.nodeName;
-  if (tagName !== 'IMG' && className !== 'gallery-image') {
-    return;
+  if (tagName == 'IMG' && className == 'gallery-image') {
+    getMovieId(e);
+    getMarkupCardMovie('gallery');
+  } else if (tagName == 'span' && className == 'film-strip__info') {
+    getMovieId(e);
+    getMarkupCardMovie('slider');
   }
-  getMovieId(e);
-  getMarkupCardMovie(e);
+  return;
+
+
+  return movieId;
 }
 
 //получение id фильма и записываем в объект;
@@ -68,10 +74,20 @@ function getMovieId(e) {
   return movieId;
 }
 
+// ========= get movie 'currentCardID' from localStorage and return array whith 1 sought object {getMoviefromLS('galleryCardList')} ============
+function getMoviefromLS(filmLS) {
+  let arr = JSON.parse(localStorage.getItem(filmLS));
+  return arr.filter(function (item, i, arr) {
+    return (item.id == valueLocalStorage.id)
+  })[0];
+};
+
 //получение разметки карточки фильма и записываем в объект ;
-function getMarkupCardMovie(e) {
-  const markupCadrMovie = e.target.closest('LI').outerHTML;
-  valueLocalStorage.markup = markupCadrMovie;
+function getMarkupCardMovie(section) {
+  if (section == 'gallery') {
+    return valueLocalStorage.markup = getMoviefromLS('galleryCardList');
+  }
+  return valueLocalStorage.markup = getMoviefromLS('UpcomingCollection');
 }
 
 // отправляем запрос на сервер через id и получаем информацию по фильму

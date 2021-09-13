@@ -158,6 +158,7 @@
     background: $white-color;
 
     &-hover {
+      transition: all $duration $timing-function;
       border: none;
       background: $accent-bg;
       color: $white-color;

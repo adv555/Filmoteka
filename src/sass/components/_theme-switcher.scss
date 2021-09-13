@@ -9,8 +9,8 @@
 }
 
 body.light-theme {
-  background-color: #fff;
-  // background-image: url(../images/popcorn-4.jpeg);
+  background-color: cornsilk;
+  // background-image: url(../images/popcorn-2.jpeg);
   background-image: url(../images/popcorn-png.png);
   background-attachment: fixed;
   background-position: center;
@@ -27,20 +27,20 @@ body.dark-theme {
 
   color: #fff;
 }
-main.light-theme {
-  background-color: #fff;
-  background-image: url(../images/popcorn-png.png);
-  // background-repeat: no-repeat;
-  color: #333333;
-}
+// main.light-theme {
+//   background-color: #fff;
+//   background-image: url(../images/popcorn-png.png);
+//   // background-repeat: no-repeat;
+//   color: #333333;
+// }
 
-main .dark-theme {
-  background-color: #333333;
-  background-image: url(../images/popcorn-png.png);
-  // background-repeat: no-repeat;
+// main .dark-theme {
+//   background-color: #333333;
+//   background-image: url(../images/popcorn-png.png);
+//   // background-repeat: no-repeat;
 
-  color: #fff;
-}
+//   color: #fff;
+// }
 .toolbar {
   display: flex;
   justify-content: flex-end;

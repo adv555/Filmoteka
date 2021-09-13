@@ -10,14 +10,37 @@
 
 body.light-theme {
   background-color: #fff;
+  // background-image: url(../images/popcorn-4.jpeg);
+  background-image: url(../images/popcorn-png.png);
+  background-attachment: fixed;
+  background-position: center;
+  // background-repeat: no-repeat;
   color: #333333;
 }
 
 body.dark-theme {
   background-color: #333333;
+  background-image: url(../images/popcorn-png.png);
+  // background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+
   color: #fff;
 }
+main.light-theme {
+  background-color: #fff;
+  background-image: url(../images/popcorn-png.png);
+  // background-repeat: no-repeat;
+  color: #333333;
+}
 
+main .dark-theme {
+  background-color: #333333;
+  background-image: url(../images/popcorn-png.png);
+  // background-repeat: no-repeat;
+
+  color: #fff;
+}
 .toolbar {
   display: flex;
   justify-content: flex-end;

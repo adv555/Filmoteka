@@ -48,10 +48,10 @@ fieldset {
   justify-content: center;
   margin-bottom: 10px;
   overflow: hidden;
-  background-image: url("../../src/images/filter/filter-genre.png");
+  background-image: url("../../src/images/filter/filter-genre2.png");
   background-repeat: no-repeat;
   background-position: center;
-  transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
     background-image: none;
@@ -128,10 +128,13 @@ fieldset {
   margin: 5px;
   transform: translateY(600%);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    
 
   .genres-filters:hover &,
   .genres-filters:focus & {
     transform: translateY(0%);
+    // box-shadow:(1px 1px 5px rgba(255, 255, 255, 0.837));
+    border-radius: 10px;
   }
 }
 
@@ -166,6 +169,7 @@ fieldset {
 .filters {
   display: none;
   transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+
 
   @media screen and (min-width: $tablet) {
     display: block;

@@ -53,8 +53,10 @@
     // font-family: 'Courier New', Courier, monospace;
     font-size: 12px;
     padding: 5px 10px;
-    color: #8c8c8c;
+    background: $accent-line;
+    color: $white-color;
     text-transform: uppercase;
+    border-color: #00000017;
     border-radius: 5px;
     width: 100%;
     font-weight: bold;
@@ -90,7 +92,7 @@
     color: #fffefd87;
     // margin-top: 3px;
     // font-size: 16px;
-    border: 1px solid #ff6b08;
+    border: 1px solid $accent-line;
     // border: 1px solid #fffefd87;
     // border: 1px solid #ff6b0885;
     border-radius: 8px;
@@ -99,14 +101,14 @@
     &:focus {
       // background-color: #1e90ff;
       color: #ffffff;
-      background-color: #ff6b08;
+      background-color: $accent-line;
     }
   }
   &__checkbox {
     appearance: none;
     position: absolute;
     &:checked + .checkboxes__icon {
-      background-color: #ff6b08;
+      background-color: $accent-line;
     }
   }
   &__icon {
@@ -114,7 +116,7 @@
     display: inline-block;
     width: 10px;
     height: 10px;
-    background-color: #ffffff;
+    background-color: $white-color;
     margin-right: 5px;
   }
 }
@@ -132,7 +134,8 @@
   width: 130px;
 
   margin: 0 10px 0;
-  color: $grey-color;
+  // color: $grey-color;
+  color: #ff6b08;
   border: 1px solid $white-color;
   background-color: transparent;
 

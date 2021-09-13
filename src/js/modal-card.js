@@ -351,3 +351,5 @@ function SecretVideo(e) {
   modalCloseBtn.style.color = '#ffffff';
   x.style.backgroundImage = `url(${Url})`;
 }
+
+export { trailerTemplate, getDataMovieById };

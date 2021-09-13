@@ -1,7 +1,12 @@
+@media screen and (max-width: $max-mobile) {
+  .slider {
+    display: none;
+  }
+}
 .switcher-wrapper {
   width: 100%;
   height: 100px;
-  margin-bottom: 80px;
+  // margin-bottom: 80px;
   position: relative;
   align-self: center;
 }

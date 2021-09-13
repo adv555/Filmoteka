@@ -311,8 +311,10 @@ function turnOnTheTrailer(trailerKey) {
         x.style.removeProperty('background-size');
         x.style.removeProperty('background-image');
         x.style.removeProperty('animation');
-        modalCloseBtn.style.color = '#ff6b08';
         standardBackdrop = true;
+      }
+      if (x == !null || modalCloseBtn !== null) {
+        modalCloseBtn.style.color = '#ff6b08';
       }
     },
   });

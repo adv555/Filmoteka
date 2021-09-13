@@ -36,7 +36,6 @@ export const valueLocalStorage = {
   id: '',
   markup: '',
 };
-
 // console.log(valueLocalStorage);
 //Переменная для смены бегдропа
 let standardBackdrop = true;
@@ -48,7 +47,7 @@ refs.gallery.addEventListener('click', getMovieIdAndMarkupCardMovie);
 // refs.sliderMovieInfo.addEventListener('click', getMovieId);
 
 // Один слушатель на СЛАЙДЕР
-//refs.filmStrip.addEventListener('click', getMovieIdAndMarkupCardMovie);
+refs.filmStrip.addEventListener('click', getMovieIdAndMarkupCardMovie);
 
 //При клике на карточку фильма в gallery
 function getMovieIdAndMarkupCardMovie(e) {
@@ -66,8 +65,7 @@ function getMovieId(e) {
   const movieId = e.target.dataset.source;
   getDataMovieById(movieId);
   valueLocalStorage.id = movieId;
-  localStorage.setItem('currentCardID', movieId); //write current movie ID
-  console.log(localStorage.getItem('currentCardID'));
+  return movieId;
 }
 
 //получение разметки карточки фильма и записываем в объект ;
@@ -337,6 +335,3 @@ function SecretVideo(e) {
   modalCloseBtn.style.color = '#ffffff';
   x.style.backgroundImage = `url(${Url})`;
 }
-
-
-export { trailerTemplate, getDataMovieById };

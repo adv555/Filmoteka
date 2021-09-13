@@ -6,7 +6,8 @@ const Theme = {
 const refs = {
   //   menuList: document.querySelector(".js-menu"),
   switcher: document.querySelector(".theme-switch__toggle"),
-  body: document.body
+  body: document.body,
+  slider: document.querySelector(".switcher-wrapper")
 };
 
 function changeTheme({ target: { checked } }) {
@@ -26,6 +27,9 @@ function toggleTheme(add, rem) {
   refs.switcher.addEventListener("change", changeTheme);
 
   refs.body.classList.add(
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : Theme.LIGHT
+  );
+  refs.slider.classList.add(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : Theme.LIGHT
   );
   refs.switcher.checked = localStorage.getItem("theme") === Theme.DARK;

@@ -48,7 +48,7 @@ fieldset {
   justify-content: center;
   margin-bottom: 10px;
   overflow: hidden;
-  background-image: url("../../src/images/filter/filter-genre.png");
+  background-image: url('../../src/images/filter/filter-genre.png');
   background-repeat: no-repeat;
   background-position: center;
   transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -57,8 +57,8 @@ fieldset {
     background-image: none;
   }
 
-    @media screen and (max-width: $desktop) {
-      background-image: url("../../src/images/filter/filter-genre2.png");
+  @media screen and (max-width: $desktop) {
+    background-image: url('../../src/images/filter/filter-genre2.png');
   }
 }
 
@@ -81,20 +81,16 @@ fieldset {
 .genres-filters__item:hover,
 .genres-filters__item:focus {
   color: #ffffff;
-  background-image: linear-gradient(
-    to right top,
-    #ff5100 0%,
-    #ffb648 47%,
-    #ffffff 100%
-  );
+  background-image: linear-gradient(to right top, #ff5100 0%, #ffb648 47%, #ffffff 100%);
   margin-top: 1px;
 }
 
 .filter-btn {
   padding: 5px 10px;
+
   border-radius: 5px;
   border: 1px solid;
-  font-size: getFont-size__mob("nav-text");
+  font-size: getFont-size__mob('nav-text');
   font-weight: 500;
   line-height: 1.33;
   text-transform: uppercase;
@@ -109,10 +105,8 @@ fieldset {
   border: 1px solid $white-color;
   background-color: transparent;
 
-  transition: color $btn-duration $timing-function,
-    border $btn-duration $timing-function,
-    background-color $btn-duration $timing-function,
-    box-shadow $btn-duration $timing-function;
+  transition: color $btn-duration $timing-function, border $btn-duration $timing-function,
+    background-color $btn-duration $timing-function, box-shadow $btn-duration $timing-function;
 
   @media screen and (min-width: $tablet) {
     width: 136px;
@@ -132,7 +126,6 @@ fieldset {
   margin: 5px;
   transform: translateY(600%);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    
 
   .genres-filters:hover &,
   .genres-filters:focus & {
@@ -157,7 +150,7 @@ fieldset {
   display: inline-block;
 }
 .icon {
-  content: "";
+  content: '';
   display: inline-block;
   width: 10px;
   height: 10px;
@@ -173,7 +166,6 @@ fieldset {
 .filters {
   display: none;
   transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
-
 
   @media screen and (min-width: $tablet) {
     display: block;

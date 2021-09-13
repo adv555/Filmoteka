@@ -32,6 +32,7 @@ const filterHideBtn = document.querySelector('.js-hide-btn');
 const filterResetBtn = document.querySelector('.js-reset-btn');
 const headerSection = document.querySelector('.header');
 const myLibraryNotice = document.querySelector('.my-Library__notice');
+const myLibraryNoticeTitle = document.querySelector('.my-Library__notice-title');
 
 export default {
   searchForm,
@@ -66,4 +67,5 @@ export default {
   filterResetBtn,
   headerSection,
   myLibraryNotice,
+  myLibraryNoticeTitle,
 };

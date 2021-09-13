@@ -7,7 +7,6 @@ export function onHomeBtn() {
   console.log('Home Btn');
   refs.myLibraryLink.classList.remove(
     'site-nav__button--active',
-    'site-nav__button--active',
     'animate__animated',
     'animate__pulse',
     'animate__infinite',

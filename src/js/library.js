@@ -19,6 +19,7 @@ refs.watchedBtn.addEventListener('click', onLibraryWachedBtm);
 refs.queueBtn.addEventListener('click', onLibraryQueueBtn);
 
 function onLibraryWachedBtm() {
+  refs.gallery.classList.remove('animate__animated', 'animate__bounceInRight');
   let queueFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('queue-films'));
   let watchedFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('watched-films'));
   if (
@@ -27,6 +28,7 @@ function onLibraryWachedBtm() {
   ) {
     console.log('везде нули');
     refs.myLibraryNotice.classList.remove('visually-hidden');
+
     refs.gallery.innerHTML = '';
     reloadHeroBtnStatus();
   } else {
@@ -74,12 +76,14 @@ function changeWatchedPage(page) {
 function onLibraryQueueBtn() {
   let queueFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('queue-films'));
   let watchedFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('watched-films'));
+  refs.gallery.classList.remove('animate__animated', 'animate__bounceInLeft');
   if (
     (watchedFilmsIdInLocalStorage === null || watchedFilmsIdInLocalStorage.length === 0) &&
     (queueFilmsIdInLocalStorage === null || queueFilmsIdInLocalStorage.length === 0)
   ) {
     console.log('везде нули');
     refs.myLibraryNotice.classList.remove('visually-hidden');
+
     refs.gallery.innerHTML = '';
     // refs.watchedBtn.classList.remove('hero-buttons__btn--active');
     // refs.queueBtn.classList.remove('hero-buttons__btn--active');
@@ -241,9 +245,11 @@ export function renderWatchedFilmStorage() {
   refs.gallery.innerHTML = localStorrageData.watchedFilmStorage
     .map(film => film['markup'])
     .join(' ');
+  refs.gallery.classList.add('animate__animated', 'animate__bounceInLeft');
 }
 export function renderQueueFilmStorage() {
   refs.gallery.innerHTML = localStorrageData.queueFilmStorage.map(film => film['markup']).join(' ');
+  refs.gallery.classList.add('animate__animated', 'animate__bounceInRight');
 }
 
 export function reloadLocalStorage() {
@@ -290,4 +296,14 @@ export function reloadHeroBtnStatus() {
     );
     reloadLocalStorage();
   }
+}
+
+refs.myLibraryNoticeTitle.addEventListener('click', onLibraryNoticeTitle);
+
+function onLibraryNoticeTitle() {
+  refs.myLibraryNoticeTitle.classList.add('animate__animated', 'animate__jello');
+  setTimeout(
+    () => refs.myLibraryNoticeTitle.classList.remove('animate__animated', 'animate__jello'),
+    750,
+  );
 }

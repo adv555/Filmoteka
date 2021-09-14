@@ -10,11 +10,13 @@
 
 body.light-theme {
   background-color: cornsilk;
-  // background-image: url(../images/popcorn-2.jpeg);
-  background-image: url(../images/popcorn-png.png);
+  background-image: url(../images/popcorn-png.png), url(../images/deadpool.png),
+    url(../images/boy.png), url(../images/coca-cola.png), url(../images/box.png);
+  // background-image: url(../images/abstraction-2.png);
   background-attachment: fixed;
-  background-position: center;
-  // background-repeat: no-repeat;
+  background-position: center, bottom 10% right 5%, top 5% left 9%, bottom 10% left 6%,
+    bottom 10% left 10%;
+  background-repeat: repeat, no-repeat, no-repeat, no-repeat, no-repeat;
   color: #333333;
 }
 
@@ -22,7 +24,8 @@ body.dark-theme {
   // background-color: #000000d6;
   background-color: #585050;
   // background-color: $footer;
-  background-image: url(../images/popcorn-png.png);
+  // background-image: url(../images/popcorn-png.png);
+  background-image: url(../images/abstraction-2.png);
   // background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;

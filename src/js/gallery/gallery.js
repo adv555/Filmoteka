@@ -7,8 +7,6 @@ import moviesApiService from '../onSearch';
 
 export default function createGalleryMarkup(data) {
   moviesApiService.totalResults = data.total_results;
-  // console.log(data);
-
   let cardList = [];
   cardList = data.results.map(card => {
     const genreList = [];
@@ -46,6 +44,8 @@ export default function createGalleryMarkup(data) {
   }
 
   refs.gallery.innerHTML = renderCards(cardList);
+
+  localStorage.setItem('galleryCardList', JSON.stringify(cardList));
 
   const arrowLeft = document.querySelector('.arrowLeft');
   const arrowRight = document.querySelector('.arrowRight');

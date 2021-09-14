@@ -1,30 +1,45 @@
 :root {
-    --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-  }
-  
-  body.light-theme {
-    background-color: #fff;
-    color: #333333;
-  }
-  
-  body.dark-theme {
-    background-color: #333333;
-    color: #fff;
-  }
-  
-  .toolbar {
-    display: flex;
-    justify-content: flex-end;
-    // padding: 16px 24px;
-  }
 
-  /* THEME SWITCH */
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body.light-theme {
+  background-color: cornsilk;
+  // background-image: url(../images/popcorn-2.jpeg);
+  background-image: url(../images/popcorn-png.png);
+  background-attachment: fixed;
+  background-position: center;
+  // background-repeat: no-repeat;
+  color: #333333;
+
+}
+
+body.dark-theme {
+  // background-color: #000000d6;
+  background-color: #585050;
+  // background-color: $footer;
+  background-image: url(../images/popcorn-png.png);
+  // background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+
+  color: #fff;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: flex-end;
+ // padding: 16px 24px;
+}
+
+
+/* THEME SWITCH */
 .theme-switch {
   display: flex;
   align-items: center;
@@ -124,14 +139,14 @@
     margin-left: 4px;
   }
 
-    .theme-switch__icon-moon {
+  .theme-switch__icon-moon {
     height: 14px;
     width: 14px;
     margin-right: 4px;
     margin-left: 4px;
   }
 
-    .theme-switch__control {
+  .theme-switch__control {
     width: 52px;
     height: 20px;
   }
@@ -141,7 +156,3 @@
     height: 14px;
   }
 }
-
-
-
-

@@ -1,22 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Roboto:wght@400;500&display=swap');
 
-// .basicLightbox {
-//   font-family: 'Poppins', sans-serif;
-
-//   position: absolute;
-//   overflow-y: auto;
-//   min-height: 100vh;
-//   background: rgba($color: $grey-color, $alpha: 0.5);
-// }
 .basicLightbox {
   background: rgba($color: $grey-color, $alpha: 0.5);
   //сделал что бы модалка перекрывала кнопку прокрутки вверх P.S Костя
   z-index: 10000;
 }
-
-// .basicLightbox__placeholder {
-//   height: 100vh;
-// }
 
 .team-section {
   font-family: 'Poppins', sans-serif;
@@ -26,9 +14,6 @@
   align-items: center;
   flex-wrap: wrap;
   background: #161616;
-  //   max-width: 320px;
-  //   margin-top: 5vh;
-  //   min-height: 100vh;
 
   &__container {
     height: 100vh;
@@ -86,13 +71,29 @@
   align-items: center;
   backdrop-filter: blur(10px);
 }
+.team__title {
+  margin-top: 25px;
+  position: relative;
+  z-index: 5;
+  //   color: $accent-line;
+  color: $white-color;
+  text-transform: uppercase;
+  @include font(500, 22px, 12px);
+  //   letter-spacing: 2px;
+  //   font-weight: 500;
+  //   font-size: 22px;
+  text-align: center;
+  &_accent {
+    color: $accent-line;
+  }
+}
 
 .card__content {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  opacity: 0.5;
+  opacity: 0.8;
   transition: 0.5s;
 
   .cards-container .card:hover & {
@@ -107,11 +108,7 @@
   height: 180px;
   border-radius: 50%;
   overflow: hidden;
-  // border: 10px solid rgba(0, 0, 0, 0.25);
-  // border: 5px solid hsl(24, 100%, 52%);
-  // border: 5px solid $white-color;
   border: 5px solid rgba(255, 255, 255, 0.05);
-  // border: 5px solid $grey-color;
 
   &__img {
     position: absolute;
@@ -148,13 +145,13 @@
 }
 .sci {
   position: absolute;
-  //   bottom: 50px;
   bottom: 50px;
   display: flex;
 
   &__item {
     list-style: none;
     margin: 0 10px;
+    opacity: 0.8;
   }
   &__link {
     color: #fff;
@@ -165,6 +162,15 @@
 @media screen and (min-width: $tablet) {
   .team-section {
     max-width: 640px;
+  }
+  .card__content {
+    opacity: 0.5;
+    transition: 0.5s;
+
+    .cards-container .card:hover & {
+      opacity: 1;
+      transform: translateY(-20px);
+    }
   }
   .sci {
     &__item {
@@ -187,21 +193,5 @@
 @media screen and (min-width: $desktop) {
   .team-section {
     max-width: 960px;
-  }
-}
-.team__title {
-  margin-top: 25px;
-  position: relative;
-  z-index: 5;
-  //   color: $accent-line;
-  color: $white-color;
-  text-transform: uppercase;
-  @include font(500, 22px, 12px);
-  //   letter-spacing: 2px;
-  //   font-weight: 500;
-  //   font-size: 22px;
-  text-align: center;
-  &_accent {
-    color: $accent-line;
   }
 }

@@ -196,7 +196,7 @@ export function onAddWachedBtm(event) {
 
 export function onAddQueueBtn(event) {
   const elevent = event.target;
-  console.dir(elevent);
+  // console.dir(elevent);
   let watchedFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('watched-films'));
   let queueFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('queue-films'));
   if (watchedFilmsIdInLocalStorage === null) watchedFilmsIdInLocalStorage = [];

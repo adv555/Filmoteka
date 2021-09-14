@@ -279,8 +279,8 @@ export function renderWatchedFilmStorage() {
     // refs.gallery.innerHTML = localStorrageData.watchedFilmStorage
     //   .map(film => film['markup'])
     //   .join(' ');
-    // bouceInLeftLibGallery();
   );
+  bouceInLeftLibGallery();
 }
 
 // ======= было в main до слияния
@@ -289,11 +289,12 @@ export function renderQueueFilmStorage() {
     localStorrageData.queueFilmStorage.map(film => film['markup']),
   );
   // ======= end
+  bouceInRightLibGallery();
 }
 // ======= версия Миши закомичена, раскомитила код Андрея
 // export function renderQueueFilmStorage() {
 //   refs.gallery.innerHTML = localStorrageData.queueFilmStorage.map(film => film['markup']).join(' ');
-//   bouceInRightLibGallery();
+//
 
 export function reloadLocalStorage() {
   localStorrageData = {

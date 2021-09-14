@@ -1,32 +1,68 @@
 @import '@pnotify/core/dist/BrightTheme.css';
 
 
+
+
 .my-Library {
 &__notice{
   display: flex;
+  margin: 0 auto;
   justify-content: center;
-
-font-size: 30px;
-color:rgb(148, 32, 32);
+  text-align: center;
+  cursor: pointer;
+--animate-duration: 0.75s;
 };
 &__notice-title{
-
 display: flex;
 justify-content: center;
+// color: #FF6B01;rgb(12, 7, 3)
+color: #FF6B01;
+font-style: normal;
+font-size: 12px;
+line-height: 1.12;
+text-shadow: 1px 3px 15px #FF6B01;
 
 };
 &__bg{
-  min-height: 90vh;
-  width: 50vw;
-  background-image: url(../images/111.png);
-  background-repeat: no-repeat;
-  background-size:cover;
-  border-radius: 5%;
-  // animation: bounce; /* referring directly to the animation's @keyframe declaration */
-  // animation-duration: 3s; /* don't forget to set a duration! */
-  // --animate-infinite:infinite;
-};
+display: flex;
+justify-content: center;
+background-image: url(../images/111.png);
+background-repeat: no-repeat;
+background-size:cover;
+border-radius: 5%;
 }
+@media screen and (max-width: 768px){
+  &__bg{
+  height: 35vw;
+  width: 40vw;}
+  &__notice-title{
+font-size: 8px;
+line-height: 1.0;
+  };
+};
+@media screen and (min-width: 768px){
+ &__bg{
+  min-height: 30vw;
+  width: 40vw;}
+    &__notice-title{
+font-size: 18px;
+line-height: 1.12;
+  };
+};
+
+@media screen and (min-width: 1024px){
+ &__bg{
+  min-height: 50vw;
+  width: 60vw;}
+    &__notice-title{
+font-size: 30px;
+line-height: 1.12;
+  };
+};
+
+}
+
+
 
 
 .lybrary-gallery {
@@ -40,8 +76,9 @@ justify-content: center;
     max-height: 100%;
     margin-bottom: 10px;
     border-radius: 5px;
-  }
-}
+  };
+};
+
 
 @media screen and (min-width: 768px) {
   .lybrary-gallery {
@@ -50,8 +87,8 @@ justify-content: center;
     margin-top: -30px;
     margin-left: -30px;
     justify-content: center;
-  }
-}
+  };
+};
 
 @media screen and (min-width: 1024px) {
   .lybrary-gallery {
@@ -60,13 +97,15 @@ justify-content: center;
     margin-top: -30px;
     margin-left: -30px;
     justify-content: center;
-  }
+  };
 }
 .display-none {
 display: none;
-}
+};
 .error{
   position: fixed;
   top: 200px;
   right: 100px;
   }
+
+  

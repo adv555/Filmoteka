@@ -1,10 +1,15 @@
 import refs from './refs';
-import renderCards from '../templates/gallery.hbs';
-import {
+
+
+// ======= было в main до слияния
+// import renderCards from '../templates/gallery.hbs';
+// import {
   emptyLibraryNotice,
   emptyWatchedStoragedNotice,
   emptyQueueStoragedNotice,
 } from './notification';
+// ======== end
+
 //============== Костина сохранненная разметка Олиной картички===========
 import { valueLocalStorage as valueForLocalStorage } from './modal-card';
 import moviesApiService from '../index.js';
@@ -28,6 +33,7 @@ function onLibraryWachedBtm() {
   ) {
     console.log('везде нули');
     refs.myLibraryNotice.classList.remove('visually-hidden');
+
     refs.gallery.innerHTML = '';
     reloadHeroBtnStatus();
   } else {
@@ -69,7 +75,15 @@ function onLibraryWachedBtm() {
 }
 
 function changeWatchedPage(page) {
-  ////код при изменении страницы
+  // ////код при изменении страницы
+  // const paginatedwatchedFilmStorage = localStorrageData.watchedFilmStorage.slice(
+  //   page,
+  //   numbersOfcards,
+  // );
+  // for (let page = 1; page < 100; page += 1) {
+  //   numbersOfcards = page * 20 - (page - 1) * 20;
+  // }
+  // return paginatedwatchedFilmStorage;
 }
 
 function onLibraryQueueBtn() {
@@ -81,6 +95,7 @@ function onLibraryQueueBtn() {
   ) {
     console.log('везде нули');
     refs.myLibraryNotice.classList.remove('visually-hidden');
+
     refs.gallery.innerHTML = '';
     // refs.watchedBtn.classList.remove('hero-buttons__btn--active');
     // refs.queueBtn.classList.remove('hero-buttons__btn--active');
@@ -130,9 +145,15 @@ function onLibraryQueueBtn() {
   arrowLeft.innerHTML = '';
   arrowRight.innerHTML = '';
 }
-
 function changeQueuePage(page) {
-  ////код при изменении страницы
+  //код при изменении страницы
+  // paginatedQueuePageFilmStorage = localStorrageData.queueFilmStorage
+  //   .slice(page, numbersOfcards)
+  //   .slice(page, numbersOfcards);
+  // for (let page = 1; page < 10; page += 1) {
+  //   numbersOfcards = page * 20 - (page - 1) * 20;
+  // }
+  // return paginatedQueuePageFilmStorage;
 }
 
 export function onAddWachedBtm(event) {
@@ -248,12 +269,25 @@ export function onLibraryBtn() {
 //}
 
 export function renderWatchedFilmStorage() {
-  refs.gallery.innerHTML = renderCards(localStorrageData.watchedFilmStorage
-    .map(film => film['markup']));
+
+  // refs.gallery.innerHTML = paginatedQueuePageFilmStorage
+  refs.gallery.innerHTML = localStorrageData.watchedFilmStorage
+    .map(film => film['markup'])
+    .join(' ');
+  bouceInLeftLibGallery();
 }
 export function renderQueueFilmStorage() {
-  refs.gallery.innerHTML = renderCards(localStorrageData.queueFilmStorage
-    .map(film => film['markup']));
+  refs.gallery.innerHTML = localStorrageData.queueFilmStorage.map(film => film['markup']).join(' ');
+  bouceInRightLibGallery();
+  
+// ======= было в main до слияния
+ // refs.gallery.innerHTML = renderCards(localStorrageData.watchedFilmStorage
+ //   .map(film => film['markup']));
+// }
+// export function renderQueueFilmStorage() {
+//  refs.gallery.innerHTML = renderCards(localStorrageData.queueFilmStorage
+//    .map(film => film['markup']));
+// ======= end
 }
 
 export function reloadLocalStorage() {
@@ -300,4 +334,29 @@ export function reloadHeroBtnStatus() {
     );
     reloadLocalStorage();
   }
+}
+
+refs.myLibraryNoticeTitle.addEventListener('click', onLibraryNoticeTitle);
+
+function onLibraryNoticeTitle() {
+  refs.myLibraryNoticeTitle.classList.add('animate__animated', 'animate__jello');
+  setTimeout(
+    () => refs.myLibraryNoticeTitle.classList.remove('animate__animated', 'animate__jello'),
+    750,
+  );
+}
+
+function bouceInRightLibGallery() {
+  refs.gallery.classList.add('animate__animated', 'animate__bounceInRight');
+  setTimeout(
+    () => refs.gallery.classList.remove('animate__animated', 'animate__bounceInRight'),
+    750,
+  );
+}
+function bouceInLeftLibGallery() {
+  refs.gallery.classList.add('animate__animated', 'animate__bounceInLeft');
+  setTimeout(
+    () => refs.gallery.classList.remove('animate__animated', 'animate__bounceInLeft'),
+    750,
+  );
 }

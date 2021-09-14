@@ -9,6 +9,7 @@ const filterBox = document.querySelector('.filters'); // filter
 const filterGenres = document.querySelector('#filter-Genres'); // filter
 const gallery = document.querySelector('.js-gallery');
 const logo = document.querySelector('.js-logo');
+// const logoAnimate = document.querySelector('.logo'); //Миша
 const homeLink = document.querySelector('.js-home');
 const myLibraryLink = document.querySelector('.js-my-library');
 const teamLink = document.querySelector('.js-team-link');
@@ -31,7 +32,10 @@ const filterChooseBtn = document.querySelector('.js-choose-btn');
 const filterHideBtn = document.querySelector('.js-hide-btn');
 const filterResetBtn = document.querySelector('.js-reset-btn');
 const headerSection = document.querySelector('.header');
-const myLibraryNotice = document.querySelector('.my-Library__notice');
+const myLibraryNotice = document.querySelector('.my-Library__notice'); //Миша
+const myLibraryNoticeTitle = document.querySelector('.my-Library__notice-title'); //Миша
+const siteNavBtns = document.querySelector('.site-nav__item'); //Миша
+const logoText = document.querySelector('.logo__text'); //Миша
 
 export default {
   searchForm,
@@ -66,4 +70,7 @@ export default {
   filterResetBtn,
   headerSection,
   myLibraryNotice,
+  myLibraryNoticeTitle,
+  siteNavBtns,
+  logoText,
 };

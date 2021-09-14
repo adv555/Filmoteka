@@ -13,71 +13,71 @@
     "name": "Mikhail Zhukov",
     "description": "Scrum Master",
     "image": "./misha.jpeg",
-    "github": "https://github.com/adv555",
-    "telegram": "https://t.me/adv001",
-    "linkdIn": "www.linkedin.com/in/helen-boldysheva-9108911b0"
+    "github": "https://github.com/ZhukovMikhail",
+    "telegram": "#",
+    "linkdIn": "#"
   },
   {
     "id": "3",
     "name": "Olya Kikot",
     "description": "Developer",
     "image": "./olya.jpeg",
-    "github": "https://github.com/adv555",
-    "telegram": "https://t.me/adv001",
-    "linkdIn": "www.linkedin.com/in/helen-boldysheva-9108911b0"
+    "github": "https://github.com/OlyaKikot",
+    "telegram": "https://t.me/OlyaK30",
+    "linkdIn": "#"
   },
   {
     "id": "4",
     "name": "Oksana Molesha",
     "description": "Developer",
     "image": "./oksana.jpeg",
-    "github": "https://github.com/adv555",
-    "telegram": "https://t.me/adv001",
-    "linkdIn": "www.linkedin.com/in/helen-boldysheva-9108911b0"
+    "github": "https://github.com/OksanaBakl",
+    "telegram": "https://t.me/oksanaMolesha",
+    "linkdIn": "#"
   },
   {
     "id": "5",
     "name": "Konstantin Tokar",
     "description": "Developer",
     "image": "./konstantin.jpeg",
-    "github": "https://github.com/adv555",
-    "telegram": "https://t.me/adv001",
-    "linkdIn": "www.linkedin.com/in/helen-boldysheva-9108911b0"
+    "github": "https://github.com/Konstantyn-Tokar",
+    "telegram": "https://t.me/Kostyasha_O",
+    "linkdIn": "#"
   },
   {
     "id": "6",
     "name": "Aleksandr Lukianiuk",
     "description": "Developer",
     "image": "./alex.jpeg",
-    "github": "https://github.com/adv555",
-    "telegram": "https://t.me/adv001",
-    "linkdIn": "www.linkedin.com/in/helen-boldysheva-9108911b0"
+    "github": "https://github.com/DyPeBaP",
+    "telegram": "#",
+    "linkdIn": "#"
   },
   {
     "id": "7",
     "name": "Andrey Yacutko",
     "description": "Developer",
-    "image": "https://ca.slack-edge.com/T01UW5D5RDJ-U020NK8S11R-fe75ee8552f0-512",
-    "github": "https://github.com/adv555",
-    "telegram": "https://t.me/adv001",
-    "linkdIn": "www.linkedin.com/in/helen-boldysheva-9108911b0"
+    "image": "./andrey.jpeg",
+    "github": "https://github.com/eitherwiser",
+    "telegram": "https://t.me/AndrewYatsutko",
+    "linkdIn": "#"
   },
   {
     "id": "8",
     "name": "Ilia Kononenko",
     "description": "Developer",
     "image": "https://ca.slack-edge.com/T01UW5D5RDJ-U020701EUDU-ee76e7f99874-512",
-    "github": "https://github.com/adv555",
-    "telegram": "https://t.me/adv001",
-    "linkdIn": "www.linkedin.com/in/helen-boldysheva-9108911b0"
+    "github": "https://github.com/ilyanes",
+    "telegram": "https://t.me/Elias_KIA",
+    "linkdIn": "#"
   },
   {
     "id": "9",
     "name": "Vova Uniat",
     "description": "Developer",
     "image": "./vova.jpeg",
-    "github": "https://github.com/adv555",
-    "telegram": "https://t.me/adv001",
-    "linkdIn": "www.linkedin.com/in/helen-boldysheva-9108911b0"
+    "github": "https://github.com/vovauniat",
+    "telegram": "https://t.me/Vova_volodja",
+    "linkdIn": "#"
   }
 ]

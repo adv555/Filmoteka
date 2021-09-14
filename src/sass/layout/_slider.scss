@@ -1,6 +1,8 @@
-//.slider {
-//  display: none;
-//}
+@media screen and (max-width: $max-mobile) {
+  .slider {
+    display: none;
+  }
+}
 .slider-container {
   width: 100%;
   height: 100px;

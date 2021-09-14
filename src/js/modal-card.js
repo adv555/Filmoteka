@@ -341,18 +341,25 @@ function SecretModal(e) {
   const modalbackground = document.querySelector('.modal');
   const vote = document.querySelector('.modal__vote');
   const votes = document.querySelector('.modal__votes');
+  const poster = document.querySelector('.modal__movie-poster');
+  const posterexamination = e.currentTarget.dataset.post;
 
   if (modal !== 'DIV') {
     return;
   } else {
     if (standardBackdrop) {
       x.style.backgroundSize = 'cover';
-      x.style.backgroundImage = `url(${Url})`;
       modalbackground.classList.add('mobalbackground');
       modalbackground.style.cursor = 'pointer';
       votes.classList.add('opacity');
       vote.classList.add('opacity');
       standardBackdrop = false;
+      if (posterexamination === 'no') {
+        x.style.backgroundImage = `url(${Url})`;
+        poster.style.opacity = 0.2;
+      } else {
+        x.style.backgroundImage = `url(${Url})`;
+      }
     } else {
       x.style.removeProperty('background-size');
       x.style.removeProperty('background-image');
@@ -361,6 +368,7 @@ function SecretModal(e) {
       vote.classList.remove('opacity');
       modalbackground.style.removeProperty('cursor');
       modalbackground.classList.remove('mobalbackground');
+      poster.style.removeProperty('opacity');
       standardBackdrop = true;
     }
   }

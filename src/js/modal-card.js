@@ -56,13 +56,10 @@ function getMovieIdAndMarkupCardMovie(e) {
   if (tagName == 'IMG' && className == 'gallery-image') {
     getMovieId(e);
     getMarkupCardMovie('gallery');
-  } else if (tagName == 'span' && className == 'film-strip__info') {
+  } else if (tagName == 'IMG' && className == 'false-image') {
     getMovieId(e);
     getMarkupCardMovie('slider');
   }
-  return;
-
-
   return movieId;
 }
 
@@ -74,7 +71,7 @@ function getMovieId(e) {
   return movieId;
 }
 
-// ========= get movie 'currentCardID' from localStorage and return array whith 1 sought object {getMoviefromLS('galleryCardList')} ============
+// ========= get movie current ID from localStorage and return array with 1 object {getMoviefromLS('galleryCardList')} ============
 function getMoviefromLS(filmLS) {
   let arr = JSON.parse(localStorage.getItem(filmLS));
   return arr.filter(function (item, i, arr) {
@@ -86,9 +83,11 @@ function getMoviefromLS(filmLS) {
 function getMarkupCardMovie(section) {
   if (section == 'gallery') {
     return valueLocalStorage.markup = getMoviefromLS('galleryCardList');
-  }
-  return valueLocalStorage.markup = getMoviefromLS('UpcomingCollection');
-}
+  } if (section == 'slider') {
+    console.log(getMoviefromLS('UpcomingCollection'))
+    return valueLocalStorage.markup = getMoviefromLS('UpcomingCollection');
+  } return;
+};
 
 // отправляем запрос на сервер через id и получаем информацию по фильму
 function getDataMovieById(movieId) {
@@ -354,4 +353,4 @@ function SecretVideo(e) {
   x.style.backgroundImage = `url(${Url})`;
 }
 
-export { trailerTemplate, getDataMovieById };
+export { trailerTemplate, getDataMovieById, getMovieIdAndMarkupCardMovie };

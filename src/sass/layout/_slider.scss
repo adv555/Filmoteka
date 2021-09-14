@@ -10,6 +10,7 @@
 }
 
 .switcher-wrapper {
+  //margin-top: 6.4%;
   display: flex;
   position: relative;
   justify-content: space-between;
@@ -19,7 +20,7 @@
 .arrow {
   font-weight: bold;
   position: absolute;
-  top: 20%;
+  top: 35%;
   transform: translateY(-50%);
   width: 20px;
   height: 20px;
@@ -35,6 +36,8 @@
   height: auto;
   display: flex;
   position: absolute;
+  top: 6%;
+  //align-items: center;
   .film-strip__item {
     width: 20px;
     height: auto;
@@ -67,6 +70,7 @@
       font-size: 28px;
       display: flex;
       position: absolute;
+      visibility: hidden;
       right: 50%;
       left: 50%;
       bottom: 5%;
@@ -77,6 +81,15 @@
       transition: 0.3s cubic-bezier(1, 0.5, 0.2, 0.5);
       z-index: 0;
       //pointer-events: none;
+      .false-image {
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        display: flex;
+        position: absolute;
+        translate: 50% 50%;
+        z-index: 30;
+      }
     }
 
     img {
@@ -109,6 +122,7 @@
         text-shadow: 1.2px 0px 9px orangered, 0 1.5px 1px rgb(52, 52, 52),
           0.6px 0px 0.6px rgb(14, 14, 114);
         z-index: 29;
+        visibility: visible;
         pointer-events: auto;
         &:hover {
           opacity: 1;

@@ -356,7 +356,7 @@ function SecretModal(e) {
       standardBackdrop = false;
       if (posterexamination === 'no') {
         x.style.backgroundImage = `url(${Url})`;
-        poster.style.opacity = 0.2;
+        poster.classList.add('opacity');
       } else {
         x.style.backgroundImage = `url(${Url})`;
       }
@@ -366,9 +366,9 @@ function SecretModal(e) {
       x.style.removeProperty('animation');
       votes.classList.remove('opacity');
       vote.classList.remove('opacity');
+      poster.classList.remove('opacity');
       modalbackground.style.removeProperty('cursor');
       modalbackground.classList.remove('mobalbackground');
-      poster.style.removeProperty('opacity');
       standardBackdrop = true;
     }
   }

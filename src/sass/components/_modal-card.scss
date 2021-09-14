@@ -361,6 +361,7 @@
     transition: all $duration $timing-function;
   }
   .opacity {
+    transition: all $duration $timing-function;
     opacity: 0.3;
   }
   .modal__container__video {

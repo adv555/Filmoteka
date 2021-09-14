@@ -1,4 +1,5 @@
 import refs from './refs';
+import renderCards from '../templates/gallery.hbs';
 import {
   emptyLibraryNotice,
   emptyWatchedStoragedNotice,
@@ -237,13 +238,22 @@ export function onLibraryBtn() {
   onLibraryWachedBtm();
 }
 
+//export function renderWatchedFilmStorage() {
+//  refs.gallery.innerHTML = localStorrageData.watchedFilmStorage
+//    .map(film => film['markup'])
+//    .join(' ');
+//}
+//export function renderQueueFilmStorage() {
+//  refs.gallery.innerHTML = localStorrageData.queueFilmStorage.map(film => film['markup']).join(' ');
+//}
+
 export function renderWatchedFilmStorage() {
-  refs.gallery.innerHTML = localStorrageData.watchedFilmStorage
-    .map(film => film['markup'])
-    .join(' ');
+  refs.gallery.innerHTML = renderCards(localStorrageData.watchedFilmStorage
+    .map(film => film['markup']));
 }
 export function renderQueueFilmStorage() {
-  refs.gallery.innerHTML = localStorrageData.queueFilmStorage.map(film => film['markup']).join(' ');
+  refs.gallery.innerHTML = renderCards(localStorrageData.queueFilmStorage
+    .map(film => film['markup']));
 }
 
 export function reloadLocalStorage() {

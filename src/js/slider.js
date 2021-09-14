@@ -23,12 +23,18 @@ function renderUpcomingMovies(data) {
   sliderActions();
 }
 
-
-
 function sliderActions() {
-
-  const slider = new UpcomingCollectionEngine(document.querySelector('[data-component="slider"]'))
+  const slider = new UpcomingCollectionEngine(document.querySelector('[data-component="slider"]'));
   const container = document.querySelectorAll('.switcher-wrapper');
+
+  document.querySelector('.arrow__previous').addEventListener('click', () => {
+    slider.next()
+  })
+  document.querySelector('.arrow__next').addEventListener('click', () => {
+    slider.previous()
+  })
+
+
   //const filmStrip = document.querySelect('.film-strip');
 
   //filmStrip.forEach(item => {
@@ -53,12 +59,7 @@ function sliderActions() {
 
   // ============= film-strip navigation =============
 
-  document.querySelector('.arrow__previous').addEventListener('click', () => {
-    slider.next();
-  })
-  document.querySelector('.arrow__next').addEventListener('click', () => {
-    slider.previous();
-  })
+
 
   document.querySelectorAll('.film-strip__item').forEach(item => {
     item.addEventListener('click', () => {
@@ -124,7 +125,8 @@ function sliderActions() {
 }
 
 
-class UpcomingCollectionEngine {
+export default class UpcomingCollectionEngine {
+
 
   constructor() {
     this.items = [...document.querySelectorAll('[data-slider]')];
@@ -133,16 +135,13 @@ class UpcomingCollectionEngine {
     this.autoPlay();
   };
 
-
-
   next() {
     this.slide('next');
-    console.log(this.active)
-  };
+  }
 
   previous() {
     this.slide('previous');
-  };
+  }
 
   slide(direction) {
     this.items.map(el => {
@@ -154,7 +153,7 @@ class UpcomingCollectionEngine {
       el.setAttribute('data-position', go)
 
     })
-  };
+  }
 
   jump(position) {
     for (let i = 0; i < position; i++) {
@@ -222,3 +221,8 @@ class UpcomingCollectionEngine {
   //  startSliderAutoPlay();
   //}
   //startSliderAutoPlay();
+
+
+
+
+

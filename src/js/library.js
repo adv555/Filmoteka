@@ -136,7 +136,7 @@ function onLibraryQueueBtn() {
   arrowRight.innerHTML = '';
 }
 function changeQueuePage(page) {
-  ////код при изменении страницы
+  //код при изменении страницы
   // paginatedQueuePageFilmStorage = localStorrageData.queueFilmStorage
   //   .slice(page, numbersOfcards)
   //   .slice(page, numbersOfcards);
@@ -250,7 +250,10 @@ export function onLibraryBtn() {
 }
 
 export function renderWatchedFilmStorage() {
-  refs.gallery.innerHTML = paginatedwatchedFilmStorage.map(film => film['markup']).join(' ');
+  // refs.gallery.innerHTML = paginatedQueuePageFilmStorage
+  refs.gallery.innerHTML = localStorrageData.watchedFilmStorage
+    .map(film => film['markup'])
+    .join(' ');
   bouceInLeftLibGallery();
 }
 export function renderQueueFilmStorage() {

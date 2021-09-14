@@ -21,13 +21,20 @@
   .toolbar {
     display: flex;
     justify-content: flex-end;
-    padding: 16px 24px;
+    // padding: 16px 24px;
   }
 
   /* THEME SWITCH */
 .theme-switch {
   display: flex;
   align-items: center;
+  position: absolute;
+  right: 5px;
+  bottom: -5px;
+
+  @media screen and (max-width: 767px) {
+    bottom: -30px;
+  }
 }
 
 .theme-switch__icon-sun {
@@ -107,30 +114,6 @@
 .theme-switch__toggle:focus + .theme-switch__track,
 .theme-switch__toggle:active + .theme-switch__track {
   box-shadow: 0 0 0 3px #2196f3;
-}
-@media screen and (max-width: 1024px) {
-  .theme-switch__icon-sun {
-    height: 20px;
-    width: 20px;
-    margin-right: 6px;
-    margin-left: 6px;
-  }
-
-    .theme-switch__icon-moon {
-    height: 20px;
-    width: 20px;
-    margin-right: 6px;
-    margin-left: 6px;
-  }
-    .theme-switch__control {
-    width: 58px;
-    height: 26px;
-  }
-
-  .theme-switch__marker {
-    width: 20px;
-    height: 20px;
-  }
 }
 
 @media screen and (max-width: 767px) {

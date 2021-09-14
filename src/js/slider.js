@@ -10,7 +10,6 @@ const isMobile = navigator.userAgent.toLowerCase().match(/mobile/i);
 if (!isMobile) {
   moviesApiService.fetchUpcomingMovies().then(renderUpcomingMovies)
 } else {
-  console.log('hello')
   return
 };
 

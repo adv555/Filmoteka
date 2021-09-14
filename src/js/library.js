@@ -1,5 +1,15 @@
 import refs from './refs';
 
+
+// ======= было в main до слияния
+// import renderCards from '../templates/gallery.hbs';
+// import {
+  emptyLibraryNotice,
+  emptyWatchedStoragedNotice,
+  emptyQueueStoragedNotice,
+} from './notification';
+// ======== end
+
 //============== Костина сохранненная разметка Олиной картички===========
 import { valueLocalStorage as valueForLocalStorage } from './modal-card';
 import moviesApiService from '../index.js';
@@ -249,7 +259,17 @@ export function onLibraryBtn() {
   onLibraryWachedBtm();
 }
 
+//export function renderWatchedFilmStorage() {
+//  refs.gallery.innerHTML = localStorrageData.watchedFilmStorage
+//    .map(film => film['markup'])
+//    .join(' ');
+//}
+//export function renderQueueFilmStorage() {
+//  refs.gallery.innerHTML = localStorrageData.queueFilmStorage.map(film => film['markup']).join(' ');
+//}
+
 export function renderWatchedFilmStorage() {
+
   // refs.gallery.innerHTML = paginatedQueuePageFilmStorage
   refs.gallery.innerHTML = localStorrageData.watchedFilmStorage
     .map(film => film['markup'])
@@ -259,6 +279,15 @@ export function renderWatchedFilmStorage() {
 export function renderQueueFilmStorage() {
   refs.gallery.innerHTML = localStorrageData.queueFilmStorage.map(film => film['markup']).join(' ');
   bouceInRightLibGallery();
+  
+// ======= было в main до слияния
+ // refs.gallery.innerHTML = renderCards(localStorrageData.watchedFilmStorage
+ //   .map(film => film['markup']));
+// }
+// export function renderQueueFilmStorage() {
+//  refs.gallery.innerHTML = renderCards(localStorrageData.queueFilmStorage
+//    .map(film => film['markup']));
+// ======= end
 }
 
 export function reloadLocalStorage() {

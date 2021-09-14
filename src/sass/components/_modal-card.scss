@@ -156,6 +156,7 @@
     max-height: 40px;
     text-transform: uppercase;
     background: $white-color;
+    transition: all $duration $timing-function;
 
     &-hover {
       transition: all $duration $timing-function;

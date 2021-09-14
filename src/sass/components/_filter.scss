@@ -1,35 +1,3 @@
-// .filter {
-//   display: flex;
-//   justify-content: center;
-//   max-width: 1042px;
-//   margin: 0 auto;
-//   margin-top: 30px;
-//   margin-bottom: 30px;
-// }
-
-// .button-filter {
-//   padding: 10px 20px;
-//   margin-right: 15px;
-//   cursor: pointer;
-//   border-radius: 20px;
-//   position: relative;
-//   background-color: rgb(218, 222, 255);
-//   transition: background-color 600ms linear;
-// }
-
-// .button-filter:last-child {
-//   margin-right: 0;
-// }
-
-// .button-filter:active {
-//   bottom: -2px;
-// }
-
-// .button-filter:hover,
-// .button-filter:focus {
-//   background-color: rgb(100, 123, 255);
-// }
-
 fieldset {
   border: none;
 }
@@ -46,20 +14,22 @@ fieldset {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
+  max-width: 760px;
   overflow: hidden;
-  background-image: url("../../src/images/filter/filter-genre.png");
+  background-image: url('../../src/images/filter/filter-genre.png');
   background-repeat: no-repeat;
   background-position: center;
-  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  &:hover {
+    .filters:hover &{
     background-image: none;
   }
 
-    @media screen and (max-width: $desktop) {
-      background-image: url("../../src/images/filter/filter-genre2.png");
-  }
+  // @media screen and (max-width: $desktop) {
+  //  background-image: url('../../src/images/filter/filter-genre2.png');
+ // }
+
 }
 
 .genres-filters__item + .genres-filters__item {
@@ -68,33 +38,35 @@ fieldset {
 }
 
 .genres-filters__item {
-  padding: 2px 7px;
+  padding: 2px 2px;
   margin-top: 3px;
-  font-size: 16px;
-  border: 1px solid #ff6b08;
-  border-radius: 8px;
-  transition: all 300ms ease;
+  font-size: 12px;
+  border: 2px solid #ff6b08;
+  border-radius: 10px;
+  transition: all 250ms ease;
   cursor: pointer;
 }
 
 .container__filter.checkbox:checked,
 .genres-filters__item:hover,
 .genres-filters__item:focus {
-  color: #ffffff;
+
+  color: #000000;
   background-image: linear-gradient(
     to right top,
-    #ff5100 0%,
-    #ffb648 47%,
+    #ff5100 10%,
+    #ffb648 50%,
     #ffffff 100%
   );
-  margin-top: 1px;
+
 }
 
 .filter-btn {
   padding: 5px 10px;
+
   border-radius: 5px;
   border: 1px solid;
-  font-size: getFont-size__mob("nav-text");
+  font-size: getFont-size__mob('nav-text');
   font-weight: 500;
   line-height: 1.33;
   text-transform: uppercase;
@@ -103,16 +75,19 @@ fieldset {
 }
 .filter-buttons__btn {
   width: 130px;
-
+  transform: translateY(200%);
   margin: 0 10px 0;
   color: $grey-color;
   border: 1px solid $white-color;
   background-color: transparent;
 
-  transition: color $btn-duration $timing-function,
-    border $btn-duration $timing-function,
-    background-color $btn-duration $timing-function,
-    box-shadow $btn-duration $timing-function;
+  transition: color $btn-duration $timing-function, border $btn-duration $timing-function,
+    background-color $btn-duration $timing-function, box-shadow $btn-duration $timing-function;
+
+  .filters:hover & {
+    transform: translateY(0%);
+    border-radius: 10px;
+  }
 
   @media screen and (min-width: $tablet) {
     width: 136px;
@@ -129,15 +104,13 @@ fieldset {
 }
 
 .container__filter {
-  margin: 5px;
-  transform: translateY(600%);
+  margin: 2px;
+  transform: translateY(500%);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    
 
-  .genres-filters:hover &,
-  .genres-filters:focus & {
+  .filters:hover & {
     transform: translateY(0%);
-    // box-shadow:(1px 1px 5px rgba(255, 255, 255, 0.837));
+    box-shadow: (1px 1px 5px rgba(255, 255, 255, 0.837));
     border-radius: 10px;
   }
 }
@@ -146,7 +119,8 @@ fieldset {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 30px;
+  overflow: hidden;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .checkbox {
@@ -157,12 +131,12 @@ fieldset {
   display: inline-block;
 }
 .icon {
-  content: "";
+  content: '';
   display: inline-block;
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   background-color: #ffffff;
-  margin-right: 5px;
+  margin-right: 3px;
 }
 
 .checkbox:checked + .icon {
@@ -170,9 +144,18 @@ fieldset {
   border-radius: 5px;
 }
 
+.tag__btn--active {
+  background-color: #ff6b08;
+  border-radius: 5px;
+}
+
 .filters {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
   display: none;
-  transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  //transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
 
 
   @media screen and (min-width: $tablet) {

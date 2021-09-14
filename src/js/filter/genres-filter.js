@@ -35,6 +35,8 @@ genresFilter.onclick = e => {
 const genresMarkup = genresFiltersTpl(genres);
 genresFilter.innerHTML = genresMarkup;
 
+
+
 // async function renderGenresFilters() {
 //   const genres = await moviesApiService.fetchGenresList();
 // }

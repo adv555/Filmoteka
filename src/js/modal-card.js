@@ -84,7 +84,7 @@ function getMarkupCardMovie(section) {
   if (section == 'gallery') {
     return valueLocalStorage.markup = getMoviefromLS('galleryCardList');
   } if (section == 'slider') {
-    console.log(getMoviefromLS('UpcomingCollection'))
+    //console.log(getMoviefromLS('UpcomingCollection'))
     return valueLocalStorage.markup = getMoviefromLS('UpcomingCollection');
   } return;
 };
@@ -353,4 +353,4 @@ function SecretVideo(e) {
   x.style.backgroundImage = `url(${Url})`;
 }
 
-export { trailerTemplate, getDataMovieById, getMovieIdAndMarkupCardMovie };
+export { trailerTemplate, getMovieIdAndMarkupCardMovie };

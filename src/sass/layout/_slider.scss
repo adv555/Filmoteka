@@ -50,7 +50,7 @@
     transition: 0.5s cubic-bezier(0.8, 0.5, 0.1, 1.02);
 
     h2 {
-      font-size: 14px;
+      font-size: 75%;
       display: flex;
       position: absolute;
       left: 50%;
@@ -66,8 +66,8 @@
 
     span {
       display: flex;
-      width: 35px;
-      font-size: 28px;
+      width: 20px;
+      font-size: 24px;
       display: flex;
       position: absolute;
       visibility: hidden;
@@ -117,7 +117,8 @@
       span {
         color: #fff;
         left: 3%;
-        bottom: 2%;
+        bottom: 1%;
+        width: 24px;
         opacity: 0.4;
         text-shadow: 1.2px 0px 9px orangered, 0 1.5px 1px rgb(52, 52, 52),
           0.6px 0px 0.6px rgb(14, 14, 114);
@@ -130,12 +131,7 @@
         }
       }
       .film-strip__play-video {
-        left: calc(50% - 20px);
-        bottom: 0.5%;
-        font-size: 40px;
-      }
-      .film-strip__add-to-lib {
-        left: calc(97% - 28px);
+        left: calc(93% - 14px);
       }
     }
 

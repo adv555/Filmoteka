@@ -1,5 +1,4 @@
 :root {
-
   --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -17,7 +16,6 @@ body.light-theme {
   background-position: center;
   // background-repeat: no-repeat;
   color: #333333;
-
 }
 
 body.dark-theme {
@@ -30,14 +28,17 @@ body.dark-theme {
   background-position: center;
 
   color: #fff;
+  & .arrowLeft,
+  .arrowRight {
+    background-color: transparent;
+  }
 }
 
 .toolbar {
   display: flex;
   justify-content: flex-end;
- // padding: 16px 24px;
+  // padding: 16px 24px;
 }
-
 
 /* THEME SWITCH */
 .theme-switch {

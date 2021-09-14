@@ -178,7 +178,10 @@
   height: 40px;
   line-height: 40px;
   cursor: pointer;
-  background-color: $light-grey-color;
+  background-color: cornsilk;
+  // border: 1px solid $accent-bg;
+  border-radius: 5px;
+  // background-color: $light-grey-color;
   background-position: center;
   transition: background-color 0.25s $timing-function;
 }

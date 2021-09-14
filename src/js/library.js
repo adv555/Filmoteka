@@ -1,12 +1,12 @@
 import refs from './refs';
 
 // ======= было в main до слияния
-// import renderCards from '../templates/gallery.hbs';
-// import {
-//  emptyLibraryNotice,
-//  emptyWatchedStoragedNotice,
-//  emptyQueueStoragedNotice,
-//} from './notification';
+import renderCards from '../templates/gallery.hbs';
+import {
+  emptyLibraryNotice,
+  emptyWatchedStoragedNotice,
+  emptyQueueStoragedNotice,
+} from './notification';
 // ======== end
 
 //============== Костина сохранненная разметка Олиной картички===========
@@ -268,25 +268,32 @@ export function onLibraryBtn() {
 //}
 
 export function renderWatchedFilmStorage() {
-  // refs.gallery.innerHTML = paginatedQueuePageFilmStorage
-  refs.gallery.innerHTML = localStorrageData.watchedFilmStorage
-    .map(film => film['markup'])
-    .join(' ');
-  bouceInLeftLibGallery();
-}
-export function renderQueueFilmStorage() {
-  refs.gallery.innerHTML = localStorrageData.queueFilmStorage.map(film => film['markup']).join(' ');
-  bouceInRightLibGallery();
-
   // ======= было в main до слияния
-  // refs.gallery.innerHTML = renderCards(localStorrageData.watchedFilmStorage
-  //   .map(film => film['markup']));
-  // }
-  // export function renderQueueFilmStorage() {
-  //  refs.gallery.innerHTML = renderCards(localStorrageData.queueFilmStorage
-  //    .map(film => film['markup']));
+  refs.gallery.innerHTML = renderCards(
+    localStorrageData.watchedFilmStorage.map(film => film['markup']),
+    // ======= end
+
+    // ======= версия Миши закомичена, раскомитила код Андрея
+
+    // refs.gallery.innerHTML = paginatedQueuePageFilmStorage
+    // refs.gallery.innerHTML = localStorrageData.watchedFilmStorage
+    //   .map(film => film['markup'])
+    //   .join(' ');
+    // bouceInLeftLibGallery();
+  );
+}
+
+// ======= было в main до слияния
+export function renderQueueFilmStorage() {
+  refs.gallery.innerHTML = renderCards(
+    localStorrageData.queueFilmStorage.map(film => film['markup']),
+  );
   // ======= end
 }
+// ======= версия Миши закомичена, раскомитила код Андрея
+// export function renderQueueFilmStorage() {
+//   refs.gallery.innerHTML = localStorrageData.queueFilmStorage.map(film => film['markup']).join(' ');
+//   bouceInRightLibGallery();
 
 export function reloadLocalStorage() {
   localStorrageData = {

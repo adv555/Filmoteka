@@ -1,8 +1,7 @@
 import refs from './refs';
 import MoviesApiService from './api/api-service';
-import { trailerTemplate, getDataMovieById, getMovieIdAndMarkupCardMovie } from './modal-card'
-import swiper from '../templates/swiper'
-
+import { trailerTemplate, getMovieIdAndMarkupCardMovie } from './modal-card'
+import swiper from '../templates/swiper';
 
 const moviesApiService = new MoviesApiService();
 moviesApiService.fetchUpcomingMovies().then(renderUpcomingMovies)
@@ -72,26 +71,6 @@ function sliderActions() {
             const idTrailer = video.results[0];
             trailerTemplate(idTrailer);
           })
-      });
-
-      item.querySelector('.film-strip__add-to-lib').addEventListener('click', () => {
-        console.log(id);
-
-        //function getMoviefromLS(filmsLS) {
-        //  let arr = JSON.parse(localStorage.getItem(filmsLS));
-        //  console.log((arr.filter(function (item, i, arr) {
-        //    return (item.id == localStorage.getItem('currentCardID'));
-        //  })))
-        //};
-        //if (getMoviefromLS('queue-films') !== id) {
-        //} return;
-        //console.log(getMoviefromLS('galleryCardList'))
-        //console.log(getMoviefromLS('galleryCardList'))
-        //let arr = JSON.parse(localStorage.getItem('galleryCardList'));
-        //console.log((arr.filter(function (item, i, arr) {
-        //  return (item.id == localStorage.getItem('currentCardID'));
-        //})))
-
       });
 
     });

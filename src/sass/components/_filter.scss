@@ -39,12 +39,7 @@ fieldset {
 .genres-filters__item:hover,
 .genres-filters__item:focus {
   color: #000000;
-  background-image: linear-gradient(
-    to right top,
-    #ff5100 10%,
-    #ffb648 50%,
-    #ffffff 100%
-  );
+  background-image: linear-gradient(to right top, #ff5100 10%, #ffb648 50%, #ffffff 100%);
 }
 
 .filter-btn {
@@ -52,7 +47,7 @@ fieldset {
 
   border-radius: 5px;
   border: 1px solid;
-  font-size: getFont-size__mob("nav-text");
+  font-size: getFont-size__mob('nav-text');
   font-weight: 500;
   line-height: 1.33;
   text-transform: uppercase;
@@ -67,10 +62,8 @@ fieldset {
   border: 1px solid $white-color;
   background-color: transparent;
 
-  transition: color $btn-duration $timing-function,
-    border $btn-duration $timing-function,
-    background-color $btn-duration $timing-function,
-    box-shadow $btn-duration $timing-function;
+  transition: color $btn-duration $timing-function, border $btn-duration $timing-function,
+    background-color $btn-duration $timing-function, box-shadow $btn-duration $timing-function;
 
   .filters:hover & {
     transform: translateY(0%);
@@ -119,7 +112,7 @@ fieldset {
   display: inline-block;
 }
 .icon {
-  content: "";
+  content: '';
   display: inline-block;
   width: 8px;
   height: 8px;
@@ -151,11 +144,17 @@ fieldset {
 }
 
 .filters-genres__text {
-  font-size: 60px;
+  color: #ff6b01;
+  font-style: normal;
+  font-size: 30px;
+  line-height: 1.12;
+  text-shadow: 1px 3px 15px #ff6b01;
+
+  // font-size: 60px;
   font-weight: 500;
-  line-height: 1.33;
-  color: #ffffff;
-  text-shadow: 2px 2px 5px  rgba(0, 0, 0, 0.652);
+  // line-height: 1.33;
+  // color: #ffffff;
+  // text-shadow: 2px 2px 5px  rgba(0, 0, 0, 0.652);
   cursor: pointer;
   position: absolute;
   margin-left: auto;
@@ -166,7 +165,7 @@ fieldset {
   transition: all 400ms ease;
   opacity: 1;
   // transform: translateY(0%);
-
+  top: 30%;
   .filters:hover & {
     // transform: translateY(-200%);
     opacity: 0;

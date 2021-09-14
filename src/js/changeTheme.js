@@ -16,7 +16,6 @@ function changeTheme({ target: { checked } }) {
 
 function toggleTheme(add, rem) {
   refs.body.classList.replace(rem, add);
-  refs.slider.classList.replace(rem, add);
   localStorage.setItem('theme', add);
 }
 
@@ -25,9 +24,6 @@ function toggleTheme(add, rem) {
   refs.switcher.addEventListener('change', changeTheme);
 
   refs.body.classList.add(
-    localStorage.getItem('theme') ? localStorage.getItem('theme') : Theme.LIGHT,
-  );
-  refs.slider.classList.add(
     localStorage.getItem('theme') ? localStorage.getItem('theme') : Theme.LIGHT,
   );
   refs.switcher.checked = localStorage.getItem('theme') === Theme.DARK;

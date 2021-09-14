@@ -4,7 +4,16 @@ import { trailerTemplate, getMovieIdAndMarkupCardMovie } from './modal-card'
 import swiper from '../templates/swiper';
 
 const moviesApiService = new MoviesApiService();
-moviesApiService.fetchUpcomingMovies().then(renderUpcomingMovies)
+
+const isMobile = navigator.userAgent.toLowerCase().match(/mobile/i);
+const isTablet = navigator.userAgent.toLowerCase().match(/tablet/i);
+const isiPad = navigator.userAgent.toLowerCase().match(/ipad/i);
+
+if (!isMobile || isiPad || isTablet) {
+  moviesApiService.fetchUpcomingMovies().then(renderUpcomingMovies)
+} else {
+  return
+};
 
 //=========== get content =========== 
 
@@ -17,12 +26,13 @@ function renderUpcomingMovies(data) {
 
 //============= init slider =============
 function sliderActions() {
+
   const slider = new UpcomingCollectionEngine(document.querySelector('[data-component="slider"]'));
   const container = document.querySelectorAll('.switcher-wrapper');
 
   // ============= autoplay slider =============
-  let deactivateTimeout;
 
+  let deactivateTimeout;
 
   container.forEach(item => item.addEventListener('mouseover', () => {
     clearTimeout(deactivateTimeout);

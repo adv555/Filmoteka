@@ -5,7 +5,6 @@ import './js/api/api-service';
 import './js/gallery/gallery.js';
 import 'material-icons';
 import './js/changeTheme';
-import './js/filter';
 import './js/team-lightbox';
 import './js/onSearch';
 import './js/modal-card';

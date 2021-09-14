@@ -1,6 +1,6 @@
-const searchForm = document.querySelector('.search-form');
+const searchForm = document.querySelector('.search-form'); // new search submit
 const heroWarningBox = document.querySelector('.hero-warning__box');
-const searchInput = document.querySelector('.js-search-field__input');
+const searchInput = document.querySelector('.js-search-field__input'); // Oksana search
 const queueBtn = document.querySelector('button[data-hero="queue"]');
 const watchedBtn = document.querySelector('button[data-hero="watched"]');
 const trailerBtn = document.querySelector('.trailer-btn');

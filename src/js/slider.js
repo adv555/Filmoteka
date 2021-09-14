@@ -59,11 +59,6 @@ function sliderActions() {
 
       const id = item.getAttribute('data-source')
 
-      item.querySelector('.false-image').addEventListener('click', () => {
-        //getDataMovieById(id);
-        getMovieIdAndMarkupCardMovie();
-      });
-
       item.querySelector('.film-strip__play-video').addEventListener('click', () => {
         moviesApiService
           .fetchMovieTrtailer(id)

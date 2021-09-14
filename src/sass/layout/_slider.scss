@@ -4,19 +4,19 @@
   }
 }
 .slider-container {
-  width: 100%;
-  height: 100px;
-  margin-bottom: 80px;
   position: relative;
   align-self: center;
 }
 
 .switcher-wrapper {
-  //margin-top: 6.4%;
+  margin-top: 0.5%;
+  width: 100%;
+  height: 100px;
+  margin-bottom: 80px;
   display: flex;
+  align-self: center;
   position: relative;
   justify-content: space-between;
-  height: 100%;
 }
 
 .arrow {

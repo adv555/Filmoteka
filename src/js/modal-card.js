@@ -75,19 +75,21 @@ function getMovieId(e) {
 function getMoviefromLS(filmLS) {
   let arr = JSON.parse(localStorage.getItem(filmLS));
   return arr.filter(function (item, i, arr) {
-    return (item.id == valueLocalStorage.id)
+    return item.id == valueLocalStorage.id;
   })[0];
-};
+}
 
 //получение разметки карточки фильма и записываем в объект ;
 function getMarkupCardMovie(section) {
   if (section == 'gallery') {
-    return valueLocalStorage.markup = getMoviefromLS('galleryCardList');
-  } if (section == 'slider') {
+    return (valueLocalStorage.markup = getMoviefromLS('galleryCardList'));
+  }
+  if (section == 'slider') {
     //console.log(getMoviefromLS('UpcomingCollection'))
-    return valueLocalStorage.markup = getMoviefromLS('UpcomingCollection');
-  } return;
-};
+    return (valueLocalStorage.markup = getMoviefromLS('UpcomingCollection'));
+  }
+  return;
+}
 
 // отправляем запрос на сервер через id и получаем информацию по фильму
 function getDataMovieById(movieId) {
@@ -306,6 +308,11 @@ function turnOnTheTrailer(trailerKey) {
       //разрешает скролл страницы при закрытии модалки (visible - значение, принятое по умолчанию)
       const x = document.querySelector('.basicLightbox');
       const modalCloseBtn = document.querySelector('.modal__close-button');
+
+      const modalbackground = document.querySelector('.modal');
+      const vote = document.querySelector('.modal__vote');
+      const votes = document.querySelector('.modal__votes');
+
       if (x !== null || modalCloseBtn !== null) {
         x.style.removeProperty('background-size');
         x.style.removeProperty('background-image');
@@ -313,19 +320,27 @@ function turnOnTheTrailer(trailerKey) {
         standardBackdrop = true;
       }
       if (x == !null || modalCloseBtn !== null) {
-        modalCloseBtn.style.color = '#ff6b08';
+        modalCloseBtn.style.removeProperty('color');
+        votes.classList.remove('opacity');
+        vote.classList.remove('opacity');
+        modalbackground.style.removeProperty('cursor');
+        modalbackground.classList.remove('mobalbackground');
       }
     },
   });
   ModalCardTrailer.show();
 }
 
+let video = true;
 //При нажатии на модалку вылазит постер вместо бегдропа
 //При повторном нажатии на модалку бегдроп возращаеться
 function SecretModal(e) {
   const x = document.querySelector('.basicLightbox');
   const modal = e.target.nodeName;
   const Url = e.currentTarget.dataset.set;
+  const modalbackground = document.querySelector('.modal');
+  const vote = document.querySelector('.modal__vote');
+  const votes = document.querySelector('.modal__votes');
 
   if (modal !== 'DIV') {
     return;
@@ -333,11 +348,19 @@ function SecretModal(e) {
     if (standardBackdrop) {
       x.style.backgroundSize = 'cover';
       x.style.backgroundImage = `url(${Url})`;
+      modalbackground.classList.add('mobalbackground');
+      modalbackground.style.cursor = 'pointer';
+      votes.classList.add('opacity');
+      vote.classList.add('opacity');
       standardBackdrop = false;
     } else {
       x.style.removeProperty('background-size');
       x.style.removeProperty('background-image');
       x.style.removeProperty('animation');
+      votes.classList.remove('opacity');
+      vote.classList.remove('opacity');
+      modalbackground.style.removeProperty('cursor');
+      modalbackground.classList.remove('mobalbackground');
       standardBackdrop = true;
     }
   }
@@ -349,7 +372,7 @@ function SecretVideo(e) {
   const Url = e.target.dataset.img;
   standardBackdrop = false;
   x.style.backgroundSize = 'cover';
-  modalCloseBtn.style.color = '#ffffff';
+  modalCloseBtn.style.color = 'transparent';
   x.style.backgroundImage = `url(${Url})`;
 }
 

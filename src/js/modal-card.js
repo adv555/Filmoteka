@@ -53,14 +53,14 @@ refs.filmStrip.addEventListener('click', getMovieIdAndMarkupCardMovie);
 function getMovieIdAndMarkupCardMovie(e) {
   const className = e.target.className;
   const tagName = e.target.nodeName;
-  if (tagName == 'IMG' && className == 'gallery-image') {
+  if (e.target.tagName == 'IMG' && e.target.className == 'gallery-image') {
     getMovieId(e);
     getMarkupCardMovie('gallery');
-  } else if (tagName == 'IMG' && className == 'false-image') {
+  } else if (e.target.tagName == 'IMG' && e.target.className == 'false-image') {
     getMovieId(e);
     getMarkupCardMovie('slider');
   }
-  return movieId;
+  return;
 }
 
 //получение id фильма и записываем в объект;

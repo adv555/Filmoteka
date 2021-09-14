@@ -155,28 +155,33 @@
   &__item {
     list-style: none;
     margin: 0 10px;
-    transform: translateY(40px);
-    transition: 0.5s;
-    // opacity: 0;
-    visibility: hidden;
-    transition-delay: calc(0.1s * var(--i));
   }
   &__link {
     color: #fff;
     font-size: 24px;
-  }
-
-  .card:hover &__item,
-  .card:active &__item {
-    visibility: initial;
-    transform: translateY(0px);
-    // opacity: 1;
   }
 }
 
 @media screen and (min-width: $tablet) {
   .team-section {
     max-width: 640px;
+  }
+  .sci {
+    &__item {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(40px);
+      transition: 0.5s;
+
+      transition-delay: calc(0.1s * var(--i));
+    }
+
+    .card:hover &__item,
+    .card:active &__item {
+      opacity: 1;
+      visibility: initial;
+      transform: translateY(0px);
+    }
   }
 }
 @media screen and (min-width: $desktop) {

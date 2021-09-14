@@ -21,7 +21,7 @@ body.light-theme {
 
 body.dark-theme {
   // background-color: #000000d6;
-  background-color: #585050;
+  background-color: #292929;
   // background-color: $footer;
   background-image: url(../images/popcorn-png.png);
   // background-repeat: no-repeat;
@@ -31,7 +31,7 @@ body.dark-theme {
   color: #fff;
   & .arrowLeft,
   .arrowRight {
-    background-color: transparent;
+    background-color: #252525;
   }
   & .arrowLeft:hover,
   .arrowRight:hover {

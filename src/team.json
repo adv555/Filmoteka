@@ -51,11 +51,11 @@
     "image": "./alex.jpeg",
     "github": "https://github.com/DyPeBaP",
     "telegram": "#",
-    "linkdIn": "#"
+    "linkdIn": "https://www.linkedin.com/in/aleksandr-lukianiuk/"
   },
   {
     "id": "7",
-    "name": "Andrey Yacutko",
+    "name": "Andrew Yatsutko",
     "description": "Developer",
     "image": "./andrey.jpeg",
     "github": "https://github.com/eitherwiser",

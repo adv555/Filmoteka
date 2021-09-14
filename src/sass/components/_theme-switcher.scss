@@ -32,6 +32,12 @@ body.dark-theme {
   .arrowRight {
     background-color: transparent;
   }
+  & .arrowLeft:hover,
+  .arrowRight:hover {
+    transition-duration: $duration;
+    background-color: $accent-bg;
+    border-radius: 5px;
+  }
 }
 
 .toolbar {

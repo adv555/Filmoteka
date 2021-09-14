@@ -4,7 +4,16 @@ import { trailerTemplate, getMovieIdAndMarkupCardMovie } from './modal-card'
 import swiper from '../templates/swiper';
 
 const moviesApiService = new MoviesApiService();
-moviesApiService.fetchUpcomingMovies().then(renderUpcomingMovies)
+
+const isMobile = navigator.userAgent.toLowerCase().match(/mobile/i);
+
+if (!isMobile) {
+  moviesApiService.fetchUpcomingMovies().then(renderUpcomingMovies)
+} else {
+  console.log('hello')
+  return
+};
+
 
 //=========== get content =========== 
 

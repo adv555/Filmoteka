@@ -73,18 +73,6 @@ function onLibraryWachedBtm() {
   arrowRight.innerHTML = '';
 }
 
-function changeWatchedPage(page) {
-  // ////код при изменении страницы
-  // const paginatedwatchedFilmStorage = localStorrageData.watchedFilmStorage.slice(
-  //   page,
-  //   numbersOfcards,
-  // );
-  // for (let page = 1; page < 100; page += 1) {
-  //   numbersOfcards = page * 20 - (page - 1) * 20;
-  // }
-  // return paginatedwatchedFilmStorage;
-}
-
 function onLibraryQueueBtn() {
   let queueFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('queue-films'));
   let watchedFilmsIdInLocalStorage = JSON.parse(localStorage.getItem('watched-films'));
@@ -131,28 +119,32 @@ function onLibraryQueueBtn() {
       );
     }
   }
-  var pag = new pagination(document.getElementsByClassName('pagination')[0], {
+  var pag1 = new pagination(document.getElementsByClassName('pagination')[0], {
     currentPage: 1,
     totalItems: queueFilmsIdInLocalStorage.length,
     itemsPerPage: 20,
     step: 2,
   });
 
-  pag.onPageChanged(changeQueuePage);
+  pag1.onPageChanged(changeQueuePage);
   const arrowLeft = document.querySelector('.arrowLeft');
   const arrowRight = document.querySelector('.arrowRight');
   arrowLeft.innerHTML = '';
   arrowRight.innerHTML = '';
 }
+
+function changeWatchedPage(page) {
+  reloadLocalStorage();
+  const currentItems = localStorrageData.watchedFilmStorage.slice(20 * page - 20, 20 * page);
+  console.log('watched:', currentItems);
+  refs.gallery.innerHTML = renderCards(currentItems.map(film => film.markup));
+}
+
 function changeQueuePage(page) {
-  //код при изменении страницы
-  // paginatedQueuePageFilmStorage = localStorrageData.queueFilmStorage
-  //   .slice(page, numbersOfcards)
-  //   .slice(page, numbersOfcards);
-  // for (let page = 1; page < 10; page += 1) {
-  //   numbersOfcards = page * 20 - (page - 1) * 20;
-  // }
-  // return paginatedQueuePageFilmStorage;
+  reloadLocalStorage();
+  const currentItems = localStorrageData.queueFilmStorage.slice(20 * page - 20, 20 * page);
+  console.log('queue:', currentItems);
+  refs.gallery.innerHTML = renderCards(currentItems.map(film => film.markup));
 }
 
 export function onAddWachedBtm(event) {
@@ -269,26 +261,26 @@ export function onLibraryBtn() {
 
 export function renderWatchedFilmStorage() {
   // ======= было в main до слияния
-  refs.gallery.innerHTML = renderCards(
-    localStorrageData.watchedFilmStorage.map(film => film['markup']),
-    // ======= end
-
-    // ======= версия Миши закомичена, раскомитила код Андрея
-
-    // refs.gallery.innerHTML = paginatedQueuePageFilmStorage
-    // refs.gallery.innerHTML = localStorrageData.watchedFilmStorage
-    //   .map(film => film['markup'])
-    //   .join(' ');
-  );
+  // refs.gallery.innerHTML = renderCards(
+  //   localStorrageData.watchedFilmStorage.map(film => film['markup']),
+  // ======= end
+  // ======= версия Миши закомичена, раскомитила код Андрея
+  // refs.gallery.innerHTML = paginatedQueuePageFilmStorage
+  // refs.gallery.innerHTML = localStorrageData.watchedFilmStorage
+  //   .map(film => film['markup'])
+  //   .join(' ');
+  // );
+  changeWatchedPage(1);
   bouceInLeftLibGallery();
 }
 
 // ======= было в main до слияния
 export function renderQueueFilmStorage() {
-  refs.gallery.innerHTML = renderCards(
-    localStorrageData.queueFilmStorage.map(film => film['markup']),
-  );
+  // refs.gallery.innerHTML = renderCards(
+  //   localStorrageData.queueFilmStorage.map(film => film['markup']),
+  // );
   // ======= end
+  changeQueuePage(1);
   bouceInRightLibGallery();
 }
 // ======= версия Миши закомичена, раскомитила код Андрея

@@ -65,7 +65,15 @@ function onLibraryWachedBtm() {
 }
 
 function changeWatchedPage(page) {
-  ////код при изменении страницы
+  // ////код при изменении страницы
+  // const paginatedwatchedFilmStorage = localStorrageData.watchedFilmStorage.slice(
+  //   page,
+  //   numbersOfcards,
+  // );
+  // for (let page = 1; page < 100; page += 1) {
+  //   numbersOfcards = page * 20 - (page - 1) * 20;
+  // }
+  // return paginatedwatchedFilmStorage;
 }
 
 function onLibraryQueueBtn() {
@@ -127,9 +135,15 @@ function onLibraryQueueBtn() {
   arrowLeft.innerHTML = '';
   arrowRight.innerHTML = '';
 }
-
 function changeQueuePage(page) {
   ////код при изменении страницы
+  // paginatedQueuePageFilmStorage = localStorrageData.queueFilmStorage
+  //   .slice(page, numbersOfcards)
+  //   .slice(page, numbersOfcards);
+  // for (let page = 1; page < 10; page += 1) {
+  //   numbersOfcards = page * 20 - (page - 1) * 20;
+  // }
+  // return paginatedQueuePageFilmStorage;
 }
 
 export function onAddWachedBtm(event) {
@@ -236,9 +250,7 @@ export function onLibraryBtn() {
 }
 
 export function renderWatchedFilmStorage() {
-  refs.gallery.innerHTML = localStorrageData.watchedFilmStorage
-    .map(film => film['markup'])
-    .join(' ');
+  refs.gallery.innerHTML = paginatedwatchedFilmStorage.map(film => film['markup']).join(' ');
   bouceInLeftLibGallery();
 }
 export function renderQueueFilmStorage() {

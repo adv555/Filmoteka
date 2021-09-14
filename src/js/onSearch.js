@@ -2,7 +2,7 @@ import refs from './refs';
 import MoviesApiService from './api/api-service';
 import createGalleryMarkup from './gallery/gallery';
 import { insertContentTpl, clearContainer, createNotice, createNotice404 } from './notification';
-import debounce from 'lodash.debounce';
+// import debounce from 'lodash.debounce';
 import placeholder from './spinner';
 import errorTpl from '../templates/error-not-found-film.hbs';
 // import { addFilterListeners, removeFilterListeners } from './filter/genres-filter';
@@ -11,36 +11,37 @@ moviesApiService.fetchTrending().then(createGalleryMarkup).catch(console.log);
 export default moviesApiService; /////////////////////
 
 // =========== listeners
-refs.searchInput.addEventListener('input', debounce(onSearch, 500));
+// refs.searchInput.addEventListener('input', debounce(onSearch, 500));
+refs.searchForm.addEventListener('submit', onSearch);
 // =========== on Search
-let searchQuery = '';
 
 function onSearch(e) {
   e.preventDefault();
-  let input = e.target;
-  searchQuery = input.value.trim();
+  let searchQuery = e.currentTarget.elements.searchQuery.value.trim();
+
   moviesApiService.query = searchQuery;
 
   placeholder.spinner.show();
   refs.pagination.classList.remove('is-hidden');
 
-  // проверка если инпут пустой
+  // // проверка если инпут пустой
   if (moviesApiService.query.length == 0) {
     placeholder.spinner.close();
-    input.value = '';
+    refs.searchForm.reset();
+
     return createNotice();
   }
-
+  // отрисовка контента
   renderMoviesBySearch(searchQuery)
     .then(placeholder.spinner.close())
-    .then((input.value = ''))
+    .then(refs.searchForm.reset())
     .catch(error => {
       createNotice();
       console.log(error);
     });
 }
 
-// =========== render Content By Search
+// =========== render Content By Search Fn
 
 async function renderMoviesBySearch(searchQuery) {
   const query = searchQuery || moviesApiService.query;
@@ -58,7 +59,7 @@ async function renderMoviesBySearch(searchQuery) {
 
   moviesApiService.totalResults = total_results;
 
-  // проверка если объект пустой
+  // проверка если {} пустой
   if (movies.length === 0) {
     createNotice404();
     clearContainer(refs.gallery);
@@ -69,3 +70,35 @@ async function renderMoviesBySearch(searchQuery) {
 
   createGalleryMarkup(serverAnswer);
 }
+
+// старая версия по event input
+
+// // =========== listeners
+// refs.searchInput.addEventListener('input', debounce(onSearch, 500));
+// // =========== on Search
+// let searchQuery = '';
+
+// function onSearch(e) {
+//   e.preventDefault();
+//   let input = e.target;
+//   searchQuery = input.value.trim();
+//   moviesApiService.query = searchQuery;
+
+//   placeholder.spinner.show();
+//   refs.pagination.classList.remove('is-hidden');
+
+//   // проверка если инпут пустой
+//   if (moviesApiService.query.length == 0) {
+//     placeholder.spinner.close();
+//     input.value = '';
+//     return createNotice();
+//   }
+
+//   renderMoviesBySearch(searchQuery)
+//     .then(placeholder.spinner.close())
+//     .then((input.value = ''))
+//     .catch(error => {
+//       createNotice();
+//       console.log(error);
+//     });
+// }

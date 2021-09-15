@@ -22,21 +22,11 @@ header {
   display: flex;
   align-items: center;
   outline: none;
-  // transform: scale(1, 1);
 
   @media screen and (min-width: $tablet) {
     align-items: baseline;
   }
-  // @include transition(transform);
 }
-
-// .logo:focus {
-//   // outline: 1px solid $accent-line;
-// }
-
-// .logo:hover {
-//   // transform: scale(1.1, 1.1);
-// }
 
 .logo__icon {
   display: block;
@@ -77,17 +67,12 @@ header {
   line-height: 1.17;
   text-transform: uppercase;
   color: $white-color;
- border: none;
+  border: none;
   border: transparent;
   background-color: transparent;
   cursor: pointer;
   outline: none;
-  // transition: outline $btn-duration $timing-function;
 }
-
-// .site-nav__button:focus {
-//   // outline: 1px solid $accent-line;
-// }
 
 .site-nav__button::after {
   content: '';

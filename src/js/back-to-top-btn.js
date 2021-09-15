@@ -13,9 +13,7 @@ function trackScroll() {
 function backToTop() {
   if (window.pageYOffset > 0) {
     window.scrollBy(0, -15);
-    // window.scrollBy({
-    //   behavior: 'smooth',
-    // });
+
     setTimeout(backToTop, 0);
   }
 }

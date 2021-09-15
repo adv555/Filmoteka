@@ -5,7 +5,6 @@ refs.homeLink.addEventListener('click', onHomeBtn);
 bounceNavBtn();
 export function onHomeBtn() {
   bounceNavBtn();
-  // console.log('Home Btn');
 
   refs.myLibraryLink.classList.remove(
     'site-nav__button--active',
@@ -37,7 +36,6 @@ export function onHomeBtn() {
 }
 
 export function bounceNavBtn() {
-  // console.log('bounceNavBtn');
   refs.logoText.classList.add('animate__animated', 'animate__bounceInLeft');
   setTimeout(
     () => refs.logoText.classList.remove('animate__animated', 'animate__bounceInLeft'),

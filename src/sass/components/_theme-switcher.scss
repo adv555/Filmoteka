@@ -9,22 +9,16 @@
 }
 
 body.light-theme {
-  // background-color: cornsilk;
   background: #c8c5b991;
-  // background-image: url(../images/popcorn-2.jpeg);
   background-image: url(../images/popcorn-png.png);
   background-attachment: fixed;
   background-position: center;
-  // background-repeat: no-repeat;
   color: #333333;
 }
 
 body.dark-theme {
-  // background-color: #000000d6;
   background-color: #292929;
-  // background-color: $footer;
   background-image: url(../images/popcorn-png.png);
-  // background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
 
@@ -44,7 +38,6 @@ body.dark-theme {
 .toolbar {
   display: flex;
   justify-content: flex-end;
-  // padding: 16px 24px;
 }
 
 /* THEME SWITCH */

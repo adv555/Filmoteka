@@ -1,39 +1,47 @@
-<div class="switcher-wrapper">
-<div class="arrow arrow__next">
-  <span class="material-icons-outlined">
-    arrow_forward_ios
-  </span>
-</div>
+<div class='switcher-wrapper'>
+  <div class='arrow arrow__next'>
+    <span class='material-icons-outlined'>
+      arrow_forward_ios
+    </span>
+  </div>
 
-    <div class="film-strip" data-component='slider'>
+  <div class='film-strip' data-component='slider'>
 
     {{#each this}}
-    <div class="film-strip__item" data-slider="{{@index}}" data-position="{{@index}}" data-source="{{id}}" data-set={{id}}>
-      {{#if title}}
-      <h2 class="film__title">{{title}} </h2>
-      {{else}}
-      <h2 class="film__title">{{original_title}} </h2>
-      {{/if}}
-      {{!--<ul class="slider-card-markup"></ul>--}}
+      <div
+        class='film-strip__item'
+        data-slider='{{@index}}'
+        data-position='{{@index}}'
+        data-source='{{id}}'
+        data-set={{id}}
+      >
+        {{#if title}}
+          <h2 class='film__title'>{{title}} </h2>
+        {{else}}
+          <h2 class='film__title'>{{original_title}} </h2>
+        {{/if}}
 
-      <span class="material-icons-outlined film-strip__info film-strip__btn" data-source="{{id}}">
-        info
-        <img class="false-image" src="" data-source="{{id}}"/>
-      </span>
-      <span class="material-icons-outlined film-strip__play-video film-strip__btn" data-set={{id}}>
-        play_circle_outline
-      </span>
+        <span class='material-icons-outlined film-strip__info film-strip__btn' data-source='{{id}}'>
+          info
+          <img class='false-image' src='' data-source='{{id}}' />
+        </span>
+        <span
+          class='material-icons-outlined film-strip__play-video film-strip__btn'
+          data-set={{id}}
+        >
+          play_circle_outline
+        </span>
 
-      <img class="strip-img" src="https://image.tmdb.org/t/p/w500{{backdrop_path}}">
+        <img class='strip-img' src='https://image.tmdb.org/t/p/w500{{backdrop_path}}' />
 
-    </div>
+      </div>
     {{/each}}
 
   </div>
 
-<div class="arrow arrow__previous">
-  <span class="material-icons-outlined">
-    arrow_back_ios
-  </span>
-</div>
+  <div class='arrow arrow__previous'>
+    <span class='material-icons-outlined'>
+      arrow_back_ios
+    </span>
+  </div>
 </div>

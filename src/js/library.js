@@ -1,6 +1,4 @@
 import refs from './refs';
-
-// ======= было в main до слияния
 import renderCards from '../templates/gallery.hbs';
 import {
   emptyLibraryNotice,

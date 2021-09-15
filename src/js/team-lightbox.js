@@ -16,7 +16,6 @@ function onTeamModalShow(e) {
 
   //=== close modal onClick on imgBox
   function onClick(e) {
-    // console.log(e.target.classList.value);
     e.target.classList.value === 'cards-container js-team list' ||
     e.target.classList.value === 'team__title' ||
     e.target.classList.value === 'team__title_accent' ||
@@ -27,7 +26,6 @@ function onTeamModalShow(e) {
 
   //=== close modal onEsc Btn
   function onCloseEsc(e) {
-    // console.log(e);
     e.code === 'Escape' ? teamModal.close() : teamModal.show();
   }
   // create modal from marckup

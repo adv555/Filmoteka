@@ -179,10 +179,7 @@
   line-height: 40px;
   cursor: pointer;
   background-color: #c8c5b991;
-  // margin-right: 5px;
-  // border: 1px solid $accent-bg;
   border-radius: 5px;
-  // background-color: $light-grey-color;
   background-position: center;
   transition: background-color 0.25s $timing-function;
 }
@@ -223,14 +220,12 @@
 
 @media screen and (min-width: $tablet) {
   .container_gallery {
-    // margin-top: 60px;
     margin-bottom: 60px;
   }
 }
 
 @media screen and (min-width: $desktop) {
   .container_gallery {
-    // margin-top: 60px;
     margin-bottom: 60px;
   }
 }

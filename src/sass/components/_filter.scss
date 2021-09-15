@@ -150,11 +150,7 @@ fieldset {
   line-height: 1.12;
   text-shadow: 1px 3px 15px #ff6b01;
 
-  // font-size: 60px;
   font-weight: 500;
-  // line-height: 1.33;
-  // color: #ffffff;
-  // text-shadow: 2px 2px 5px  rgba(0, 0, 0, 0.652);
   cursor: pointer;
   position: absolute;
   margin-left: auto;
@@ -164,10 +160,9 @@ fieldset {
   text-align: center;
   transition: all 400ms ease;
   opacity: 1;
-  // transform: translateY(0%);
+
   top: 30%;
   .filters:hover & {
-    // transform: translateY(-200%);
     opacity: 0;
   }
 }

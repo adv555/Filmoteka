@@ -36,15 +36,12 @@ export const valueLocalStorage = {
   id: '',
   markup: '',
 };
-// console.log(valueLocalStorage);
+
 //Переменная для смены бегдропа
 let standardBackdrop = true;
 
 // слушатель на галерею
 refs.gallery.addEventListener('click', getMovieIdAndMarkupCardMovie);
-
-//listner to SLIDER
-// refs.sliderMovieInfo.addEventListener('click', getMovieId);
 
 // Один слушатель на СЛАЙДЕР
 refs.filmStrip.addEventListener('click', getMovieIdAndMarkupCardMovie);

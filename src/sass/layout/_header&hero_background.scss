@@ -5,7 +5,6 @@
 
   @media screen and (max-width: $max-mobile) {
     max-width: $max-mobile;
-    // height: 230px;
     padding-top: 46px;
     padding-bottom: 43px;
     background-image: url(../images/optimized-jpg/header__home__mob.jpg);
@@ -71,7 +70,6 @@
 
   @media screen and (max-width: $max-mobile) {
     max-width: $max-mobile;
-    // height: 230px;
     padding-top: 46px;
     padding-bottom: 43px;
     background-image: url(../images/optimized-jpg/header__lib__mob.jpg);
@@ -91,7 +89,6 @@
 
   @media screen and (min-width: $tablet) and (max-width: $max-tablet) {
     max-width: $max-tablet;
-    // height: 230px;
     padding-top: 41px;
     padding-bottom: 59px;
     background-image: url(../images/optimized-jpg/header__lib__tablet.jpg);
@@ -111,7 +108,6 @@
 
   @media screen and (min-width: $desktop) {
     max-width: 100wv;
-    // height: 230px;
     padding-top: 41px;
     padding-bottom: 59px;
     background-image: url(../images/optimized-jpg/header__lib__desktop.jpg);

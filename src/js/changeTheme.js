@@ -4,7 +4,6 @@ const Theme = {
 };
 
 const refs = {
-  //   menuList: document.querySelector(".js-menu"),
   switcher: document.querySelector('.theme-switch__toggle'),
   body: document.body,
   slider: document.querySelector('.switcher-wrapper'),
@@ -20,7 +19,6 @@ function toggleTheme(add, rem) {
 }
 
 (function () {
-  //   refs.menuList.innerHTML = createMenu(menu);
   refs.switcher.addEventListener('change', changeTheme);
 
   refs.body.classList.add(

@@ -11,7 +11,6 @@ moviesApiService.fetchTrending().then(createGalleryMarkup).catch(console.log);
 export default moviesApiService; /////////////////////
 
 // =========== listeners
-// refs.searchInput.addEventListener('input', debounce(onSearch, 500));
 refs.searchForm.addEventListener('submit', onSearch);
 // =========== on Search
 
@@ -70,35 +69,3 @@ async function renderMoviesBySearch(searchQuery) {
 
   createGalleryMarkup(serverAnswer);
 }
-
-// старая версия по event input
-
-// // =========== listeners
-// refs.searchInput.addEventListener('input', debounce(onSearch, 500));
-// // =========== on Search
-// let searchQuery = '';
-
-// function onSearch(e) {
-//   e.preventDefault();
-//   let input = e.target;
-//   searchQuery = input.value.trim();
-//   moviesApiService.query = searchQuery;
-
-//   placeholder.spinner.show();
-//   refs.pagination.classList.remove('is-hidden');
-
-//   // проверка если инпут пустой
-//   if (moviesApiService.query.length == 0) {
-//     placeholder.spinner.close();
-//     input.value = '';
-//     return createNotice();
-//   }
-
-//   renderMoviesBySearch(searchQuery)
-//     .then(placeholder.spinner.close())
-//     .then((input.value = ''))
-//     .catch(error => {
-//       createNotice();
-//       console.log(error);
-//     });
-// }

@@ -13,3 +13,4 @@ import './js/filter/genres-filter';
 import './js/slider';
 import './js/header';
 import './js/library';
+import './js/AD-banner.js'

@@ -1,6 +1,7 @@
 import renderCards from '../../templates/gallery.hbs';
 import refs from '../refs.js';
 import genres from '../../genres.json';
+import showBanner from '../AD-banner.js';
 
 var pagination = require('pagination');
 import moviesApiService from '../onSearch';
@@ -46,6 +47,7 @@ export default function createGalleryMarkup(data) {
   refs.gallery.innerHTML = renderCards(cardList);
 
   localStorage.setItem('galleryCardList', JSON.stringify(cardList));
+  showBanner();
 
   const arrowLeft = document.querySelector('.arrowLeft');
   const arrowRight = document.querySelector('.arrowRight');

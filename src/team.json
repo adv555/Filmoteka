@@ -5,8 +5,8 @@
     "description": "Teamlead",
     "image": "./olena.jpeg",
     "github": "https://github.com/adv555",
-    "telegram": "https://t.me/adv001",
-    "linkdIn": "www.linkedin.com/in/helen-boldysheva-9108911b0"
+    "linkdIn": "www.linkedin.com/in/helen-boldysheva-9108911b0",
+    "telegram": "https://t.me/adv001"
   },
   {
     "id": "2",
@@ -14,8 +14,8 @@
     "description": "Scrum Master",
     "image": "./misha.jpeg",
     "github": "https://github.com/ZhukovMikhail",
-    "telegram": "#",
-    "linkdIn": "linkedin.com/in/michael-zhukov-8083a0220"
+    "linkdIn": "linkedin.com/in/michael-zhukov-8083a0220",
+    "telegram": "#"
   },
   {
     "id": "3",
@@ -23,8 +23,8 @@
     "description": "Developer",
     "image": "./olya.jpeg",
     "github": "https://github.com/OlyaKikot",
-    "telegram": "https://t.me/OlyaK30",
-    "linkdIn": "https://www.linkedin.com/in/kikot-olga"
+    "linkdIn": "https://www.linkedin.com/in/kikot-olga",
+    "telegram": "https://t.me/OlyaK30"
   },
   {
     "id": "4",
@@ -32,8 +32,8 @@
     "description": "Developer",
     "image": "./oksana.jpeg",
     "github": "https://github.com/OksanaBakl",
-    "telegram": "https://t.me/oksanaMolesha",
-    "linkdIn": "www.linkedin.com/in/oksana-baklan"
+    "linkdIn": "www.linkedin.com/in/oksana-baklan",
+    "telegram": "https://t.me/oksanaMolesha"
   },
   {
     "id": "5",
@@ -41,8 +41,8 @@
     "description": "Developer",
     "image": "./konstantin.jpeg",
     "github": "https://github.com/Konstantyn-Tokar",
-    "telegram": "https://t.me/Kostyasha_O",
-    "linkdIn": "https://www.linkedin.com/in/Kostiantyn-Tokar"
+    "linkdIn": "https://www.linkedin.com/in/Kostiantyn-Tokar",
+    "telegram": "https://t.me/Kostyasha_O"
   },
   {
     "id": "6",
@@ -50,8 +50,8 @@
     "description": "Developer",
     "image": "./alex.jpeg",
     "github": "https://github.com/DyPeBaP",
-    "telegram": "#",
-    "linkdIn": "https://www.linkedin.com/in/aleksandr-lukianiuk"
+    "linkdIn": "https://www.linkedin.com/in/aleksandr-lukianiuk",
+    "telegram": "#"
   },
   {
     "id": "7",
@@ -59,8 +59,8 @@
     "description": "Developer",
     "image": "./andrey.jpeg",
     "github": "https://github.com/eitherwiser",
-    "telegram": "https://t.me/AndrewYatsutko",
-    "linkdIn": "www.linkedin.com/in/a-yatsutko"
+    "linkdIn": "www.linkedin.com/in/a-yatsutko",
+    "telegram": "https://t.me/AndrewYatsutko"
   },
   {
     "id": "8",
@@ -68,8 +68,8 @@
     "description": "Developer",
     "image": "https://ca.slack-edge.com/T01UW5D5RDJ-U020701EUDU-ee76e7f99874-512",
     "github": "https://github.com/ilyanes",
-    "telegram": "https://t.me/Elias_KIA",
-    "linkdIn": "#"
+    "linkdIn": "#",
+    "telegram": "https://t.me/Elias_KIA"
   },
   {
     "id": "9",
@@ -77,7 +77,7 @@
     "description": "Developer",
     "image": "./vova.jpeg",
     "github": "https://github.com/vovauniat",
-    "telegram": "https://t.me/Vova_volodja",
-    "linkdIn": "https://github.com/vovauniat"
+    "linkdIn": "https://github.com/vovauniat",
+    "telegram": "https://t.me/Vova_volodja"
   }
 ]

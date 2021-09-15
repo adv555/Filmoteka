@@ -3,17 +3,22 @@ import MoviesApiService from './api/api-service';
 import { trailerTemplate, getMovieIdAndMarkupCardMovie } from './modal-card'
 import swiper from '../templates/swiper';
 
+
 const moviesApiService = new MoviesApiService();
 
-const isMobile = navigator.userAgent.toLowerCase().match(/mobile/i);
-const isTablet = navigator.userAgent.toLowerCase().match(/tablet/i);
-const isiPad = navigator.userAgent.toLowerCase().match(/ipad/i);
+function checkDevise() {
+  const isMobile = navigator.userAgent.toLowerCase().match(/mobile/i);
+  const isTablet = navigator.userAgent.toLowerCase().match(/tablet/i);
+  const isiPad = navigator.userAgent.toLowerCase().match(/ipad/i);
 
-if (!isMobile || isiPad || isTablet) {
-  moviesApiService.fetchUpcomingMovies().then(renderUpcomingMovies)
-} else {
-  return
-};
+  if (!isMobile || isiPad || isTablet) {
+    moviesApiService.fetchUpcomingMovies().then(renderUpcomingMovies)
+  } else {
+    return
+  };
+}
+
+checkDevise();
 
 //=========== get content =========== 
 

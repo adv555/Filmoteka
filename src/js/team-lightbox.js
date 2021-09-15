@@ -18,7 +18,8 @@ function onTeamModalShow(e) {
   function onClick(e) {
     // console.log(e.target.classList.value);
     e.target.classList.value === 'cards-container js-team list' ||
-    e.target.classList.value === 'imgBx__img' ||
+    e.target.classList.value === 'team__title' ||
+    e.target.classList.value === 'team__title_accent' ||
     e.target.classList.value === 'basicLightbox'
       ? teamModal.close()
       : teamModal.show();

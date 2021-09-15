@@ -2,11 +2,17 @@
 @import './_icecream';
 
 .banner {
-  display: box;
+  // display: block;
   position: relative;
-  bacground: red;
+  background: red;
   width: 100%;
   height: 100%;
+  //  display: block;
+  width: 100%;
+  height: 398px;
+  max-height: 398px;
+  margin-bottom: 10px;
+  border-radius: 5px;
 }
 
 .dice {

@@ -7,7 +7,7 @@
 .search-field__input {
   width: 280px;
   padding-bottom: 4px;
-  margin-bottom: 21px;
+  margin-bottom: 10px;
   font-weight: 400;
   font-size: getFont-size__mob('search');
   color: $white-color;
@@ -37,9 +37,9 @@
   border-color: $accent-line;
 }
 
-.search-field__input:focus {
-  outline: 1px solid $accent-line;
-}
+// .search-field__input:focus {
+//   outline: 1px solid $accent-line;
+// }
 
 .search-field__error-text {
   font-size: getFont-size__mob('search');

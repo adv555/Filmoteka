@@ -190,6 +190,8 @@ function addModal(dataMovie) {
 
       if (refs.myLibraryLink.classList.contains('site-nav__button--active')) {
         // ============== если везде пусто ==================================
+        if (!queueFilmsIdInLocalStorage) queueFilmsIdInLocalStorage = [];
+        if (!watchedFilmsIdInLocalStorage) watchedFilmsIdInLocalStorage = [];
         if (
           (watchedFilmsIdInLocalStorage === null || watchedFilmsIdInLocalStorage.length === 0) &&
           (queueFilmsIdInLocalStorage === null || queueFilmsIdInLocalStorage.length === 0)

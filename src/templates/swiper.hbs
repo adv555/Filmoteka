@@ -31,9 +31,11 @@
         >
           play_circle_outline
         </span>
-
-        <img class='strip-img' src='https://image.tmdb.org/t/p/w500{{backdrop_path}}' />
-
+        {{#if backdrop_path}}
+          <img class='strip-img' src='https://image.tmdb.org/t/p/w500{{backdrop_path}}' />
+        {{else}}
+          <img class='strip-img' src='comingsoon-sl.jpg' />
+        {{/if}}
       </div>
     {{/each}}
 

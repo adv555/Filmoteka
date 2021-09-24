@@ -36,6 +36,8 @@ const myLibraryNotice = document.querySelector('.my-Library__notice'); //Миш�
 const myLibraryNoticeTitle = document.querySelector('.my-Library__notice-title'); //Миша
 const siteNavBtns = document.querySelector('.site-nav__item'); //Миша
 const logoText = document.querySelector('.logo__text'); //Миша
+const userForm = document.getElementById('user-login-form');
+const userForm2 = document.getElementById('user-login-form-2');
 
 export default {
   searchForm,
@@ -73,4 +75,6 @@ export default {
   myLibraryNoticeTitle,
   siteNavBtns,
   logoText,
+  userForm,
+  userForm2,
 };
